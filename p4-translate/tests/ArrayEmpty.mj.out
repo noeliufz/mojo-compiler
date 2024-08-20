@@ -1,0 +1,7 @@
+	.data
+	.balign 8
+ArrayEmpty.v:
+	.zero 0
+	.text
+ArrayEmpty:
+

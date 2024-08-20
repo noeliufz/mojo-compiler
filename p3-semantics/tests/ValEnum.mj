@@ -1,0 +1,2 @@
+const b: bool = Val(1, bool);
+const f = bool.false;

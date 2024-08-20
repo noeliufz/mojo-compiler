@@ -1,0 +1,181 @@
+PROCEDURE NegExpr.Neg
+# Trees:
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  TEMP NegExpr.Neg.x)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  TEMP NegExpr.Neg.x))
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  TEMP NegExpr.Neg.x))
+JUMP(
+ NAME L.0)
+# 1
+LABEL L.0
+# Trace Scheduled:
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  TEMP NegExpr.Neg.x))
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP NegExpr.Neg.x,
+ TEMP %rdi)
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  TEMP NegExpr.Neg.x))
+LABEL L.0
+# Instructions:
+	movq %rdi,NegExpr.Neg.x	# NegExpr.Neg.x := %rdi 
+L.3:	# <- 
+	xorq t.1,t.1	# t.1 <- 
+	movq t.1,t.2	# t.2 := t.1 
+	subq NegExpr.Neg.x,t.2	# t.2 <- NegExpr.Neg.x t.2 
+	movq t.2,%rax	# %rax := t.2 
+L.0:	# <- 
+# Control Flow Graph:
+0: NegExpr.Neg.x <- %rdi; goto 1
+1: t.1 t.2 %rax <- NegExpr.Neg.x; goto 2
+2: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+NegExpr.Neg.x: %rsp %rbp t.2 t.1 
+t.1: %rsp %rbp NegExpr.Neg.x 
+t.2: %rsp %rbp NegExpr.Neg.x 
+t.2 <= t.1
+%rax <= t.2
+NegExpr.Neg.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+NegExpr.Neg.x->%rdi
+t.1->%rax
+t.2->%rax
+# Assembly code:
+	.text
+NegExpr.Neg:
+	pushq %rbp
+	movq %rsp,%rbp
+#	movq %rdi,%rdi
+L.3:
+	xorq %rax,%rax
+#	movq %rax,%rax
+	subq %rdi,%rax
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	popq %rbp
+	ret
+NegExpr.Neg.badSub:
+	call badSub
+END NegExpr.Neg
+PROCEDURE NegExpr
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.4
+# Trace Scheduled:
+LABEL L.4
+# With procedure entry/exit:
+LABEL L.4
+# Instructions:
+L.4:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+NegExpr:
+	pushq %rbp
+	movq %rsp,%rbp
+L.4:
+#	returnSink
+	popq %rbp
+	ret
+END NegExpr

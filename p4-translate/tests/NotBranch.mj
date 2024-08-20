@@ -1,0 +1,4 @@
+proc Not(x: bool): bool {
+  if !x then return true;
+  return false;
+}

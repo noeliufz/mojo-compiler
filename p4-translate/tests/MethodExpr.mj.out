@@ -1,0 +1,7 @@
+	.data
+	.balign 8
+MethodExpr.T:
+	.quad badPtr
+	.text
+MethodExpr:
+

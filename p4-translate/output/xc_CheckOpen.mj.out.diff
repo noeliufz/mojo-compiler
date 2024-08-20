@@ -1,0 +1,816 @@
+1,815d0
+< 	.text
+< xc_CheckOpen:
+< MOVE(
+<  TEMP t.1,
+<  CONST 5),
+< MOVE(
+<  TEMP t.0,
+<  CONST 0),
+< BGE(
+<  TEMP t.0,
+<  TEMP t.1,
+<  L.1, L.0),
+< LABEL L.0,
+< MOVE(
+<  TEMP t.3,
+<  CONST 5),
+< MOVE(
+<  TEMP t.2,
+<  CONST 0),
+< BGE(
+<  TEMP t.2,
+<  TEMP t.3,
+<  L.3, L.2),
+< LABEL L.2,
+< MOVE(
+<  TEMP t.5,
+<  CONST 5),
+< MOVE(
+<  TEMP t.4,
+<  CONST 0),
+< BGE(
+<  TEMP t.4,
+<  TEMP t.5,
+<  L.5, L.4),
+< LABEL L.4,
+< MOVE(
+<  MEM(
+<   ADD(
+<    ADD(
+<     ADD(
+<      TEMP %rbp,
+<      MUL(
+<       TEMP t.0,
+<       CONST 200)),
+<     MUL(
+<      TEMP t.2,
+<      CONST 40)),
+<    MUL(
+<     TEMP t.4,
+<     CONST 8)), 
+<   CONST -1000, 8, true),
+<  CONST 0),
+< MOVE(
+<  TEMP t.4,
+<  ADD(
+<   TEMP t.4,
+<   CONST 1)),
+< BLT(
+<  TEMP t.4,
+<  TEMP t.5,
+<  L.4, L.5),
+< LABEL L.5,
+< MOVE(
+<  TEMP t.2,
+<  ADD(
+<   TEMP t.2,
+<   CONST 1)),
+< BLT(
+<  TEMP t.2,
+<  TEMP t.3,
+<  L.2, L.3),
+< LABEL L.3,
+< MOVE(
+<  TEMP t.0,
+<  ADD(
+<   TEMP t.0,
+<   CONST 1)),
+< BLT(
+<  TEMP t.0,
+<  TEMP t.1,
+<  L.0, L.1),
+< LABEL L.1,
+< MOVE(
+<  TEMP xc_CheckOpen.2.a,
+<  ESEQ(
+<   MOVE(
+<    TEMP t.6,
+<    CONST 5),
+<   BLT(
+<    TEMP t.6,
+<    CONST 0,
+<    xc_CheckOpen.badSub, L.6),
+<   LABEL L.6,
+<   MOVE(
+<    TEMP t.7,
+<    TEMP t.6),
+<   MOVE(
+<    TEMP t.8,
+<    CONST 5),
+<   BLT(
+<    TEMP t.8,
+<    CONST 0,
+<    xc_CheckOpen.badSub, L.7),
+<   LABEL L.7,
+<   MOVE(
+<    TEMP t.9,
+<    MUL(
+<     TEMP t.8,
+<     TEMP t.7)),
+<   MOVE(
+<    TEMP t.10,
+<    CONST 5),
+<   BLT(
+<    TEMP t.10,
+<    CONST 0,
+<    xc_CheckOpen.badSub, L.8),
+<   LABEL L.8,
+<   MOVE(
+<    TEMP t.11,
+<    MUL(
+<     TEMP t.10,
+<     TEMP t.9)),
+<   MOVE(
+<    TEMP t.12,
+<    CONST 32),
+<   MOVE(
+<    TEMP t.12,
+<    ADD(
+<     TEMP t.12,
+<     MUL(
+<      TEMP t.11,
+<      CONST 8))),
+<   MOVE(
+<    TEMP t.13,
+<    CALL(
+<     NAME malloc,
+<     CONST 0,
+<     TEMP t.12)),
+<   MOVE(
+<    MEM(
+<     TEMP t.13, 
+<     CONST 0, 8, false),
+<    ADD(
+<     TEMP t.13,
+<     CONST 32)),
+<   MOVE(
+<    MEM(
+<     TEMP t.13, 
+<     CONST 8, 8, false),
+<    TEMP t.6),
+<   MOVE(
+<    MEM(
+<     TEMP t.13, 
+<     CONST 16, 8, false),
+<    TEMP t.8),
+<   MOVE(
+<    MEM(
+<     TEMP t.13, 
+<     CONST 24, 8, false),
+<    TEMP t.10),
+<   MOVE(
+<    TEMP t.15,
+<    MEM(
+<     TEMP t.13, 
+<     CONST 8, 8, false)),
+<   MOVE(
+<    TEMP t.15,
+<    MUL(
+<     TEMP t.15,
+<     MEM(
+<      TEMP t.13, 
+<      CONST 16, 8, false))),
+<   MOVE(
+<    TEMP t.15,
+<    MUL(
+<     TEMP t.15,
+<     MEM(
+<      TEMP t.13, 
+<      CONST 24, 8, false))),
+<   MOVE(
+<    TEMP t.16,
+<    MEM(
+<     TEMP t.13, 
+<     CONST 0, 8, false)),
+<   MOVE(
+<    TEMP t.14,
+<    CONST 0),
+<   BGE(
+<    TEMP t.14,
+<    TEMP t.15,
+<    L.11, L.9),
+<   LABEL L.9,
+<   MOVE(
+<    MEM(
+<     ADD(
+<      TEMP t.16,
+<      MUL(
+<       TEMP t.14,
+<       CONST 8)), 
+<     CONST 0, 8, true),
+<    CONST 0),
+<   MOVE(
+<    TEMP t.14,
+<    ADD(
+<     TEMP t.14,
+<     CONST 1)),
+<   LABEL L.10,
+<   BLT(
+<    TEMP t.14,
+<    TEMP t.15,
+<    L.9, L.11),
+<   LABEL L.11,
+<   TEMP t.13)),
+< MOVE(
+<  TEMP t.17,
+<  CONST 0),
+< MOVE(
+<  TEMP t.18,
+<  CONST 4),
+< MOVE(
+<  TEMP t.19,
+<  CONST 1),
+< LABEL L.12,
+< MOVE(
+<  TEMP xc_CheckOpen.2.1.i,
+<  TEMP t.17),
+< MOVE(
+<  TEMP t.20,
+<  CONST 0),
+< MOVE(
+<  TEMP t.21,
+<  CONST 4),
+< MOVE(
+<  TEMP t.22,
+<  CONST 1),
+< LABEL L.15,
+< MOVE(
+<  TEMP xc_CheckOpen.2.1.1.j,
+<  TEMP t.20),
+< MOVE(
+<  TEMP t.23,
+<  CONST 0),
+< MOVE(
+<  TEMP t.24,
+<  CONST 4),
+< MOVE(
+<  TEMP t.25,
+<  CONST 1),
+< LABEL L.18,
+< MOVE(
+<  TEMP xc_CheckOpen.2.1.1.1.k,
+<  TEMP t.23),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.34,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.30,
+<       ESEQ(
+<        MOVE(
+<         TEMP t.27,
+<         ESEQ(
+<          MOVE(
+<           TEMP t.26,
+<           TEMP xc_CheckOpen.2.a),
+<          BEQ(
+<           TEMP t.26,
+<           CONST 0,
+<           xc_CheckOpen.badPtr, L.21),
+<          LABEL L.21,
+<          TEMP t.26)),
+<        MOVE(
+<         MEM(
+<          TEMP %rbp, 
+<          CONST -1016, 8, false),
+<         MEM(
+<          TEMP t.27, 
+<          CONST 16, 8, false)),
+<        MOVE(
+<         MEM(
+<          TEMP %rbp, 
+<          CONST -1008, 8, false),
+<         MEM(
+<          TEMP t.27, 
+<          CONST 24, 8, false)),
+<        MOVE(
+<         TEMP t.29,
+<         ESEQ(
+<          MOVE(
+<           TEMP t.28,
+<           TEMP xc_CheckOpen.2.1.i),
+<          BLT(
+<           TEMP t.28,
+<           CONST 0,
+<           xc_CheckOpen.badSub, L.22),
+<          LABEL L.22,
+<          BGE(
+<           TEMP t.28,
+<           MEM(
+<            TEMP t.27, 
+<            CONST 8, 8, false),
+<           xc_CheckOpen.badSub, L.23),
+<          LABEL L.23,
+<          TEMP t.28)),
+<        MOVE(
+<         TEMP t.29,
+<         MUL(
+<          TEMP t.29,
+<          MEM(
+<           TEMP %rbp, 
+<           CONST -1016, 8, false))),
+<        MOVE(
+<         TEMP t.29,
+<         MUL(
+<          TEMP t.29,
+<          MEM(
+<           TEMP %rbp, 
+<           CONST -1008, 8, false))),
+<        MOVE(
+<         MEM(
+<          TEMP %rbp, 
+<          CONST -1024, 8, false),
+<         ADD(
+<          MEM(
+<           TEMP t.27, 
+<           CONST 0, 8, false),
+<          MUL(
+<           TEMP t.29,
+<           CONST 8))),
+<        TEMP %rbp)),
+<      MOVE(
+<       MEM(
+<        TEMP %rbp, 
+<        CONST -1032, 8, false),
+<       MEM(
+<        TEMP t.30, 
+<        CONST -1008, 8, false)),
+<      MOVE(
+<       TEMP t.32,
+<       ESEQ(
+<        MOVE(
+<         TEMP t.31,
+<         TEMP xc_CheckOpen.2.1.1.j),
+<        BLT(
+<         TEMP t.31,
+<         CONST 0,
+<         xc_CheckOpen.badSub, L.24),
+<        LABEL L.24,
+<        BGE(
+<         TEMP t.31,
+<         MEM(
+<          TEMP t.30, 
+<          CONST -1016, 8, false),
+<         xc_CheckOpen.badSub, L.25),
+<        LABEL L.25,
+<        TEMP t.31)),
+<      MOVE(
+<       TEMP t.32,
+<       MUL(
+<        TEMP t.32,
+<        MEM(
+<         TEMP %rbp, 
+<         CONST -1032, 8, false))),
+<      MOVE(
+<       MEM(
+<        TEMP %rbp, 
+<        CONST -1040, 8, false),
+<       ADD(
+<        MEM(
+<         TEMP t.30, 
+<         CONST -1024, 8, false),
+<        MUL(
+<         TEMP t.32,
+<         CONST 8))),
+<      TEMP %rbp)),
+<    ADD(
+<     MEM(
+<      TEMP t.34, 
+<      CONST -1040, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.33,
+<        TEMP xc_CheckOpen.2.1.1.1.k),
+<       BLT(
+<        TEMP t.33,
+<        CONST 0,
+<        xc_CheckOpen.badSub, L.26),
+<       LABEL L.26,
+<       BGE(
+<        TEMP t.33,
+<        MEM(
+<         TEMP t.34, 
+<         CONST -1032, 8, false),
+<        xc_CheckOpen.badSub, L.27),
+<       LABEL L.27,
+<       TEMP t.33),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  MUL(
+<   MUL(
+<    ADD(
+<     TEMP xc_CheckOpen.2.1.i,
+<     CONST 1),
+<    ADD(
+<     TEMP xc_CheckOpen.2.1.1.j,
+<     CONST 1)),
+<   ADD(
+<    TEMP xc_CheckOpen.2.1.1.1.k,
+<    CONST 1))),
+< MOVE(
+<  MEM(
+<   ADD(
+<    ADD(
+<     ADD(
+<      TEMP %rbp,
+<      MUL(
+<       ESEQ(
+<        MOVE(
+<         TEMP t.35,
+<         TEMP xc_CheckOpen.2.1.i),
+<        BLT(
+<         TEMP t.35,
+<         CONST 0,
+<         xc_CheckOpen.badSub, L.28),
+<        LABEL L.28,
+<        BGT(
+<         TEMP t.35,
+<         CONST 4,
+<         xc_CheckOpen.badSub, L.29),
+<        LABEL L.29,
+<        TEMP t.35),
+<       CONST 200)),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.36,
+<        TEMP xc_CheckOpen.2.1.1.j),
+<       BLT(
+<        TEMP t.36,
+<        CONST 0,
+<        xc_CheckOpen.badSub, L.30),
+<       LABEL L.30,
+<       BGT(
+<        TEMP t.36,
+<        CONST 4,
+<        xc_CheckOpen.badSub, L.31),
+<       LABEL L.31,
+<       TEMP t.36),
+<      CONST 40)),
+<    MUL(
+<     ESEQ(
+<      MOVE(
+<       TEMP t.37,
+<       TEMP xc_CheckOpen.2.1.1.1.k),
+<      BLT(
+<       TEMP t.37,
+<       CONST 0,
+<       xc_CheckOpen.badSub, L.32),
+<      LABEL L.32,
+<      BGT(
+<       TEMP t.37,
+<       CONST 4,
+<       xc_CheckOpen.badSub, L.33),
+<      LABEL L.33,
+<      TEMP t.37),
+<     CONST 8)), 
+<   CONST -1000, 8, true),
+<  MUL(
+<   MUL(
+<    ADD(
+<     TEMP xc_CheckOpen.2.1.i,
+<     CONST 1),
+<    ADD(
+<     TEMP xc_CheckOpen.2.1.1.j,
+<     CONST 1)),
+<   ADD(
+<    TEMP xc_CheckOpen.2.1.1.1.k,
+<    CONST 1))),
+< MOVE(
+<  TEMP t.23,
+<  ADD(
+<   TEMP t.23,
+<   TEMP t.25)),
+< LABEL L.19,
+< BLE(
+<  TEMP t.23,
+<  TEMP t.24,
+<  L.18, L.20),
+< LABEL L.20,
+< MOVE(
+<  TEMP t.20,
+<  ADD(
+<   TEMP t.20,
+<   TEMP t.22)),
+< LABEL L.16,
+< BLE(
+<  TEMP t.20,
+<  TEMP t.21,
+<  L.15, L.17),
+< LABEL L.17,
+< MOVE(
+<  TEMP t.17,
+<  ADD(
+<   TEMP t.17,
+<   TEMP t.19)),
+< LABEL L.13,
+< BLE(
+<  TEMP t.17,
+<  TEMP t.18,
+<  L.12, L.14),
+< LABEL L.14,
+< MOVE(
+<  TEMP t.38,
+<  CONST 0),
+< MOVE(
+<  TEMP t.39,
+<  CONST 4),
+< MOVE(
+<  TEMP t.40,
+<  CONST 1),
+< LABEL L.34,
+< MOVE(
+<  TEMP xc_CheckOpen.2.2.i,
+<  TEMP t.38),
+< MOVE(
+<  TEMP t.41,
+<  CONST 0),
+< MOVE(
+<  TEMP t.42,
+<  CONST 4),
+< MOVE(
+<  TEMP t.43,
+<  CONST 1),
+< LABEL L.37,
+< MOVE(
+<  TEMP xc_CheckOpen.2.2.1.j,
+<  TEMP t.41),
+< MOVE(
+<  TEMP t.44,
+<  CONST 0),
+< MOVE(
+<  TEMP t.45,
+<  CONST 4),
+< MOVE(
+<  TEMP t.46,
+<  CONST 1),
+< LABEL L.40,
+< MOVE(
+<  TEMP xc_CheckOpen.2.2.1.1.k,
+<  TEMP t.44),
+< BNE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.55,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.51,
+<       ESEQ(
+<        MOVE(
+<         TEMP t.48,
+<         ESEQ(
+<          MOVE(
+<           TEMP t.47,
+<           TEMP xc_CheckOpen.2.a),
+<          BEQ(
+<           TEMP t.47,
+<           CONST 0,
+<           xc_CheckOpen.badPtr, L.46),
+<          LABEL L.46,
+<          TEMP t.47)),
+<        MOVE(
+<         MEM(
+<          TEMP %rbp, 
+<          CONST -1056, 8, false),
+<         MEM(
+<          TEMP t.48, 
+<          CONST 16, 8, false)),
+<        MOVE(
+<         MEM(
+<          TEMP %rbp, 
+<          CONST -1048, 8, false),
+<         MEM(
+<          TEMP t.48, 
+<          CONST 24, 8, false)),
+<        MOVE(
+<         TEMP t.50,
+<         ESEQ(
+<          MOVE(
+<           TEMP t.49,
+<           TEMP xc_CheckOpen.2.2.i),
+<          BLT(
+<           TEMP t.49,
+<           CONST 0,
+<           xc_CheckOpen.badSub, L.47),
+<          LABEL L.47,
+<          BGE(
+<           TEMP t.49,
+<           MEM(
+<            TEMP t.48, 
+<            CONST 8, 8, false),
+<           xc_CheckOpen.badSub, L.48),
+<          LABEL L.48,
+<          TEMP t.49)),
+<        MOVE(
+<         TEMP t.50,
+<         MUL(
+<          TEMP t.50,
+<          MEM(
+<           TEMP %rbp, 
+<           CONST -1056, 8, false))),
+<        MOVE(
+<         TEMP t.50,
+<         MUL(
+<          TEMP t.50,
+<          MEM(
+<           TEMP %rbp, 
+<           CONST -1048, 8, false))),
+<        MOVE(
+<         MEM(
+<          TEMP %rbp, 
+<          CONST -1064, 8, false),
+<         ADD(
+<          MEM(
+<           TEMP t.48, 
+<           CONST 0, 8, false),
+<          MUL(
+<           TEMP t.50,
+<           CONST 8))),
+<        TEMP %rbp)),
+<      MOVE(
+<       MEM(
+<        TEMP %rbp, 
+<        CONST -1072, 8, false),
+<       MEM(
+<        TEMP t.51, 
+<        CONST -1048, 8, false)),
+<      MOVE(
+<       TEMP t.53,
+<       ESEQ(
+<        MOVE(
+<         TEMP t.52,
+<         TEMP xc_CheckOpen.2.2.1.j),
+<        BLT(
+<         TEMP t.52,
+<         CONST 0,
+<         xc_CheckOpen.badSub, L.49),
+<        LABEL L.49,
+<        BGE(
+<         TEMP t.52,
+<         MEM(
+<          TEMP t.51, 
+<          CONST -1056, 8, false),
+<         xc_CheckOpen.badSub, L.50),
+<        LABEL L.50,
+<        TEMP t.52)),
+<      MOVE(
+<       TEMP t.53,
+<       MUL(
+<        TEMP t.53,
+<        MEM(
+<         TEMP %rbp, 
+<         CONST -1072, 8, false))),
+<      MOVE(
+<       MEM(
+<        TEMP %rbp, 
+<        CONST -1080, 8, false),
+<       ADD(
+<        MEM(
+<         TEMP t.51, 
+<         CONST -1064, 8, false),
+<        MUL(
+<         TEMP t.53,
+<         CONST 8))),
+<      TEMP %rbp)),
+<    ADD(
+<     MEM(
+<      TEMP t.55, 
+<      CONST -1080, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.54,
+<        TEMP xc_CheckOpen.2.2.1.1.k),
+<       BLT(
+<        TEMP t.54,
+<        CONST 0,
+<        xc_CheckOpen.badSub, L.51),
+<       LABEL L.51,
+<       BGE(
+<        TEMP t.54,
+<        MEM(
+<         TEMP t.55, 
+<         CONST -1072, 8, false),
+<        xc_CheckOpen.badSub, L.52),
+<       LABEL L.52,
+<       TEMP t.54),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  MEM(
+<   ADD(
+<    ADD(
+<     ADD(
+<      TEMP %rbp,
+<      MUL(
+<       ESEQ(
+<        MOVE(
+<         TEMP t.56,
+<         TEMP xc_CheckOpen.2.2.i),
+<        BLT(
+<         TEMP t.56,
+<         CONST 0,
+<         xc_CheckOpen.badSub, L.53),
+<        LABEL L.53,
+<        BGT(
+<         TEMP t.56,
+<         CONST 4,
+<         xc_CheckOpen.badSub, L.54),
+<        LABEL L.54,
+<        TEMP t.56),
+<       CONST 200)),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.57,
+<        TEMP xc_CheckOpen.2.2.1.j),
+<       BLT(
+<        TEMP t.57,
+<        CONST 0,
+<        xc_CheckOpen.badSub, L.55),
+<       LABEL L.55,
+<       BGT(
+<        TEMP t.57,
+<        CONST 4,
+<        xc_CheckOpen.badSub, L.56),
+<       LABEL L.56,
+<       TEMP t.57),
+<      CONST 40)),
+<    MUL(
+<     ESEQ(
+<      MOVE(
+<       TEMP t.58,
+<       TEMP xc_CheckOpen.2.2.1.1.k),
+<      BLT(
+<       TEMP t.58,
+<       CONST 0,
+<       xc_CheckOpen.badSub, L.57),
+<      LABEL L.57,
+<      BGT(
+<       TEMP t.58,
+<       CONST 4,
+<       xc_CheckOpen.badSub, L.58),
+<      LABEL L.58,
+<      TEMP t.58),
+<     CONST 8)), 
+<   CONST -1000, 8, true),
+<  L.43, L.44),
+< LABEL L.43,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 78)),
+< JUMP(
+<  NAME L.45),
+< LABEL L.44,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 84)),
+< LABEL L.45,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 10)),
+< MOVE(
+<  TEMP t.44,
+<  ADD(
+<   TEMP t.44,
+<   TEMP t.46)),
+< LABEL L.41,
+< BLE(
+<  TEMP t.44,
+<  TEMP t.45,
+<  L.40, L.42),
+< LABEL L.42,
+< MOVE(
+<  TEMP t.41,
+<  ADD(
+<   TEMP t.41,
+<   TEMP t.43)),
+< LABEL L.38,
+< BLE(
+<  TEMP t.41,
+<  TEMP t.42,
+<  L.37, L.39),
+< LABEL L.39,
+< MOVE(
+<  TEMP t.38,
+<  ADD(
+<   TEMP t.38,
+<   TEMP t.40)),
+< LABEL L.35,
+< BLE(
+<  TEMP t.38,
+<  TEMP t.39,
+<  L.34, L.36),
+< LABEL L.36
+< 
+< 

@@ -1,0 +1,43 @@
+24c24,31
+<    TEMP t.4,
+---
+>    TEMP t.3,
+>    ADD(
+>     TEMP t.0,
+>     MUL(
+>      TEMP t.1,
+>      CONST 40))),
+>   MOVE(
+>    TEMP t.5,
+27c34
+<    TEMP t.3,
+---
+>    TEMP t.4,
+30d36
+<    TEMP t.3,
+31a38
+>    TEMP t.5,
+37,41c44
+<      ADD(
+<       TEMP t.0,
+<       MUL(
+<        TEMP t.1,
+<        CONST 40)),
+---
+>      TEMP t.3,
+43c46
+<       TEMP t.3,
+---
+>       TEMP t.4,
+48c51
+<    TEMP t.3,
+---
+>    TEMP t.4,
+50c53
+<     TEMP t.3,
+---
+>     TEMP t.4,
+53d55
+<    TEMP t.3,
+54a57
+>    TEMP t.5,

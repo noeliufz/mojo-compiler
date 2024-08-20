@@ -1,0 +1,11 @@
+proc putchar(c: int): int;
+
+{
+  var i = 4;
+  proc foo(): int {
+    return i+1;
+  }
+  if foo() == 5 then { putchar(Ord('T')); }
+  else { putchar(Ord('F')); }
+  putchar(Ord('\n'));
+}

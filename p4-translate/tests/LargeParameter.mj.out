@@ -1,0 +1,8 @@
+	.text
+LargeParameter.foo:
+LABEL L.0
+
+
+	.text
+LargeParameter:
+

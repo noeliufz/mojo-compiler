@@ -1,0 +1,1 @@
+type S = object { f = First };

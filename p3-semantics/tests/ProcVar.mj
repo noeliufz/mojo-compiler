@@ -1,0 +1,5 @@
+{
+  var p: proc(x:int): int;
+  proc P(x:int):int;
+  p = P;
+}

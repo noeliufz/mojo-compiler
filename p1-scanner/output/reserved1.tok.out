@@ -1,0 +1,13 @@
+<ID> int
+<ID> bool
+<ID> false
+<ID> true
+<ID> Null
+<ID> nil
+<ID> Refany
+<ID> Root
+<ID> Text
+<ID> First
+<ID> Last
+<ID> Number
+<ID> New

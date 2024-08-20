@@ -1,0 +1,10 @@
+proc puts(c: Address): int;
+
+proc println(s: Text) {
+  var x = Loophole(s, ref array of byte);
+  puts(&x[0]);
+}
+
+{
+  println("Hello World");
+}

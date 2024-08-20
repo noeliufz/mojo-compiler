@@ -1,0 +1,3 @@
+proc foo(x:array of int): int {
+    return x[First(x)];
+}

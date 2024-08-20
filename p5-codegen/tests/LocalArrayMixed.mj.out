@@ -1,0 +1,762 @@
+PROCEDURE LocalArrayMixed
+# Trees:
+MOVE(
+ TEMP LocalArrayMixed.1.x,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CONST 10),
+  BLT(
+   TEMP t.0,
+   CONST 0,
+   LocalArrayMixed.badSub, L.0),
+  LABEL L.0,
+  MOVE(
+   TEMP t.1,
+   TEMP t.0),
+  MOVE(
+   TEMP t.2,
+   CONST 16),
+  MOVE(
+   TEMP t.2,
+   ADD(
+    TEMP t.2,
+    MUL(
+     TEMP t.1,
+     CONST 40))),
+  MOVE(
+   TEMP t.3,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    TEMP t.2)),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   ADD(
+    TEMP t.3,
+    CONST 16)),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 8, 8, false, false),
+   TEMP t.0),
+  MOVE(
+   TEMP t.5,
+   MEM(
+    TEMP t.3, 
+    CONST 8, 8, false, false)),
+  MOVE(
+   TEMP t.6,
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false)),
+  MOVE(
+   TEMP t.4,
+   CONST 0),
+  BGE(
+   TEMP t.4,
+   TEMP t.5,
+   L.3, L.1),
+  LABEL L.1,
+  MOVE(
+   TEMP t.8,
+   CONST 5),
+  MOVE(
+   TEMP t.7,
+   CONST 0),
+  BGE(
+   TEMP t.7,
+   TEMP t.8,
+   L.5, L.4),
+  LABEL L.4,
+  MOVE(
+   MEM(
+    ADD(
+     ADD(
+      TEMP t.6,
+      MUL(
+       TEMP t.4,
+       CONST 40)),
+     MUL(
+      TEMP t.7,
+      CONST 8)), 
+    CONST 0, 8, true, false),
+   CONST 0),
+  MOVE(
+   TEMP t.7,
+   ADD(
+    TEMP t.7,
+    CONST 1)),
+  BLT(
+   TEMP t.7,
+   TEMP t.8,
+   L.4, L.5),
+  LABEL L.5,
+  MOVE(
+   TEMP t.4,
+   ADD(
+    TEMP t.4,
+    CONST 1)),
+  LABEL L.2,
+  BLT(
+   TEMP t.4,
+   TEMP t.5,
+   L.1, L.3),
+  LABEL L.3,
+  TEMP t.3))
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CONST 10)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ LocalArrayMixed.badSub, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.1,
+ TEMP t.0)
+MOVE(
+ TEMP t.2,
+ CONST 16)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  MUL(
+   TEMP t.1,
+   CONST 40)))
+MOVE(
+ TEMP t.3,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.2))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.3,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ TEMP t.0)
+MOVE(
+ TEMP t.5,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.6,
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.4,
+ CONST 0)
+BGE(
+ TEMP t.4,
+ TEMP t.5,
+ L.3, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.8,
+ CONST 5)
+MOVE(
+ TEMP t.7,
+ CONST 0)
+BGE(
+ TEMP t.7,
+ TEMP t.8,
+ L.5, L.4)
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.6,
+    MUL(
+     TEMP t.4,
+     CONST 40)),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.7,
+ ADD(
+  TEMP t.7,
+  CONST 1))
+BLT(
+ TEMP t.7,
+ TEMP t.8,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  CONST 1))
+LABEL L.2
+BLT(
+ TEMP t.4,
+ TEMP t.5,
+ L.1, L.3)
+LABEL L.3
+MOVE(
+ TEMP LocalArrayMixed.1.x,
+ TEMP t.3)
+# Basic Blocks:
+# 0
+LABEL L.6
+MOVE(
+ TEMP t.0,
+ CONST 10)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ LocalArrayMixed.badSub, L.0)
+# 1
+LABEL L.0
+MOVE(
+ TEMP t.1,
+ TEMP t.0)
+MOVE(
+ TEMP t.2,
+ CONST 16)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  MUL(
+   TEMP t.1,
+   CONST 40)))
+MOVE(
+ TEMP t.3,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.2))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.3,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ TEMP t.0)
+MOVE(
+ TEMP t.5,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.6,
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.4,
+ CONST 0)
+BGE(
+ TEMP t.4,
+ TEMP t.5,
+ L.3, L.1)
+# 2
+LABEL L.1
+MOVE(
+ TEMP t.8,
+ CONST 5)
+MOVE(
+ TEMP t.7,
+ CONST 0)
+BGE(
+ TEMP t.7,
+ TEMP t.8,
+ L.5, L.4)
+# 3
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.6,
+    MUL(
+     TEMP t.4,
+     CONST 40)),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.7,
+ ADD(
+  TEMP t.7,
+  CONST 1))
+BLT(
+ TEMP t.7,
+ TEMP t.8,
+ L.4, L.5)
+# 4
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  CONST 1))
+JUMP(
+ NAME L.2)
+# 5
+LABEL L.2
+BLT(
+ TEMP t.4,
+ TEMP t.5,
+ L.1, L.3)
+# 6
+LABEL L.3
+MOVE(
+ TEMP LocalArrayMixed.1.x,
+ TEMP t.3)
+# Trace Scheduled:
+LABEL L.6
+MOVE(
+ TEMP t.0,
+ CONST 10)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ LocalArrayMixed.badSub, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.1,
+ TEMP t.0)
+MOVE(
+ TEMP t.2,
+ CONST 16)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  MUL(
+   TEMP t.1,
+   CONST 40)))
+MOVE(
+ TEMP t.3,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.2))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.3,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ TEMP t.0)
+MOVE(
+ TEMP t.5,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.6,
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.4,
+ CONST 0)
+BGE(
+ TEMP t.4,
+ TEMP t.5,
+ L.3, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.8,
+ CONST 5)
+MOVE(
+ TEMP t.7,
+ CONST 0)
+BGE(
+ TEMP t.7,
+ TEMP t.8,
+ L.5, L.4)
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.6,
+    MUL(
+     TEMP t.4,
+     CONST 40)),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.7,
+ ADD(
+  TEMP t.7,
+  CONST 1))
+BLT(
+ TEMP t.7,
+ TEMP t.8,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  CONST 1))
+LABEL L.2
+BLT(
+ TEMP t.4,
+ TEMP t.5,
+ L.1, L.3)
+LABEL L.3
+MOVE(
+ TEMP LocalArrayMixed.1.x,
+ TEMP t.3)
+# With procedure entry/exit:
+LABEL L.6
+MOVE(
+ TEMP t.0,
+ CONST 10)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ LocalArrayMixed.badSub, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.1,
+ TEMP t.0)
+MOVE(
+ TEMP t.2,
+ CONST 16)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  MUL(
+   TEMP t.1,
+   CONST 40)))
+MOVE(
+ TEMP t.3,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.2))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.3,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ TEMP t.0)
+MOVE(
+ TEMP t.5,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.6,
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.4,
+ CONST 0)
+BGE(
+ TEMP t.4,
+ TEMP t.5,
+ L.3, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.8,
+ CONST 5)
+MOVE(
+ TEMP t.7,
+ CONST 0)
+BGE(
+ TEMP t.7,
+ TEMP t.8,
+ L.5, L.4)
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.6,
+    MUL(
+     TEMP t.4,
+     CONST 40)),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.7,
+ ADD(
+  TEMP t.7,
+  CONST 1))
+BLT(
+ TEMP t.7,
+ TEMP t.8,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  CONST 1))
+LABEL L.2
+BLT(
+ TEMP t.4,
+ TEMP t.5,
+ L.1, L.3)
+LABEL L.3
+MOVE(
+ TEMP LocalArrayMixed.1.x,
+ TEMP t.3)
+# Instructions:
+L.6:	# <- 
+	movq $10,t.0	# t.0 <- 
+	xorq t.9,t.9	# t.9 <- 
+	cmpq t.9,t.0	# <- t.0 t.9 
+	jl LocalArrayMixed.badSub	# <- : goto LocalArrayMixed.badSub L.0 
+L.0:	# <- 
+	movq t.0,t.1	# t.1 := t.0 
+	movq $16,t.2	# t.2 <- 
+	movq t.1,t.10	# t.10 := t.1 
+	imulq $40,t.10	# t.10 <- t.10 
+	movq t.2,t.11	# t.11 := t.2 
+	addq t.10,t.11	# t.11 <- t.10 t.11 
+	movq t.11,t.2	# t.2 := t.11 
+	movq t.2,%rdi	# %rdi := t.2 
+	call malloc	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.3	# t.3 := %rax 
+	movq t.3,t.12	# t.12 := t.3 
+	addq $16,t.12	# t.12 <- t.12 
+	movq t.12,0(t.3)	# <- t.3 t.12 
+	movq t.0,8(t.3)	# <- t.3 t.0 
+	movq 8(t.3),t.13	# t.13 <- t.3 
+	movq t.13,t.5	# t.5 := t.13 
+	movq 0(t.3),t.14	# t.14 <- t.3 
+	movq t.14,t.6	# t.6 := t.14 
+	xorq t.4,t.4	# t.4 <- 
+	cmpq t.5,t.4	# <- t.4 t.5 
+	jge L.3	# <- : goto L.3 L.1 
+L.1:	# <- 
+	movq $5,t.8	# t.8 <- 
+	xorq t.7,t.7	# t.7 <- 
+	cmpq t.8,t.7	# <- t.7 t.8 
+	jge L.5	# <- : goto L.5 L.4 
+L.4:	# <- 
+	movq t.4,t.15	# t.15 := t.4 
+	imulq $40,t.15	# t.15 <- t.15 
+	movq t.6,t.16	# t.16 := t.6 
+	addq t.15,t.16	# t.16 <- t.15 t.16 
+	movq $0,0(t.16,t.7,8)	# <- t.16 t.7 
+	movq t.7,t.17	# t.17 := t.7 
+	addq $1,t.17	# t.17 <- t.17 
+	movq t.17,t.7	# t.7 := t.17 
+	cmpq t.8,t.7	# <- t.7 t.8 
+	jl L.4	# <- : goto L.4 L.5 
+L.5:	# <- 
+	movq t.4,t.18	# t.18 := t.4 
+	addq $1,t.18	# t.18 <- t.18 
+	movq t.18,t.4	# t.4 := t.18 
+L.2:	# <- 
+	cmpq t.5,t.4	# <- t.4 t.5 
+	jl L.1	# <- : goto L.1 L.3 
+L.3:	# <- 
+	movq t.3,LocalArrayMixed.1.x	# LocalArrayMixed.1.x := t.3 
+# Control Flow Graph:
+0: t.0 t.9 <-; goto 1
+1: t.1 t.2 t.10 t.11 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.3 t.12 t.13 t.5 t.14 t.6 t.4 <- t.0; goto 6 2
+2: t.8 t.7 <-; goto 4 3
+3: t.15 t.16 t.17 t.7 <- t.4 t.6 t.7 t.8; goto 3 4
+4: t.18 t.4 <- t.4; goto 5
+5: <- t.4 t.5; goto 2 6
+6: LocalArrayMixed.1.x <- t.3 %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: t.9 %rsp %rbp t.12 t.3 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.2 t.11 t.10 
+t.9: t.0 %rsp %rbp 
+t.1: t.2 %rsp %rbp 
+t.2: %rsp %rbp t.0 t.10 t.1 
+t.10: t.11 %rsp %rbp t.0 t.2 
+t.11: %rsp %rbp t.0 t.10 
+t.3: t.4 t.6 t.14 t.5 t.13 t.12 %rsp %rbp t.0 t.7 t.8 t.17 t.16 t.15 t.18 
+t.12: t.3 %rsp %rbp t.0 
+t.13: t.3 %rsp %rbp 
+t.5: t.4 t.6 t.14 t.3 %rsp %rbp t.7 t.8 t.17 t.16 t.15 t.18 
+t.14: t.3 %rsp %rbp t.5 
+t.6: t.4 t.3 %rsp %rbp t.5 t.7 t.8 t.17 t.16 t.15 t.18 
+t.4: t.3 %rsp %rbp t.5 t.6 t.7 t.8 t.17 t.16 t.15 
+t.8: t.7 t.4 t.5 t.3 %rsp %rbp t.6 t.17 t.16 t.15 
+t.7: t.4 t.5 t.3 %rsp %rbp t.6 t.8 t.16 t.15 
+t.15: t.16 t.4 t.6 t.8 t.5 t.3 %rsp %rbp t.7 
+t.16: t.4 t.6 t.8 t.5 t.3 %rsp %rbp t.7 t.15 
+t.17: t.4 t.6 t.8 t.5 t.3 %rsp %rbp 
+t.18: t.5 t.3 %rsp %rbp t.6 
+LocalArrayMixed.1.x: %rsp %rbp 
+LocalArrayMixed.1.x <= t.3
+t.18 <= t.4
+t.4 <= t.18
+t.15 <= t.4
+t.16 <= t.6
+t.17 <= t.7
+t.7 <= t.17
+t.1 <= t.0
+t.10 <= t.1
+t.11 <= t.2
+t.2 <= t.11
+%rdi <= t.2
+t.3 <= %rax
+t.12 <= t.3
+t.5 <= t.13
+t.6 <= t.14
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%rbx
+t.9->%rax
+t.1->%rbx
+t.2->%rax
+t.10->%rcx
+t.11->%rax
+t.3->%r9
+t.12->%rax
+t.13->%rax
+t.5->%r8
+t.14->%rax
+t.6->%rdi
+t.4->%rsi
+t.8->%rdx
+t.7->%rcx
+t.15->%rbx
+t.16->%rax
+t.17->%rax
+t.18->%rax
+LocalArrayMixed.1.x->%rax
+# Assembly code:
+	.text
+LocalArrayMixed:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.6:
+	movq $10,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl LocalArrayMixed.badSub
+L.0:
+#	movq %rbx,%rbx
+	movq $16,%rax
+	movq %rbx,%rcx
+	imulq $40,%rcx
+#	movq %rax,%rax
+	addq %rcx,%rax
+#	movq %rax,%rax
+	movq %rax,%rdi
+	call malloc
+	movq %rax,%r9
+	movq %r9,%rax
+	addq $16,%rax
+	movq %rax,0(%r9)
+	movq %rbx,8(%r9)
+	movq 8(%r9),%rax
+	movq %rax,%r8
+	movq 0(%r9),%rax
+	movq %rax,%rdi
+	xorq %rsi,%rsi
+	cmpq %r8,%rsi
+	jge L.3
+L.1:
+	movq $5,%rdx
+	xorq %rcx,%rcx
+	cmpq %rdx,%rcx
+	jge L.5
+L.4:
+	movq %rsi,%rbx
+	imulq $40,%rbx
+	movq %rdi,%rax
+	addq %rbx,%rax
+	movq $0,0(%rax,%rcx,8)
+	movq %rcx,%rax
+	addq $1,%rax
+	movq %rax,%rcx
+	cmpq %rdx,%rcx
+	jl L.4
+L.5:
+	movq %rsi,%rax
+	addq $1,%rax
+	movq %rax,%rsi
+L.2:
+	cmpq %r8,%rsi
+	jl L.1
+L.3:
+	movq %r9,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+LocalArrayMixed.badSub:
+	call badSub
+END LocalArrayMixed

@@ -1,0 +1,2918 @@
+	.data
+	.balign 8
+QueensStatic.row:
+	.zero 64
+	.data
+	.balign 8
+QueensStatic.col:
+	.zero 64
+	.data
+	.balign 8
+QueensStatic.diag1:
+	.zero 120
+	.data
+	.balign 8
+QueensStatic.diag2:
+	.zero 120
+PROCEDURE QueensStatic.Solve
+# Trees:
+BEQ(
+ TEMP QueensStatic.Solve.c,
+ CONST 8,
+ L.1, L.2),
+LABEL L.1,
+EXP(
+ CALL(
+  NAME QueensStatic.Print,
+  CONST 0)),
+JUMP(
+ NAME L.3),
+LABEL L.2,
+MOVE(
+ TEMP t.0,
+ CONST 0),
+MOVE(
+ TEMP t.1,
+ CONST 7),
+MOVE(
+ TEMP t.2,
+ CONST 1),
+LABEL L.4,
+MOVE(
+ TEMP QueensStatic.Solve.1.r,
+ TEMP t.0),
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.10, L.8),
+LABEL L.10,
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.3,
+      ADD(
+       TEMP QueensStatic.Solve.1.r,
+       TEMP QueensStatic.Solve.c)),
+     BLT(
+      TEMP t.3,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.11),
+     LABEL L.11,
+     BGT(
+      TEMP t.3,
+      CONST 14,
+      QueensStatic.Solve.badSub, L.12),
+     LABEL L.12,
+     TEMP t.3),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.9, L.8),
+LABEL L.9,
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.4,
+      SUB(
+       ADD(
+        TEMP QueensStatic.Solve.1.r,
+        SUB(
+         CONST 8,
+         CONST 1)),
+       TEMP QueensStatic.Solve.c)),
+     BLT(
+      TEMP t.4,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.13),
+     LABEL L.13,
+     BGT(
+      TEMP t.4,
+      CONST 14,
+      QueensStatic.Solve.badSub, L.14),
+     LABEL L.14,
+     TEMP t.4),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.7, L.8),
+LABEL L.7,
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.5,
+      ADD(
+       TEMP QueensStatic.Solve.1.r,
+       TEMP QueensStatic.Solve.c)),
+     BLT(
+      TEMP t.5,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.15),
+     LABEL L.15,
+     BGT(
+      TEMP t.5,
+      CONST 14,
+      QueensStatic.Solve.badSub, L.16),
+     LABEL L.16,
+     TEMP t.5),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.6,
+      SUB(
+       ADD(
+        TEMP QueensStatic.Solve.1.r,
+        SUB(
+         CONST 8,
+         CONST 1)),
+       TEMP QueensStatic.Solve.c)),
+     BLT(
+      TEMP t.6,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.17),
+     LABEL L.17,
+     BGT(
+      TEMP t.6,
+      CONST 14,
+      QueensStatic.Solve.badSub, L.18),
+     LABEL L.18,
+     TEMP t.6),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.7,
+      TEMP QueensStatic.Solve.c),
+     BLT(
+      TEMP t.7,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.19),
+     LABEL L.19,
+     BGT(
+      TEMP t.7,
+      CONST 7,
+      QueensStatic.Solve.badSub, L.20),
+     LABEL L.20,
+     TEMP t.7),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Solve.1.r),
+EXP(
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  ADD(
+   TEMP QueensStatic.Solve.c,
+   CONST 1))),
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.8,
+      ADD(
+       TEMP QueensStatic.Solve.1.r,
+       TEMP QueensStatic.Solve.c)),
+     BLT(
+      TEMP t.8,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.21),
+     LABEL L.21,
+     BGT(
+      TEMP t.8,
+      CONST 14,
+      QueensStatic.Solve.badSub, L.22),
+     LABEL L.22,
+     TEMP t.8),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.9,
+      SUB(
+       ADD(
+        TEMP QueensStatic.Solve.1.r,
+        SUB(
+         CONST 8,
+         CONST 1)),
+       TEMP QueensStatic.Solve.c)),
+     BLT(
+      TEMP t.9,
+      CONST 0,
+      QueensStatic.Solve.badSub, L.23),
+     LABEL L.23,
+     BGT(
+      TEMP t.9,
+      CONST 14,
+      QueensStatic.Solve.badSub, L.24),
+     LABEL L.24,
+     TEMP t.9),
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0),
+LABEL L.8,
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2)),
+LABEL L.5,
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.4, L.6),
+LABEL L.6,
+LABEL L.3,
+LABEL L.0
+# Linearized (trees):
+BEQ(
+ TEMP QueensStatic.Solve.c,
+ CONST 8,
+ L.1, L.2)
+LABEL L.1
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME QueensStatic.Print,
+  CONST 0))
+EXP(
+ TEMP t.16)
+JUMP(
+ NAME L.3)
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 7)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.4
+MOVE(
+ TEMP QueensStatic.Solve.1.r,
+ TEMP t.0)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.10, L.8)
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.3,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.11)
+LABEL L.11
+BGT(
+ TEMP t.3,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.12)
+LABEL L.12
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.9, L.8)
+LABEL L.9
+MOVE(
+ TEMP t.4,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.4,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.13)
+LABEL L.13
+BGT(
+ TEMP t.4,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.14)
+LABEL L.14
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.4,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.7, L.8)
+LABEL L.7
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.5,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.15)
+LABEL L.15
+BGT(
+ TEMP t.5,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.16)
+LABEL L.16
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.5,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.6,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.17)
+LABEL L.17
+BGT(
+ TEMP t.6,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.18)
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.6,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.7,
+ TEMP QueensStatic.Solve.c)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.19)
+LABEL L.19
+BGT(
+ TEMP t.7,
+ CONST 7,
+ QueensStatic.Solve.badSub, L.20)
+LABEL L.20
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Solve.1.r)
+MOVE(
+ TEMP t.17,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  ADD(
+   TEMP QueensStatic.Solve.c,
+   CONST 1)))
+EXP(
+ TEMP t.17)
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.8,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.21)
+LABEL L.21
+BGT(
+ TEMP t.8,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.22)
+LABEL L.22
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.8,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.9,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.9,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.23)
+LABEL L.23
+BGT(
+ TEMP t.9,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.24)
+LABEL L.24
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.9,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+LABEL L.8
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+LABEL L.5
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.4, L.6)
+LABEL L.6
+LABEL L.3
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.35
+BEQ(
+ TEMP QueensStatic.Solve.c,
+ CONST 8,
+ L.1, L.2)
+# 1
+LABEL L.1
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME QueensStatic.Print,
+  CONST 0))
+EXP(
+ TEMP t.16)
+JUMP(
+ NAME L.3)
+# 2
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 7)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+JUMP(
+ NAME L.4)
+# 3
+LABEL L.4
+MOVE(
+ TEMP QueensStatic.Solve.1.r,
+ TEMP t.0)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.10, L.8)
+# 4
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.3,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.11)
+# 5
+LABEL L.11
+BGT(
+ TEMP t.3,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.12)
+# 6
+LABEL L.12
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.9, L.8)
+# 7
+LABEL L.9
+MOVE(
+ TEMP t.4,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.4,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.13)
+# 8
+LABEL L.13
+BGT(
+ TEMP t.4,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.14)
+# 9
+LABEL L.14
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.4,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.7, L.8)
+# 10
+LABEL L.7
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.5,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.15)
+# 11
+LABEL L.15
+BGT(
+ TEMP t.5,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.16)
+# 12
+LABEL L.16
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.5,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.6,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.17)
+# 13
+LABEL L.17
+BGT(
+ TEMP t.6,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.18)
+# 14
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.6,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.7,
+ TEMP QueensStatic.Solve.c)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.19)
+# 15
+LABEL L.19
+BGT(
+ TEMP t.7,
+ CONST 7,
+ QueensStatic.Solve.badSub, L.20)
+# 16
+LABEL L.20
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Solve.1.r)
+MOVE(
+ TEMP t.17,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  ADD(
+   TEMP QueensStatic.Solve.c,
+   CONST 1)))
+EXP(
+ TEMP t.17)
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.8,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.21)
+# 17
+LABEL L.21
+BGT(
+ TEMP t.8,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.22)
+# 18
+LABEL L.22
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.8,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.9,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.9,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.23)
+# 19
+LABEL L.23
+BGT(
+ TEMP t.9,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.24)
+# 20
+LABEL L.24
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.9,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+JUMP(
+ NAME L.8)
+# 21
+LABEL L.8
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+JUMP(
+ NAME L.5)
+# 22
+LABEL L.5
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.4, L.6)
+# 23
+LABEL L.6
+JUMP(
+ NAME L.3)
+# 24
+LABEL L.3
+JUMP(
+ NAME L.0)
+# 25
+LABEL L.0
+# Trace Scheduled:
+LABEL L.35
+BEQ(
+ TEMP QueensStatic.Solve.c,
+ CONST 8,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 7)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.4
+MOVE(
+ TEMP QueensStatic.Solve.1.r,
+ TEMP t.0)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.10, L.8)
+LABEL L.8
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+LABEL L.5
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.4, L.6)
+LABEL L.6
+LABEL L.3
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME QueensStatic.Print,
+  CONST 0))
+EXP(
+ TEMP t.16)
+JUMP(
+ NAME L.3)
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.3,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.11)
+LABEL L.11
+BGT(
+ TEMP t.3,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.12)
+LABEL L.12
+BNE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.8, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.4,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.4,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.13)
+LABEL L.13
+BGT(
+ TEMP t.4,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.14)
+LABEL L.14
+BNE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.4,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.8, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.5,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.15)
+LABEL L.15
+BGT(
+ TEMP t.5,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.16)
+LABEL L.16
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.5,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.6,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.17)
+LABEL L.17
+BGT(
+ TEMP t.6,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.18)
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.6,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.7,
+ TEMP QueensStatic.Solve.c)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.19)
+LABEL L.19
+BGT(
+ TEMP t.7,
+ CONST 7,
+ QueensStatic.Solve.badSub, L.20)
+LABEL L.20
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Solve.1.r)
+MOVE(
+ TEMP t.17,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  ADD(
+   TEMP QueensStatic.Solve.c,
+   CONST 1)))
+EXP(
+ TEMP t.17)
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.8,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.21)
+LABEL L.21
+BGT(
+ TEMP t.8,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.22)
+LABEL L.22
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.8,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.9,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.9,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.23)
+LABEL L.23
+BGT(
+ TEMP t.9,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.24)
+LABEL L.24
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.9,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+JUMP(
+ NAME L.8)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP QueensStatic.Solve.c,
+ TEMP %rdi)
+LABEL L.35
+BEQ(
+ TEMP QueensStatic.Solve.c,
+ CONST 8,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 7)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.4
+MOVE(
+ TEMP QueensStatic.Solve.1.r,
+ TEMP t.0)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.10, L.8)
+LABEL L.8
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+LABEL L.5
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.4, L.6)
+LABEL L.6
+LABEL L.3
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME QueensStatic.Print,
+  CONST 0))
+EXP(
+ TEMP t.16)
+JUMP(
+ NAME L.3)
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.3,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.11)
+LABEL L.11
+BGT(
+ TEMP t.3,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.12)
+LABEL L.12
+BNE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.8, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.4,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.4,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.13)
+LABEL L.13
+BGT(
+ TEMP t.4,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.14)
+LABEL L.14
+BNE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.4,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0,
+ L.8, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.5,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.15)
+LABEL L.15
+BGT(
+ TEMP t.5,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.16)
+LABEL L.16
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.5,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.6,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.17)
+LABEL L.17
+BGT(
+ TEMP t.6,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.18)
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.6,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.7,
+ TEMP QueensStatic.Solve.c)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.19)
+LABEL L.19
+BGT(
+ TEMP t.7,
+ CONST 7,
+ QueensStatic.Solve.badSub, L.20)
+LABEL L.20
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Solve.1.r)
+MOVE(
+ TEMP t.17,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  ADD(
+   TEMP QueensStatic.Solve.c,
+   CONST 1)))
+EXP(
+ TEMP t.17)
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.row,
+   MUL(
+    TEMP QueensStatic.Solve.1.r,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP QueensStatic.Solve.1.r,
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.8,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.21)
+LABEL L.21
+BGT(
+ TEMP t.8,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.22)
+LABEL L.22
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag1,
+   MUL(
+    TEMP t.8,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.9,
+ SUB(
+  ADD(
+   TEMP QueensStatic.Solve.1.r,
+   SUB(
+    CONST 8,
+    CONST 1)),
+  TEMP QueensStatic.Solve.c))
+BLT(
+ TEMP t.9,
+ CONST 0,
+ QueensStatic.Solve.badSub, L.23)
+LABEL L.23
+BGT(
+ TEMP t.9,
+ CONST 14,
+ QueensStatic.Solve.badSub, L.24)
+LABEL L.24
+MOVE(
+ MEM(
+  ADD(
+   NAME QueensStatic.diag2,
+   MUL(
+    TEMP t.9,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+JUMP(
+ NAME L.8)
+LABEL L.0
+# Instructions:
+	movq %rdi,QueensStatic.Solve.c	# QueensStatic.Solve.c := %rdi 
+L.35:	# <- 
+	movq $8,t.18	# t.18 <- 
+	cmpq t.18,QueensStatic.Solve.c	# <- QueensStatic.Solve.c t.18 
+	je L.1	# <- : goto L.1 L.2 
+L.2:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	movq $7,t.1	# t.1 <- 
+	movq $1,t.2	# t.2 <- 
+L.4:	# <- 
+	movq t.0,QueensStatic.Solve.1.r	# QueensStatic.Solve.1.r := t.0 
+	leaq QueensStatic.row(%rip),t.19	# t.19 <- 
+	movq 0(t.19,QueensStatic.Solve.1.r,8),t.20	# t.20 <- t.19 QueensStatic.Solve.1.r 
+	xorq t.21,t.21	# t.21 <- 
+	cmpq t.21,t.20	# <- t.20 t.21 
+	je L.10	# <- : goto L.10 L.8 
+L.8:	# <- 
+	movq t.0,t.22	# t.22 := t.0 
+	addq t.2,t.22	# t.22 <- t.2 t.22 
+	movq t.22,t.0	# t.0 := t.22 
+L.5:	# <- 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jle L.4	# <- : goto L.4 L.6 
+L.6:	# <- 
+L.3:	# <- 
+	jmp L.0	# <- : goto L.0 
+L.1:	# <- 
+	call QueensStatic.Print	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,t.16	# t.16 := %rax 
+	jmp L.3	# <- : goto L.3 
+L.10:	# <- 
+	movq QueensStatic.Solve.1.r,t.23	# t.23 := QueensStatic.Solve.1.r 
+	addq QueensStatic.Solve.c,t.23	# t.23 <- QueensStatic.Solve.c t.23 
+	movq t.23,t.3	# t.3 := t.23 
+	xorq t.24,t.24	# t.24 <- 
+	cmpq t.24,t.3	# <- t.3 t.24 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.11 
+L.11:	# <- 
+	movq $14,t.25	# t.25 <- 
+	cmpq t.25,t.3	# <- t.3 t.25 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.12 
+L.12:	# <- 
+	leaq QueensStatic.diag1(%rip),t.26	# t.26 <- 
+	movq 0(t.26,t.3,8),t.27	# t.27 <- t.26 t.3 
+	xorq t.28,t.28	# t.28 <- 
+	cmpq t.28,t.27	# <- t.27 t.28 
+	jne L.8	# <- : goto L.8 L.9 
+L.9:	# <- 
+	movq $8,t.29	# t.29 <- 
+	movq t.29,t.30	# t.30 := t.29 
+	subq $1,t.30	# t.30 <- t.30 
+	movq QueensStatic.Solve.1.r,t.31	# t.31 := QueensStatic.Solve.1.r 
+	addq t.30,t.31	# t.31 <- t.30 t.31 
+	movq t.31,t.32	# t.32 := t.31 
+	subq QueensStatic.Solve.c,t.32	# t.32 <- QueensStatic.Solve.c t.32 
+	movq t.32,t.4	# t.4 := t.32 
+	xorq t.33,t.33	# t.33 <- 
+	cmpq t.33,t.4	# <- t.4 t.33 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.13 
+L.13:	# <- 
+	movq $14,t.34	# t.34 <- 
+	cmpq t.34,t.4	# <- t.4 t.34 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.14 
+L.14:	# <- 
+	leaq QueensStatic.diag2(%rip),t.35	# t.35 <- 
+	movq 0(t.35,t.4,8),t.36	# t.36 <- t.35 t.4 
+	xorq t.37,t.37	# t.37 <- 
+	cmpq t.37,t.36	# <- t.36 t.37 
+	jne L.8	# <- : goto L.8 L.7 
+L.7:	# <- 
+	leaq QueensStatic.row(%rip),t.38	# t.38 <- 
+	movq $1,0(t.38,QueensStatic.Solve.1.r,8)	# <- t.38 QueensStatic.Solve.1.r 
+	movq QueensStatic.Solve.1.r,t.39	# t.39 := QueensStatic.Solve.1.r 
+	addq QueensStatic.Solve.c,t.39	# t.39 <- QueensStatic.Solve.c t.39 
+	movq t.39,t.5	# t.5 := t.39 
+	xorq t.40,t.40	# t.40 <- 
+	cmpq t.40,t.5	# <- t.5 t.40 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.15 
+L.15:	# <- 
+	movq $14,t.41	# t.41 <- 
+	cmpq t.41,t.5	# <- t.5 t.41 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.16 
+L.16:	# <- 
+	leaq QueensStatic.diag1(%rip),t.42	# t.42 <- 
+	movq $1,0(t.42,t.5,8)	# <- t.42 t.5 
+	movq $8,t.43	# t.43 <- 
+	movq t.43,t.44	# t.44 := t.43 
+	subq $1,t.44	# t.44 <- t.44 
+	movq QueensStatic.Solve.1.r,t.45	# t.45 := QueensStatic.Solve.1.r 
+	addq t.44,t.45	# t.45 <- t.44 t.45 
+	movq t.45,t.46	# t.46 := t.45 
+	subq QueensStatic.Solve.c,t.46	# t.46 <- QueensStatic.Solve.c t.46 
+	movq t.46,t.6	# t.6 := t.46 
+	xorq t.47,t.47	# t.47 <- 
+	cmpq t.47,t.6	# <- t.6 t.47 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.17 
+L.17:	# <- 
+	movq $14,t.48	# t.48 <- 
+	cmpq t.48,t.6	# <- t.6 t.48 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.18 
+L.18:	# <- 
+	leaq QueensStatic.diag2(%rip),t.49	# t.49 <- 
+	movq $1,0(t.49,t.6,8)	# <- t.49 t.6 
+	movq QueensStatic.Solve.c,t.7	# t.7 := QueensStatic.Solve.c 
+	xorq t.50,t.50	# t.50 <- 
+	cmpq t.50,t.7	# <- t.7 t.50 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.19 
+L.19:	# <- 
+	movq $7,t.51	# t.51 <- 
+	cmpq t.51,t.7	# <- t.7 t.51 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.20 
+L.20:	# <- 
+	leaq QueensStatic.col(%rip),t.52	# t.52 <- 
+	movq QueensStatic.Solve.1.r,0(t.52,t.7,8)	# <- t.52 t.7 QueensStatic.Solve.1.r 
+	movq QueensStatic.Solve.c,t.53	# t.53 := QueensStatic.Solve.c 
+	addq $1,t.53	# t.53 <- t.53 
+	movq t.53,%rdi	# %rdi := t.53 
+	call QueensStatic.Solve	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.17	# t.17 := %rax 
+	leaq QueensStatic.row(%rip),t.54	# t.54 <- 
+	movq $0,0(t.54,QueensStatic.Solve.1.r,8)	# <- t.54 QueensStatic.Solve.1.r 
+	movq QueensStatic.Solve.1.r,t.55	# t.55 := QueensStatic.Solve.1.r 
+	addq QueensStatic.Solve.c,t.55	# t.55 <- QueensStatic.Solve.c t.55 
+	movq t.55,t.8	# t.8 := t.55 
+	xorq t.56,t.56	# t.56 <- 
+	cmpq t.56,t.8	# <- t.8 t.56 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.21 
+L.21:	# <- 
+	movq $14,t.57	# t.57 <- 
+	cmpq t.57,t.8	# <- t.8 t.57 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.22 
+L.22:	# <- 
+	leaq QueensStatic.diag1(%rip),t.58	# t.58 <- 
+	movq $0,0(t.58,t.8,8)	# <- t.58 t.8 
+	movq $8,t.59	# t.59 <- 
+	movq t.59,t.60	# t.60 := t.59 
+	subq $1,t.60	# t.60 <- t.60 
+	movq QueensStatic.Solve.1.r,t.61	# t.61 := QueensStatic.Solve.1.r 
+	addq t.60,t.61	# t.61 <- t.60 t.61 
+	movq t.61,t.62	# t.62 := t.61 
+	subq QueensStatic.Solve.c,t.62	# t.62 <- QueensStatic.Solve.c t.62 
+	movq t.62,t.9	# t.9 := t.62 
+	xorq t.63,t.63	# t.63 <- 
+	cmpq t.63,t.9	# <- t.9 t.63 
+	jl QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.23 
+L.23:	# <- 
+	movq $14,t.64	# t.64 <- 
+	cmpq t.64,t.9	# <- t.9 t.64 
+	jg QueensStatic.Solve.badSub	# <- : goto QueensStatic.Solve.badSub L.24 
+L.24:	# <- 
+	leaq QueensStatic.diag2(%rip),t.65	# t.65 <- 
+	movq $0,0(t.65,t.9,8)	# <- t.65 t.9 
+	jmp L.8	# <- : goto L.8 
+L.0:	# <- 
+# Control Flow Graph:
+0: QueensStatic.Solve.c <- %rdi; goto 1
+1: t.18 <- QueensStatic.Solve.c; goto 7 2
+2: t.0 t.1 t.2 <-; goto 3
+3: QueensStatic.Solve.1.r t.19 t.20 t.21 <- t.0; goto 8 4
+4: t.22 t.0 <- t.0 t.2; goto 5
+5: <- t.0 t.1; goto 3 6
+6: <-; goto 25
+7: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.16 <-; goto 6
+8: t.23 t.3 t.24 <- QueensStatic.Solve.1.r QueensStatic.Solve.c; goto 9
+9: t.25 <- t.3; goto 10
+10: t.26 t.27 t.28 <- t.3; goto 4 11
+11: t.29 t.30 t.31 t.32 t.4 t.33 <- QueensStatic.Solve.1.r QueensStatic.Solve.c; goto 12
+12: t.34 <- t.4; goto 13
+13: t.35 t.36 t.37 <- t.4; goto 4 14
+14: t.38 t.39 t.5 t.40 <- QueensStatic.Solve.1.r QueensStatic.Solve.c; goto 15
+15: t.41 <- t.5; goto 16
+16: t.42 t.43 t.44 t.45 t.46 t.6 t.47 <- t.5 QueensStatic.Solve.1.r QueensStatic.Solve.c; goto 17
+17: t.48 <- t.6; goto 18
+18: t.49 t.7 t.50 <- t.6 QueensStatic.Solve.c; goto 19
+19: t.51 <- t.7; goto 20
+20: t.52 t.53 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.17 t.54 t.55 t.8 t.56 <- t.7 QueensStatic.Solve.1.r QueensStatic.Solve.c; goto 21
+21: t.57 <- t.8; goto 22
+22: t.58 t.59 t.60 t.61 t.62 t.9 t.63 <- t.8 QueensStatic.Solve.1.r QueensStatic.Solve.c; goto 23
+23: t.64 <- t.9; goto 24
+24: t.65 <- t.9; goto 4
+25: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+QueensStatic.Solve.c: %rsp %rbp t.18 t.2 t.1 t.0 t.21 t.20 t.19 QueensStatic.Solve.1.r t.22 t.24 t.3 t.23 t.25 t.28 t.27 t.26 t.33 t.4 t.32 t.31 t.30 t.29 t.34 t.37 t.36 t.35 t.40 t.5 t.39 t.38 t.41 t.47 t.6 t.46 t.45 t.44 t.43 t.42 t.48 t.50 t.49 t.51 t.56 t.8 t.55 t.54 t.17 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.53 t.52 t.57 t.63 t.9 t.62 t.61 t.60 t.59 t.58 t.64 t.65 
+t.18: QueensStatic.Solve.c %rsp %rbp 
+t.0: t.2 t.1 QueensStatic.Solve.c %rsp %rbp t.21 t.20 t.19 t.24 t.3 t.23 t.25 t.28 t.27 t.26 t.33 t.4 t.32 t.31 t.30 t.29 t.34 t.37 t.36 t.35 t.40 t.5 t.39 t.38 t.41 t.47 t.6 t.46 t.45 t.44 t.43 t.42 t.48 t.50 t.7 t.49 t.51 t.56 t.8 t.55 t.54 t.17 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.53 t.52 t.57 t.63 t.9 t.62 t.61 t.60 t.59 t.58 t.64 t.65 
+t.1: t.2 t.0 QueensStatic.Solve.c %rsp %rbp t.21 t.20 t.19 QueensStatic.Solve.1.r t.22 t.24 t.3 t.23 t.25 t.28 t.27 t.26 t.33 t.4 t.32 t.31 t.30 t.29 t.34 t.37 t.36 t.35 t.40 t.5 t.39 t.38 t.41 t.47 t.6 t.46 t.45 t.44 t.43 t.42 t.48 t.50 t.7 t.49 t.51 t.56 t.8 t.55 t.54 t.17 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.53 t.52 t.57 t.63 t.9 t.62 t.61 t.60 t.59 t.58 t.64 t.65 
+t.2: t.0 QueensStatic.Solve.c t.1 %rsp %rbp t.21 t.20 t.19 QueensStatic.Solve.1.r t.22 t.24 t.3 t.23 t.25 t.28 t.27 t.26 t.33 t.4 t.32 t.31 t.30 t.29 t.34 t.37 t.36 t.35 t.40 t.5 t.39 t.38 t.41 t.47 t.6 t.46 t.45 t.44 t.43 t.42 t.48 t.50 t.7 t.49 t.51 t.56 t.8 t.55 t.54 t.17 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.53 t.52 t.57 t.63 t.9 t.62 t.61 t.60 t.59 t.58 t.64 t.65 
+QueensStatic.Solve.1.r: t.21 t.20 t.19 QueensStatic.Solve.c t.2 t.1 %rsp %rbp t.24 t.3 t.23 t.25 t.28 t.27 t.26 t.33 t.4 t.32 t.31 t.30 t.29 t.34 t.37 t.36 t.35 t.40 t.5 t.39 t.38 t.41 t.47 t.6 t.46 t.45 t.44 t.43 t.42 t.48 t.50 t.7 t.49 t.51 t.56 t.8 t.55 t.54 t.17 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.53 t.52 t.57 t.60 t.59 t.58 
+t.19: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.20: t.21 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.21: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp t.20 
+t.22: t.1 QueensStatic.Solve.c t.2 %rsp %rbp 
+t.16: %rsp %rbp 
+t.23: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.3: t.24 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.25 t.26 
+t.24: t.3 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.25: t.3 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.26: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.3 
+t.27: t.28 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.28: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.27 
+t.29: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.30: t.31 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.31: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.30 
+t.32: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.4: t.33 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.34 t.35 
+t.33: t.4 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.34: t.4 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.35: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.4 
+t.36: t.37 t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp 
+t.37: t.0 t.2 QueensStatic.Solve.1.r QueensStatic.Solve.c t.1 %rsp %rbp t.36 
+t.38: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.39: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.5: t.40 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp t.41 t.42 
+t.40: t.5 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.41: t.5 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.42: QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp t.5 
+t.43: QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp 
+t.44: t.45 QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp 
+t.45: QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp t.44 
+t.46: QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp 
+t.6: t.47 QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp t.48 t.49 
+t.47: t.6 QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp 
+t.48: t.6 QueensStatic.Solve.c QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp 
+t.49: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp t.6 
+t.7: t.50 QueensStatic.Solve.1.r t.0 t.2 t.1 %rsp %rbp t.51 t.52 
+t.50: t.7 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.51: t.7 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.52: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp t.7 
+t.53: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.17: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.54: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.55: QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.8: t.56 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp t.57 t.58 
+t.56: t.8 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.57: t.8 QueensStatic.Solve.1.r QueensStatic.Solve.c t.0 t.2 t.1 %rsp %rbp 
+t.58: t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp QueensStatic.Solve.1.r t.8 
+t.59: t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp QueensStatic.Solve.1.r 
+t.60: t.61 t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp QueensStatic.Solve.1.r 
+t.61: t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp t.60 
+t.62: t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp 
+t.9: t.63 t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp t.64 t.65 
+t.63: t.9 t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp 
+t.64: t.9 t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp 
+t.65: t.0 t.2 t.1 QueensStatic.Solve.c %rsp %rbp t.9 
+t.60 <= t.59
+t.61 <= QueensStatic.Solve.1.r
+t.62 <= t.61
+t.9 <= t.62
+t.53 <= QueensStatic.Solve.c
+%rdi <= t.53
+t.17 <= %rax
+t.55 <= QueensStatic.Solve.1.r
+t.8 <= t.55
+t.7 <= QueensStatic.Solve.c
+t.44 <= t.43
+t.45 <= QueensStatic.Solve.1.r
+t.46 <= t.45
+t.6 <= t.46
+t.39 <= QueensStatic.Solve.1.r
+t.5 <= t.39
+t.30 <= t.29
+t.31 <= QueensStatic.Solve.1.r
+t.32 <= t.31
+t.4 <= t.32
+t.23 <= QueensStatic.Solve.1.r
+t.3 <= t.23
+t.16 <= %rax
+t.22 <= t.0
+t.0 <= t.22
+QueensStatic.Solve.1.r <= t.0
+QueensStatic.Solve.c <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+QueensStatic.Solve.c->%rbx
+t.18->%rax
+t.0->%r13
+t.1->%r15
+t.2->%r14
+QueensStatic.Solve.1.r->%r12
+t.19->%rax
+t.20->%rcx
+t.21->%rax
+t.22->%r13
+t.16->%rax
+t.23->%rax
+t.3->%rax
+t.24->%rcx
+t.25->%rcx
+t.26->%rcx
+t.27->%rcx
+t.28->%rax
+t.29->%rcx
+t.30->%rcx
+t.31->%rax
+t.32->%rax
+t.4->%rax
+t.33->%rcx
+t.34->%rcx
+t.35->%rcx
+t.36->%rcx
+t.37->%rax
+t.38->%rax
+t.39->%rax
+t.5->%rax
+t.40->%rcx
+t.41->%rcx
+t.42->%rcx
+t.43->%rcx
+t.44->%rcx
+t.45->%rax
+t.46->%rax
+t.6->%rax
+t.47->%rcx
+t.48->%rcx
+t.49->%rcx
+t.7->%rbx
+t.50->%rax
+t.51->%rax
+t.52->%rax
+t.53->%rdi
+t.17->%rax
+t.54->%rax
+t.55->%rax
+t.8->%rax
+t.56->%rcx
+t.57->%rcx
+t.58->%rcx
+t.59->%rax
+t.60->%rax
+t.61->%r12
+t.62->%r12
+t.9->%r12
+t.63->%rax
+t.64->%rax
+t.65->%rax
+# Assembly code:
+	.text
+QueensStatic.Solve:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $48,%rsp
+	movq %r15, -40(%rbp)
+	movq %r14, -32(%rbp)
+	movq %r13, -24(%rbp)
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rbx
+L.35:
+	movq $8,%rax
+	cmpq %rax,%rbx
+	je L.1
+L.2:
+	xorq %r13,%r13
+	movq $7,%r15
+	movq $1,%r14
+L.4:
+	movq %r13,%r12
+	leaq QueensStatic.row(%rip),%rax
+	movq 0(%rax,%r12,8),%rcx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	je L.10
+L.8:
+#	movq %r13,%r13
+	addq %r14,%r13
+#	movq %r13,%r13
+L.5:
+	cmpq %r15,%r13
+	jle L.4
+L.6:
+L.3:
+	jmp L.0
+L.1:
+	call QueensStatic.Print
+#	movq %rax,%rax
+	jmp L.3
+L.10:
+	movq %r12,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	jl QueensStatic.Solve.badSub
+L.11:
+	movq $14,%rcx
+	cmpq %rcx,%rax
+	jg QueensStatic.Solve.badSub
+L.12:
+	leaq QueensStatic.diag1(%rip),%rcx
+	movq 0(%rcx,%rax,8),%rcx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	jne L.8
+L.9:
+	movq $8,%rcx
+#	movq %rcx,%rcx
+	subq $1,%rcx
+	movq %r12,%rax
+	addq %rcx,%rax
+#	movq %rax,%rax
+	subq %rbx,%rax
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	jl QueensStatic.Solve.badSub
+L.13:
+	movq $14,%rcx
+	cmpq %rcx,%rax
+	jg QueensStatic.Solve.badSub
+L.14:
+	leaq QueensStatic.diag2(%rip),%rcx
+	movq 0(%rcx,%rax,8),%rcx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	jne L.8
+L.7:
+	leaq QueensStatic.row(%rip),%rax
+	movq $1,0(%rax,%r12,8)
+	movq %r12,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	jl QueensStatic.Solve.badSub
+L.15:
+	movq $14,%rcx
+	cmpq %rcx,%rax
+	jg QueensStatic.Solve.badSub
+L.16:
+	leaq QueensStatic.diag1(%rip),%rcx
+	movq $1,0(%rcx,%rax,8)
+	movq $8,%rcx
+#	movq %rcx,%rcx
+	subq $1,%rcx
+	movq %r12,%rax
+	addq %rcx,%rax
+#	movq %rax,%rax
+	subq %rbx,%rax
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	jl QueensStatic.Solve.badSub
+L.17:
+	movq $14,%rcx
+	cmpq %rcx,%rax
+	jg QueensStatic.Solve.badSub
+L.18:
+	leaq QueensStatic.diag2(%rip),%rcx
+	movq $1,0(%rcx,%rax,8)
+#	movq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl QueensStatic.Solve.badSub
+L.19:
+	movq $7,%rax
+	cmpq %rax,%rbx
+	jg QueensStatic.Solve.badSub
+L.20:
+	leaq QueensStatic.col(%rip),%rax
+	movq %r12,0(%rax,%rbx,8)
+	movq %rbx,%rdi
+	addq $1,%rdi
+#	movq %rdi,%rdi
+	call QueensStatic.Solve
+#	movq %rax,%rax
+	leaq QueensStatic.row(%rip),%rax
+	movq $0,0(%rax,%r12,8)
+	movq %r12,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	jl QueensStatic.Solve.badSub
+L.21:
+	movq $14,%rcx
+	cmpq %rcx,%rax
+	jg QueensStatic.Solve.badSub
+L.22:
+	leaq QueensStatic.diag1(%rip),%rcx
+	movq $0,0(%rcx,%rax,8)
+	movq $8,%rax
+#	movq %rax,%rax
+	subq $1,%rax
+#	movq %r12,%r12
+	addq %rax,%r12
+#	movq %r12,%r12
+	subq %rbx,%r12
+#	movq %r12,%r12
+	xorq %rax,%rax
+	cmpq %rax,%r12
+	jl QueensStatic.Solve.badSub
+L.23:
+	movq $14,%rax
+	cmpq %rax,%r12
+	jg QueensStatic.Solve.badSub
+L.24:
+	leaq QueensStatic.diag2(%rip),%rax
+	movq $0,0(%rax,%r12,8)
+	jmp L.8
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	movq -24(%rbp),%r13
+	movq -32(%rbp),%r14
+	movq -40(%rbp),%r15
+	addq $48,%rsp
+	popq %rbp
+	ret
+QueensStatic.Solve.badSub:
+	call badSub
+END QueensStatic.Solve
+PROCEDURE QueensStatic.Print
+# Trees:
+MOVE(
+ TEMP t.10,
+ CONST 0),
+MOVE(
+ TEMP t.11,
+ CONST 7),
+MOVE(
+ TEMP t.12,
+ CONST 1),
+LABEL L.26,
+MOVE(
+ TEMP QueensStatic.Print.1.i,
+ TEMP t.10),
+MOVE(
+ TEMP t.13,
+ CONST 0),
+MOVE(
+ TEMP t.14,
+ CONST 7),
+MOVE(
+ TEMP t.15,
+ CONST 1),
+LABEL L.29,
+MOVE(
+ TEMP QueensStatic.Print.1.1.j,
+ TEMP t.13),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 32)),
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP QueensStatic.Print.1.i,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Print.1.1.j,
+ L.32, L.33),
+LABEL L.32,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 81)),
+JUMP(
+ NAME L.34),
+LABEL L.33,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46)),
+LABEL L.34,
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15)),
+LABEL L.30,
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.29, L.31),
+LABEL L.31,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  TEMP t.12)),
+LABEL L.27,
+BLE(
+ TEMP t.10,
+ TEMP t.11,
+ L.26, L.28),
+LABEL L.28,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+LABEL L.25
+# Linearized (trees):
+MOVE(
+ TEMP t.10,
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ CONST 7)
+MOVE(
+ TEMP t.12,
+ CONST 1)
+LABEL L.26
+MOVE(
+ TEMP QueensStatic.Print.1.i,
+ TEMP t.10)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ CONST 7)
+MOVE(
+ TEMP t.15,
+ CONST 1)
+LABEL L.29
+MOVE(
+ TEMP QueensStatic.Print.1.1.j,
+ TEMP t.13)
+MOVE(
+ TEMP t.66,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 32))
+EXP(
+ TEMP t.66)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP QueensStatic.Print.1.i,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Print.1.1.j,
+ L.32, L.33)
+LABEL L.32
+MOVE(
+ TEMP t.67,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 81))
+EXP(
+ TEMP t.67)
+JUMP(
+ NAME L.34)
+LABEL L.33
+MOVE(
+ TEMP t.68,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.68)
+LABEL L.34
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+LABEL L.30
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.29, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.69,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.69)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  TEMP t.12))
+LABEL L.27
+BLE(
+ TEMP t.10,
+ TEMP t.11,
+ L.26, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.70,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.70)
+LABEL L.25
+# Basic Blocks:
+# 0
+LABEL L.36
+MOVE(
+ TEMP t.10,
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ CONST 7)
+MOVE(
+ TEMP t.12,
+ CONST 1)
+JUMP(
+ NAME L.26)
+# 1
+LABEL L.26
+MOVE(
+ TEMP QueensStatic.Print.1.i,
+ TEMP t.10)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ CONST 7)
+MOVE(
+ TEMP t.15,
+ CONST 1)
+JUMP(
+ NAME L.29)
+# 2
+LABEL L.29
+MOVE(
+ TEMP QueensStatic.Print.1.1.j,
+ TEMP t.13)
+MOVE(
+ TEMP t.66,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 32))
+EXP(
+ TEMP t.66)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP QueensStatic.Print.1.i,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Print.1.1.j,
+ L.32, L.33)
+# 3
+LABEL L.32
+MOVE(
+ TEMP t.67,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 81))
+EXP(
+ TEMP t.67)
+JUMP(
+ NAME L.34)
+# 4
+LABEL L.33
+MOVE(
+ TEMP t.68,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.68)
+JUMP(
+ NAME L.34)
+# 5
+LABEL L.34
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+JUMP(
+ NAME L.30)
+# 6
+LABEL L.30
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.29, L.31)
+# 7
+LABEL L.31
+MOVE(
+ TEMP t.69,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.69)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  TEMP t.12))
+JUMP(
+ NAME L.27)
+# 8
+LABEL L.27
+BLE(
+ TEMP t.10,
+ TEMP t.11,
+ L.26, L.28)
+# 9
+LABEL L.28
+MOVE(
+ TEMP t.70,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.70)
+JUMP(
+ NAME L.25)
+# 10
+LABEL L.25
+# Trace Scheduled:
+LABEL L.36
+MOVE(
+ TEMP t.10,
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ CONST 7)
+MOVE(
+ TEMP t.12,
+ CONST 1)
+LABEL L.26
+MOVE(
+ TEMP QueensStatic.Print.1.i,
+ TEMP t.10)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ CONST 7)
+MOVE(
+ TEMP t.15,
+ CONST 1)
+LABEL L.29
+MOVE(
+ TEMP QueensStatic.Print.1.1.j,
+ TEMP t.13)
+MOVE(
+ TEMP t.66,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 32))
+EXP(
+ TEMP t.66)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP QueensStatic.Print.1.i,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Print.1.1.j,
+ L.32, L.33)
+LABEL L.33
+MOVE(
+ TEMP t.68,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.68)
+LABEL L.34
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+LABEL L.30
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.29, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.69,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.69)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  TEMP t.12))
+LABEL L.27
+BLE(
+ TEMP t.10,
+ TEMP t.11,
+ L.26, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.70,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.70)
+JUMP(
+ NAME L.25)
+LABEL L.32
+MOVE(
+ TEMP t.67,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 81))
+EXP(
+ TEMP t.67)
+JUMP(
+ NAME L.34)
+LABEL L.25
+# With procedure entry/exit:
+LABEL L.36
+MOVE(
+ TEMP t.10,
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ CONST 7)
+MOVE(
+ TEMP t.12,
+ CONST 1)
+LABEL L.26
+MOVE(
+ TEMP QueensStatic.Print.1.i,
+ TEMP t.10)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ CONST 7)
+MOVE(
+ TEMP t.15,
+ CONST 1)
+LABEL L.29
+MOVE(
+ TEMP QueensStatic.Print.1.1.j,
+ TEMP t.13)
+MOVE(
+ TEMP t.66,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 32))
+EXP(
+ TEMP t.66)
+BEQ(
+ MEM(
+  ADD(
+   NAME QueensStatic.col,
+   MUL(
+    TEMP QueensStatic.Print.1.i,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP QueensStatic.Print.1.1.j,
+ L.32, L.33)
+LABEL L.33
+MOVE(
+ TEMP t.68,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.68)
+LABEL L.34
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+LABEL L.30
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.29, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.69,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.69)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  TEMP t.12))
+LABEL L.27
+BLE(
+ TEMP t.10,
+ TEMP t.11,
+ L.26, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.70,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.70)
+JUMP(
+ NAME L.25)
+LABEL L.32
+MOVE(
+ TEMP t.67,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 81))
+EXP(
+ TEMP t.67)
+JUMP(
+ NAME L.34)
+LABEL L.25
+# Instructions:
+L.36:	# <- 
+	xorq t.10,t.10	# t.10 <- 
+	movq $7,t.11	# t.11 <- 
+	movq $1,t.12	# t.12 <- 
+L.26:	# <- 
+	movq t.10,QueensStatic.Print.1.i	# QueensStatic.Print.1.i := t.10 
+	xorq t.13,t.13	# t.13 <- 
+	movq $7,t.14	# t.14 <- 
+	movq $1,t.15	# t.15 <- 
+L.29:	# <- 
+	movq t.13,QueensStatic.Print.1.1.j	# QueensStatic.Print.1.1.j := t.13 
+	movq $32,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.66	# t.66 := %rax 
+	leaq QueensStatic.col(%rip),t.71	# t.71 <- 
+	movq 0(t.71,QueensStatic.Print.1.i,8),t.72	# t.72 <- t.71 QueensStatic.Print.1.i 
+	cmpq QueensStatic.Print.1.1.j,t.72	# <- t.72 QueensStatic.Print.1.1.j 
+	je L.32	# <- : goto L.32 L.33 
+L.33:	# <- 
+	movq $46,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.68	# t.68 := %rax 
+L.34:	# <- 
+	movq t.13,t.73	# t.73 := t.13 
+	addq t.15,t.73	# t.73 <- t.15 t.73 
+	movq t.73,t.13	# t.13 := t.73 
+L.30:	# <- 
+	cmpq t.14,t.13	# <- t.13 t.14 
+	jle L.29	# <- : goto L.29 L.31 
+L.31:	# <- 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.69	# t.69 := %rax 
+	movq t.10,t.74	# t.74 := t.10 
+	addq t.12,t.74	# t.74 <- t.12 t.74 
+	movq t.74,t.10	# t.10 := t.74 
+L.27:	# <- 
+	cmpq t.11,t.10	# <- t.10 t.11 
+	jle L.26	# <- : goto L.26 L.28 
+L.28:	# <- 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.70	# t.70 := %rax 
+	jmp L.25	# <- : goto L.25 
+L.32:	# <- 
+	movq $81,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.67	# t.67 := %rax 
+	jmp L.34	# <- : goto L.34 
+L.25:	# <- 
+# Control Flow Graph:
+0: t.10 t.11 t.12 <-; goto 1
+1: QueensStatic.Print.1.i t.13 t.14 t.15 <- t.10; goto 2
+2: QueensStatic.Print.1.1.j %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.66 t.71 t.72 <- t.13 QueensStatic.Print.1.i; goto 9 3
+3: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.68 <-; goto 4
+4: t.73 t.13 <- t.13 t.15; goto 5
+5: <- t.13 t.14; goto 2 6
+6: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.69 t.74 t.10 <- t.10 t.12; goto 7
+7: <- t.10 t.11; goto 1 8
+8: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.70 <-; goto 10
+9: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.67 <-; goto 4
+10: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.10: t.12 t.11 %rsp %rbp t.15 t.14 t.13 t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.69 t.67 
+t.11: t.12 t.10 %rsp %rbp t.15 t.14 t.13 QueensStatic.Print.1.i t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.74 t.69 t.67 
+t.12: t.10 t.11 %rsp %rbp t.15 t.14 t.13 QueensStatic.Print.1.i t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.74 t.69 t.67 
+QueensStatic.Print.1.i: t.15 t.14 t.13 t.12 t.11 %rsp %rbp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.67 
+t.13: t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.68 t.67 
+t.14: t.15 t.13 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.67 
+t.15: t.13 QueensStatic.Print.1.i t.14 t.10 t.12 t.11 %rsp %rbp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.67 
+QueensStatic.Print.1.1.j: t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp 
+t.66: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp QueensStatic.Print.1.1.j 
+t.71: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp QueensStatic.Print.1.1.j 
+t.72: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp QueensStatic.Print.1.1.j 
+t.68: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp 
+t.73: t.14 QueensStatic.Print.1.i t.15 t.10 t.12 t.11 %rsp %rbp 
+t.69: t.11 t.12 %rsp %rbp t.10 
+t.74: t.11 t.12 %rsp %rbp 
+t.70: %rsp %rbp 
+t.67: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 t.11 %rsp %rbp 
+t.67 <= %rax
+t.70 <= %rax
+t.69 <= %rax
+t.74 <= t.10
+t.10 <= t.74
+t.73 <= t.13
+t.13 <= t.73
+t.68 <= %rax
+QueensStatic.Print.1.1.j <= t.13
+t.66 <= %rax
+QueensStatic.Print.1.i <= t.10
+# Spills:
+t.11
+# Instructions (after spilling):
+L.36:
+	xorq t.10,t.10
+	movq $7,t.75
+	movq t.75,-8(%rbp)
+	movq $1,t.12
+L.26:
+	movq t.10,QueensStatic.Print.1.i
+	xorq t.13,t.13
+	movq $7,t.14
+	movq $1,t.15
+L.29:
+	movq t.13,QueensStatic.Print.1.1.j
+	movq $32,%rdi
+	call putchar
+	movq %rax,t.66
+	leaq QueensStatic.col(%rip),t.71
+	movq 0(t.71,QueensStatic.Print.1.i,8),t.72
+	cmpq QueensStatic.Print.1.1.j,t.72
+	je L.32
+L.33:
+	movq $46,%rdi
+	call putchar
+	movq %rax,t.68
+L.34:
+	movq t.13,t.73
+	addq t.15,t.73
+	movq t.73,t.13
+L.30:
+	cmpq t.14,t.13
+	jle L.29
+L.31:
+	movq $10,%rdi
+	call putchar
+	movq %rax,t.69
+	movq t.10,t.74
+	addq t.12,t.74
+	movq t.74,t.10
+L.27:
+	movq -8(%rbp),t.77
+	movq t.77,t.76
+	cmpq t.76,t.10
+	jle L.26
+L.28:
+	movq $10,%rdi
+	call putchar
+	movq %rax,t.70
+	jmp L.25
+L.32:
+	movq $81,%rdi
+	call putchar
+	movq %rax,t.67
+	jmp L.34
+L.25:
+#	returnSink
+# Control Flow Graph:
+0: t.10 t.75 t.12 <- %rbp; goto 1
+1: QueensStatic.Print.1.i t.13 t.14 t.15 <- t.10; goto 2
+2: QueensStatic.Print.1.1.j %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.66 t.71 t.72 <- t.13 QueensStatic.Print.1.i; goto 9 3
+3: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.68 <-; goto 4
+4: t.73 t.13 <- t.13 t.15; goto 5
+5: <- t.13 t.14; goto 2 6
+6: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.69 t.74 t.10 <- t.10 t.12; goto 7
+7: t.77 t.76 <- %rbp t.10; goto 1 8
+8: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.70 <-; goto 10
+9: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.67 <-; goto 4
+10: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.10: t.12 t.75 %rbp %rsp t.15 t.14 t.13 t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.69 t.76 t.77 t.67 
+t.75: t.10 %rbp %rsp 
+t.12: t.10 %rbp %rsp t.15 t.14 t.13 QueensStatic.Print.1.i t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.74 t.69 t.76 t.77 t.67 
+QueensStatic.Print.1.i: t.15 t.14 t.13 t.12 %rbp %rsp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.67 
+t.13: t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.68 t.67 
+t.14: t.15 t.13 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.67 
+t.15: t.13 QueensStatic.Print.1.i t.14 t.10 t.12 %rbp %rsp t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 QueensStatic.Print.1.1.j t.68 t.73 t.67 
+QueensStatic.Print.1.1.j: t.72 t.71 t.66 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp 
+t.66: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp QueensStatic.Print.1.1.j 
+t.71: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp QueensStatic.Print.1.1.j 
+t.72: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp QueensStatic.Print.1.1.j 
+t.68: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp 
+t.73: t.14 QueensStatic.Print.1.i t.15 t.10 t.12 %rbp %rsp 
+t.69: %rbp t.12 %rsp t.10 
+t.74: %rbp t.12 %rsp 
+t.77: t.10 t.12 %rbp %rsp 
+t.76: t.10 t.12 %rbp %rsp 
+t.70: %rsp %rbp 
+t.67: t.13 t.15 t.14 QueensStatic.Print.1.i t.10 t.12 %rbp %rsp 
+t.67 <= %rax
+t.70 <= %rax
+t.76 <= t.77
+t.69 <= %rax
+t.74 <= t.10
+t.10 <= t.74
+t.73 <= t.13
+t.13 <= t.73
+t.68 <= %rax
+QueensStatic.Print.1.1.j <= t.13
+t.66 <= %rax
+QueensStatic.Print.1.i <= t.10
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.10->%rbx
+t.75->%rax
+t.12->%r12
+QueensStatic.Print.1.i->%rbx
+t.13->%r13
+t.14->%r14
+t.15->%r15
+QueensStatic.Print.1.1.j->%r13
+t.66->%rax
+t.71->%rax
+t.72->%rax
+t.68->%rax
+t.73->%rax
+t.69->%rax
+t.74->%rax
+t.77->%rax
+t.76->%rax
+t.70->%rax
+t.67->%rax
+# Assembly code:
+	.text
+QueensStatic.Print:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $64,%rsp
+	movq %r15, -48(%rbp)
+	movq %r14, -40(%rbp)
+	movq %r13, -32(%rbp)
+	movq %r12, -24(%rbp)
+	movq %rbx, -16(%rbp)
+L.36:
+	xorq %rbx,%rbx
+	movq $7,%rax
+	movq %rax,-8(%rbp)
+	movq $1,%r12
+L.26:
+#	movq %rbx,%rbx
+	xorq %r13,%r13
+	movq $7,%r14
+	movq $1,%r15
+L.29:
+#	movq %r13,%r13
+	movq $32,%rdi
+	call putchar
+#	movq %rax,%rax
+	leaq QueensStatic.col(%rip),%rax
+	movq 0(%rax,%rbx,8),%rax
+	cmpq %r13,%rax
+	je L.32
+L.33:
+	movq $46,%rdi
+	call putchar
+#	movq %rax,%rax
+L.34:
+	movq %r13,%rax
+	addq %r15,%rax
+	movq %rax,%r13
+L.30:
+	cmpq %r14,%r13
+	jle L.29
+L.31:
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq %rbx,%rax
+	addq %r12,%rax
+	movq %rax,%rbx
+L.27:
+	movq -8(%rbp),%rax
+#	movq %rax,%rax
+	cmpq %rax,%rbx
+	jle L.26
+L.28:
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	jmp L.25
+L.32:
+	movq $81,%rdi
+	call putchar
+#	movq %rax,%rax
+	jmp L.34
+L.25:
+#	returnSink
+	movq -16(%rbp),%rbx
+	movq -24(%rbp),%r12
+	movq -32(%rbp),%r13
+	movq -40(%rbp),%r14
+	movq -48(%rbp),%r15
+	addq $64,%rsp
+	popq %rbp
+	ret
+QueensStatic.Print.badSub:
+	call badSub
+END QueensStatic.Print
+PROCEDURE QueensStatic
+# Trees:
+EXP(
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  CONST 0))
+# Linearized (trees):
+MOVE(
+ TEMP t.78,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.78)
+# Basic Blocks:
+# 0
+LABEL L.37
+MOVE(
+ TEMP t.78,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.78)
+# Trace Scheduled:
+LABEL L.37
+MOVE(
+ TEMP t.78,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.78)
+# With procedure entry/exit:
+LABEL L.37
+MOVE(
+ TEMP t.78,
+ CALL(
+  NAME QueensStatic.Solve,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.78)
+# Instructions:
+L.37:	# <- 
+	xorq %rdi,%rdi	# %rdi <- 
+	call QueensStatic.Solve	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.78	# t.78 := %rax 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.78 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.78: %rsp %rbp 
+t.78 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.78->%rax
+# Assembly code:
+	.text
+QueensStatic:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+L.37:
+	xorq %rdi,%rdi
+	call QueensStatic.Solve
+#	movq %rax,%rax
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+QueensStatic.badSub:
+	call badSub
+END QueensStatic

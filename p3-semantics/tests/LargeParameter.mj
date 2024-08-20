@@ -1,0 +1,1 @@
+proc foo(x: array 16_0FFFFFFF of int) {}

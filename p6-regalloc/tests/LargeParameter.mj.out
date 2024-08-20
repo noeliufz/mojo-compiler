@@ -1,0 +1,161 @@
+PROCEDURE LargeParameter.foo
+# Trees:
+LABEL L.0
+# Linearized (trees):
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.0
+# Trace Scheduled:
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 56, 8, false, false),
+ TEMP %r9)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 48, 8, false, false),
+ TEMP %r8)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 40, 8, false, false),
+ TEMP %rcx)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 32, 8, false, false),
+ TEMP %rdx)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 24, 8, false, false),
+ TEMP %rsi)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false),
+ TEMP %rdi)
+LABEL L.0
+# Instructions:
+	movq %r9,56(%rbp)	# <- %rbp %r9 
+	movq %r8,48(%rbp)	# <- %rbp %r8 
+	movq %rcx,40(%rbp)	# <- %rbp %rcx 
+	movq %rdx,32(%rbp)	# <- %rbp %rdx 
+	movq %rsi,24(%rbp)	# <- %rbp %rsi 
+	movq %rdi,16(%rbp)	# <- %rbp %rdi 
+L.0:	# <- 
+# Control Flow Graph:
+0: <- %rbp %r9 %r8 %rcx %rdx %rsi %rdi; goto 1
+1: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+LargeParameter.foo:
+	pushq %rbp
+	movq %rsp,%rbp
+	movq %r9,56(%rbp)
+	movq %r8,48(%rbp)
+	movq %rcx,40(%rbp)
+	movq %rdx,32(%rbp)
+	movq %rsi,24(%rbp)
+	movq %rdi,16(%rbp)
+L.0:
+#	returnSink
+	popq %rbp
+	ret
+END LargeParameter.foo
+PROCEDURE LargeParameter
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.1
+# Trace Scheduled:
+LABEL L.1
+# With procedure entry/exit:
+LABEL L.1
+# Instructions:
+L.1:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+LargeParameter:
+	pushq %rbp
+	movq %rsp,%rbp
+L.1:
+#	returnSink
+	popq %rbp
+	ret
+END LargeParameter

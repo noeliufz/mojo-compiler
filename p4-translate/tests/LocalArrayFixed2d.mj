@@ -1,0 +1,3 @@
+{
+  var x = New(ref array 10 of array 5 of int);
+}

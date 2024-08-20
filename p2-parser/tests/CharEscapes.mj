@@ -1,0 +1,13 @@
+const
+  ALERT = '\a',
+  BS = '\b',
+  FF = '\f',
+  NL = '\n',
+  CR = '\r',
+  HT = '\t',
+  VT = '\v',
+  nul = '\000',
+  soh = '\001',
+  stx = '\002',
+  del = '\177',
+  pound = '£';

@@ -1,0 +1,29 @@
+	.text
+Loop:
+MOVE(
+ TEMP Loop.1.x,
+ CONST 0),
+LABEL L.0,
+BLT(
+ TEMP Loop.1.x,
+ CONST 100,
+ L.1, L.2),
+LABEL L.1,
+MOVE(
+ TEMP Loop.1.x,
+ ADD(
+  TEMP Loop.1.x,
+  CONST 1)),
+BEQ(
+ TEMP Loop.1.x,
+ CONST 42,
+ L.3, L.4),
+LABEL L.3,
+JUMP(
+ NAME L.2),
+LABEL L.4,
+JUMP(
+ NAME L.0),
+LABEL L.2
+
+

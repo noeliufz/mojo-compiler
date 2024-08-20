@@ -1,0 +1,114 @@
+	.text
+ReturnRecord.foo:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -32, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -32, 8, true),
+ CONST 1),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true),
+ CONST 2),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true),
+ CONST 3),
+MOVE(
+ TEMP t.0,
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, false)),
+EXP(
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  TEMP t.0,
+  ADD(
+   TEMP %rbp,
+   CONST -32),
+  CONST 24)),
+MOVE(
+ TEMP %rax,
+ TEMP t.0),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+ReturnRecord:
+EXP(
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CALL(
+   NAME ReturnRecord.foo,
+   CONST 0,
+   ADD(
+    TEMP %rbp,
+    CONST -48)),
+  CONST 24)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+
+

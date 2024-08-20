@@ -1,0 +1,3 @@
+int     bool    false   true
+Null    nil     Refany  Root    Text
+First   Last    Number  New

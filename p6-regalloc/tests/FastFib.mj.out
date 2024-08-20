@@ -1,0 +1,1542 @@
+PROCEDURE FastFib.read_number
+# Trees:
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ CONST 0),
+LABEL L.1,
+LABEL L.2,
+MOVE(
+ TEMP FastFib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0)),
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 10,
+ L.4, L.7),
+LABEL L.7,
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 13,
+ L.4, L.5),
+LABEL L.4,
+JUMP(
+ NAME L.3),
+JUMP(
+ NAME L.6),
+LABEL L.5,
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP FastFib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP FastFib.read_number.1.1.c,
+   CONST 48))),
+LABEL L.6,
+JUMP(
+ NAME L.1),
+LABEL L.3,
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.read_number.1.n),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ CONST 0)
+LABEL L.1
+LABEL L.2
+MOVE(
+ TEMP FastFib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 10,
+ L.4, L.7)
+LABEL L.7
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 13,
+ L.4, L.5)
+LABEL L.4
+JUMP(
+ NAME L.3)
+JUMP(
+ NAME L.6)
+LABEL L.5
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP FastFib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP FastFib.read_number.1.1.c,
+   CONST 48)))
+LABEL L.6
+JUMP(
+ NAME L.1)
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.read_number.1.n)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.24
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ CONST 0)
+JUMP(
+ NAME L.1)
+# 1
+LABEL L.1
+JUMP(
+ NAME L.2)
+# 2
+LABEL L.2
+MOVE(
+ TEMP FastFib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 10,
+ L.4, L.7)
+# 3
+LABEL L.7
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 13,
+ L.4, L.5)
+# 4
+LABEL L.4
+JUMP(
+ NAME L.3)
+# 5
+LABEL L.25
+JUMP(
+ NAME L.6)
+# 6
+LABEL L.5
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP FastFib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP FastFib.read_number.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.6)
+# 7
+LABEL L.6
+JUMP(
+ NAME L.1)
+# 8
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.read_number.1.n)
+JUMP(
+ NAME L.0)
+# 9
+LABEL L.0
+# Trace Scheduled:
+LABEL L.24
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ CONST 0)
+LABEL L.1
+LABEL L.2
+MOVE(
+ TEMP FastFib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 10,
+ L.4, L.7)
+LABEL L.7
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 13,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP FastFib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP FastFib.read_number.1.1.c,
+   CONST 48)))
+LABEL L.6
+JUMP(
+ NAME L.1)
+LABEL L.4
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.read_number.1.n)
+JUMP(
+ NAME L.0)
+LABEL L.25
+JUMP(
+ NAME L.6)
+LABEL L.0
+# With procedure entry/exit:
+LABEL L.24
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ CONST 0)
+LABEL L.1
+LABEL L.2
+MOVE(
+ TEMP FastFib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 10,
+ L.4, L.7)
+LABEL L.7
+BEQ(
+ TEMP FastFib.read_number.1.1.c,
+ CONST 13,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP FastFib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP FastFib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP FastFib.read_number.1.1.c,
+   CONST 48)))
+LABEL L.6
+JUMP(
+ NAME L.1)
+LABEL L.4
+LABEL L.3
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.read_number.1.n)
+JUMP(
+ NAME L.0)
+LABEL L.25
+JUMP(
+ NAME L.6)
+LABEL L.0
+# Instructions:
+L.24:	# <- 
+	xorq FastFib.read_number.1.n,FastFib.read_number.1.n	# FastFib.read_number.1.n <- 
+L.1:	# <- 
+L.2:	# <- 
+	call getchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,FastFib.read_number.1.1.c	# FastFib.read_number.1.1.c := %rax 
+	movq $10,t.4	# t.4 <- 
+	cmpq t.4,FastFib.read_number.1.1.c	# <- FastFib.read_number.1.1.c t.4 
+	je L.4	# <- : goto L.4 L.7 
+L.7:	# <- 
+	movq $13,t.5	# t.5 <- 
+	cmpq t.5,FastFib.read_number.1.1.c	# <- FastFib.read_number.1.1.c t.5 
+	je L.4	# <- : goto L.4 L.5 
+L.5:	# <- 
+	movq FastFib.read_number.1.n,t.6	# t.6 := FastFib.read_number.1.n 
+	imulq $10,t.6	# t.6 <- t.6 
+	movq FastFib.read_number.1.1.c,t.7	# t.7 := FastFib.read_number.1.1.c 
+	subq $48,t.7	# t.7 <- t.7 
+	movq t.6,t.8	# t.8 := t.6 
+	addq t.7,t.8	# t.8 <- t.7 t.8 
+	movq t.8,FastFib.read_number.1.n	# FastFib.read_number.1.n := t.8 
+L.6:	# <- 
+	jmp L.1	# <- : goto L.1 
+L.4:	# <- 
+L.3:	# <- 
+	movq FastFib.read_number.1.n,%rax	# %rax := FastFib.read_number.1.n 
+	jmp L.0	# <- : goto L.0 
+L.25:	# <- 
+	jmp L.6	# <- : goto L.6 
+L.0:	# <- 
+# Control Flow Graph:
+0: FastFib.read_number.1.n <-; goto 1
+1: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 FastFib.read_number.1.1.c t.4 <-; goto 5 2
+2: t.5 <- FastFib.read_number.1.1.c; goto 5 3
+3: t.6 t.7 t.8 FastFib.read_number.1.n <- FastFib.read_number.1.n FastFib.read_number.1.1.c; goto 4
+4: <-; goto 1
+5: %rax <- FastFib.read_number.1.n; goto 7
+6: <-; goto 4
+7: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FastFib.read_number.1.n: %rsp %rbp t.4 FastFib.read_number.1.1.c %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.5 
+FastFib.read_number.1.1.c: t.4 FastFib.read_number.1.n %rsp %rbp t.5 t.6 
+t.4: FastFib.read_number.1.n %rsp %rbp FastFib.read_number.1.1.c 
+t.5: FastFib.read_number.1.n %rsp %rbp FastFib.read_number.1.1.c 
+t.6: t.7 %rsp %rbp FastFib.read_number.1.1.c 
+t.7: t.8 %rsp %rbp t.6 
+t.8: %rsp %rbp t.7 
+%rax <= FastFib.read_number.1.n
+t.6 <= FastFib.read_number.1.n
+t.7 <= FastFib.read_number.1.1.c
+t.8 <= t.6
+FastFib.read_number.1.n <= t.8
+FastFib.read_number.1.1.c <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FastFib.read_number.1.n->%rbx
+FastFib.read_number.1.1.c->%rax
+t.4->%rcx
+t.5->%rcx
+t.6->%rbx
+t.7->%rax
+t.8->%rbx
+# Assembly code:
+	.text
+FastFib.read_number:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.24:
+	xorq %rbx,%rbx
+L.1:
+L.2:
+	call getchar
+#	movq %rax,%rax
+	movq $10,%rcx
+	cmpq %rcx,%rax
+	je L.4
+L.7:
+	movq $13,%rcx
+	cmpq %rcx,%rax
+	je L.4
+L.5:
+#	movq %rbx,%rbx
+	imulq $10,%rbx
+#	movq %rax,%rax
+	subq $48,%rax
+#	movq %rbx,%rbx
+	addq %rax,%rbx
+#	movq %rbx,%rbx
+L.6:
+	jmp L.1
+L.4:
+L.3:
+	movq %rbx,%rax
+	jmp L.0
+L.25:
+	jmp L.6
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+FastFib.read_number.badSub:
+	call badSub
+END FastFib.read_number
+PROCEDURE FastFib.fib
+# Trees:
+MOVE(
+ TEMP FastFib.fib.1.count,
+ TEMP FastFib.fib.n),
+MOVE(
+ TEMP FastFib.fib.1.a,
+ CONST 0),
+MOVE(
+ TEMP FastFib.fib.1.b,
+ CONST 1),
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ CONST 0),
+BLT(
+ TEMP FastFib.fib.n,
+ CONST 1,
+ L.9, L.10),
+LABEL L.9,
+MOVE(
+ TEMP %rax,
+ CONST 0),
+JUMP(
+ NAME L.8),
+LABEL L.10,
+LABEL L.11,
+BGT(
+ TEMP FastFib.fib.1.count,
+ CONST 1,
+ L.12, L.13),
+LABEL L.12,
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ TEMP FastFib.fib.1.b),
+MOVE(
+ TEMP FastFib.fib.1.b,
+ ADD(
+  TEMP FastFib.fib.1.a,
+  TEMP FastFib.fib.1.b)),
+MOVE(
+ TEMP FastFib.fib.1.a,
+ TEMP FastFib.fib.1.tmp),
+MOVE(
+ TEMP FastFib.fib.1.count,
+ SUB(
+  TEMP FastFib.fib.1.count,
+  CONST 1)),
+JUMP(
+ NAME L.11),
+LABEL L.13,
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.fib.1.b),
+JUMP(
+ NAME L.8),
+LABEL L.8
+# Linearized (trees):
+MOVE(
+ TEMP FastFib.fib.1.count,
+ TEMP FastFib.fib.n)
+MOVE(
+ TEMP FastFib.fib.1.a,
+ CONST 0)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ CONST 1)
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ CONST 0)
+BLT(
+ TEMP FastFib.fib.n,
+ CONST 1,
+ L.9, L.10)
+LABEL L.9
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.8)
+LABEL L.10
+LABEL L.11
+BGT(
+ TEMP FastFib.fib.1.count,
+ CONST 1,
+ L.12, L.13)
+LABEL L.12
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ TEMP FastFib.fib.1.b)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ ADD(
+  TEMP FastFib.fib.1.a,
+  TEMP FastFib.fib.1.b))
+MOVE(
+ TEMP FastFib.fib.1.a,
+ TEMP FastFib.fib.1.tmp)
+MOVE(
+ TEMP FastFib.fib.1.count,
+ SUB(
+  TEMP FastFib.fib.1.count,
+  CONST 1))
+JUMP(
+ NAME L.11)
+LABEL L.13
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.fib.1.b)
+JUMP(
+ NAME L.8)
+LABEL L.8
+# Basic Blocks:
+# 0
+LABEL L.26
+MOVE(
+ TEMP FastFib.fib.1.count,
+ TEMP FastFib.fib.n)
+MOVE(
+ TEMP FastFib.fib.1.a,
+ CONST 0)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ CONST 1)
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ CONST 0)
+BLT(
+ TEMP FastFib.fib.n,
+ CONST 1,
+ L.9, L.10)
+# 1
+LABEL L.9
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.8)
+# 2
+LABEL L.10
+JUMP(
+ NAME L.11)
+# 3
+LABEL L.11
+BGT(
+ TEMP FastFib.fib.1.count,
+ CONST 1,
+ L.12, L.13)
+# 4
+LABEL L.12
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ TEMP FastFib.fib.1.b)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ ADD(
+  TEMP FastFib.fib.1.a,
+  TEMP FastFib.fib.1.b))
+MOVE(
+ TEMP FastFib.fib.1.a,
+ TEMP FastFib.fib.1.tmp)
+MOVE(
+ TEMP FastFib.fib.1.count,
+ SUB(
+  TEMP FastFib.fib.1.count,
+  CONST 1))
+JUMP(
+ NAME L.11)
+# 5
+LABEL L.13
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.fib.1.b)
+JUMP(
+ NAME L.8)
+# 6
+LABEL L.8
+# Trace Scheduled:
+LABEL L.26
+MOVE(
+ TEMP FastFib.fib.1.count,
+ TEMP FastFib.fib.n)
+MOVE(
+ TEMP FastFib.fib.1.a,
+ CONST 0)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ CONST 1)
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ CONST 0)
+BLT(
+ TEMP FastFib.fib.n,
+ CONST 1,
+ L.9, L.10)
+LABEL L.10
+LABEL L.11
+BGT(
+ TEMP FastFib.fib.1.count,
+ CONST 1,
+ L.12, L.13)
+LABEL L.13
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.fib.1.b)
+JUMP(
+ NAME L.8)
+LABEL L.9
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.8)
+LABEL L.12
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ TEMP FastFib.fib.1.b)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ ADD(
+  TEMP FastFib.fib.1.a,
+  TEMP FastFib.fib.1.b))
+MOVE(
+ TEMP FastFib.fib.1.a,
+ TEMP FastFib.fib.1.tmp)
+MOVE(
+ TEMP FastFib.fib.1.count,
+ SUB(
+  TEMP FastFib.fib.1.count,
+  CONST 1))
+JUMP(
+ NAME L.11)
+LABEL L.8
+# With procedure entry/exit:
+MOVE(
+ TEMP FastFib.fib.n,
+ TEMP %rdi)
+LABEL L.26
+MOVE(
+ TEMP FastFib.fib.1.count,
+ TEMP FastFib.fib.n)
+MOVE(
+ TEMP FastFib.fib.1.a,
+ CONST 0)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ CONST 1)
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ CONST 0)
+BLT(
+ TEMP FastFib.fib.n,
+ CONST 1,
+ L.9, L.10)
+LABEL L.10
+LABEL L.11
+BGT(
+ TEMP FastFib.fib.1.count,
+ CONST 1,
+ L.12, L.13)
+LABEL L.13
+MOVE(
+ TEMP %rax,
+ TEMP FastFib.fib.1.b)
+JUMP(
+ NAME L.8)
+LABEL L.9
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.8)
+LABEL L.12
+MOVE(
+ TEMP FastFib.fib.1.tmp,
+ TEMP FastFib.fib.1.b)
+MOVE(
+ TEMP FastFib.fib.1.b,
+ ADD(
+  TEMP FastFib.fib.1.a,
+  TEMP FastFib.fib.1.b))
+MOVE(
+ TEMP FastFib.fib.1.a,
+ TEMP FastFib.fib.1.tmp)
+MOVE(
+ TEMP FastFib.fib.1.count,
+ SUB(
+  TEMP FastFib.fib.1.count,
+  CONST 1))
+JUMP(
+ NAME L.11)
+LABEL L.8
+# Instructions:
+	movq %rdi,FastFib.fib.n	# FastFib.fib.n := %rdi 
+L.26:	# <- 
+	movq FastFib.fib.n,FastFib.fib.1.count	# FastFib.fib.1.count := FastFib.fib.n 
+	xorq FastFib.fib.1.a,FastFib.fib.1.a	# FastFib.fib.1.a <- 
+	movq $1,FastFib.fib.1.b	# FastFib.fib.1.b <- 
+	xorq FastFib.fib.1.tmp,FastFib.fib.1.tmp	# FastFib.fib.1.tmp <- 
+	movq $1,t.9	# t.9 <- 
+	cmpq t.9,FastFib.fib.n	# <- FastFib.fib.n t.9 
+	jl L.9	# <- : goto L.9 L.10 
+L.10:	# <- 
+L.11:	# <- 
+	movq $1,t.10	# t.10 <- 
+	cmpq t.10,FastFib.fib.1.count	# <- FastFib.fib.1.count t.10 
+	jg L.12	# <- : goto L.12 L.13 
+L.13:	# <- 
+	movq FastFib.fib.1.b,%rax	# %rax := FastFib.fib.1.b 
+	jmp L.8	# <- : goto L.8 
+L.9:	# <- 
+	xorq %rax,%rax	# %rax <- 
+	jmp L.8	# <- : goto L.8 
+L.12:	# <- 
+	movq FastFib.fib.1.b,FastFib.fib.1.tmp	# FastFib.fib.1.tmp := FastFib.fib.1.b 
+	movq FastFib.fib.1.a,t.11	# t.11 := FastFib.fib.1.a 
+	addq FastFib.fib.1.b,t.11	# t.11 <- FastFib.fib.1.b t.11 
+	movq t.11,FastFib.fib.1.b	# FastFib.fib.1.b := t.11 
+	movq FastFib.fib.1.tmp,FastFib.fib.1.a	# FastFib.fib.1.a := FastFib.fib.1.tmp 
+	movq FastFib.fib.1.count,t.12	# t.12 := FastFib.fib.1.count 
+	subq $1,t.12	# t.12 <- t.12 
+	movq t.12,FastFib.fib.1.count	# FastFib.fib.1.count := t.12 
+	jmp L.11	# <- : goto L.11 
+L.8:	# <- 
+# Control Flow Graph:
+0: FastFib.fib.n <- %rdi; goto 1
+1: FastFib.fib.1.count FastFib.fib.1.a FastFib.fib.1.b FastFib.fib.1.tmp t.9 <- FastFib.fib.n; goto 4 2
+2: t.10 <- FastFib.fib.1.count; goto 5 3
+3: %rax <- FastFib.fib.1.b; goto 6
+4: %rax <-; goto 6
+5: FastFib.fib.1.tmp t.11 FastFib.fib.1.b FastFib.fib.1.a t.12 FastFib.fib.1.count <- FastFib.fib.1.b FastFib.fib.1.a FastFib.fib.1.count; goto 2
+6: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FastFib.fib.n: %rsp %rbp t.9 FastFib.fib.1.tmp FastFib.fib.1.b FastFib.fib.1.a 
+FastFib.fib.1.count: t.9 FastFib.fib.1.tmp FastFib.fib.1.b FastFib.fib.1.a %rsp %rbp t.10 t.11 
+FastFib.fib.1.a: t.9 FastFib.fib.1.tmp FastFib.fib.1.b %rsp %rbp FastFib.fib.1.count FastFib.fib.n t.10 t.12 
+FastFib.fib.1.b: t.9 FastFib.fib.1.tmp %rsp %rbp FastFib.fib.1.count FastFib.fib.1.a FastFib.fib.n t.10 t.12 t.11 
+FastFib.fib.1.tmp: %rsp %rbp FastFib.fib.1.count FastFib.fib.1.b FastFib.fib.1.a FastFib.fib.n t.11 
+t.9: %rsp %rbp FastFib.fib.1.count FastFib.fib.1.b FastFib.fib.1.a FastFib.fib.n 
+t.10: FastFib.fib.1.b FastFib.fib.1.a FastFib.fib.1.count %rsp %rbp 
+t.11: %rsp %rbp FastFib.fib.1.count FastFib.fib.1.tmp FastFib.fib.1.b 
+t.12: FastFib.fib.1.b FastFib.fib.1.a %rsp %rbp 
+FastFib.fib.1.tmp <= FastFib.fib.1.b
+t.11 <= FastFib.fib.1.a
+FastFib.fib.1.b <= t.11
+FastFib.fib.1.a <= FastFib.fib.1.tmp
+t.12 <= FastFib.fib.1.count
+FastFib.fib.1.count <= t.12
+%rax <= FastFib.fib.1.b
+FastFib.fib.1.count <= FastFib.fib.n
+FastFib.fib.n <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FastFib.fib.n->%rdi
+FastFib.fib.1.count->%rdi
+FastFib.fib.1.a->%rbx
+FastFib.fib.1.b->%rax
+FastFib.fib.1.tmp->%rcx
+t.9->%rcx
+t.10->%rcx
+t.11->%rbx
+t.12->%rdi
+# Assembly code:
+	.text
+FastFib.fib:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.26:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	movq $1,%rax
+	xorq %rcx,%rcx
+	movq $1,%rcx
+	cmpq %rcx,%rdi
+	jl L.9
+L.10:
+L.11:
+	movq $1,%rcx
+	cmpq %rcx,%rdi
+	jg L.12
+L.13:
+#	movq %rax,%rax
+	jmp L.8
+L.9:
+	xorq %rax,%rax
+	jmp L.8
+L.12:
+	movq %rax,%rcx
+#	movq %rbx,%rbx
+	addq %rax,%rbx
+	movq %rbx,%rax
+	movq %rcx,%rbx
+#	movq %rdi,%rdi
+	subq $1,%rdi
+#	movq %rdi,%rdi
+	jmp L.11
+L.8:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+FastFib.fib.badSub:
+	call badSub
+END FastFib.fib
+PROCEDURE FastFib.CString
+# Trees:
+MOVE(
+ TEMP FastFib.CString.1.a,
+ TEMP FastFib.CString.t),
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.3,
+   ESEQ(
+    MOVE(
+     TEMP t.1,
+     TEMP FastFib.CString.1.a),
+    BEQ(
+     TEMP t.1,
+     CONST 0,
+     FastFib.CString.badPtr, L.17),
+    LABEL L.17,
+    TEMP t.1)),
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   ESEQ(
+    MOVE(
+     TEMP t.2,
+     CONST 0),
+    BLT(
+     TEMP t.2,
+     CONST 0,
+     FastFib.CString.badSub, L.18),
+    LABEL L.18,
+    BGE(
+     TEMP t.2,
+     MEM(
+      TEMP t.3, 
+      CONST 8, 8, false, false),
+     FastFib.CString.badSub, L.19),
+    LABEL L.19,
+    TEMP t.2)))),
+JUMP(
+ NAME L.14),
+LABEL L.14
+# Linearized (trees):
+MOVE(
+ TEMP FastFib.CString.1.a,
+ TEMP FastFib.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP FastFib.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FastFib.CString.badPtr, L.17)
+LABEL L.17
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ FastFib.CString.badSub, L.18)
+LABEL L.18
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ FastFib.CString.badSub, L.19)
+LABEL L.19
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.14)
+LABEL L.14
+# Basic Blocks:
+# 0
+LABEL L.27
+MOVE(
+ TEMP FastFib.CString.1.a,
+ TEMP FastFib.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP FastFib.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FastFib.CString.badPtr, L.17)
+# 1
+LABEL L.17
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ FastFib.CString.badSub, L.18)
+# 2
+LABEL L.18
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ FastFib.CString.badSub, L.19)
+# 3
+LABEL L.19
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.14)
+# 4
+LABEL L.14
+# Trace Scheduled:
+LABEL L.27
+MOVE(
+ TEMP FastFib.CString.1.a,
+ TEMP FastFib.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP FastFib.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FastFib.CString.badPtr, L.17)
+LABEL L.17
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ FastFib.CString.badSub, L.18)
+LABEL L.18
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ FastFib.CString.badSub, L.19)
+LABEL L.19
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.14
+# With procedure entry/exit:
+MOVE(
+ TEMP FastFib.CString.t,
+ TEMP %rdi)
+LABEL L.27
+MOVE(
+ TEMP FastFib.CString.1.a,
+ TEMP FastFib.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP FastFib.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FastFib.CString.badPtr, L.17)
+LABEL L.17
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ FastFib.CString.badSub, L.18)
+LABEL L.18
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ FastFib.CString.badSub, L.19)
+LABEL L.19
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.14
+# Instructions:
+	movq %rdi,FastFib.CString.t	# FastFib.CString.t := %rdi 
+L.27:	# <- 
+	movq FastFib.CString.t,FastFib.CString.1.a	# FastFib.CString.1.a := FastFib.CString.t 
+	movq FastFib.CString.1.a,t.1	# t.1 := FastFib.CString.1.a 
+	xorq t.13,t.13	# t.13 <- 
+	cmpq t.13,t.1	# <- t.1 t.13 
+	je FastFib.CString.badPtr	# <- : goto FastFib.CString.badPtr L.17 
+L.17:	# <- 
+	movq t.1,t.3	# t.3 := t.1 
+	xorq t.2,t.2	# t.2 <- 
+	xorq t.14,t.14	# t.14 <- 
+	cmpq t.14,t.2	# <- t.2 t.14 
+	jl FastFib.CString.badSub	# <- : goto FastFib.CString.badSub L.18 
+L.18:	# <- 
+	movq 8(t.3),t.15	# t.15 <- t.3 
+	cmpq t.15,t.2	# <- t.2 t.15 
+	jge FastFib.CString.badSub	# <- : goto FastFib.CString.badSub L.19 
+L.19:	# <- 
+	movq 0(t.3),t.16	# t.16 <- t.3 
+	movq t.16,t.17	# t.17 := t.16 
+	addq t.2,t.17	# t.17 <- t.2 t.17 
+	movq t.17,%rax	# %rax := t.17 
+L.14:	# <- 
+# Control Flow Graph:
+0: FastFib.CString.t <- %rdi; goto 1
+1: FastFib.CString.1.a t.1 t.13 <- FastFib.CString.t; goto 2
+2: t.3 t.2 t.14 <- t.1; goto 3
+3: t.15 <- t.3 t.2; goto 4
+4: t.16 t.17 %rax <- t.3 t.2; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FastFib.CString.t: %rsp %rbp 
+FastFib.CString.1.a: %rsp %rbp 
+t.1: t.13 %rsp %rbp 
+t.13: t.1 %rsp %rbp 
+t.3: t.14 t.2 %rsp %rbp t.15 
+t.2: t.14 t.3 %rsp %rbp t.15 t.17 t.16 
+t.14: t.3 t.2 %rsp %rbp 
+t.15: t.3 t.2 %rsp %rbp 
+t.16: %rsp %rbp t.2 
+t.17: %rsp %rbp t.2 
+t.17 <= t.16
+%rax <= t.17
+t.3 <= t.1
+FastFib.CString.1.a <= FastFib.CString.t
+t.1 <= FastFib.CString.1.a
+FastFib.CString.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FastFib.CString.t->%rdi
+FastFib.CString.1.a->%rdi
+t.1->%rdi
+t.13->%rax
+t.3->%rdi
+t.2->%rbx
+t.14->%rax
+t.15->%rax
+t.16->%rax
+t.17->%rax
+# Assembly code:
+	.text
+FastFib.CString:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.27:
+#	movq %rdi,%rdi
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je FastFib.CString.badPtr
+L.17:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl FastFib.CString.badSub
+L.18:
+	movq 8(%rdi),%rax
+	cmpq %rax,%rbx
+	jge FastFib.CString.badSub
+L.19:
+	movq 0(%rdi),%rax
+#	movq %rax,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+L.14:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+FastFib.CString.badPtr:
+	call badPtr
+FastFib.CString.badSub:
+	call badSub
+END FastFib.CString
+	.data
+	.balign 8
+L.20:
+	.byte 73
+	.byte 110
+	.byte 112
+	.byte 117
+	.byte 116
+	.byte 32
+	.byte 110
+	.byte 117
+	.byte 109
+	.byte 98
+	.byte 101
+	.byte 114
+	.byte 58
+	.byte 32
+	.byte 0
+	.data
+	.balign 8
+L.21:
+	.quad L.20
+	.quad 15
+	.data
+	.balign 8
+L.22:
+	.byte 37
+	.byte 108
+	.byte 100
+	.byte 10
+	.byte 0
+	.data
+	.balign 8
+L.23:
+	.quad L.22
+	.quad 5
+PROCEDURE FastFib
+# Trees:
+MOVE(
+ TEMP FastFib.9.N,
+ CONST 0),
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME FastFib.CString,
+   CONST 0,
+   NAME L.21),
+  CONST 0)),
+MOVE(
+ TEMP FastFib.9.N,
+ CALL(
+  NAME FastFib.read_number,
+  CONST 0)),
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME FastFib.CString,
+   CONST 0,
+   NAME L.23),
+  CALL(
+   NAME FastFib.fib,
+   CONST 0,
+   TEMP FastFib.9.N)))
+# Linearized (trees):
+MOVE(
+ TEMP FastFib.9.N,
+ CONST 0)
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.21))
+MOVE(
+ TEMP t.18,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.19,
+  CONST 0))
+EXP(
+ TEMP t.18)
+MOVE(
+ TEMP FastFib.9.N,
+ CALL(
+  NAME FastFib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.21,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.23))
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME FastFib.fib,
+  CONST 0,
+  TEMP FastFib.9.N))
+MOVE(
+ TEMP t.20,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.21,
+  TEMP t.22))
+EXP(
+ TEMP t.20)
+# Basic Blocks:
+# 0
+LABEL L.28
+MOVE(
+ TEMP FastFib.9.N,
+ CONST 0)
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.21))
+MOVE(
+ TEMP t.18,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.19,
+  CONST 0))
+EXP(
+ TEMP t.18)
+MOVE(
+ TEMP FastFib.9.N,
+ CALL(
+  NAME FastFib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.21,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.23))
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME FastFib.fib,
+  CONST 0,
+  TEMP FastFib.9.N))
+MOVE(
+ TEMP t.20,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.21,
+  TEMP t.22))
+EXP(
+ TEMP t.20)
+# Trace Scheduled:
+LABEL L.28
+MOVE(
+ TEMP FastFib.9.N,
+ CONST 0)
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.21))
+MOVE(
+ TEMP t.18,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.19,
+  CONST 0))
+EXP(
+ TEMP t.18)
+MOVE(
+ TEMP FastFib.9.N,
+ CALL(
+  NAME FastFib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.21,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.23))
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME FastFib.fib,
+  CONST 0,
+  TEMP FastFib.9.N))
+MOVE(
+ TEMP t.20,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.21,
+  TEMP t.22))
+EXP(
+ TEMP t.20)
+# With procedure entry/exit:
+LABEL L.28
+MOVE(
+ TEMP FastFib.9.N,
+ CONST 0)
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.21))
+MOVE(
+ TEMP t.18,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.19,
+  CONST 0))
+EXP(
+ TEMP t.18)
+MOVE(
+ TEMP FastFib.9.N,
+ CALL(
+  NAME FastFib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.21,
+ CALL(
+  NAME FastFib.CString,
+  CONST 0,
+  NAME L.23))
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME FastFib.fib,
+  CONST 0,
+  TEMP FastFib.9.N))
+MOVE(
+ TEMP t.20,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.21,
+  TEMP t.22))
+EXP(
+ TEMP t.20)
+# Instructions:
+L.28:	# <- 
+	xorq FastFib.9.N,FastFib.9.N	# FastFib.9.N <- 
+	leaq L.21(%rip),t.23	# t.23 <- 
+	movq t.23,%rdi	# %rdi := t.23 
+	call FastFib.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.19	# t.19 := %rax 
+	movq t.19,%rdi	# %rdi := t.19 
+	xorq %rsi,%rsi	# %rsi <- 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.18	# t.18 := %rax 
+	call FastFib.read_number	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,FastFib.9.N	# FastFib.9.N := %rax 
+	leaq L.23(%rip),t.24	# t.24 <- 
+	movq t.24,%rdi	# %rdi := t.24 
+	call FastFib.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.21	# t.21 := %rax 
+	movq FastFib.9.N,%rdi	# %rdi := FastFib.9.N 
+	call FastFib.fib	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.22	# t.22 := %rax 
+	movq t.21,%rdi	# %rdi := t.21 
+	movq t.22,%rsi	# %rsi := t.22 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.20	# t.20 := %rax 
+# Control Flow Graph:
+0: FastFib.9.N t.23 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.19 t.18 t.24 t.21 t.22 t.20 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FastFib.9.N: t.21 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.24 %rsp %rbp 
+t.23: %rsp %rbp 
+t.19: %rsp %rbp 
+t.18: %rsp %rbp 
+t.24: %rsp %rbp FastFib.9.N 
+t.21: t.22 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 %rsp %rbp FastFib.9.N 
+t.22: %rdi %rsp %rbp t.21 
+t.20: %rsp %rbp 
+%rdi <= t.23
+t.19 <= %rax
+%rdi <= t.19
+t.18 <= %rax
+FastFib.9.N <= %rax
+%rdi <= t.24
+t.21 <= %rax
+%rdi <= FastFib.9.N
+t.22 <= %rax
+%rdi <= t.21
+%rsi <= t.22
+t.20 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FastFib.9.N->%r12
+t.23->%rdi
+t.19->%rax
+t.18->%rax
+t.24->%rdi
+t.21->%rbx
+t.22->%rax
+t.20->%rax
+# Assembly code:
+	.text
+FastFib:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+L.28:
+	xorq %r12,%r12
+	leaq L.21(%rip),%rdi
+#	movq %rdi,%rdi
+	call FastFib.CString
+#	movq %rax,%rax
+	movq %rax,%rdi
+	xorq %rsi,%rsi
+	call printf
+#	movq %rax,%rax
+	call FastFib.read_number
+	movq %rax,%r12
+	leaq L.23(%rip),%rdi
+#	movq %rdi,%rdi
+	call FastFib.CString
+	movq %rax,%rbx
+	movq %r12,%rdi
+	call FastFib.fib
+#	movq %rax,%rax
+	movq %rbx,%rdi
+	movq %rax,%rsi
+	call printf
+#	movq %rax,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	addq $32,%rsp
+	popq %rbp
+	ret
+FastFib.badSub:
+	call badSub
+END FastFib

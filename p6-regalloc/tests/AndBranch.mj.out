@@ -1,0 +1,279 @@
+PROCEDURE AndBranch.And
+# Trees:
+BEQ(
+ TEMP AndBranch.And.x,
+ CONST 0,
+ L.2, L.3),
+LABEL L.3,
+BEQ(
+ TEMP AndBranch.And.y,
+ CONST 0,
+ L.2, L.1),
+LABEL L.1,
+MOVE(
+ TEMP %rax,
+ CONST 0),
+JUMP(
+ NAME L.0),
+LABEL L.2,
+MOVE(
+ TEMP %rax,
+ CONST 1),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+BEQ(
+ TEMP AndBranch.And.x,
+ CONST 0,
+ L.2, L.3)
+LABEL L.3
+BEQ(
+ TEMP AndBranch.And.y,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.4
+BEQ(
+ TEMP AndBranch.And.x,
+ CONST 0,
+ L.2, L.3)
+# 1
+LABEL L.3
+BEQ(
+ TEMP AndBranch.And.y,
+ CONST 0,
+ L.2, L.1)
+# 2
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.4
+BEQ(
+ TEMP AndBranch.And.x,
+ CONST 0,
+ L.2, L.3)
+LABEL L.3
+BEQ(
+ TEMP AndBranch.And.y,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 1)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP AndBranch.And.y,
+ TEMP %rsi)
+MOVE(
+ TEMP AndBranch.And.x,
+ TEMP %rdi)
+LABEL L.4
+BEQ(
+ TEMP AndBranch.And.x,
+ CONST 0,
+ L.2, L.3)
+LABEL L.3
+BEQ(
+ TEMP AndBranch.And.y,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 1)
+LABEL L.0
+# Instructions:
+	movq %rsi,AndBranch.And.y	# AndBranch.And.y := %rsi 
+	movq %rdi,AndBranch.And.x	# AndBranch.And.x := %rdi 
+L.4:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	cmpq t.0,AndBranch.And.x	# <- AndBranch.And.x t.0 
+	je L.2	# <- : goto L.2 L.3 
+L.3:	# <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.1,AndBranch.And.y	# <- AndBranch.And.y t.1 
+	je L.2	# <- : goto L.2 L.1 
+L.1:	# <- 
+	xorq %rax,%rax	# %rax <- 
+	jmp L.0	# <- : goto L.0 
+L.2:	# <- 
+	movq $1,%rax	# %rax <- 
+L.0:	# <- 
+# Control Flow Graph:
+0: AndBranch.And.y AndBranch.And.x <- %rsi %rdi; goto 1
+1: t.0 <- AndBranch.And.x; goto 4 2
+2: t.1 <- AndBranch.And.y; goto 4 3
+3: %rax <-; goto 5
+4: %rax <-; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+AndBranch.And.y: AndBranch.And.x %rsp %rbp %rdi t.0 t.1 
+AndBranch.And.x: %rsp %rbp AndBranch.And.y t.0 
+t.0: %rsp %rbp AndBranch.And.y AndBranch.And.x 
+t.1: %rsp %rbp AndBranch.And.y 
+AndBranch.And.y <= %rsi
+AndBranch.And.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+AndBranch.And.y->%rsi
+AndBranch.And.x->%rdi
+t.0->%rax
+t.1->%rax
+# Assembly code:
+	.text
+AndBranch.And:
+	pushq %rbp
+	movq %rsp,%rbp
+#	movq %rsi,%rsi
+#	movq %rdi,%rdi
+L.4:
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je L.2
+L.3:
+	xorq %rax,%rax
+	cmpq %rax,%rsi
+	je L.2
+L.1:
+	xorq %rax,%rax
+	jmp L.0
+L.2:
+	movq $1,%rax
+L.0:
+#	returnSink
+	popq %rbp
+	ret
+AndBranch.And.badSub:
+	call badSub
+END AndBranch.And
+PROCEDURE AndBranch
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.5
+# Trace Scheduled:
+LABEL L.5
+# With procedure entry/exit:
+LABEL L.5
+# Instructions:
+L.5:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+AndBranch:
+	pushq %rbp
+	movq %rsp,%rbp
+L.5:
+#	returnSink
+	popq %rbp
+	ret
+END AndBranch

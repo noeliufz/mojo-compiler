@@ -1,0 +1,37 @@
+	.data
+	.balign 8
+ArrayIndexVariable.x:
+	.zero 80
+	.text
+ArrayIndexVariable.get:
+MOVE(
+ TEMP %rax,
+ MEM(
+  ADD(
+   NAME ArrayIndexVariable.x,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.0,
+      TEMP ArrayIndexVariable.get.n),
+     BLT(
+      TEMP t.0,
+      CONST 0,
+      ArrayIndexVariable.get.badSub, L.1),
+     LABEL L.1,
+     BGT(
+      TEMP t.0,
+      CONST 9,
+      ArrayIndexVariable.get.badSub, L.2),
+     LABEL L.2,
+     TEMP t.0),
+    CONST 8)), 
+  CONST 0, 8, true)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+ArrayIndexVariable:
+

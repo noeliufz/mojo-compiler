@@ -1,0 +1,4 @@
+type Rec = record {
+  pair: record { x: int; y: int };
+  z: int;
+};

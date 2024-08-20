@@ -1,0 +1,69 @@
+	.data
+	.balign 8
+Override.U:
+	.quad Override.FooU
+	.quad badPtr
+	.data
+	.balign 8
+Override.T:
+	.quad Override.FooT
+	.quad badPtr
+	.quad badPtr
+PROCEDURE Override
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.0
+# Trace Scheduled:
+LABEL L.0
+# With procedure entry/exit:
+LABEL L.0
+# Instructions:
+L.0:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+Override:
+	pushq %rbp
+	movq %rsp,%rbp
+L.0:
+#	returnSink
+	popq %rbp
+	ret
+END Override

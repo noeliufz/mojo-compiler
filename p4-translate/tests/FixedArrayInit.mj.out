@@ -1,0 +1,77 @@
+	.text
+FixedArrayInit:
+MOVE(
+ TEMP t.1,
+ CONST 10),
+MOVE(
+ TEMP t.0,
+ CONST 0),
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0),
+LABEL L.0,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true),
+ CONST 0),
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1)),
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1),
+LABEL L.1,
+MOVE(
+ TEMP t.3,
+ CONST 10),
+MOVE(
+ TEMP t.2,
+ CONST 0),
+BGE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.2),
+LABEL L.2,
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP %rbp,
+  MUL(
+   TEMP t.2,
+   CONST 24))),
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -320, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -312, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -304, 8, true),
+ CONST 0),
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  CONST 1)),
+BLT(
+ TEMP t.2,
+ TEMP t.3,
+ L.2, L.3),
+LABEL L.3
+
+

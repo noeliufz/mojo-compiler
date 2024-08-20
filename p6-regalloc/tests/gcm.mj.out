@@ -1,0 +1,2038 @@
+PROCEDURE gcm.CString
+# Trees:
+MOVE(
+ TEMP gcm.CString.1.a,
+ TEMP gcm.CString.t),
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.3,
+   ESEQ(
+    MOVE(
+     TEMP t.1,
+     TEMP gcm.CString.1.a),
+    BEQ(
+     TEMP t.1,
+     CONST 0,
+     gcm.CString.badPtr, L.3),
+    LABEL L.3,
+    TEMP t.1)),
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   ESEQ(
+    MOVE(
+     TEMP t.2,
+     CONST 0),
+    BLT(
+     TEMP t.2,
+     CONST 0,
+     gcm.CString.badSub, L.4),
+    LABEL L.4,
+    BGE(
+     TEMP t.2,
+     MEM(
+      TEMP t.3, 
+      CONST 8, 8, false, false),
+     gcm.CString.badSub, L.5),
+    LABEL L.5,
+    TEMP t.2)))),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP gcm.CString.1.a,
+ TEMP gcm.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP gcm.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ gcm.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ gcm.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ gcm.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.28
+MOVE(
+ TEMP gcm.CString.1.a,
+ TEMP gcm.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP gcm.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ gcm.CString.badPtr, L.3)
+# 1
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ gcm.CString.badSub, L.4)
+# 2
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ gcm.CString.badSub, L.5)
+# 3
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.28
+MOVE(
+ TEMP gcm.CString.1.a,
+ TEMP gcm.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP gcm.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ gcm.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ gcm.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ gcm.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP gcm.CString.t,
+ TEMP %rdi)
+LABEL L.28
+MOVE(
+ TEMP gcm.CString.1.a,
+ TEMP gcm.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP gcm.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ gcm.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ gcm.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ gcm.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.0
+# Instructions:
+	movq %rdi,gcm.CString.t	# gcm.CString.t := %rdi 
+L.28:	# <- 
+	movq gcm.CString.t,gcm.CString.1.a	# gcm.CString.1.a := gcm.CString.t 
+	movq gcm.CString.1.a,t.1	# t.1 := gcm.CString.1.a 
+	xorq t.4,t.4	# t.4 <- 
+	cmpq t.4,t.1	# <- t.1 t.4 
+	je gcm.CString.badPtr	# <- : goto gcm.CString.badPtr L.3 
+L.3:	# <- 
+	movq t.1,t.3	# t.3 := t.1 
+	xorq t.2,t.2	# t.2 <- 
+	xorq t.5,t.5	# t.5 <- 
+	cmpq t.5,t.2	# <- t.2 t.5 
+	jl gcm.CString.badSub	# <- : goto gcm.CString.badSub L.4 
+L.4:	# <- 
+	movq 8(t.3),t.6	# t.6 <- t.3 
+	cmpq t.6,t.2	# <- t.2 t.6 
+	jge gcm.CString.badSub	# <- : goto gcm.CString.badSub L.5 
+L.5:	# <- 
+	movq 0(t.3),t.7	# t.7 <- t.3 
+	movq t.7,t.8	# t.8 := t.7 
+	addq t.2,t.8	# t.8 <- t.2 t.8 
+	movq t.8,%rax	# %rax := t.8 
+L.0:	# <- 
+# Control Flow Graph:
+0: gcm.CString.t <- %rdi; goto 1
+1: gcm.CString.1.a t.1 t.4 <- gcm.CString.t; goto 2
+2: t.3 t.2 t.5 <- t.1; goto 3
+3: t.6 <- t.3 t.2; goto 4
+4: t.7 t.8 %rax <- t.3 t.2; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+gcm.CString.t: %rsp %rbp 
+gcm.CString.1.a: %rsp %rbp 
+t.1: t.4 %rsp %rbp 
+t.4: t.1 %rsp %rbp 
+t.3: t.5 t.2 %rsp %rbp t.6 
+t.2: t.5 t.3 %rsp %rbp t.6 t.8 t.7 
+t.5: t.3 t.2 %rsp %rbp 
+t.6: t.3 t.2 %rsp %rbp 
+t.7: %rsp %rbp t.2 
+t.8: %rsp %rbp t.2 
+t.8 <= t.7
+%rax <= t.8
+t.3 <= t.1
+gcm.CString.1.a <= gcm.CString.t
+t.1 <= gcm.CString.1.a
+gcm.CString.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+gcm.CString.t->%rdi
+gcm.CString.1.a->%rdi
+t.1->%rdi
+t.4->%rax
+t.3->%rdi
+t.2->%rbx
+t.5->%rax
+t.6->%rax
+t.7->%rax
+t.8->%rax
+# Assembly code:
+	.text
+gcm.CString:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.28:
+#	movq %rdi,%rdi
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je gcm.CString.badPtr
+L.3:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl gcm.CString.badSub
+L.4:
+	movq 8(%rdi),%rax
+	cmpq %rax,%rbx
+	jge gcm.CString.badSub
+L.5:
+	movq 0(%rdi),%rax
+#	movq %rax,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+gcm.CString.badPtr:
+	call badPtr
+gcm.CString.badSub:
+	call badSub
+END gcm.CString
+	.data
+	.balign 8
+L.7:
+	.byte 37
+	.byte 108
+	.byte 100
+	.byte 10
+	.byte 0
+	.data
+	.balign 8
+L.8:
+	.quad L.7
+	.quad 5
+PROCEDURE gcm.println
+# Trees:
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME gcm.CString,
+   CONST 0,
+   NAME L.8),
+  TEMP gcm.println.i)),
+LABEL L.6
+# Linearized (trees):
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  NAME L.8))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP gcm.println.i))
+EXP(
+ TEMP t.9)
+LABEL L.6
+# Basic Blocks:
+# 0
+LABEL L.29
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  NAME L.8))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP gcm.println.i))
+EXP(
+ TEMP t.9)
+JUMP(
+ NAME L.6)
+# 1
+LABEL L.6
+# Trace Scheduled:
+LABEL L.29
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  NAME L.8))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP gcm.println.i))
+EXP(
+ TEMP t.9)
+LABEL L.6
+# With procedure entry/exit:
+MOVE(
+ TEMP gcm.println.i,
+ TEMP %rdi)
+LABEL L.29
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  NAME L.8))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP gcm.println.i))
+EXP(
+ TEMP t.9)
+LABEL L.6
+# Instructions:
+	movq %rdi,gcm.println.i	# gcm.println.i := %rdi 
+L.29:	# <- 
+	leaq L.8(%rip),t.11	# t.11 <- 
+	movq t.11,%rdi	# %rdi := t.11 
+	call gcm.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.10	# t.10 := %rax 
+	movq t.10,%rdi	# %rdi := t.10 
+	movq gcm.println.i,%rsi	# %rsi := gcm.println.i 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.9	# t.9 := %rax 
+L.6:	# <- 
+# Control Flow Graph:
+0: gcm.println.i <- %rdi; goto 1
+1: t.11 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.10 t.9 <- gcm.println.i; goto 2
+2: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+gcm.println.i: %rsp %rbp %rdi t.10 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.11 
+t.11: %rsp %rbp gcm.println.i 
+t.10: %rsp %rbp gcm.println.i 
+t.9: %rsp %rbp 
+%rdi <= t.11
+t.10 <= %rax
+%rdi <= t.10
+%rsi <= gcm.println.i
+t.9 <= %rax
+gcm.println.i <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+gcm.println.i->%rbx
+t.11->%rdi
+t.10->%rax
+t.9->%rax
+# Assembly code:
+	.text
+gcm.println:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rbx
+L.29:
+	leaq L.8(%rip),%rdi
+#	movq %rdi,%rdi
+	call gcm.CString
+#	movq %rax,%rax
+	movq %rax,%rdi
+	movq %rbx,%rsi
+	call printf
+#	movq %rax,%rax
+L.6:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+gcm.println.badSub:
+	call badSub
+END gcm.println
+PROCEDURE gcm.print
+# Trees:
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME gcm.CString,
+   CONST 0,
+   TEMP gcm.print.t),
+  CONST 0)),
+LABEL L.9
+# Linearized (trees):
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  TEMP gcm.print.t))
+MOVE(
+ TEMP t.12,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.13,
+  CONST 0))
+EXP(
+ TEMP t.12)
+LABEL L.9
+# Basic Blocks:
+# 0
+LABEL L.30
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  TEMP gcm.print.t))
+MOVE(
+ TEMP t.12,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.13,
+  CONST 0))
+EXP(
+ TEMP t.12)
+JUMP(
+ NAME L.9)
+# 1
+LABEL L.9
+# Trace Scheduled:
+LABEL L.30
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  TEMP gcm.print.t))
+MOVE(
+ TEMP t.12,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.13,
+  CONST 0))
+EXP(
+ TEMP t.12)
+LABEL L.9
+# With procedure entry/exit:
+MOVE(
+ TEMP gcm.print.t,
+ TEMP %rdi)
+LABEL L.30
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME gcm.CString,
+  CONST 0,
+  TEMP gcm.print.t))
+MOVE(
+ TEMP t.12,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.13,
+  CONST 0))
+EXP(
+ TEMP t.12)
+LABEL L.9
+# Instructions:
+	movq %rdi,gcm.print.t	# gcm.print.t := %rdi 
+L.30:	# <- 
+	movq gcm.print.t,%rdi	# %rdi := gcm.print.t 
+	call gcm.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.13	# t.13 := %rax 
+	movq t.13,%rdi	# %rdi := t.13 
+	xorq %rsi,%rsi	# %rsi <- 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.12	# t.12 := %rax 
+L.9:	# <- 
+# Control Flow Graph:
+0: gcm.print.t <- %rdi; goto 1
+1: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.13 t.12 <- gcm.print.t; goto 2
+2: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+gcm.print.t: %rsp %rbp 
+t.13: %rsp %rbp 
+t.12: %rsp %rbp 
+%rdi <= gcm.print.t
+t.13 <= %rax
+%rdi <= t.13
+t.12 <= %rax
+gcm.print.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+gcm.print.t->%rdi
+t.13->%rax
+t.12->%rax
+# Assembly code:
+	.text
+gcm.print:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+#	movq %rdi,%rdi
+L.30:
+#	movq %rdi,%rdi
+	call gcm.CString
+#	movq %rax,%rax
+	movq %rax,%rdi
+	xorq %rsi,%rsi
+	call printf
+#	movq %rax,%rax
+L.9:
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+gcm.print.badSub:
+	call badSub
+END gcm.print
+PROCEDURE gcm.readln
+# Trees:
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ CONST 0),
+LABEL L.11,
+LABEL L.12,
+MOVE(
+ TEMP gcm.readln.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0)),
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 10,
+ L.14, L.16),
+LABEL L.16,
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 13,
+ L.14, L.15),
+LABEL L.14,
+JUMP(
+ NAME L.13),
+LABEL L.15,
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   MEM(
+    TEMP gcm.readln.n, 
+    CONST 0, 8, true, false),
+   CONST 10),
+  SUB(
+   TEMP gcm.readln.1.c,
+   CONST 48))),
+JUMP(
+ NAME L.11),
+LABEL L.13,
+LABEL L.10
+# Linearized (trees):
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ CONST 0)
+LABEL L.11
+LABEL L.12
+MOVE(
+ TEMP gcm.readln.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 10,
+ L.14, L.16)
+LABEL L.16
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 13,
+ L.14, L.15)
+LABEL L.14
+JUMP(
+ NAME L.13)
+LABEL L.15
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   MEM(
+    TEMP gcm.readln.n, 
+    CONST 0, 8, true, false),
+   CONST 10),
+  SUB(
+   TEMP gcm.readln.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.11)
+LABEL L.13
+LABEL L.10
+# Basic Blocks:
+# 0
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ CONST 0)
+JUMP(
+ NAME L.11)
+# 1
+LABEL L.11
+JUMP(
+ NAME L.12)
+# 2
+LABEL L.12
+MOVE(
+ TEMP gcm.readln.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 10,
+ L.14, L.16)
+# 3
+LABEL L.16
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 13,
+ L.14, L.15)
+# 4
+LABEL L.14
+JUMP(
+ NAME L.13)
+# 5
+LABEL L.15
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   MEM(
+    TEMP gcm.readln.n, 
+    CONST 0, 8, true, false),
+   CONST 10),
+  SUB(
+   TEMP gcm.readln.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.11)
+# 6
+LABEL L.13
+JUMP(
+ NAME L.10)
+# 7
+LABEL L.10
+# Trace Scheduled:
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ CONST 0)
+LABEL L.11
+LABEL L.12
+MOVE(
+ TEMP gcm.readln.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 10,
+ L.14, L.16)
+LABEL L.16
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 13,
+ L.14, L.15)
+LABEL L.15
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   MEM(
+    TEMP gcm.readln.n, 
+    CONST 0, 8, true, false),
+   CONST 10),
+  SUB(
+   TEMP gcm.readln.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.11)
+LABEL L.14
+LABEL L.13
+LABEL L.10
+# With procedure entry/exit:
+MOVE(
+ TEMP gcm.readln.n,
+ TEMP %rdi)
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ CONST 0)
+LABEL L.11
+LABEL L.12
+MOVE(
+ TEMP gcm.readln.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 10,
+ L.14, L.16)
+LABEL L.16
+BEQ(
+ TEMP gcm.readln.1.c,
+ CONST 13,
+ L.14, L.15)
+LABEL L.15
+MOVE(
+ MEM(
+  TEMP gcm.readln.n, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   MEM(
+    TEMP gcm.readln.n, 
+    CONST 0, 8, true, false),
+   CONST 10),
+  SUB(
+   TEMP gcm.readln.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.11)
+LABEL L.14
+LABEL L.13
+LABEL L.10
+# Instructions:
+	movq %rdi,gcm.readln.n	# gcm.readln.n := %rdi 
+L.31:	# <- 
+	movq $0,0(gcm.readln.n)	# <- gcm.readln.n 
+L.11:	# <- 
+L.12:	# <- 
+	call getchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,gcm.readln.1.c	# gcm.readln.1.c := %rax 
+	movq $10,t.14	# t.14 <- 
+	cmpq t.14,gcm.readln.1.c	# <- gcm.readln.1.c t.14 
+	je L.14	# <- : goto L.14 L.16 
+L.16:	# <- 
+	movq $13,t.15	# t.15 <- 
+	cmpq t.15,gcm.readln.1.c	# <- gcm.readln.1.c t.15 
+	je L.14	# <- : goto L.14 L.15 
+L.15:	# <- 
+	movq 0(gcm.readln.n),t.16	# t.16 <- gcm.readln.n 
+	movq t.16,t.17	# t.17 := t.16 
+	imulq $10,t.17	# t.17 <- t.17 
+	movq gcm.readln.1.c,t.18	# t.18 := gcm.readln.1.c 
+	subq $48,t.18	# t.18 <- t.18 
+	movq t.17,t.19	# t.19 := t.17 
+	addq t.18,t.19	# t.19 <- t.18 t.19 
+	movq t.19,0(gcm.readln.n)	# <- gcm.readln.n t.19 
+	jmp L.11	# <- : goto L.11 
+L.14:	# <- 
+L.13:	# <- 
+L.10:	# <- 
+# Control Flow Graph:
+0: gcm.readln.n <- %rdi; goto 1
+1: <- gcm.readln.n; goto 2
+2: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 gcm.readln.1.c t.14 <-; goto 5 3
+3: t.15 <- gcm.readln.1.c; goto 5 4
+4: t.16 t.17 t.18 t.19 <- gcm.readln.n gcm.readln.1.c; goto 2
+5: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+gcm.readln.n: %rsp %rbp t.14 gcm.readln.1.c %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.15 t.19 t.18 t.17 t.16 
+gcm.readln.1.c: t.14 %rsp %rbp gcm.readln.n t.15 t.17 t.16 
+t.14: %rsp %rbp gcm.readln.1.c gcm.readln.n 
+t.15: %rsp %rbp gcm.readln.n gcm.readln.1.c 
+t.16: %rsp %rbp gcm.readln.n gcm.readln.1.c 
+t.17: t.18 %rsp %rbp gcm.readln.n gcm.readln.1.c 
+t.18: t.19 %rsp %rbp gcm.readln.n t.17 
+t.19: %rsp %rbp gcm.readln.n t.18 
+t.17 <= t.16
+t.18 <= gcm.readln.1.c
+t.19 <= t.17
+gcm.readln.1.c <= %rax
+gcm.readln.n <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+gcm.readln.n->%rbx
+gcm.readln.1.c->%rax
+t.14->%rcx
+t.15->%rcx
+t.16->%rcx
+t.17->%rcx
+t.18->%rax
+t.19->%rcx
+# Assembly code:
+	.text
+gcm.readln:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rbx
+L.31:
+	movq $0,0(%rbx)
+L.11:
+L.12:
+	call getchar
+#	movq %rax,%rax
+	movq $10,%rcx
+	cmpq %rcx,%rax
+	je L.14
+L.16:
+	movq $13,%rcx
+	cmpq %rcx,%rax
+	je L.14
+L.15:
+	movq 0(%rbx),%rcx
+#	movq %rcx,%rcx
+	imulq $10,%rcx
+#	movq %rax,%rax
+	subq $48,%rax
+#	movq %rcx,%rcx
+	addq %rax,%rcx
+	movq %rcx,0(%rbx)
+	jmp L.11
+L.14:
+L.13:
+L.10:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+gcm.readln.badSub:
+	call badSub
+END gcm.readln
+PROCEDURE gcm.gcm
+# Trees:
+MOVE(
+ TEMP gcm.gcm.1.x,
+ CONST 0),
+MOVE(
+ TEMP gcm.gcm.1.y,
+ CONST 0),
+BGT(
+ TEMP gcm.gcm.a,
+ TEMP gcm.gcm.b,
+ L.18, L.19),
+LABEL L.18,
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.a),
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.b),
+JUMP(
+ NAME L.20),
+LABEL L.19,
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.a),
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.b),
+LABEL L.20,
+LABEL L.21,
+LABEL L.22,
+MOVE(
+ TEMP gcm.gcm.1.x,
+ MOD(
+  TEMP gcm.gcm.1.x,
+  TEMP gcm.gcm.1.y)),
+BEQ(
+ TEMP gcm.gcm.1.x,
+ CONST 0,
+ L.24, L.25),
+LABEL L.24,
+JUMP(
+ NAME L.23),
+LABEL L.25,
+MOVE(
+ TEMP gcm.gcm.1.1.t,
+ TEMP gcm.gcm.1.x),
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.1.y),
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.1.1.t),
+JUMP(
+ NAME L.21),
+LABEL L.23,
+MOVE(
+ TEMP %rax,
+ TEMP gcm.gcm.1.y),
+JUMP(
+ NAME L.17),
+LABEL L.17
+# Linearized (trees):
+MOVE(
+ TEMP gcm.gcm.1.x,
+ CONST 0)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ CONST 0)
+BGT(
+ TEMP gcm.gcm.a,
+ TEMP gcm.gcm.b,
+ L.18, L.19)
+LABEL L.18
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.b)
+JUMP(
+ NAME L.20)
+LABEL L.19
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.b)
+LABEL L.20
+LABEL L.21
+LABEL L.22
+MOVE(
+ TEMP gcm.gcm.1.x,
+ MOD(
+  TEMP gcm.gcm.1.x,
+  TEMP gcm.gcm.1.y))
+BEQ(
+ TEMP gcm.gcm.1.x,
+ CONST 0,
+ L.24, L.25)
+LABEL L.24
+JUMP(
+ NAME L.23)
+LABEL L.25
+MOVE(
+ TEMP gcm.gcm.1.1.t,
+ TEMP gcm.gcm.1.x)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.1.y)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.1.1.t)
+JUMP(
+ NAME L.21)
+LABEL L.23
+MOVE(
+ TEMP %rax,
+ TEMP gcm.gcm.1.y)
+JUMP(
+ NAME L.17)
+LABEL L.17
+# Basic Blocks:
+# 0
+LABEL L.32
+MOVE(
+ TEMP gcm.gcm.1.x,
+ CONST 0)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ CONST 0)
+BGT(
+ TEMP gcm.gcm.a,
+ TEMP gcm.gcm.b,
+ L.18, L.19)
+# 1
+LABEL L.18
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.b)
+JUMP(
+ NAME L.20)
+# 2
+LABEL L.19
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.b)
+JUMP(
+ NAME L.20)
+# 3
+LABEL L.20
+JUMP(
+ NAME L.21)
+# 4
+LABEL L.21
+JUMP(
+ NAME L.22)
+# 5
+LABEL L.22
+MOVE(
+ TEMP gcm.gcm.1.x,
+ MOD(
+  TEMP gcm.gcm.1.x,
+  TEMP gcm.gcm.1.y))
+BEQ(
+ TEMP gcm.gcm.1.x,
+ CONST 0,
+ L.24, L.25)
+# 6
+LABEL L.24
+JUMP(
+ NAME L.23)
+# 7
+LABEL L.25
+MOVE(
+ TEMP gcm.gcm.1.1.t,
+ TEMP gcm.gcm.1.x)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.1.y)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.1.1.t)
+JUMP(
+ NAME L.21)
+# 8
+LABEL L.23
+MOVE(
+ TEMP %rax,
+ TEMP gcm.gcm.1.y)
+JUMP(
+ NAME L.17)
+# 9
+LABEL L.17
+# Trace Scheduled:
+LABEL L.32
+MOVE(
+ TEMP gcm.gcm.1.x,
+ CONST 0)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ CONST 0)
+BGT(
+ TEMP gcm.gcm.a,
+ TEMP gcm.gcm.b,
+ L.18, L.19)
+LABEL L.19
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.b)
+LABEL L.20
+LABEL L.21
+LABEL L.22
+MOVE(
+ TEMP gcm.gcm.1.x,
+ MOD(
+  TEMP gcm.gcm.1.x,
+  TEMP gcm.gcm.1.y))
+BEQ(
+ TEMP gcm.gcm.1.x,
+ CONST 0,
+ L.24, L.25)
+LABEL L.25
+MOVE(
+ TEMP gcm.gcm.1.1.t,
+ TEMP gcm.gcm.1.x)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.1.y)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.1.1.t)
+JUMP(
+ NAME L.21)
+LABEL L.18
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.b)
+JUMP(
+ NAME L.20)
+LABEL L.24
+LABEL L.23
+MOVE(
+ TEMP %rax,
+ TEMP gcm.gcm.1.y)
+LABEL L.17
+# With procedure entry/exit:
+MOVE(
+ TEMP gcm.gcm.b,
+ TEMP %rsi)
+MOVE(
+ TEMP gcm.gcm.a,
+ TEMP %rdi)
+LABEL L.32
+MOVE(
+ TEMP gcm.gcm.1.x,
+ CONST 0)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ CONST 0)
+BGT(
+ TEMP gcm.gcm.a,
+ TEMP gcm.gcm.b,
+ L.18, L.19)
+LABEL L.19
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.b)
+LABEL L.20
+LABEL L.21
+LABEL L.22
+MOVE(
+ TEMP gcm.gcm.1.x,
+ MOD(
+  TEMP gcm.gcm.1.x,
+  TEMP gcm.gcm.1.y))
+BEQ(
+ TEMP gcm.gcm.1.x,
+ CONST 0,
+ L.24, L.25)
+LABEL L.25
+MOVE(
+ TEMP gcm.gcm.1.1.t,
+ TEMP gcm.gcm.1.x)
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.1.y)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.1.1.t)
+JUMP(
+ NAME L.21)
+LABEL L.18
+MOVE(
+ TEMP gcm.gcm.1.x,
+ TEMP gcm.gcm.a)
+MOVE(
+ TEMP gcm.gcm.1.y,
+ TEMP gcm.gcm.b)
+JUMP(
+ NAME L.20)
+LABEL L.24
+LABEL L.23
+MOVE(
+ TEMP %rax,
+ TEMP gcm.gcm.1.y)
+LABEL L.17
+# Instructions:
+	movq %rsi,gcm.gcm.b	# gcm.gcm.b := %rsi 
+	movq %rdi,gcm.gcm.a	# gcm.gcm.a := %rdi 
+L.32:	# <- 
+	xorq gcm.gcm.1.x,gcm.gcm.1.x	# gcm.gcm.1.x <- 
+	xorq gcm.gcm.1.y,gcm.gcm.1.y	# gcm.gcm.1.y <- 
+	cmpq gcm.gcm.b,gcm.gcm.a	# <- gcm.gcm.a gcm.gcm.b 
+	jg L.18	# <- : goto L.18 L.19 
+L.19:	# <- 
+	movq gcm.gcm.a,gcm.gcm.1.y	# gcm.gcm.1.y := gcm.gcm.a 
+	movq gcm.gcm.b,gcm.gcm.1.x	# gcm.gcm.1.x := gcm.gcm.b 
+L.20:	# <- 
+L.21:	# <- 
+L.22:	# <- 
+	movq gcm.gcm.1.x,%rax	# %rax := gcm.gcm.1.x 
+	cqto	# %rax %rdx <- %rax 
+	idivq gcm.gcm.1.y	# %rax %rdx <- gcm.gcm.1.y %rax %rdx 
+	movq %rdx,t.20	# t.20 := %rdx 
+	movq t.20,gcm.gcm.1.x	# gcm.gcm.1.x := t.20 
+	xorq t.21,t.21	# t.21 <- 
+	cmpq t.21,gcm.gcm.1.x	# <- gcm.gcm.1.x t.21 
+	je L.24	# <- : goto L.24 L.25 
+L.25:	# <- 
+	movq gcm.gcm.1.x,gcm.gcm.1.1.t	# gcm.gcm.1.1.t := gcm.gcm.1.x 
+	movq gcm.gcm.1.y,gcm.gcm.1.x	# gcm.gcm.1.x := gcm.gcm.1.y 
+	movq gcm.gcm.1.1.t,gcm.gcm.1.y	# gcm.gcm.1.y := gcm.gcm.1.1.t 
+	jmp L.21	# <- : goto L.21 
+L.18:	# <- 
+	movq gcm.gcm.a,gcm.gcm.1.x	# gcm.gcm.1.x := gcm.gcm.a 
+	movq gcm.gcm.b,gcm.gcm.1.y	# gcm.gcm.1.y := gcm.gcm.b 
+	jmp L.20	# <- : goto L.20 
+L.24:	# <- 
+L.23:	# <- 
+	movq gcm.gcm.1.y,%rax	# %rax := gcm.gcm.1.y 
+L.17:	# <- 
+# Control Flow Graph:
+0: gcm.gcm.b gcm.gcm.a <- %rsi %rdi; goto 1
+1: gcm.gcm.1.x gcm.gcm.1.y <- gcm.gcm.a gcm.gcm.b; goto 5 2
+2: gcm.gcm.1.y gcm.gcm.1.x <- gcm.gcm.a gcm.gcm.b; goto 3
+3: %rax %rdx t.20 gcm.gcm.1.x t.21 <- gcm.gcm.1.x gcm.gcm.1.y; goto 6 4
+4: gcm.gcm.1.1.t gcm.gcm.1.x gcm.gcm.1.y <- gcm.gcm.1.x gcm.gcm.1.y; goto 3
+5: gcm.gcm.1.x gcm.gcm.1.y <- gcm.gcm.a gcm.gcm.b; goto 3
+6: %rax <- gcm.gcm.1.y; goto 7
+7: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+gcm.gcm.b: gcm.gcm.a %rsp %rbp %rdi gcm.gcm.1.y gcm.gcm.1.x 
+gcm.gcm.a: gcm.gcm.b %rsp %rbp gcm.gcm.1.y gcm.gcm.1.x 
+gcm.gcm.1.x: gcm.gcm.a gcm.gcm.b %rsp %rbp gcm.gcm.1.y t.21 gcm.gcm.1.1.t 
+gcm.gcm.1.y: gcm.gcm.a gcm.gcm.b %rsp %rbp gcm.gcm.1.x t.21 t.20 %rax %rdx gcm.gcm.1.1.t 
+t.20: gcm.gcm.1.y %rsp %rbp 
+t.21: gcm.gcm.1.y %rsp %rbp gcm.gcm.1.x 
+gcm.gcm.1.1.t: gcm.gcm.1.x %rsp %rbp gcm.gcm.1.y 
+%rax <= gcm.gcm.1.y
+gcm.gcm.1.x <= gcm.gcm.a
+gcm.gcm.1.y <= gcm.gcm.b
+gcm.gcm.1.1.t <= gcm.gcm.1.x
+gcm.gcm.1.x <= gcm.gcm.1.y
+gcm.gcm.1.y <= gcm.gcm.1.1.t
+%rax <= gcm.gcm.1.x
+t.20 <= %rdx
+gcm.gcm.1.x <= t.20
+gcm.gcm.1.y <= gcm.gcm.a
+gcm.gcm.1.x <= gcm.gcm.b
+gcm.gcm.b <= %rsi
+gcm.gcm.a <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+gcm.gcm.b->%rsi
+gcm.gcm.a->%rdi
+gcm.gcm.1.x->%rax
+gcm.gcm.1.y->%rbx
+t.20->%rdx
+t.21->%rcx
+gcm.gcm.1.1.t->%rcx
+# Assembly code:
+	.text
+gcm.gcm:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rsi,%rsi
+#	movq %rdi,%rdi
+L.32:
+	xorq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rsi,%rdi
+	jg L.18
+L.19:
+	movq %rdi,%rbx
+	movq %rsi,%rax
+L.20:
+L.21:
+L.22:
+#	movq %rax,%rax
+	cqto
+	idivq %rbx
+#	movq %rdx,%rdx
+	movq %rdx,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	je L.24
+L.25:
+	movq %rax,%rcx
+	movq %rbx,%rax
+	movq %rcx,%rbx
+	jmp L.21
+L.18:
+	movq %rdi,%rax
+	movq %rsi,%rbx
+	jmp L.20
+L.24:
+L.23:
+	movq %rbx,%rax
+L.17:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+gcm.gcm.badSub:
+	call badSub
+END gcm.gcm
+	.data
+	.balign 8
+L.26:
+	.byte 73
+	.byte 110
+	.byte 112
+	.byte 117
+	.byte 116
+	.byte 32
+	.byte 110
+	.byte 117
+	.byte 109
+	.byte 98
+	.byte 101
+	.byte 114
+	.byte 58
+	.byte 32
+	.byte 0
+	.data
+	.balign 8
+L.27:
+	.quad L.26
+	.quad 15
+PROCEDURE gcm
+# Trees:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0),
+EXP(
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27)),
+EXP(
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -8))),
+EXP(
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27)),
+EXP(
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16))),
+EXP(
+ CALL(
+  NAME gcm.println,
+  CONST 0,
+  CALL(
+   NAME gcm.gcm,
+   CONST 0,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false),
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false))))
+# Linearized (trees):
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.22)
+MOVE(
+ TEMP t.23,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -8)))
+EXP(
+ TEMP t.23)
+MOVE(
+ TEMP t.24,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.24)
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16)))
+EXP(
+ TEMP t.25)
+MOVE(
+ TEMP t.27,
+ CALL(
+  NAME gcm.gcm,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 8, true, false),
+  MEM(
+   TEMP %rbp, 
+   CONST -16, 8, true, false)))
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME gcm.println,
+  CONST 0,
+  TEMP t.27))
+EXP(
+ TEMP t.26)
+# Basic Blocks:
+# 0
+LABEL L.33
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.22)
+MOVE(
+ TEMP t.23,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -8)))
+EXP(
+ TEMP t.23)
+MOVE(
+ TEMP t.24,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.24)
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16)))
+EXP(
+ TEMP t.25)
+MOVE(
+ TEMP t.27,
+ CALL(
+  NAME gcm.gcm,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 8, true, false),
+  MEM(
+   TEMP %rbp, 
+   CONST -16, 8, true, false)))
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME gcm.println,
+  CONST 0,
+  TEMP t.27))
+EXP(
+ TEMP t.26)
+# Trace Scheduled:
+LABEL L.33
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.22)
+MOVE(
+ TEMP t.23,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -8)))
+EXP(
+ TEMP t.23)
+MOVE(
+ TEMP t.24,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.24)
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16)))
+EXP(
+ TEMP t.25)
+MOVE(
+ TEMP t.27,
+ CALL(
+  NAME gcm.gcm,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 8, true, false),
+  MEM(
+   TEMP %rbp, 
+   CONST -16, 8, true, false)))
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME gcm.println,
+  CONST 0,
+  TEMP t.27))
+EXP(
+ TEMP t.26)
+# With procedure entry/exit:
+LABEL L.33
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.22,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.22)
+MOVE(
+ TEMP t.23,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -8)))
+EXP(
+ TEMP t.23)
+MOVE(
+ TEMP t.24,
+ CALL(
+  NAME gcm.print,
+  CONST 0,
+  NAME L.27))
+EXP(
+ TEMP t.24)
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME gcm.readln,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16)))
+EXP(
+ TEMP t.25)
+MOVE(
+ TEMP t.27,
+ CALL(
+  NAME gcm.gcm,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 8, true, false),
+  MEM(
+   TEMP %rbp, 
+   CONST -16, 8, true, false)))
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME gcm.println,
+  CONST 0,
+  TEMP t.27))
+EXP(
+ TEMP t.26)
+# Instructions:
+L.33:	# <- 
+	movq $0,-8(%rbp)	# <- %rbp 
+	movq $0,-16(%rbp)	# <- %rbp 
+	leaq L.27(%rip),t.28	# t.28 <- 
+	movq t.28,%rdi	# %rdi := t.28 
+	call gcm.print	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.22	# t.22 := %rax 
+	movq %rbp,t.29	# t.29 := %rbp 
+	addq $-8,t.29	# t.29 <- t.29 
+	movq t.29,%rdi	# %rdi := t.29 
+	call gcm.readln	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.23	# t.23 := %rax 
+	leaq L.27(%rip),t.30	# t.30 <- 
+	movq t.30,%rdi	# %rdi := t.30 
+	call gcm.print	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.24	# t.24 := %rax 
+	movq %rbp,t.31	# t.31 := %rbp 
+	addq $-16,t.31	# t.31 <- t.31 
+	movq t.31,%rdi	# %rdi := t.31 
+	call gcm.readln	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.25	# t.25 := %rax 
+	movq -8(%rbp),t.32	# t.32 <- %rbp 
+	movq t.32,%rdi	# %rdi := t.32 
+	movq -16(%rbp),t.33	# t.33 <- %rbp 
+	movq t.33,%rsi	# %rsi := t.33 
+	call gcm.gcm	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.27	# t.27 := %rax 
+	movq t.27,%rdi	# %rdi := t.27 
+	call gcm.println	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.26	# t.26 := %rax 
+# Control Flow Graph:
+0: t.28 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.22 t.29 t.23 t.30 t.24 t.31 t.25 t.32 t.33 t.27 t.26 <- %rbp %rsp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.28: %rsp %rbp 
+t.22: %rsp %rbp 
+t.29: %rsp %rbp 
+t.23: %rsp %rbp 
+t.30: %rsp %rbp 
+t.24: %rsp %rbp 
+t.31: %rsp %rbp 
+t.25: %rsp %rbp 
+t.32: %rsp %rbp 
+t.33: %rsp %rbp %rdi 
+t.27: %rsp %rbp 
+t.26: %rsp %rbp 
+%rdi <= t.28
+t.22 <= %rax
+t.29 <= %rbp
+%rdi <= t.29
+t.23 <= %rax
+%rdi <= t.30
+t.24 <= %rax
+t.31 <= %rbp
+%rdi <= t.31
+t.25 <= %rax
+%rdi <= t.32
+%rsi <= t.33
+t.27 <= %rax
+%rdi <= t.27
+t.26 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.28->%rdi
+t.22->%rax
+t.29->%rdi
+t.23->%rax
+t.30->%rdi
+t.24->%rax
+t.31->%rdi
+t.25->%rax
+t.32->%rdi
+t.33->%rsi
+t.27->%rax
+t.26->%rax
+# Assembly code:
+	.text
+gcm:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+L.33:
+	movq $0,-8(%rbp)
+	movq $0,-16(%rbp)
+	leaq L.27(%rip),%rdi
+#	movq %rdi,%rdi
+	call gcm.print
+#	movq %rax,%rax
+	movq %rbp,%rdi
+	addq $-8,%rdi
+#	movq %rdi,%rdi
+	call gcm.readln
+#	movq %rax,%rax
+	leaq L.27(%rip),%rdi
+#	movq %rdi,%rdi
+	call gcm.print
+#	movq %rax,%rax
+	movq %rbp,%rdi
+	addq $-16,%rdi
+#	movq %rdi,%rdi
+	call gcm.readln
+#	movq %rax,%rax
+	movq -8(%rbp),%rdi
+#	movq %rdi,%rdi
+	movq -16(%rbp),%rsi
+#	movq %rsi,%rsi
+	call gcm.gcm
+#	movq %rax,%rax
+	movq %rax,%rdi
+	call gcm.println
+#	movq %rax,%rax
+#	returnSink
+	addq $32,%rsp
+	popq %rbp
+	ret
+gcm.badSub:
+	call badSub
+END gcm

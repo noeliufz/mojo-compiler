@@ -1,0 +1,238 @@
+PROCEDURE While
+# Trees:
+MOVE(
+ TEMP While.1.x,
+ CONST 0),
+LABEL L.0,
+BLT(
+ TEMP While.1.x,
+ CONST 100,
+ L.1, L.2),
+LABEL L.1,
+MOVE(
+ TEMP While.1.x,
+ ADD(
+  TEMP While.1.x,
+  CONST 1)),
+BEQ(
+ TEMP While.1.x,
+ CONST 42,
+ L.3, L.4),
+LABEL L.3,
+JUMP(
+ NAME L.2),
+LABEL L.4,
+JUMP(
+ NAME L.0),
+LABEL L.2
+# Linearized (trees):
+MOVE(
+ TEMP While.1.x,
+ CONST 0)
+LABEL L.0
+BLT(
+ TEMP While.1.x,
+ CONST 100,
+ L.1, L.2)
+LABEL L.1
+MOVE(
+ TEMP While.1.x,
+ ADD(
+  TEMP While.1.x,
+  CONST 1))
+BEQ(
+ TEMP While.1.x,
+ CONST 42,
+ L.3, L.4)
+LABEL L.3
+JUMP(
+ NAME L.2)
+LABEL L.4
+JUMP(
+ NAME L.0)
+LABEL L.2
+# Basic Blocks:
+# 0
+LABEL L.5
+MOVE(
+ TEMP While.1.x,
+ CONST 0)
+JUMP(
+ NAME L.0)
+# 1
+LABEL L.0
+BLT(
+ TEMP While.1.x,
+ CONST 100,
+ L.1, L.2)
+# 2
+LABEL L.1
+MOVE(
+ TEMP While.1.x,
+ ADD(
+  TEMP While.1.x,
+  CONST 1))
+BEQ(
+ TEMP While.1.x,
+ CONST 42,
+ L.3, L.4)
+# 3
+LABEL L.3
+JUMP(
+ NAME L.2)
+# 4
+LABEL L.4
+JUMP(
+ NAME L.0)
+# 5
+LABEL L.2
+# Trace Scheduled:
+LABEL L.5
+MOVE(
+ TEMP While.1.x,
+ CONST 0)
+LABEL L.0
+BGE(
+ TEMP While.1.x,
+ CONST 100,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP While.1.x,
+ ADD(
+  TEMP While.1.x,
+  CONST 1))
+BEQ(
+ TEMP While.1.x,
+ CONST 42,
+ L.3, L.4)
+LABEL L.4
+JUMP(
+ NAME L.0)
+LABEL L.3
+LABEL L.2
+# With procedure entry/exit:
+LABEL L.5
+MOVE(
+ TEMP While.1.x,
+ CONST 0)
+LABEL L.0
+BGE(
+ TEMP While.1.x,
+ CONST 100,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP While.1.x,
+ ADD(
+  TEMP While.1.x,
+  CONST 1))
+BEQ(
+ TEMP While.1.x,
+ CONST 42,
+ L.3, L.4)
+LABEL L.4
+JUMP(
+ NAME L.0)
+LABEL L.3
+LABEL L.2
+# Instructions:
+L.5:	# <- 
+	xorq While.1.x,While.1.x	# While.1.x <- 
+L.0:	# <- 
+	movq $100,t.0	# t.0 <- 
+	cmpq t.0,While.1.x	# <- While.1.x t.0 
+	jge L.2	# <- : goto L.2 L.1 
+L.1:	# <- 
+	movq While.1.x,t.1	# t.1 := While.1.x 
+	addq $1,t.1	# t.1 <- t.1 
+	movq t.1,While.1.x	# While.1.x := t.1 
+	movq $42,t.2	# t.2 <- 
+	cmpq t.2,While.1.x	# <- While.1.x t.2 
+	je L.3	# <- : goto L.3 L.4 
+L.4:	# <- 
+	jmp L.0	# <- : goto L.0 
+L.3:	# <- 
+L.2:	# <- 
+# Control Flow Graph:
+0: While.1.x <-; goto 1
+1: t.0 <- While.1.x; goto 4 2
+2: t.1 While.1.x t.2 <- While.1.x; goto 4 3
+3: <-; goto 1
+4: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+While.1.x: %rsp %rbp t.0 t.2 
+t.0: %rsp %rbp While.1.x 
+t.1: %rsp %rbp 
+t.2: %rsp %rbp While.1.x 
+t.1 <= While.1.x
+While.1.x <= t.1
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+While.1.x->%rax
+t.0->%rbx
+t.1->%rax
+t.2->%rbx
+# Assembly code:
+	.text
+While:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.5:
+	xorq %rax,%rax
+L.0:
+	movq $100,%rbx
+	cmpq %rbx,%rax
+	jge L.2
+L.1:
+#	movq %rax,%rax
+	addq $1,%rax
+#	movq %rax,%rax
+	movq $42,%rbx
+	cmpq %rbx,%rax
+	je L.3
+L.4:
+	jmp L.0
+L.3:
+L.2:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+While.badSub:
+	call badSub
+END While

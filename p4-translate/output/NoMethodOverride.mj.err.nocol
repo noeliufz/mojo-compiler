@@ -1,0 +1,2 @@
+ line 1, column: error: no method to override in supertype (f)
+ line 1, column: error: default is incompatible with method type (f)

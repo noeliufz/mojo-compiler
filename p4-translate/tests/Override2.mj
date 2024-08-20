@@ -1,0 +1,6 @@
+type
+  A = object { m() = P },
+  B = A object { m = Q },
+  C = A object { m() = Q };
+proc P(a:A);
+proc Q(a:A);

@@ -1,0 +1,9 @@
+proc puts(a: Address): int;
+
+proc println(t: Text) {
+  puts(Loophole(t, ref Address)^);
+}
+
+{
+  println("Hello World✅");
+}

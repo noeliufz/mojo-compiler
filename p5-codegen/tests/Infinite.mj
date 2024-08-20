@@ -1,0 +1,10 @@
+proc puts(a: Address): int;
+
+{
+  loop {
+    puts(Loophole("'ello, 'ello, 'ello!", ref Address)^);
+  }
+}
+
+    
+    

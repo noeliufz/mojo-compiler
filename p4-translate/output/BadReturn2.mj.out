@@ -1,0 +1,8 @@
+	.text
+BadReturn2.foo:
+LABEL L.0
+
+
+	.text
+BadReturn2:
+

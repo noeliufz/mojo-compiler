@@ -1,0 +1,24 @@
+	.text
+MultiAnd.MultiAnd:
+BEQ(
+ TEMP MultiAnd.MultiAnd.x,
+ CONST 0,
+ L.4, L.2),
+LABEL L.4,
+BEQ(
+ TEMP MultiAnd.MultiAnd.y,
+ CONST 1,
+ L.3, L.2),
+LABEL L.3,
+BEQ(
+ TEMP MultiAnd.MultiAnd.z,
+ CONST 2,
+ L.1, L.2),
+LABEL L.1,
+LABEL L.2,
+LABEL L.0
+
+
+	.text
+MultiAnd:
+

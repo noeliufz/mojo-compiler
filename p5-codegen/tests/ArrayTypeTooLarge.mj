@@ -1,0 +1,1 @@
+type A = array 16_FFFF of array 16_FFFF of int;

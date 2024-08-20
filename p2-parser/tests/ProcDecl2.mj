@@ -1,0 +1,1 @@
+proc foo(i: int) { i = i + 1; }

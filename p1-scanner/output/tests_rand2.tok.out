@@ -1,0 +1,17 @@
+<NUMBER> 7
+<CHAR> 'a'
+<NUMBER> 7
+<ID> x
+<CHAR> 'm'
+<ID> out
+<TEXT> "\n\b\r\t\f"
+<ID> doit0x4bdoit
+<CHAR> 'B'
+<CHAR> '\045'
+<CHAR> '\n'
+<CHAR> 'G'
+<CHAR> 'I'
+<CHAR> '\012'
+<NUMBER> 987654321
+"==" ==
+<CHAR> '\\'

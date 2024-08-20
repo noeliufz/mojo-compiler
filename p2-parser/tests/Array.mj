@@ -1,0 +1,1 @@
+type x = array 10 of int;

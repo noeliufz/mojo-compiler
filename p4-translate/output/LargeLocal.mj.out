@@ -1,0 +1,34 @@
+	.text
+LargeLocal:
+MOVE(
+ TEMP t.1,
+ CONST 268435455),
+MOVE(
+ TEMP t.0,
+ CONST 0),
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0),
+LABEL L.0,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -2147483640, 8, true),
+ CONST 0),
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1)),
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1),
+LABEL L.1
+
+

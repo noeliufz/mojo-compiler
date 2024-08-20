@@ -1,0 +1,3 @@
+{
+  var a = New(ref array 10 of record { x, y: int });
+}

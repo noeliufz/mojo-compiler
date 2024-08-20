@@ -1,0 +1,26 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN BadOr
+BEGIN BadOr.1
+BadOr.1.v:bool
+END BadOr.1
+END BadOr
+END _BUILTIN

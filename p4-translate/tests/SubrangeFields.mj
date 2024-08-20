@@ -1,0 +1,23 @@
+proc putchar(b: int): int;
+
+proc println(i: int) {
+  proc f(i: int) {
+    if i > 0 then {
+      f(i/10);
+      putchar(i - i / 10 * 10 + Ord('0'));
+    }
+  }
+  if (i < 0) then { putchar(Ord('-')); i = -i; }
+  if (i == 0) then putchar(Ord('0'));
+  else f(i);
+  putchar(Ord('\n'));
+}
+
+var r: record { a: [0..16_FF]; b: [-128..127] };
+
+{
+  r.a = 16_FF;
+  r.b = -1;
+  println(r.a);
+  println(r.b);
+}

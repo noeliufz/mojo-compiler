@@ -1,0 +1,2 @@
+ line 4, column 9: error: nested procedures are not constants
+ line 4, column 9: error: cannot assign nested procedures

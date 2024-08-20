@@ -1,0 +1,204 @@
+PROCEDURE BreakStmt
+# Trees:
+MOVE(
+ TEMP BreakStmt.1.x,
+ CONST 0),
+MOVE(
+ TEMP BreakStmt.1.y,
+ CONST 0),
+LABEL L.0,
+BEQ(
+ TEMP BreakStmt.1.x,
+ CONST 0,
+ L.2, L.1),
+LABEL L.1,
+JUMP(
+ NAME L.2),
+BEQ(
+ TEMP BreakStmt.1.y,
+ CONST 0,
+ L.0, L.2),
+LABEL L.2
+# Linearized (trees):
+MOVE(
+ TEMP BreakStmt.1.x,
+ CONST 0)
+MOVE(
+ TEMP BreakStmt.1.y,
+ CONST 0)
+LABEL L.0
+BEQ(
+ TEMP BreakStmt.1.x,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+JUMP(
+ NAME L.2)
+BEQ(
+ TEMP BreakStmt.1.y,
+ CONST 0,
+ L.0, L.2)
+LABEL L.2
+# Basic Blocks:
+# 0
+LABEL L.3
+MOVE(
+ TEMP BreakStmt.1.x,
+ CONST 0)
+MOVE(
+ TEMP BreakStmt.1.y,
+ CONST 0)
+JUMP(
+ NAME L.0)
+# 1
+LABEL L.0
+BEQ(
+ TEMP BreakStmt.1.x,
+ CONST 0,
+ L.2, L.1)
+# 2
+LABEL L.1
+JUMP(
+ NAME L.2)
+# 3
+LABEL L.4
+BEQ(
+ TEMP BreakStmt.1.y,
+ CONST 0,
+ L.0, L.2)
+# 4
+LABEL L.2
+# Trace Scheduled:
+LABEL L.3
+MOVE(
+ TEMP BreakStmt.1.x,
+ CONST 0)
+MOVE(
+ TEMP BreakStmt.1.y,
+ CONST 0)
+LABEL L.0
+BEQ(
+ TEMP BreakStmt.1.x,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+JUMP(
+ NAME L.2)
+LABEL L.4
+BEQ(
+ TEMP BreakStmt.1.y,
+ CONST 0,
+ L.0, L.2)
+LABEL L.2
+# With procedure entry/exit:
+LABEL L.3
+MOVE(
+ TEMP BreakStmt.1.x,
+ CONST 0)
+MOVE(
+ TEMP BreakStmt.1.y,
+ CONST 0)
+LABEL L.0
+BEQ(
+ TEMP BreakStmt.1.x,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+JUMP(
+ NAME L.2)
+LABEL L.4
+BEQ(
+ TEMP BreakStmt.1.y,
+ CONST 0,
+ L.0, L.2)
+LABEL L.2
+# Instructions:
+L.3:	# <- 
+	xorq BreakStmt.1.x,BreakStmt.1.x	# BreakStmt.1.x <- 
+	xorq BreakStmt.1.y,BreakStmt.1.y	# BreakStmt.1.y <- 
+L.0:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	cmpq t.0,BreakStmt.1.x	# <- BreakStmt.1.x t.0 
+	je L.2	# <- : goto L.2 L.1 
+L.1:	# <- 
+	jmp L.2	# <- : goto L.2 
+L.4:	# <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.1,BreakStmt.1.y	# <- BreakStmt.1.y t.1 
+	je L.0	# <- : goto L.0 L.2 
+L.2:	# <- 
+# Control Flow Graph:
+0: BreakStmt.1.x BreakStmt.1.y <-; goto 1
+1: t.0 <- BreakStmt.1.x; goto 4 2
+2: <-; goto 4
+3: t.1 <- BreakStmt.1.y; goto 1 4
+4: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+BreakStmt.1.x: BreakStmt.1.y %rsp %rbp t.0 t.1 
+BreakStmt.1.y: BreakStmt.1.x %rsp %rbp t.1 
+t.0: %rsp %rbp BreakStmt.1.x 
+t.1: BreakStmt.1.x %rsp %rbp BreakStmt.1.y 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+BreakStmt.1.x->%rcx
+BreakStmt.1.y->%rbx
+t.0->%rax
+t.1->%rax
+# Assembly code:
+	.text
+BreakStmt:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.3:
+	xorq %rcx,%rcx
+	xorq %rbx,%rbx
+L.0:
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	je L.2
+L.1:
+	jmp L.2
+L.4:
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	je L.0
+L.2:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END BreakStmt

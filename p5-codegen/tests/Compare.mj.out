@@ -1,0 +1,878 @@
+PROCEDURE Compare.LT
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CONST 0),
+  BLT(
+   TEMP Compare.LT.x,
+   TEMP Compare.LT.y,
+   L.1, L.2),
+  LABEL L.1,
+  MOVE(
+   TEMP t.0,
+   CONST 1),
+  LABEL L.2,
+  TEMP t.0)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BLT(
+ TEMP Compare.LT.x,
+ TEMP Compare.LT.y,
+ L.1, L.2)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.12
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BLT(
+ TEMP Compare.LT.x,
+ TEMP Compare.LT.y,
+ L.1, L.2)
+# 1
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+# 2
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.0
+# Trace Scheduled:
+LABEL L.12
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BLT(
+ TEMP Compare.LT.x,
+ TEMP Compare.LT.y,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP Compare.LT.y,
+ TEMP %rsi)
+MOVE(
+ TEMP Compare.LT.x,
+ TEMP %rdi)
+LABEL L.12
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BLT(
+ TEMP Compare.LT.x,
+ TEMP Compare.LT.y,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+LABEL L.0
+# Instructions:
+	movq %rsi,Compare.LT.y	# Compare.LT.y := %rsi 
+	movq %rdi,Compare.LT.x	# Compare.LT.x := %rdi 
+L.12:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	cmpq Compare.LT.y,Compare.LT.x	# <- Compare.LT.x Compare.LT.y 
+	jl L.1	# <- : goto L.1 L.2 
+L.2:	# <- 
+	movq t.0,%rax	# %rax := t.0 
+	jmp L.0	# <- : goto L.0 
+L.1:	# <- 
+	movq $1,t.0	# t.0 <- 
+	jmp L.2	# <- : goto L.2 
+L.0:	# <- 
+# Control Flow Graph:
+0: Compare.LT.y Compare.LT.x <- %rsi %rdi; goto 1
+1: t.0 <- Compare.LT.x Compare.LT.y; goto 3 2
+2: %rax <- t.0; goto 4
+3: t.0 <-; goto 2
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Compare.LT.y: Compare.LT.x %rsp %rbp %rdi t.0 
+Compare.LT.x: Compare.LT.y %rsp %rbp t.0 
+t.0: %rsp %rbp Compare.LT.x Compare.LT.y 
+%rax <= t.0
+Compare.LT.y <= %rsi
+Compare.LT.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Compare.LT.y->%rcx
+Compare.LT.x->%rbx
+t.0->%rax
+# Assembly code:
+	.text
+Compare.LT:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rsi,%rcx
+	movq %rdi,%rbx
+L.12:
+	xorq %rax,%rax
+	cmpq %rcx,%rbx
+	jl L.1
+L.2:
+#	movq %rax,%rax
+	jmp L.0
+L.1:
+	movq $1,%rax
+	jmp L.2
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END Compare.LT
+PROCEDURE Compare.LE
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.1,
+   CONST 0),
+  BLE(
+   TEMP Compare.LE.x,
+   TEMP Compare.LE.y,
+   L.4, L.5),
+  LABEL L.4,
+  MOVE(
+   TEMP t.1,
+   CONST 1),
+  LABEL L.5,
+  TEMP t.1)),
+JUMP(
+ NAME L.3),
+LABEL L.3
+# Linearized (trees):
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BLE(
+ TEMP Compare.LE.x,
+ TEMP Compare.LE.y,
+ L.4, L.5)
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 1)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ TEMP t.1)
+JUMP(
+ NAME L.3)
+LABEL L.3
+# Basic Blocks:
+# 0
+LABEL L.13
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BLE(
+ TEMP Compare.LE.x,
+ TEMP Compare.LE.y,
+ L.4, L.5)
+# 1
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 1)
+JUMP(
+ NAME L.5)
+# 2
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ TEMP t.1)
+JUMP(
+ NAME L.3)
+# 3
+LABEL L.3
+# Trace Scheduled:
+LABEL L.13
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BLE(
+ TEMP Compare.LE.x,
+ TEMP Compare.LE.y,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ TEMP t.1)
+JUMP(
+ NAME L.3)
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 1)
+JUMP(
+ NAME L.5)
+LABEL L.3
+# With procedure entry/exit:
+MOVE(
+ TEMP Compare.LE.y,
+ TEMP %rsi)
+MOVE(
+ TEMP Compare.LE.x,
+ TEMP %rdi)
+LABEL L.13
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BLE(
+ TEMP Compare.LE.x,
+ TEMP Compare.LE.y,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ TEMP t.1)
+JUMP(
+ NAME L.3)
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 1)
+JUMP(
+ NAME L.5)
+LABEL L.3
+# Instructions:
+	movq %rsi,Compare.LE.y	# Compare.LE.y := %rsi 
+	movq %rdi,Compare.LE.x	# Compare.LE.x := %rdi 
+L.13:	# <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq Compare.LE.y,Compare.LE.x	# <- Compare.LE.x Compare.LE.y 
+	jle L.4	# <- : goto L.4 L.5 
+L.5:	# <- 
+	movq t.1,%rax	# %rax := t.1 
+	jmp L.3	# <- : goto L.3 
+L.4:	# <- 
+	movq $1,t.1	# t.1 <- 
+	jmp L.5	# <- : goto L.5 
+L.3:	# <- 
+# Control Flow Graph:
+0: Compare.LE.y Compare.LE.x <- %rsi %rdi; goto 1
+1: t.1 <- Compare.LE.x Compare.LE.y; goto 3 2
+2: %rax <- t.1; goto 4
+3: t.1 <-; goto 2
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Compare.LE.y: Compare.LE.x %rsp %rbp %rdi t.1 
+Compare.LE.x: Compare.LE.y %rsp %rbp t.1 
+t.1: %rsp %rbp Compare.LE.x Compare.LE.y 
+%rax <= t.1
+Compare.LE.y <= %rsi
+Compare.LE.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Compare.LE.y->%rcx
+Compare.LE.x->%rbx
+t.1->%rax
+# Assembly code:
+	.text
+Compare.LE:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rsi,%rcx
+	movq %rdi,%rbx
+L.13:
+	xorq %rax,%rax
+	cmpq %rcx,%rbx
+	jle L.4
+L.5:
+#	movq %rax,%rax
+	jmp L.3
+L.4:
+	movq $1,%rax
+	jmp L.5
+L.3:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END Compare.LE
+PROCEDURE Compare.GT
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.2,
+   CONST 0),
+  BGT(
+   TEMP Compare.GT.x,
+   TEMP Compare.GT.y,
+   L.7, L.8),
+  LABEL L.7,
+  MOVE(
+   TEMP t.2,
+   CONST 1),
+  LABEL L.8,
+  TEMP t.2)),
+JUMP(
+ NAME L.6),
+LABEL L.6
+# Linearized (trees):
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGT(
+ TEMP Compare.GT.x,
+ TEMP Compare.GT.y,
+ L.7, L.8)
+LABEL L.7
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.8
+MOVE(
+ TEMP %rax,
+ TEMP t.2)
+JUMP(
+ NAME L.6)
+LABEL L.6
+# Basic Blocks:
+# 0
+LABEL L.14
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGT(
+ TEMP Compare.GT.x,
+ TEMP Compare.GT.y,
+ L.7, L.8)
+# 1
+LABEL L.7
+MOVE(
+ TEMP t.2,
+ CONST 1)
+JUMP(
+ NAME L.8)
+# 2
+LABEL L.8
+MOVE(
+ TEMP %rax,
+ TEMP t.2)
+JUMP(
+ NAME L.6)
+# 3
+LABEL L.6
+# Trace Scheduled:
+LABEL L.14
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGT(
+ TEMP Compare.GT.x,
+ TEMP Compare.GT.y,
+ L.7, L.8)
+LABEL L.8
+MOVE(
+ TEMP %rax,
+ TEMP t.2)
+JUMP(
+ NAME L.6)
+LABEL L.7
+MOVE(
+ TEMP t.2,
+ CONST 1)
+JUMP(
+ NAME L.8)
+LABEL L.6
+# With procedure entry/exit:
+MOVE(
+ TEMP Compare.GT.y,
+ TEMP %rsi)
+MOVE(
+ TEMP Compare.GT.x,
+ TEMP %rdi)
+LABEL L.14
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGT(
+ TEMP Compare.GT.x,
+ TEMP Compare.GT.y,
+ L.7, L.8)
+LABEL L.8
+MOVE(
+ TEMP %rax,
+ TEMP t.2)
+JUMP(
+ NAME L.6)
+LABEL L.7
+MOVE(
+ TEMP t.2,
+ CONST 1)
+JUMP(
+ NAME L.8)
+LABEL L.6
+# Instructions:
+	movq %rsi,Compare.GT.y	# Compare.GT.y := %rsi 
+	movq %rdi,Compare.GT.x	# Compare.GT.x := %rdi 
+L.14:	# <- 
+	xorq t.2,t.2	# t.2 <- 
+	cmpq Compare.GT.y,Compare.GT.x	# <- Compare.GT.x Compare.GT.y 
+	jg L.7	# <- : goto L.7 L.8 
+L.8:	# <- 
+	movq t.2,%rax	# %rax := t.2 
+	jmp L.6	# <- : goto L.6 
+L.7:	# <- 
+	movq $1,t.2	# t.2 <- 
+	jmp L.8	# <- : goto L.8 
+L.6:	# <- 
+# Control Flow Graph:
+0: Compare.GT.y Compare.GT.x <- %rsi %rdi; goto 1
+1: t.2 <- Compare.GT.x Compare.GT.y; goto 3 2
+2: %rax <- t.2; goto 4
+3: t.2 <-; goto 2
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Compare.GT.y: Compare.GT.x %rsp %rbp %rdi t.2 
+Compare.GT.x: Compare.GT.y %rsp %rbp t.2 
+t.2: %rsp %rbp Compare.GT.x Compare.GT.y 
+%rax <= t.2
+Compare.GT.y <= %rsi
+Compare.GT.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Compare.GT.y->%rcx
+Compare.GT.x->%rbx
+t.2->%rax
+# Assembly code:
+	.text
+Compare.GT:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rsi,%rcx
+	movq %rdi,%rbx
+L.14:
+	xorq %rax,%rax
+	cmpq %rcx,%rbx
+	jg L.7
+L.8:
+#	movq %rax,%rax
+	jmp L.6
+L.7:
+	movq $1,%rax
+	jmp L.8
+L.6:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END Compare.GT
+PROCEDURE Compare.GE
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.3,
+   CONST 0),
+  BGE(
+   TEMP Compare.GE.x,
+   TEMP Compare.GE.y,
+   L.10, L.11),
+  LABEL L.10,
+  MOVE(
+   TEMP t.3,
+   CONST 1),
+  LABEL L.11,
+  TEMP t.3)),
+JUMP(
+ NAME L.9),
+LABEL L.9
+# Linearized (trees):
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP Compare.GE.x,
+ TEMP Compare.GE.y,
+ L.10, L.11)
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ CONST 1)
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP t.3)
+JUMP(
+ NAME L.9)
+LABEL L.9
+# Basic Blocks:
+# 0
+LABEL L.15
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP Compare.GE.x,
+ TEMP Compare.GE.y,
+ L.10, L.11)
+# 1
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ CONST 1)
+JUMP(
+ NAME L.11)
+# 2
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP t.3)
+JUMP(
+ NAME L.9)
+# 3
+LABEL L.9
+# Trace Scheduled:
+LABEL L.15
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP Compare.GE.x,
+ TEMP Compare.GE.y,
+ L.10, L.11)
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP t.3)
+JUMP(
+ NAME L.9)
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ CONST 1)
+JUMP(
+ NAME L.11)
+LABEL L.9
+# With procedure entry/exit:
+MOVE(
+ TEMP Compare.GE.y,
+ TEMP %rsi)
+MOVE(
+ TEMP Compare.GE.x,
+ TEMP %rdi)
+LABEL L.15
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP Compare.GE.x,
+ TEMP Compare.GE.y,
+ L.10, L.11)
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP t.3)
+JUMP(
+ NAME L.9)
+LABEL L.10
+MOVE(
+ TEMP t.3,
+ CONST 1)
+JUMP(
+ NAME L.11)
+LABEL L.9
+# Instructions:
+	movq %rsi,Compare.GE.y	# Compare.GE.y := %rsi 
+	movq %rdi,Compare.GE.x	# Compare.GE.x := %rdi 
+L.15:	# <- 
+	xorq t.3,t.3	# t.3 <- 
+	cmpq Compare.GE.y,Compare.GE.x	# <- Compare.GE.x Compare.GE.y 
+	jge L.10	# <- : goto L.10 L.11 
+L.11:	# <- 
+	movq t.3,%rax	# %rax := t.3 
+	jmp L.9	# <- : goto L.9 
+L.10:	# <- 
+	movq $1,t.3	# t.3 <- 
+	jmp L.11	# <- : goto L.11 
+L.9:	# <- 
+# Control Flow Graph:
+0: Compare.GE.y Compare.GE.x <- %rsi %rdi; goto 1
+1: t.3 <- Compare.GE.x Compare.GE.y; goto 3 2
+2: %rax <- t.3; goto 4
+3: t.3 <-; goto 2
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Compare.GE.y: Compare.GE.x %rsp %rbp %rdi t.3 
+Compare.GE.x: Compare.GE.y %rsp %rbp t.3 
+t.3: %rsp %rbp Compare.GE.x Compare.GE.y 
+%rax <= t.3
+Compare.GE.y <= %rsi
+Compare.GE.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Compare.GE.y->%rcx
+Compare.GE.x->%rbx
+t.3->%rax
+# Assembly code:
+	.text
+Compare.GE:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rsi,%rcx
+	movq %rdi,%rbx
+L.15:
+	xorq %rax,%rax
+	cmpq %rcx,%rbx
+	jge L.10
+L.11:
+#	movq %rax,%rax
+	jmp L.9
+L.10:
+	movq $1,%rax
+	jmp L.11
+L.9:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END Compare.GE
+PROCEDURE Compare
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.16
+# Trace Scheduled:
+LABEL L.16
+# With procedure entry/exit:
+LABEL L.16
+# Instructions:
+L.16:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+Compare:
+	pushq %rbp
+	movq %rsp,%rbp
+L.16:
+#	returnSink
+	popq %rbp
+	ret
+END Compare

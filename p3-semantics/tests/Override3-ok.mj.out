@@ -1,0 +1,41 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN Override3-ok
+Override3-ok.A=Root object {
+0: a:int
+0: p:()=null
+}
+Override3-ok.AB=A object {
+4: b:int
+}
+Override3-ok.Pa:(VALUE self:A)
+Override3-ok.Pab:(VALUE self:AB)
+Override3-ok.T1=AB object {
+0: p:()=Override3-ok.Pab:(VALUE self:AB)
+}
+Override3-ok.T2=A object {
+0: p:()=Override3-ok.Pa:(VALUE self:A)
+}
+Override3-ok.T3=AB object {
+0: p:()=Override3-ok.Pa:(VALUE self:A)
+}
+END Override3-ok
+END _BUILTIN

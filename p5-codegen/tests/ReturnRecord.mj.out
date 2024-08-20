@@ -1,0 +1,949 @@
+PROCEDURE ReturnRecord.foo
+# Trees:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 2),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 3),
+MOVE(
+ TEMP t.0,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false)),
+EXP(
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  TEMP t.0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CONST 24)),
+MOVE(
+ TEMP %rax,
+ TEMP t.0),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 3)
+MOVE(
+ TEMP t.0,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  TEMP t.0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CONST 24))
+EXP(
+ TEMP t.1)
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.1
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 3)
+MOVE(
+ TEMP t.0,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  TEMP t.0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CONST 24))
+EXP(
+ TEMP t.1)
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+# 1
+LABEL L.0
+# Trace Scheduled:
+LABEL L.1
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 3)
+MOVE(
+ TEMP t.0,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  TEMP t.0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CONST 24))
+EXP(
+ TEMP t.1)
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false),
+ TEMP %rdi)
+LABEL L.1
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -24, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 3)
+MOVE(
+ TEMP t.0,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  TEMP t.0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CONST 24))
+EXP(
+ TEMP t.1)
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+LABEL L.0
+# Instructions:
+	movq %rdi,16(%rbp)	# <- %rbp %rdi 
+L.1:	# <- 
+	movq $0,-24(%rbp)	# <- %rbp 
+	movq $0,-16(%rbp)	# <- %rbp 
+	movq $0,-8(%rbp)	# <- %rbp 
+	movq $1,-24(%rbp)	# <- %rbp 
+	movq $2,-16(%rbp)	# <- %rbp 
+	movq $3,-8(%rbp)	# <- %rbp 
+	movq 16(%rbp),t.2	# t.2 <- %rbp 
+	movq t.2,t.0	# t.0 := t.2 
+	movq t.0,%rdi	# %rdi := t.0 
+	movq %rbp,t.3	# t.3 := %rbp 
+	addq $-24,t.3	# t.3 <- t.3 
+	movq t.3,%rsi	# %rsi := t.3 
+	movq $24,%rdx	# %rdx <- 
+	call memcpy	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi %rdx 
+	movq %rax,t.1	# t.1 := %rax 
+	movq t.0,%rax	# %rax := t.0 
+L.0:	# <- 
+# Control Flow Graph:
+0: <- %rbp %rdi; goto 1
+1: t.2 t.0 %rdi t.3 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.1 <- %rbp; goto 2
+2: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.2: %rsp %rbp 
+t.0: t.1 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.3 %rsp %rbp 
+t.3: %rsp %rbp t.0 %rdi 
+t.1: %rsp %rbp t.0 
+t.0 <= t.2
+%rdi <= t.0
+t.3 <= %rbp
+%rsi <= t.3
+t.1 <= %rax
+%rax <= t.0
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.2->%rax
+t.0->%rbx
+t.3->%rax
+t.1->%rax
+# Assembly code:
+	.text
+ReturnRecord.foo:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $64,%rsp
+	movq %rbx, -32(%rbp)
+	movq %rdi,16(%rbp)
+L.1:
+	movq $0,-24(%rbp)
+	movq $0,-16(%rbp)
+	movq $0,-8(%rbp)
+	movq $1,-24(%rbp)
+	movq $2,-16(%rbp)
+	movq $3,-8(%rbp)
+	movq 16(%rbp),%rax
+	movq %rax,%rbx
+	movq %rbx,%rdi
+	movq %rbp,%rax
+	addq $-24,%rax
+	movq %rax,%rsi
+	movq $24,%rdx
+	call memcpy
+#	movq %rax,%rax
+	movq %rbx,%rax
+L.0:
+#	returnSink
+	movq -32(%rbp),%rbx
+	addq $64,%rsp
+	popq %rbp
+	ret
+ReturnRecord.foo.badSub:
+	call badSub
+END ReturnRecord.foo
+PROCEDURE ReturnRecord
+# Trees:
+EXP(
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CALL(
+   NAME ReturnRecord.foo,
+   CONST 0,
+   ADD(
+    TEMP %rbp,
+    CONST -48)),
+  CONST 24)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true, false)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+# Linearized (trees):
+MOVE(
+ TEMP t.5,
+ CALL(
+  NAME ReturnRecord.foo,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -48)))
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  TEMP t.5,
+  CONST 24))
+EXP(
+ TEMP t.4)
+MOVE(
+ TEMP t.6,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true, false))))
+EXP(
+ TEMP t.6)
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.7)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false))))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.10)
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.11)
+# Basic Blocks:
+# 0
+LABEL L.2
+MOVE(
+ TEMP t.5,
+ CALL(
+  NAME ReturnRecord.foo,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -48)))
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  TEMP t.5,
+  CONST 24))
+EXP(
+ TEMP t.4)
+MOVE(
+ TEMP t.6,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true, false))))
+EXP(
+ TEMP t.6)
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.7)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false))))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.10)
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.11)
+# Trace Scheduled:
+LABEL L.2
+MOVE(
+ TEMP t.5,
+ CALL(
+  NAME ReturnRecord.foo,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -48)))
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  TEMP t.5,
+  CONST 24))
+EXP(
+ TEMP t.4)
+MOVE(
+ TEMP t.6,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true, false))))
+EXP(
+ TEMP t.6)
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.7)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false))))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.10)
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.11)
+# With procedure entry/exit:
+LABEL L.2
+MOVE(
+ TEMP t.5,
+ CALL(
+  NAME ReturnRecord.foo,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -48)))
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  TEMP t.5,
+  CONST 24))
+EXP(
+ TEMP t.4)
+MOVE(
+ TEMP t.6,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true, false))))
+EXP(
+ TEMP t.6)
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.7)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false))))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.10)
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.11)
+# Instructions:
+L.2:	# <- 
+	movq %rbp,t.12	# t.12 := %rbp 
+	addq $-48,t.12	# t.12 <- t.12 
+	movq t.12,%rdi	# %rdi := t.12 
+	call ReturnRecord.foo	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.5	# t.5 := %rax 
+	movq %rbp,t.13	# t.13 := %rbp 
+	addq $-24,t.13	# t.13 <- t.13 
+	movq t.13,%rdi	# %rdi := t.13 
+	movq t.5,%rsi	# %rsi := t.5 
+	movq $24,%rdx	# %rdx <- 
+	call memcpy	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi %rdx 
+	movq %rax,t.4	# t.4 := %rax 
+	movq -24(%rbp),t.14	# t.14 <- %rbp 
+	movq t.14,t.15	# t.15 := t.14 
+	addq $48,t.15	# t.15 <- t.15 
+	movq t.15,%rdi	# %rdi := t.15 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.6	# t.6 := %rax 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.7	# t.7 := %rax 
+	movq -16(%rbp),t.16	# t.16 <- %rbp 
+	movq t.16,t.17	# t.17 := t.16 
+	addq $48,t.17	# t.17 <- t.17 
+	movq t.17,%rdi	# %rdi := t.17 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.8	# t.8 := %rax 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.9	# t.9 := %rax 
+	movq -8(%rbp),t.18	# t.18 <- %rbp 
+	movq t.18,t.19	# t.19 := t.18 
+	addq $48,t.19	# t.19 <- t.19 
+	movq t.19,%rdi	# %rdi := t.19 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.10	# t.10 := %rax 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.11	# t.11 := %rax 
+# Control Flow Graph:
+0: t.12 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.5 t.13 t.4 t.14 t.15 t.6 t.7 t.16 t.17 t.8 t.9 t.18 t.19 t.10 t.11 <- %rbp %rsp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.12: %rsp %rbp 
+t.5: %rdi t.13 %rsp %rbp 
+t.13: %rsp %rbp t.5 
+t.4: %rsp %rbp 
+t.14: %rsp %rbp 
+t.15: %rsp %rbp 
+t.6: %rsp %rbp 
+t.7: %rsp %rbp 
+t.16: %rsp %rbp 
+t.17: %rsp %rbp 
+t.8: %rsp %rbp 
+t.9: %rsp %rbp 
+t.18: %rsp %rbp 
+t.19: %rsp %rbp 
+t.10: %rsp %rbp 
+t.11: %rsp %rbp 
+t.12 <= %rbp
+%rdi <= t.12
+t.5 <= %rax
+t.13 <= %rbp
+%rdi <= t.13
+%rsi <= t.5
+t.4 <= %rax
+t.15 <= t.14
+%rdi <= t.15
+t.6 <= %rax
+t.7 <= %rax
+t.17 <= t.16
+%rdi <= t.17
+t.8 <= %rax
+t.9 <= %rax
+t.19 <= t.18
+%rdi <= t.19
+t.10 <= %rax
+t.11 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.12->%rax
+t.5->%rbx
+t.13->%rax
+t.4->%rax
+t.14->%rax
+t.15->%rax
+t.6->%rax
+t.7->%rax
+t.16->%rax
+t.17->%rax
+t.8->%rax
+t.9->%rax
+t.18->%rax
+t.19->%rax
+t.10->%rax
+t.11->%rax
+# Assembly code:
+	.text
+ReturnRecord:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $80,%rsp
+	movq %rbx, -56(%rbp)
+L.2:
+	movq %rbp,%rax
+	addq $-48,%rax
+	movq %rax,%rdi
+	call ReturnRecord.foo
+	movq %rax,%rbx
+	movq %rbp,%rax
+	addq $-24,%rax
+	movq %rax,%rdi
+	movq %rbx,%rsi
+	movq $24,%rdx
+	call memcpy
+#	movq %rax,%rax
+	movq -24(%rbp),%rax
+#	movq %rax,%rax
+	addq $48,%rax
+	movq %rax,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq -16(%rbp),%rax
+#	movq %rax,%rax
+	addq $48,%rax
+	movq %rax,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq -8(%rbp),%rax
+#	movq %rax,%rax
+	addq $48,%rax
+	movq %rax,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+#	returnSink
+	movq -56(%rbp),%rbx
+	addq $80,%rsp
+	popq %rbp
+	ret
+ReturnRecord.badSub:
+	call badSub
+END ReturnRecord

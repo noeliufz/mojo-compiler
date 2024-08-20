@@ -1,0 +1,4 @@
+{
+  if x then { if y then {} } else {}
+  if x then { if y then {} else {} }
+}

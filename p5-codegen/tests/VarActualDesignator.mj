@@ -1,0 +1,3 @@
+proc foo(var x: int) {
+  foo(1);
+}

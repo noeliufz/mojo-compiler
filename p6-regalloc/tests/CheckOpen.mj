@@ -1,0 +1,23 @@
+proc putchar(i: int): int;
+
+{
+  var a = New(ref array of array of array of int,5,5,5);
+  var b: array 5 of array 5 of array 5 of int;
+  for i = 0 to 4 loop {
+    for j = 0 to 4 loop {
+      for k = 0 to 4 loop {
+        a[i][j][k] = (i+1) * (j+1) * (k+1);
+        b[i][j][k] = (i+1) * (j+1) * (k+1);
+      }
+    }
+  }
+  for i = 0 to 4 loop {
+    for j = 0 to 4 loop {
+      for k = 0 to 4 loop {
+        if a[i][j][k] != b[i][j][k] then putchar(Ord('N'));
+        else putchar(Ord('T'));
+        putchar(Ord('\n'));
+      }
+    }
+  }
+}

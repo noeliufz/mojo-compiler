@@ -1,0 +1,24 @@
+proc printf(format: Address; i: int);
+
+proc println(i: int) {
+    var a = Loophole("%ld\n", ref array of byte);
+    printf(&a[0], i);
+}
+
+proc map(var arr: array of int; f: proc(x: int): int) {
+    for i = 0 to Last(arr) loop {
+        arr[i] = f(arr[i]);
+    }
+}
+
+{
+    var x: array 5 of int;
+    var cnt = 0;
+    proc counter(x: int): int {
+        cnt = cnt + 1;
+        return cnt;
+    }
+    map(x, counter);
+    for i = 0 to Last(x) loop
+        println(x[i]);
+}

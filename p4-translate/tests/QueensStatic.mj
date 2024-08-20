@@ -1,0 +1,47 @@
+proc putchar(i: int): int;
+
+const N: int = 8;
+
+var
+  row, col: array N of int,
+  diag1, diag2 : array N+N-1 of int;
+
+proc Solve(c: int) {
+  if c == Number(col) then {
+    Print();
+  } else {
+    for r = 0 to Number(row)-1 loop {
+      if row[r] == 0
+         && diag1[r+c] == 0
+         && diag2[r+(N-1)-c] == 0 then {
+        row[r] = 1;
+        diag1[r+c] = 1;
+        diag2[r+(N-1)-c] = 1;
+        col[c] = r;
+        Solve(c+1);
+        row[r] = 0;
+        diag1[r+c] = 0;
+        diag2[r+(N-1)-c] = 0;
+      }
+    }
+  }
+}
+
+proc Print() {
+  for i = 0 to Number(col)-1 loop {
+    for j = 0 to Number(row)-1 loop {
+      putchar(Ord(' '));
+      if col[i] == j then {
+        putchar(Ord('Q'));
+      } else {
+        putchar(Ord('.'));
+      }
+    }
+    putchar(Ord('\n'));
+  }
+  putchar(Ord('\n'));
+}
+
+{
+  Solve(0);
+}

@@ -1,0 +1,278 @@
+PROCEDURE If
+# Trees:
+MOVE(
+ TEMP If.1.x,
+ CONST 0),
+BEQ(
+ TEMP If.1.x,
+ CONST 1,
+ L.0, L.1),
+LABEL L.0,
+MOVE(
+ TEMP If.1.x,
+ CONST 10),
+JUMP(
+ NAME L.2),
+LABEL L.1,
+BLT(
+ TEMP If.1.x,
+ CONST 4,
+ L.3, L.4),
+LABEL L.3,
+MOVE(
+ TEMP If.1.x,
+ CONST 20),
+JUMP(
+ NAME L.5),
+LABEL L.4,
+MOVE(
+ TEMP If.1.x,
+ CONST 30),
+LABEL L.5,
+LABEL L.2
+# Linearized (trees):
+MOVE(
+ TEMP If.1.x,
+ CONST 0)
+BEQ(
+ TEMP If.1.x,
+ CONST 1,
+ L.0, L.1)
+LABEL L.0
+MOVE(
+ TEMP If.1.x,
+ CONST 10)
+JUMP(
+ NAME L.2)
+LABEL L.1
+BLT(
+ TEMP If.1.x,
+ CONST 4,
+ L.3, L.4)
+LABEL L.3
+MOVE(
+ TEMP If.1.x,
+ CONST 20)
+JUMP(
+ NAME L.5)
+LABEL L.4
+MOVE(
+ TEMP If.1.x,
+ CONST 30)
+LABEL L.5
+LABEL L.2
+# Basic Blocks:
+# 0
+LABEL L.6
+MOVE(
+ TEMP If.1.x,
+ CONST 0)
+BEQ(
+ TEMP If.1.x,
+ CONST 1,
+ L.0, L.1)
+# 1
+LABEL L.0
+MOVE(
+ TEMP If.1.x,
+ CONST 10)
+JUMP(
+ NAME L.2)
+# 2
+LABEL L.1
+BLT(
+ TEMP If.1.x,
+ CONST 4,
+ L.3, L.4)
+# 3
+LABEL L.3
+MOVE(
+ TEMP If.1.x,
+ CONST 20)
+JUMP(
+ NAME L.5)
+# 4
+LABEL L.4
+MOVE(
+ TEMP If.1.x,
+ CONST 30)
+JUMP(
+ NAME L.5)
+# 5
+LABEL L.5
+JUMP(
+ NAME L.2)
+# 6
+LABEL L.2
+# Trace Scheduled:
+LABEL L.6
+MOVE(
+ TEMP If.1.x,
+ CONST 0)
+BEQ(
+ TEMP If.1.x,
+ CONST 1,
+ L.0, L.1)
+LABEL L.1
+BLT(
+ TEMP If.1.x,
+ CONST 4,
+ L.3, L.4)
+LABEL L.4
+MOVE(
+ TEMP If.1.x,
+ CONST 30)
+LABEL L.5
+JUMP(
+ NAME L.2)
+LABEL L.0
+MOVE(
+ TEMP If.1.x,
+ CONST 10)
+JUMP(
+ NAME L.2)
+LABEL L.3
+MOVE(
+ TEMP If.1.x,
+ CONST 20)
+JUMP(
+ NAME L.5)
+LABEL L.2
+# With procedure entry/exit:
+LABEL L.6
+MOVE(
+ TEMP If.1.x,
+ CONST 0)
+BEQ(
+ TEMP If.1.x,
+ CONST 1,
+ L.0, L.1)
+LABEL L.1
+BLT(
+ TEMP If.1.x,
+ CONST 4,
+ L.3, L.4)
+LABEL L.4
+MOVE(
+ TEMP If.1.x,
+ CONST 30)
+LABEL L.5
+JUMP(
+ NAME L.2)
+LABEL L.0
+MOVE(
+ TEMP If.1.x,
+ CONST 10)
+JUMP(
+ NAME L.2)
+LABEL L.3
+MOVE(
+ TEMP If.1.x,
+ CONST 20)
+JUMP(
+ NAME L.5)
+LABEL L.2
+# Instructions:
+L.6:	# <- 
+	xorq If.1.x,If.1.x	# If.1.x <- 
+	movq $1,t.0	# t.0 <- 
+	cmpq t.0,If.1.x	# <- If.1.x t.0 
+	je L.0	# <- : goto L.0 L.1 
+L.1:	# <- 
+	movq $4,t.1	# t.1 <- 
+	cmpq t.1,If.1.x	# <- If.1.x t.1 
+	jl L.3	# <- : goto L.3 L.4 
+L.4:	# <- 
+	movq $30,If.1.x	# If.1.x <- 
+L.5:	# <- 
+	jmp L.2	# <- : goto L.2 
+L.0:	# <- 
+	movq $10,If.1.x	# If.1.x <- 
+	jmp L.2	# <- : goto L.2 
+L.3:	# <- 
+	movq $20,If.1.x	# If.1.x <- 
+	jmp L.5	# <- : goto L.5 
+L.2:	# <- 
+# Control Flow Graph:
+0: If.1.x t.0 <-; goto 4 1
+1: t.1 <- If.1.x; goto 5 2
+2: If.1.x <-; goto 3
+3: <-; goto 6
+4: If.1.x <-; goto 6
+5: If.1.x <-; goto 3
+6: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+If.1.x: t.0 %rsp %rbp t.1 
+t.0: %rsp %rbp If.1.x 
+t.1: %rsp %rbp If.1.x 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+If.1.x->%rbx
+t.0->%rax
+t.1->%rax
+# Assembly code:
+	.text
+If:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.6:
+	xorq %rbx,%rbx
+	movq $1,%rax
+	cmpq %rax,%rbx
+	je L.0
+L.1:
+	movq $4,%rax
+	cmpq %rax,%rbx
+	jl L.3
+L.4:
+	movq $30,%rbx
+L.5:
+	jmp L.2
+L.0:
+	movq $10,%rbx
+	jmp L.2
+L.3:
+	movq $20,%rbx
+	jmp L.5
+L.2:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+If.badSub:
+	call badSub
+END If

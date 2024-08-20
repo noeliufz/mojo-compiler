@@ -1,0 +1,2870 @@
+PROCEDURE Fib.fib
+# Trees:
+BLT(
+ TEMP Fib.fib.n,
+ CONST 2,
+ L.1, L.2),
+LABEL L.1,
+MOVE(
+ TEMP %rax,
+ TEMP Fib.fib.n),
+JUMP(
+ NAME L.0),
+LABEL L.2,
+MOVE(
+ TEMP %rax,
+ ADD(
+  CALL(
+   NAME Fib.fib,
+   CONST 0,
+   SUB(
+    TEMP Fib.fib.n,
+    CONST 1)),
+  CALL(
+   NAME Fib.fib,
+   CONST 0,
+   SUB(
+    TEMP Fib.fib.n,
+    CONST 2)))),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+BLT(
+ TEMP Fib.fib.n,
+ CONST 2,
+ L.1, L.2)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ TEMP Fib.fib.n)
+JUMP(
+ NAME L.0)
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 1)))
+MOVE(
+ TEMP t.2,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 2)))
+MOVE(
+ TEMP %rax,
+ ADD(
+  TEMP t.1,
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.33
+BLT(
+ TEMP Fib.fib.n,
+ CONST 2,
+ L.1, L.2)
+# 1
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ TEMP Fib.fib.n)
+JUMP(
+ NAME L.0)
+# 2
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 1)))
+MOVE(
+ TEMP t.2,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 2)))
+MOVE(
+ TEMP %rax,
+ ADD(
+  TEMP t.1,
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.0
+# Trace Scheduled:
+LABEL L.33
+BLT(
+ TEMP Fib.fib.n,
+ CONST 2,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 1)))
+MOVE(
+ TEMP t.2,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 2)))
+MOVE(
+ TEMP %rax,
+ ADD(
+  TEMP t.1,
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ TEMP Fib.fib.n)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP Fib.fib.n,
+ TEMP %rdi)
+LABEL L.33
+BLT(
+ TEMP Fib.fib.n,
+ CONST 2,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 1)))
+MOVE(
+ TEMP t.2,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  SUB(
+   TEMP Fib.fib.n,
+   CONST 2)))
+MOVE(
+ TEMP %rax,
+ ADD(
+  TEMP t.1,
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ TEMP Fib.fib.n)
+LABEL L.0
+# Instructions:
+	movq %rdi,Fib.fib.n	# Fib.fib.n := %rdi 
+L.33:	# <- 
+	movq $2,t.3	# t.3 <- 
+	cmpq t.3,Fib.fib.n	# <- Fib.fib.n t.3 
+	jl L.1	# <- : goto L.1 L.2 
+L.2:	# <- 
+	movq Fib.fib.n,t.4	# t.4 := Fib.fib.n 
+	subq $1,t.4	# t.4 <- t.4 
+	movq t.4,%rdi	# %rdi := t.4 
+	call Fib.fib	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.1	# t.1 := %rax 
+	movq Fib.fib.n,t.5	# t.5 := Fib.fib.n 
+	subq $2,t.5	# t.5 <- t.5 
+	movq t.5,%rdi	# %rdi := t.5 
+	call Fib.fib	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.2	# t.2 := %rax 
+	movq t.1,t.6	# t.6 := t.1 
+	addq t.2,t.6	# t.6 <- t.2 t.6 
+	movq t.6,%rax	# %rax := t.6 
+	jmp L.0	# <- : goto L.0 
+L.1:	# <- 
+	movq Fib.fib.n,%rax	# %rax := Fib.fib.n 
+L.0:	# <- 
+# Control Flow Graph:
+0: Fib.fib.n <- %rdi; goto 1
+1: t.3 <- Fib.fib.n; goto 3 2
+2: t.4 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.1 t.5 t.2 t.6 <- Fib.fib.n; goto 4
+3: %rax <- Fib.fib.n; goto 4
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Fib.fib.n: %rsp %rbp t.3 t.1 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.4 
+t.3: Fib.fib.n %rsp %rbp 
+t.4: %rsp %rbp Fib.fib.n 
+t.1: t.2 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.5 %rsp %rbp Fib.fib.n 
+t.5: %rsp %rbp t.1 
+t.2: t.6 %rsp %rbp t.1 
+t.6: %rsp %rbp t.2 
+%rax <= Fib.fib.n
+t.4 <= Fib.fib.n
+%rdi <= t.4
+t.1 <= %rax
+t.5 <= Fib.fib.n
+%rdi <= t.5
+t.2 <= %rax
+t.6 <= t.1
+%rax <= t.6
+Fib.fib.n <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Fib.fib.n->%rbx
+t.3->%rax
+t.4->%rax
+t.1->%r12
+t.5->%rax
+t.2->%rbx
+t.6->%rax
+# Assembly code:
+	.text
+Fib.fib:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rbx
+L.33:
+	movq $2,%rax
+	cmpq %rax,%rbx
+	jl L.1
+L.2:
+	movq %rbx,%rax
+	subq $1,%rax
+	movq %rax,%rdi
+	call Fib.fib
+	movq %rax,%r12
+	movq %rbx,%rax
+	subq $2,%rax
+	movq %rax,%rdi
+	call Fib.fib
+	movq %rax,%rbx
+	movq %r12,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+	jmp L.0
+L.1:
+	movq %rbx,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	addq $32,%rsp
+	popq %rbp
+	ret
+Fib.fib.badSub:
+	call badSub
+END Fib.fib
+PROCEDURE Fib.pow
+# Trees:
+BEQ(
+ TEMP Fib.pow.n,
+ CONST 0,
+ L.4, L.5),
+LABEL L.4,
+MOVE(
+ TEMP %rax,
+ CONST 1),
+JUMP(
+ NAME L.3),
+JUMP(
+ NAME L.6),
+LABEL L.5,
+BEQ(
+ MOD(
+  TEMP Fib.pow.n,
+  CONST 2),
+ CONST 0,
+ L.7, L.8),
+LABEL L.7,
+MOVE(
+ TEMP %rax,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  DIV(
+   TEMP Fib.pow.n,
+   CONST 2))),
+JUMP(
+ NAME L.3),
+JUMP(
+ NAME L.9),
+LABEL L.8,
+MOVE(
+ TEMP Fib.pow.1.y,
+ DIV(
+  SUB(
+   TEMP Fib.pow.n,
+   CONST 1),
+  CONST 2)),
+MOVE(
+ TEMP %rax,
+ MUL(
+  TEMP Fib.pow.x,
+  CALL(
+   NAME Fib.pow,
+   CONST 0,
+   MUL(
+    TEMP Fib.pow.x,
+    TEMP Fib.pow.x),
+   TEMP Fib.pow.1.y))),
+JUMP(
+ NAME L.3),
+LABEL L.9,
+LABEL L.6,
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  CONST 1)),
+JUMP(
+ NAME L.3),
+LABEL L.3
+# Linearized (trees):
+BEQ(
+ TEMP Fib.pow.n,
+ CONST 0,
+ L.4, L.5)
+LABEL L.4
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.3)
+JUMP(
+ NAME L.6)
+LABEL L.5
+BEQ(
+ MOD(
+  TEMP Fib.pow.n,
+  CONST 2),
+ CONST 0,
+ L.7, L.8)
+LABEL L.7
+MOVE(
+ TEMP %rax,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  DIV(
+   TEMP Fib.pow.n,
+   CONST 2)))
+JUMP(
+ NAME L.3)
+JUMP(
+ NAME L.9)
+LABEL L.8
+MOVE(
+ TEMP Fib.pow.1.y,
+ DIV(
+  SUB(
+   TEMP Fib.pow.n,
+   CONST 1),
+  CONST 2))
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  TEMP Fib.pow.1.y))
+MOVE(
+ TEMP %rax,
+ MUL(
+  TEMP Fib.pow.x,
+  TEMP t.7))
+JUMP(
+ NAME L.3)
+LABEL L.9
+LABEL L.6
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  CONST 1))
+JUMP(
+ NAME L.3)
+LABEL L.3
+# Basic Blocks:
+# 0
+LABEL L.34
+BEQ(
+ TEMP Fib.pow.n,
+ CONST 0,
+ L.4, L.5)
+# 1
+LABEL L.4
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.3)
+# 2
+LABEL L.35
+JUMP(
+ NAME L.6)
+# 3
+LABEL L.5
+BEQ(
+ MOD(
+  TEMP Fib.pow.n,
+  CONST 2),
+ CONST 0,
+ L.7, L.8)
+# 4
+LABEL L.7
+MOVE(
+ TEMP %rax,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  DIV(
+   TEMP Fib.pow.n,
+   CONST 2)))
+JUMP(
+ NAME L.3)
+# 5
+LABEL L.36
+JUMP(
+ NAME L.9)
+# 6
+LABEL L.8
+MOVE(
+ TEMP Fib.pow.1.y,
+ DIV(
+  SUB(
+   TEMP Fib.pow.n,
+   CONST 1),
+  CONST 2))
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  TEMP Fib.pow.1.y))
+MOVE(
+ TEMP %rax,
+ MUL(
+  TEMP Fib.pow.x,
+  TEMP t.7))
+JUMP(
+ NAME L.3)
+# 7
+LABEL L.9
+JUMP(
+ NAME L.6)
+# 8
+LABEL L.6
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  CONST 1))
+JUMP(
+ NAME L.3)
+# 9
+LABEL L.3
+# Trace Scheduled:
+LABEL L.34
+BEQ(
+ TEMP Fib.pow.n,
+ CONST 0,
+ L.4, L.5)
+LABEL L.5
+BEQ(
+ MOD(
+  TEMP Fib.pow.n,
+  CONST 2),
+ CONST 0,
+ L.7, L.8)
+LABEL L.8
+MOVE(
+ TEMP Fib.pow.1.y,
+ DIV(
+  SUB(
+   TEMP Fib.pow.n,
+   CONST 1),
+  CONST 2))
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  TEMP Fib.pow.1.y))
+MOVE(
+ TEMP %rax,
+ MUL(
+  TEMP Fib.pow.x,
+  TEMP t.7))
+JUMP(
+ NAME L.3)
+LABEL L.4
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.3)
+LABEL L.35
+LABEL L.6
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  CONST 1))
+JUMP(
+ NAME L.3)
+LABEL L.7
+MOVE(
+ TEMP %rax,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  DIV(
+   TEMP Fib.pow.n,
+   CONST 2)))
+JUMP(
+ NAME L.3)
+LABEL L.36
+LABEL L.9
+JUMP(
+ NAME L.6)
+LABEL L.3
+# With procedure entry/exit:
+MOVE(
+ TEMP Fib.pow.n,
+ TEMP %rsi)
+MOVE(
+ TEMP Fib.pow.x,
+ TEMP %rdi)
+LABEL L.34
+BEQ(
+ TEMP Fib.pow.n,
+ CONST 0,
+ L.4, L.5)
+LABEL L.5
+BEQ(
+ MOD(
+  TEMP Fib.pow.n,
+  CONST 2),
+ CONST 0,
+ L.7, L.8)
+LABEL L.8
+MOVE(
+ TEMP Fib.pow.1.y,
+ DIV(
+  SUB(
+   TEMP Fib.pow.n,
+   CONST 1),
+  CONST 2))
+MOVE(
+ TEMP t.7,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  TEMP Fib.pow.1.y))
+MOVE(
+ TEMP %rax,
+ MUL(
+  TEMP Fib.pow.x,
+  TEMP t.7))
+JUMP(
+ NAME L.3)
+LABEL L.4
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.3)
+LABEL L.35
+LABEL L.6
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  CONST 1))
+JUMP(
+ NAME L.3)
+LABEL L.7
+MOVE(
+ TEMP %rax,
+ CALL(
+  NAME Fib.pow,
+  CONST 0,
+  MUL(
+   TEMP Fib.pow.x,
+   TEMP Fib.pow.x),
+  DIV(
+   TEMP Fib.pow.n,
+   CONST 2)))
+JUMP(
+ NAME L.3)
+LABEL L.36
+LABEL L.9
+JUMP(
+ NAME L.6)
+LABEL L.3
+# Instructions:
+	movq %rsi,Fib.pow.n	# Fib.pow.n := %rsi 
+	movq %rdi,Fib.pow.x	# Fib.pow.x := %rdi 
+L.34:	# <- 
+	xorq t.8,t.8	# t.8 <- 
+	cmpq t.8,Fib.pow.n	# <- Fib.pow.n t.8 
+	je L.4	# <- : goto L.4 L.5 
+L.5:	# <- 
+	movq Fib.pow.n,%rax	# %rax := Fib.pow.n 
+	cqto	# %rax %rdx <- %rax 
+	movq $2,t.9	# t.9 <- 
+	idivq t.9	# %rax %rdx <- t.9 %rax %rdx 
+	movq %rdx,t.10	# t.10 := %rdx 
+	xorq t.11,t.11	# t.11 <- 
+	cmpq t.11,t.10	# <- t.10 t.11 
+	je L.7	# <- : goto L.7 L.8 
+L.8:	# <- 
+	movq Fib.pow.n,t.12	# t.12 := Fib.pow.n 
+	subq $1,t.12	# t.12 <- t.12 
+	movq t.12,t.13	# t.13 := t.12 
+	sarq $1,t.13	# t.13 <- t.13 
+	movq t.13,Fib.pow.1.y	# Fib.pow.1.y := t.13 
+	movq Fib.pow.x,t.14	# t.14 := Fib.pow.x 
+	imulq Fib.pow.x,t.14	# t.14 <- Fib.pow.x t.14 
+	movq t.14,%rdi	# %rdi := t.14 
+	movq Fib.pow.1.y,%rsi	# %rsi := Fib.pow.1.y 
+	call Fib.pow	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.7	# t.7 := %rax 
+	movq Fib.pow.x,t.15	# t.15 := Fib.pow.x 
+	imulq t.7,t.15	# t.15 <- t.7 t.15 
+	movq t.15,%rax	# %rax := t.15 
+	jmp L.3	# <- : goto L.3 
+L.4:	# <- 
+	movq $1,%rax	# %rax <- 
+	jmp L.3	# <- : goto L.3 
+L.35:	# <- 
+L.6:	# <- 
+	xorq t.16,t.16	# t.16 <- 
+	movq t.16,t.17	# t.17 := t.16 
+	subq $1,t.17	# t.17 <- t.17 
+	movq t.17,%rax	# %rax := t.17 
+	jmp L.3	# <- : goto L.3 
+L.7:	# <- 
+	movq Fib.pow.x,t.18	# t.18 := Fib.pow.x 
+	imulq Fib.pow.x,t.18	# t.18 <- Fib.pow.x t.18 
+	movq t.18,%rdi	# %rdi := t.18 
+	movq Fib.pow.n,t.19	# t.19 := Fib.pow.n 
+	sarq $1,t.19	# t.19 <- t.19 
+	movq t.19,%rsi	# %rsi := t.19 
+	call Fib.pow	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+#	movq %rax,%rax	# %rax := %rax 
+	jmp L.3	# <- : goto L.3 
+L.36:	# <- 
+L.9:	# <- 
+	jmp L.6	# <- : goto L.6 
+L.3:	# <- 
+# Control Flow Graph:
+0: Fib.pow.n Fib.pow.x <- %rsi %rdi; goto 1
+1: t.8 <- Fib.pow.n; goto 4 2
+2: %rax %rdx t.9 t.10 t.11 <- Fib.pow.n; goto 6 3
+3: t.12 t.13 Fib.pow.1.y t.14 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.7 t.15 <- Fib.pow.n Fib.pow.x; goto 8
+4: %rax <-; goto 8
+5: t.16 t.17 %rax <-; goto 8
+6: t.18 %rdi t.19 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- Fib.pow.x Fib.pow.n; goto 8
+7: <-; goto 5
+8: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Fib.pow.n: Fib.pow.x %rsp %rbp %rdi t.8 t.11 t.10 %rax %rdx t.9 t.18 
+Fib.pow.x: Fib.pow.n %rsp %rbp t.8 t.11 t.10 %rax %rdx t.9 t.7 %rdi %rsi %rcx %r8 %r9 %r10 %r11 t.14 Fib.pow.1.y t.13 t.12 
+t.8: Fib.pow.n Fib.pow.x %rsp %rbp 
+t.9: Fib.pow.x Fib.pow.n %rsp %rbp %rax %rdx 
+t.10: t.11 Fib.pow.x Fib.pow.n %rsp %rbp 
+t.11: Fib.pow.x Fib.pow.n %rsp %rbp t.10 
+t.12: %rsp %rbp Fib.pow.x 
+t.13: %rsp %rbp Fib.pow.x 
+Fib.pow.1.y: %rdi t.14 %rsp %rbp Fib.pow.x 
+t.14: %rsp %rbp Fib.pow.x Fib.pow.1.y 
+t.7: t.15 %rsp %rbp Fib.pow.x 
+t.15: %rsp %rbp t.7 
+t.16: %rsp %rbp 
+t.17: %rsp %rbp 
+t.18: %rsp %rbp Fib.pow.n 
+t.19: %rsp %rbp %rdi 
+t.18 <= Fib.pow.x
+%rdi <= t.18
+t.19 <= Fib.pow.n
+%rsi <= t.19
+%rax <= %rax
+t.17 <= t.16
+%rax <= t.17
+t.12 <= Fib.pow.n
+t.13 <= t.12
+Fib.pow.1.y <= t.13
+t.14 <= Fib.pow.x
+%rdi <= t.14
+%rsi <= Fib.pow.1.y
+t.7 <= %rax
+t.15 <= Fib.pow.x
+%rax <= t.15
+%rax <= Fib.pow.n
+t.10 <= %rdx
+Fib.pow.n <= %rsi
+Fib.pow.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Fib.pow.n->%rsi
+Fib.pow.x->%rbx
+t.8->%rax
+t.9->%rcx
+t.10->%rcx
+t.11->%rax
+t.12->%rax
+t.13->%rax
+Fib.pow.1.y->%rcx
+t.14->%rax
+t.7->%rcx
+t.15->%rax
+t.16->%rax
+t.17->%rax
+t.18->%rax
+t.19->%rax
+# Assembly code:
+	.text
+Fib.pow:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rsi,%rsi
+	movq %rdi,%rbx
+L.34:
+	xorq %rax,%rax
+	cmpq %rax,%rsi
+	je L.4
+L.5:
+	movq %rsi,%rax
+	cqto
+	movq $2,%rcx
+	idivq %rcx
+	movq %rdx,%rcx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	je L.7
+L.8:
+	movq %rsi,%rax
+	subq $1,%rax
+#	movq %rax,%rax
+	sarq $1,%rax
+	movq %rax,%rcx
+	movq %rbx,%rax
+	imulq %rbx,%rax
+	movq %rax,%rdi
+	movq %rcx,%rsi
+	call Fib.pow
+	movq %rax,%rcx
+	movq %rbx,%rax
+	imulq %rcx,%rax
+#	movq %rax,%rax
+	jmp L.3
+L.4:
+	movq $1,%rax
+	jmp L.3
+L.35:
+L.6:
+	xorq %rax,%rax
+#	movq %rax,%rax
+	subq $1,%rax
+#	movq %rax,%rax
+	jmp L.3
+L.7:
+	movq %rbx,%rax
+	imulq %rbx,%rax
+	movq %rax,%rdi
+	movq %rsi,%rax
+	sarq $1,%rax
+	movq %rax,%rsi
+	call Fib.pow
+#	movq %rax,%rax
+	jmp L.3
+L.36:
+L.9:
+	jmp L.6
+L.3:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+Fib.pow.badSub:
+	call badSub
+END Fib.pow
+PROCEDURE Fib.read_number
+# Trees:
+MOVE(
+ TEMP Fib.read_number.1.n,
+ CONST 0),
+LABEL L.13,
+LABEL L.14,
+MOVE(
+ TEMP Fib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0)),
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 10,
+ L.16, L.18),
+LABEL L.18,
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 13,
+ L.16, L.17),
+LABEL L.16,
+JUMP(
+ NAME L.15),
+LABEL L.17,
+MOVE(
+ TEMP Fib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP Fib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP Fib.read_number.1.1.c,
+   CONST 48))),
+JUMP(
+ NAME L.13),
+LABEL L.15,
+MOVE(
+ TEMP %rax,
+ TEMP Fib.read_number.1.n),
+JUMP(
+ NAME L.12),
+LABEL L.12
+# Linearized (trees):
+MOVE(
+ TEMP Fib.read_number.1.n,
+ CONST 0)
+LABEL L.13
+LABEL L.14
+MOVE(
+ TEMP Fib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 10,
+ L.16, L.18)
+LABEL L.18
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 13,
+ L.16, L.17)
+LABEL L.16
+JUMP(
+ NAME L.15)
+LABEL L.17
+MOVE(
+ TEMP Fib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP Fib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP Fib.read_number.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.13)
+LABEL L.15
+MOVE(
+ TEMP %rax,
+ TEMP Fib.read_number.1.n)
+JUMP(
+ NAME L.12)
+LABEL L.12
+# Basic Blocks:
+# 0
+LABEL L.37
+MOVE(
+ TEMP Fib.read_number.1.n,
+ CONST 0)
+JUMP(
+ NAME L.13)
+# 1
+LABEL L.13
+JUMP(
+ NAME L.14)
+# 2
+LABEL L.14
+MOVE(
+ TEMP Fib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 10,
+ L.16, L.18)
+# 3
+LABEL L.18
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 13,
+ L.16, L.17)
+# 4
+LABEL L.16
+JUMP(
+ NAME L.15)
+# 5
+LABEL L.17
+MOVE(
+ TEMP Fib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP Fib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP Fib.read_number.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.13)
+# 6
+LABEL L.15
+MOVE(
+ TEMP %rax,
+ TEMP Fib.read_number.1.n)
+JUMP(
+ NAME L.12)
+# 7
+LABEL L.12
+# Trace Scheduled:
+LABEL L.37
+MOVE(
+ TEMP Fib.read_number.1.n,
+ CONST 0)
+LABEL L.13
+LABEL L.14
+MOVE(
+ TEMP Fib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 10,
+ L.16, L.18)
+LABEL L.18
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 13,
+ L.16, L.17)
+LABEL L.17
+MOVE(
+ TEMP Fib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP Fib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP Fib.read_number.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.13)
+LABEL L.16
+LABEL L.15
+MOVE(
+ TEMP %rax,
+ TEMP Fib.read_number.1.n)
+LABEL L.12
+# With procedure entry/exit:
+LABEL L.37
+MOVE(
+ TEMP Fib.read_number.1.n,
+ CONST 0)
+LABEL L.13
+LABEL L.14
+MOVE(
+ TEMP Fib.read_number.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 10,
+ L.16, L.18)
+LABEL L.18
+BEQ(
+ TEMP Fib.read_number.1.1.c,
+ CONST 13,
+ L.16, L.17)
+LABEL L.17
+MOVE(
+ TEMP Fib.read_number.1.n,
+ ADD(
+  MUL(
+   TEMP Fib.read_number.1.n,
+   CONST 10),
+  SUB(
+   TEMP Fib.read_number.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.13)
+LABEL L.16
+LABEL L.15
+MOVE(
+ TEMP %rax,
+ TEMP Fib.read_number.1.n)
+LABEL L.12
+# Instructions:
+L.37:	# <- 
+	xorq Fib.read_number.1.n,Fib.read_number.1.n	# Fib.read_number.1.n <- 
+L.13:	# <- 
+L.14:	# <- 
+	call getchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,Fib.read_number.1.1.c	# Fib.read_number.1.1.c := %rax 
+	movq $10,t.20	# t.20 <- 
+	cmpq t.20,Fib.read_number.1.1.c	# <- Fib.read_number.1.1.c t.20 
+	je L.16	# <- : goto L.16 L.18 
+L.18:	# <- 
+	movq $13,t.21	# t.21 <- 
+	cmpq t.21,Fib.read_number.1.1.c	# <- Fib.read_number.1.1.c t.21 
+	je L.16	# <- : goto L.16 L.17 
+L.17:	# <- 
+	movq Fib.read_number.1.n,t.22	# t.22 := Fib.read_number.1.n 
+	imulq $10,t.22	# t.22 <- t.22 
+	movq Fib.read_number.1.1.c,t.23	# t.23 := Fib.read_number.1.1.c 
+	subq $48,t.23	# t.23 <- t.23 
+	movq t.22,t.24	# t.24 := t.22 
+	addq t.23,t.24	# t.24 <- t.23 t.24 
+	movq t.24,Fib.read_number.1.n	# Fib.read_number.1.n := t.24 
+	jmp L.13	# <- : goto L.13 
+L.16:	# <- 
+L.15:	# <- 
+	movq Fib.read_number.1.n,%rax	# %rax := Fib.read_number.1.n 
+L.12:	# <- 
+# Control Flow Graph:
+0: Fib.read_number.1.n <-; goto 1
+1: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 Fib.read_number.1.1.c t.20 <-; goto 4 2
+2: t.21 <- Fib.read_number.1.1.c; goto 4 3
+3: t.22 t.23 t.24 Fib.read_number.1.n <- Fib.read_number.1.n Fib.read_number.1.1.c; goto 1
+4: %rax <- Fib.read_number.1.n; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Fib.read_number.1.n: %rsp %rbp t.20 Fib.read_number.1.1.c %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.21 
+Fib.read_number.1.1.c: t.20 Fib.read_number.1.n %rsp %rbp t.21 t.22 
+t.20: Fib.read_number.1.n %rsp %rbp Fib.read_number.1.1.c 
+t.21: Fib.read_number.1.n %rsp %rbp Fib.read_number.1.1.c 
+t.22: t.23 %rsp %rbp Fib.read_number.1.1.c 
+t.23: t.24 %rsp %rbp t.22 
+t.24: %rsp %rbp t.23 
+%rax <= Fib.read_number.1.n
+t.22 <= Fib.read_number.1.n
+t.23 <= Fib.read_number.1.1.c
+t.24 <= t.22
+Fib.read_number.1.n <= t.24
+Fib.read_number.1.1.c <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Fib.read_number.1.n->%r12
+Fib.read_number.1.1.c->%rbx
+t.20->%rax
+t.21->%rax
+t.22->%rax
+t.23->%rbx
+t.24->%rax
+# Assembly code:
+	.text
+Fib.read_number:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+L.37:
+	xorq %r12,%r12
+L.13:
+L.14:
+	call getchar
+	movq %rax,%rbx
+	movq $10,%rax
+	cmpq %rax,%rbx
+	je L.16
+L.18:
+	movq $13,%rax
+	cmpq %rax,%rbx
+	je L.16
+L.17:
+	movq %r12,%rax
+	imulq $10,%rax
+#	movq %rbx,%rbx
+	subq $48,%rbx
+#	movq %rax,%rax
+	addq %rbx,%rax
+	movq %rax,%r12
+	jmp L.13
+L.16:
+L.15:
+	movq %r12,%rax
+L.12:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	addq $16,%rsp
+	popq %rbp
+	ret
+Fib.read_number.badSub:
+	call badSub
+END Fib.read_number
+PROCEDURE Fib.print_number
+# Trees:
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num),
+MOVE(
+ TEMP Fib.print_number.1.i,
+ CONST 0),
+LABEL L.20,
+LABEL L.21,
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10)),
+MOVE(
+ TEMP Fib.print_number.1.i,
+ ADD(
+  TEMP Fib.print_number.1.i,
+  CONST 1)),
+BEQ(
+ TEMP Fib.print_number.1.n,
+ CONST 0,
+ L.22, L.20),
+LABEL L.22,
+LABEL L.23,
+LABEL L.24,
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ CONST 0),
+LABEL L.26,
+LABEL L.27,
+JUMP(
+ NAME L.28),
+JUMP(
+ NAME L.26),
+LABEL L.28,
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num),
+MOVE(
+ TEMP Fib.print_number.1.i,
+ SUB(
+  TEMP Fib.print_number.1.i,
+  CONST 1)),
+LABEL L.29,
+BNE(
+ TEMP Fib.print_number.1.1.j,
+ TEMP Fib.print_number.1.i,
+ L.30, L.31),
+LABEL L.30,
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ ADD(
+  TEMP Fib.print_number.1.1.j,
+  CONST 1)),
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10)),
+JUMP(
+ NAME L.29),
+LABEL L.31,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   MOD(
+    TEMP Fib.print_number.1.n,
+    CONST 10),
+   CONST 48))),
+BEQ(
+ TEMP Fib.print_number.1.i,
+ CONST 0,
+ L.25, L.23),
+LABEL L.25,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+LABEL L.19
+# Linearized (trees):
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ CONST 0)
+LABEL L.20
+LABEL L.21
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+MOVE(
+ TEMP Fib.print_number.1.i,
+ ADD(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+BEQ(
+ TEMP Fib.print_number.1.n,
+ CONST 0,
+ L.22, L.20)
+LABEL L.22
+LABEL L.23
+LABEL L.24
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ CONST 0)
+LABEL L.26
+LABEL L.27
+JUMP(
+ NAME L.28)
+JUMP(
+ NAME L.26)
+LABEL L.28
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ SUB(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+LABEL L.29
+BNE(
+ TEMP Fib.print_number.1.1.j,
+ TEMP Fib.print_number.1.i,
+ L.30, L.31)
+LABEL L.30
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ ADD(
+  TEMP Fib.print_number.1.1.j,
+  CONST 1))
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+JUMP(
+ NAME L.29)
+LABEL L.31
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   MOD(
+    TEMP Fib.print_number.1.n,
+    CONST 10),
+   CONST 48)))
+EXP(
+ TEMP t.25)
+BEQ(
+ TEMP Fib.print_number.1.i,
+ CONST 0,
+ L.25, L.23)
+LABEL L.25
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.26)
+LABEL L.19
+# Basic Blocks:
+# 0
+LABEL L.38
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ CONST 0)
+JUMP(
+ NAME L.20)
+# 1
+LABEL L.20
+JUMP(
+ NAME L.21)
+# 2
+LABEL L.21
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+MOVE(
+ TEMP Fib.print_number.1.i,
+ ADD(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+BEQ(
+ TEMP Fib.print_number.1.n,
+ CONST 0,
+ L.22, L.20)
+# 3
+LABEL L.22
+JUMP(
+ NAME L.23)
+# 4
+LABEL L.23
+JUMP(
+ NAME L.24)
+# 5
+LABEL L.24
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ CONST 0)
+JUMP(
+ NAME L.26)
+# 6
+LABEL L.26
+JUMP(
+ NAME L.27)
+# 7
+LABEL L.27
+JUMP(
+ NAME L.28)
+# 8
+LABEL L.39
+JUMP(
+ NAME L.26)
+# 9
+LABEL L.28
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ SUB(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+JUMP(
+ NAME L.29)
+# 10
+LABEL L.29
+BNE(
+ TEMP Fib.print_number.1.1.j,
+ TEMP Fib.print_number.1.i,
+ L.30, L.31)
+# 11
+LABEL L.30
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ ADD(
+  TEMP Fib.print_number.1.1.j,
+  CONST 1))
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+JUMP(
+ NAME L.29)
+# 12
+LABEL L.31
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   MOD(
+    TEMP Fib.print_number.1.n,
+    CONST 10),
+   CONST 48)))
+EXP(
+ TEMP t.25)
+BEQ(
+ TEMP Fib.print_number.1.i,
+ CONST 0,
+ L.25, L.23)
+# 13
+LABEL L.25
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.26)
+JUMP(
+ NAME L.19)
+# 14
+LABEL L.19
+# Trace Scheduled:
+LABEL L.38
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ CONST 0)
+LABEL L.20
+LABEL L.21
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+MOVE(
+ TEMP Fib.print_number.1.i,
+ ADD(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+BNE(
+ TEMP Fib.print_number.1.n,
+ CONST 0,
+ L.20, L.22)
+LABEL L.22
+LABEL L.23
+LABEL L.24
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ CONST 0)
+LABEL L.26
+LABEL L.27
+LABEL L.28
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ SUB(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+LABEL L.29
+BNE(
+ TEMP Fib.print_number.1.1.j,
+ TEMP Fib.print_number.1.i,
+ L.30, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   MOD(
+    TEMP Fib.print_number.1.n,
+    CONST 10),
+   CONST 48)))
+EXP(
+ TEMP t.25)
+BNE(
+ TEMP Fib.print_number.1.i,
+ CONST 0,
+ L.23, L.25)
+LABEL L.25
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.26)
+JUMP(
+ NAME L.19)
+LABEL L.39
+JUMP(
+ NAME L.26)
+LABEL L.30
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ ADD(
+  TEMP Fib.print_number.1.1.j,
+  CONST 1))
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+JUMP(
+ NAME L.29)
+LABEL L.19
+# With procedure entry/exit:
+MOVE(
+ TEMP Fib.print_number.num,
+ TEMP %rdi)
+LABEL L.38
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ CONST 0)
+LABEL L.20
+LABEL L.21
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+MOVE(
+ TEMP Fib.print_number.1.i,
+ ADD(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+BNE(
+ TEMP Fib.print_number.1.n,
+ CONST 0,
+ L.20, L.22)
+LABEL L.22
+LABEL L.23
+LABEL L.24
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ CONST 0)
+LABEL L.26
+LABEL L.27
+LABEL L.28
+MOVE(
+ TEMP Fib.print_number.1.n,
+ TEMP Fib.print_number.num)
+MOVE(
+ TEMP Fib.print_number.1.i,
+ SUB(
+  TEMP Fib.print_number.1.i,
+  CONST 1))
+LABEL L.29
+BNE(
+ TEMP Fib.print_number.1.1.j,
+ TEMP Fib.print_number.1.i,
+ L.30, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.25,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   MOD(
+    TEMP Fib.print_number.1.n,
+    CONST 10),
+   CONST 48)))
+EXP(
+ TEMP t.25)
+BNE(
+ TEMP Fib.print_number.1.i,
+ CONST 0,
+ L.23, L.25)
+LABEL L.25
+MOVE(
+ TEMP t.26,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.26)
+JUMP(
+ NAME L.19)
+LABEL L.39
+JUMP(
+ NAME L.26)
+LABEL L.30
+MOVE(
+ TEMP Fib.print_number.1.1.j,
+ ADD(
+  TEMP Fib.print_number.1.1.j,
+  CONST 1))
+MOVE(
+ TEMP Fib.print_number.1.n,
+ DIV(
+  TEMP Fib.print_number.1.n,
+  CONST 10))
+JUMP(
+ NAME L.29)
+LABEL L.19
+# Instructions:
+	movq %rdi,Fib.print_number.num	# Fib.print_number.num := %rdi 
+L.38:	# <- 
+	movq Fib.print_number.num,Fib.print_number.1.n	# Fib.print_number.1.n := Fib.print_number.num 
+	xorq Fib.print_number.1.i,Fib.print_number.1.i	# Fib.print_number.1.i <- 
+L.20:	# <- 
+L.21:	# <- 
+	movq Fib.print_number.1.n,%rax	# %rax := Fib.print_number.1.n 
+	cqto	# %rax %rdx <- %rax 
+	movq $10,t.27	# t.27 <- 
+	idivq t.27	# %rax %rdx <- t.27 %rax %rdx 
+	movq %rax,t.28	# t.28 := %rax 
+	movq t.28,Fib.print_number.1.n	# Fib.print_number.1.n := t.28 
+	movq Fib.print_number.1.i,t.29	# t.29 := Fib.print_number.1.i 
+	addq $1,t.29	# t.29 <- t.29 
+	movq t.29,Fib.print_number.1.i	# Fib.print_number.1.i := t.29 
+	xorq t.30,t.30	# t.30 <- 
+	cmpq t.30,Fib.print_number.1.n	# <- Fib.print_number.1.n t.30 
+	jne L.20	# <- : goto L.20 L.22 
+L.22:	# <- 
+L.23:	# <- 
+L.24:	# <- 
+	xorq Fib.print_number.1.1.j,Fib.print_number.1.1.j	# Fib.print_number.1.1.j <- 
+L.26:	# <- 
+L.27:	# <- 
+L.28:	# <- 
+	movq Fib.print_number.num,Fib.print_number.1.n	# Fib.print_number.1.n := Fib.print_number.num 
+	movq Fib.print_number.1.i,t.31	# t.31 := Fib.print_number.1.i 
+	subq $1,t.31	# t.31 <- t.31 
+	movq t.31,Fib.print_number.1.i	# Fib.print_number.1.i := t.31 
+L.29:	# <- 
+	cmpq Fib.print_number.1.i,Fib.print_number.1.1.j	# <- Fib.print_number.1.1.j Fib.print_number.1.i 
+	jne L.30	# <- : goto L.30 L.31 
+L.31:	# <- 
+	movq Fib.print_number.1.n,%rax	# %rax := Fib.print_number.1.n 
+	cqto	# %rax %rdx <- %rax 
+	movq $10,t.32	# t.32 <- 
+	idivq t.32	# %rax %rdx <- t.32 %rax %rdx 
+	movq %rdx,t.33	# t.33 := %rdx 
+	movq t.33,t.34	# t.34 := t.33 
+	addq $48,t.34	# t.34 <- t.34 
+	movq t.34,%rdi	# %rdi := t.34 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.25	# t.25 := %rax 
+	xorq t.35,t.35	# t.35 <- 
+	cmpq t.35,Fib.print_number.1.i	# <- Fib.print_number.1.i t.35 
+	jne L.23	# <- : goto L.23 L.25 
+L.25:	# <- 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.26	# t.26 := %rax 
+	jmp L.19	# <- : goto L.19 
+L.39:	# <- 
+	jmp L.26	# <- : goto L.26 
+L.30:	# <- 
+	movq Fib.print_number.1.1.j,t.36	# t.36 := Fib.print_number.1.1.j 
+	addq $1,t.36	# t.36 <- t.36 
+	movq t.36,Fib.print_number.1.1.j	# Fib.print_number.1.1.j := t.36 
+	movq Fib.print_number.1.n,%rax	# %rax := Fib.print_number.1.n 
+	cqto	# %rax %rdx <- %rax 
+	movq $10,t.37	# t.37 <- 
+	idivq t.37	# %rax %rdx <- t.37 %rax %rdx 
+	movq %rax,t.38	# t.38 := %rax 
+	movq t.38,Fib.print_number.1.n	# Fib.print_number.1.n := t.38 
+	jmp L.29	# <- : goto L.29 
+L.19:	# <- 
+# Control Flow Graph:
+0: Fib.print_number.num <- %rdi; goto 1
+1: Fib.print_number.1.n Fib.print_number.1.i <- Fib.print_number.num; goto 2
+2: %rax %rdx t.27 t.28 Fib.print_number.1.n t.29 Fib.print_number.1.i t.30 <- Fib.print_number.1.n Fib.print_number.1.i; goto 2 3
+3: Fib.print_number.1.1.j <-; goto 4
+4: Fib.print_number.1.n t.31 Fib.print_number.1.i <- Fib.print_number.num Fib.print_number.1.i; goto 5
+5: <- Fib.print_number.1.1.j Fib.print_number.1.i; goto 9 6
+6: %rax %rdx t.32 t.33 t.34 %rdi %rsi %rcx %r8 %r9 %r10 %r11 t.25 t.35 <- Fib.print_number.1.n Fib.print_number.1.i; goto 3 7
+7: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.26 <-; goto 10
+8: <-; goto 4
+9: t.36 Fib.print_number.1.1.j %rax %rdx t.37 t.38 Fib.print_number.1.n <- Fib.print_number.1.1.j Fib.print_number.1.n; goto 5
+10: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Fib.print_number.num: %rsp %rbp Fib.print_number.1.i t.30 t.29 Fib.print_number.1.n t.28 %rax %rdx t.27 Fib.print_number.1.1.j t.31 t.35 t.25 %rdi %rsi %rcx %r8 %r9 %r10 %r11 t.34 t.33 t.32 t.38 t.37 t.36 
+Fib.print_number.1.n: Fib.print_number.1.i %rsp %rbp t.30 t.29 Fib.print_number.num t.31 Fib.print_number.1.1.j t.36 
+Fib.print_number.1.i: Fib.print_number.1.n Fib.print_number.num %rsp %rbp t.30 t.28 %rax %rdx t.27 Fib.print_number.1.1.j t.35 t.25 %rdi %rsi %rcx %r8 %r9 %r10 %r11 t.34 t.33 t.32 t.38 t.37 t.36 
+t.27: Fib.print_number.num %rsp %rbp Fib.print_number.1.i %rax %rdx 
+t.28: Fib.print_number.num %rsp %rbp Fib.print_number.1.i 
+t.29: Fib.print_number.1.n Fib.print_number.num %rsp %rbp 
+t.30: Fib.print_number.1.n Fib.print_number.1.i Fib.print_number.num %rsp %rbp 
+Fib.print_number.1.1.j: Fib.print_number.num Fib.print_number.1.i %rsp %rbp t.31 Fib.print_number.1.n t.38 %rax %rdx t.37 
+t.31: Fib.print_number.1.1.j Fib.print_number.1.n Fib.print_number.num %rsp %rbp 
+t.32: Fib.print_number.num Fib.print_number.1.i %rsp %rbp %rax %rdx 
+t.33: Fib.print_number.num Fib.print_number.1.i %rsp %rbp 
+t.34: Fib.print_number.num Fib.print_number.1.i %rsp %rbp 
+t.25: Fib.print_number.num Fib.print_number.1.i %rsp %rbp 
+t.35: Fib.print_number.num Fib.print_number.1.i %rsp %rbp 
+t.26: %rsp %rbp 
+t.36: Fib.print_number.1.i Fib.print_number.num %rsp %rbp Fib.print_number.1.n 
+t.37: Fib.print_number.1.1.j Fib.print_number.1.i Fib.print_number.num %rsp %rbp %rax %rdx 
+t.38: Fib.print_number.1.1.j Fib.print_number.1.i Fib.print_number.num %rsp %rbp 
+t.36 <= Fib.print_number.1.1.j
+Fib.print_number.1.1.j <= t.36
+%rax <= Fib.print_number.1.n
+t.38 <= %rax
+Fib.print_number.1.n <= t.38
+t.26 <= %rax
+%rax <= Fib.print_number.1.n
+t.33 <= %rdx
+t.34 <= t.33
+%rdi <= t.34
+t.25 <= %rax
+Fib.print_number.1.n <= Fib.print_number.num
+t.31 <= Fib.print_number.1.i
+Fib.print_number.1.i <= t.31
+%rax <= Fib.print_number.1.n
+t.28 <= %rax
+Fib.print_number.1.n <= t.28
+t.29 <= Fib.print_number.1.i
+Fib.print_number.1.i <= t.29
+Fib.print_number.1.n <= Fib.print_number.num
+Fib.print_number.num <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Fib.print_number.num->%r12
+Fib.print_number.1.n->%rcx
+Fib.print_number.1.i->%rbx
+t.27->%rcx
+t.28->%rax
+t.29->%rax
+t.30->%rax
+Fib.print_number.1.1.j->%rsi
+t.31->%rax
+t.32->%rcx
+t.33->%rax
+t.34->%rax
+t.25->%rax
+t.35->%rax
+t.26->%rax
+t.36->%rax
+t.37->%rcx
+t.38->%rax
+# Assembly code:
+	.text
+Fib.print_number:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rdi,%r12
+L.38:
+	movq %r12,%rcx
+	xorq %rbx,%rbx
+L.20:
+L.21:
+	movq %rcx,%rax
+	cqto
+	movq $10,%rcx
+	idivq %rcx
+#	movq %rax,%rax
+	movq %rax,%rcx
+	movq %rbx,%rax
+	addq $1,%rax
+	movq %rax,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	jne L.20
+L.22:
+L.23:
+L.24:
+	xorq %rsi,%rsi
+L.26:
+L.27:
+L.28:
+	movq %r12,%rcx
+	movq %rbx,%rax
+	subq $1,%rax
+	movq %rax,%rbx
+L.29:
+	cmpq %rbx,%rsi
+	jne L.30
+L.31:
+	movq %rcx,%rax
+	cqto
+	movq $10,%rcx
+	idivq %rcx
+	movq %rdx,%rax
+#	movq %rax,%rax
+	addq $48,%rax
+	movq %rax,%rdi
+	call putchar
+#	movq %rax,%rax
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jne L.23
+L.25:
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	jmp L.19
+L.39:
+	jmp L.26
+L.30:
+	movq %rsi,%rax
+	addq $1,%rax
+	movq %rax,%rsi
+	movq %rcx,%rax
+	cqto
+	movq $10,%rcx
+	idivq %rcx
+#	movq %rax,%rax
+	movq %rax,%rcx
+	jmp L.29
+L.19:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	addq $32,%rsp
+	popq %rbp
+	ret
+Fib.print_number.badSub:
+	call badSub
+END Fib.print_number
+PROCEDURE Fib.exit_print
+# Trees:
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 69)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 120)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 116)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 110)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 103)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME exit,
+  CONST 0,
+  CONST 0)),
+LABEL L.32
+# Linearized (trees):
+MOVE(
+ TEMP t.39,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.39)
+MOVE(
+ TEMP t.40,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 69))
+EXP(
+ TEMP t.40)
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 120))
+EXP(
+ TEMP t.41)
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.42)
+MOVE(
+ TEMP t.43,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 116))
+EXP(
+ TEMP t.43)
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.44)
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 110))
+EXP(
+ TEMP t.45)
+MOVE(
+ TEMP t.46,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 103))
+EXP(
+ TEMP t.46)
+MOVE(
+ TEMP t.47,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.47)
+MOVE(
+ TEMP t.48,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.48)
+MOVE(
+ TEMP t.49,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.49)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME exit,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.51)
+LABEL L.32
+# Basic Blocks:
+# 0
+LABEL L.40
+MOVE(
+ TEMP t.39,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.39)
+MOVE(
+ TEMP t.40,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 69))
+EXP(
+ TEMP t.40)
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 120))
+EXP(
+ TEMP t.41)
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.42)
+MOVE(
+ TEMP t.43,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 116))
+EXP(
+ TEMP t.43)
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.44)
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 110))
+EXP(
+ TEMP t.45)
+MOVE(
+ TEMP t.46,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 103))
+EXP(
+ TEMP t.46)
+MOVE(
+ TEMP t.47,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.47)
+MOVE(
+ TEMP t.48,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.48)
+MOVE(
+ TEMP t.49,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.49)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME exit,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.51)
+JUMP(
+ NAME L.32)
+# 1
+LABEL L.32
+# Trace Scheduled:
+LABEL L.40
+MOVE(
+ TEMP t.39,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.39)
+MOVE(
+ TEMP t.40,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 69))
+EXP(
+ TEMP t.40)
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 120))
+EXP(
+ TEMP t.41)
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.42)
+MOVE(
+ TEMP t.43,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 116))
+EXP(
+ TEMP t.43)
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.44)
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 110))
+EXP(
+ TEMP t.45)
+MOVE(
+ TEMP t.46,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 103))
+EXP(
+ TEMP t.46)
+MOVE(
+ TEMP t.47,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.47)
+MOVE(
+ TEMP t.48,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.48)
+MOVE(
+ TEMP t.49,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.49)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME exit,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.51)
+LABEL L.32
+# With procedure entry/exit:
+LABEL L.40
+MOVE(
+ TEMP t.39,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.39)
+MOVE(
+ TEMP t.40,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 69))
+EXP(
+ TEMP t.40)
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 120))
+EXP(
+ TEMP t.41)
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.42)
+MOVE(
+ TEMP t.43,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 116))
+EXP(
+ TEMP t.43)
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 105))
+EXP(
+ TEMP t.44)
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 110))
+EXP(
+ TEMP t.45)
+MOVE(
+ TEMP t.46,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 103))
+EXP(
+ TEMP t.46)
+MOVE(
+ TEMP t.47,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.47)
+MOVE(
+ TEMP t.48,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.48)
+MOVE(
+ TEMP t.49,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46))
+EXP(
+ TEMP t.49)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME exit,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.51)
+LABEL L.32
+# Instructions:
+L.40:	# <- 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.39	# t.39 := %rax 
+	movq $69,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.40	# t.40 := %rax 
+	movq $120,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.41	# t.41 := %rax 
+	movq $105,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.42	# t.42 := %rax 
+	movq $116,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.43	# t.43 := %rax 
+	movq $105,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.44	# t.44 := %rax 
+	movq $110,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.45	# t.45 := %rax 
+	movq $103,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.46	# t.46 := %rax 
+	movq $46,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.47	# t.47 := %rax 
+	movq $46,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.48	# t.48 := %rax 
+	movq $46,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.49	# t.49 := %rax 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.50	# t.50 := %rax 
+	xorq %rdi,%rdi	# %rdi <- 
+	call exit	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.51	# t.51 := %rax 
+L.32:	# <- 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.40 t.41 t.42 t.43 t.44 t.45 t.46 t.47 t.48 t.49 t.50 t.51 <-; goto 1
+1: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.39: %rsp %rbp 
+t.40: %rsp %rbp 
+t.41: %rsp %rbp 
+t.42: %rsp %rbp 
+t.43: %rsp %rbp 
+t.44: %rsp %rbp 
+t.45: %rsp %rbp 
+t.46: %rsp %rbp 
+t.47: %rsp %rbp 
+t.48: %rsp %rbp 
+t.49: %rsp %rbp 
+t.50: %rsp %rbp 
+t.51: %rsp %rbp 
+t.39 <= %rax
+t.40 <= %rax
+t.41 <= %rax
+t.42 <= %rax
+t.43 <= %rax
+t.44 <= %rax
+t.45 <= %rax
+t.46 <= %rax
+t.47 <= %rax
+t.48 <= %rax
+t.49 <= %rax
+t.50 <= %rax
+t.51 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.39->%rax
+t.40->%rax
+t.41->%rax
+t.42->%rax
+t.43->%rax
+t.44->%rax
+t.45->%rax
+t.46->%rax
+t.47->%rax
+t.48->%rax
+t.49->%rax
+t.50->%rax
+t.51->%rax
+# Assembly code:
+	.text
+Fib.exit_print:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+L.40:
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $69,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $120,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $105,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $116,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $105,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $110,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $103,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $46,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $46,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $46,%rdi
+	call putchar
+#	movq %rax,%rax
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+	xorq %rdi,%rdi
+	call exit
+#	movq %rax,%rax
+L.32:
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+Fib.exit_print.badSub:
+	call badSub
+END Fib.exit_print
+PROCEDURE Fib
+# Trees:
+MOVE(
+ TEMP Fib.14.N,
+ CALL(
+  NAME Fib.read_number,
+  CONST 0)),
+EXP(
+ CALL(
+  NAME Fib.print_number,
+  CONST 0,
+  CALL(
+   NAME Fib.fib,
+   CONST 0,
+   TEMP Fib.14.N))),
+EXP(
+ CALL(
+  NAME Fib.exit_print,
+  CONST 0))
+# Linearized (trees):
+MOVE(
+ TEMP Fib.14.N,
+ CALL(
+  NAME Fib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.53,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  TEMP Fib.14.N))
+MOVE(
+ TEMP t.52,
+ CALL(
+  NAME Fib.print_number,
+  CONST 0,
+  TEMP t.53))
+EXP(
+ TEMP t.52)
+MOVE(
+ TEMP t.54,
+ CALL(
+  NAME Fib.exit_print,
+  CONST 0))
+EXP(
+ TEMP t.54)
+# Basic Blocks:
+# 0
+LABEL L.41
+MOVE(
+ TEMP Fib.14.N,
+ CALL(
+  NAME Fib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.53,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  TEMP Fib.14.N))
+MOVE(
+ TEMP t.52,
+ CALL(
+  NAME Fib.print_number,
+  CONST 0,
+  TEMP t.53))
+EXP(
+ TEMP t.52)
+MOVE(
+ TEMP t.54,
+ CALL(
+  NAME Fib.exit_print,
+  CONST 0))
+EXP(
+ TEMP t.54)
+# Trace Scheduled:
+LABEL L.41
+MOVE(
+ TEMP Fib.14.N,
+ CALL(
+  NAME Fib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.53,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  TEMP Fib.14.N))
+MOVE(
+ TEMP t.52,
+ CALL(
+  NAME Fib.print_number,
+  CONST 0,
+  TEMP t.53))
+EXP(
+ TEMP t.52)
+MOVE(
+ TEMP t.54,
+ CALL(
+  NAME Fib.exit_print,
+  CONST 0))
+EXP(
+ TEMP t.54)
+# With procedure entry/exit:
+LABEL L.41
+MOVE(
+ TEMP Fib.14.N,
+ CALL(
+  NAME Fib.read_number,
+  CONST 0))
+MOVE(
+ TEMP t.53,
+ CALL(
+  NAME Fib.fib,
+  CONST 0,
+  TEMP Fib.14.N))
+MOVE(
+ TEMP t.52,
+ CALL(
+  NAME Fib.print_number,
+  CONST 0,
+  TEMP t.53))
+EXP(
+ TEMP t.52)
+MOVE(
+ TEMP t.54,
+ CALL(
+  NAME Fib.exit_print,
+  CONST 0))
+EXP(
+ TEMP t.54)
+# Instructions:
+L.41:	# <- 
+	call Fib.read_number	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,Fib.14.N	# Fib.14.N := %rax 
+	movq Fib.14.N,%rdi	# %rdi := Fib.14.N 
+	call Fib.fib	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.53	# t.53 := %rax 
+	movq t.53,%rdi	# %rdi := t.53 
+	call Fib.print_number	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.52	# t.52 := %rax 
+	call Fib.exit_print	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,t.54	# t.54 := %rax 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 Fib.14.N t.53 t.52 t.54 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Fib.14.N: %rsp %rbp 
+t.53: %rsp %rbp 
+t.52: %rsp %rbp 
+t.54: %rsp %rbp 
+Fib.14.N <= %rax
+%rdi <= Fib.14.N
+t.53 <= %rax
+%rdi <= t.53
+t.52 <= %rax
+t.54 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Fib.14.N->%rax
+t.53->%rax
+t.52->%rax
+t.54->%rax
+# Assembly code:
+	.text
+Fib:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+L.41:
+	call Fib.read_number
+#	movq %rax,%rax
+	movq %rax,%rdi
+	call Fib.fib
+#	movq %rax,%rax
+	movq %rax,%rdi
+	call Fib.print_number
+#	movq %rax,%rax
+	call Fib.exit_print
+#	movq %rax,%rax
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+Fib.badSub:
+	call badSub
+END Fib

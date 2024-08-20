@@ -1,0 +1,32 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN DefaultNestedProcedure
+BEGIN DefaultNestedProcedure.1
+DefaultNestedProcedure.1.T=Root object {
+0: bar:()=DefaultNestedProcedure.1.Bar:(VALUE t:T)
+}
+DefaultNestedProcedure.1.Bar:(VALUE t:T)
+BEGIN DefaultNestedProcedure.1.Bar
+DefaultNestedProcedure.1.Bar.t:T
+END DefaultNestedProcedure.1.Bar
+END DefaultNestedProcedure.1
+END DefaultNestedProcedure
+END _BUILTIN

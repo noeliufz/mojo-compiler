@@ -1,0 +1,7 @@
+<CHAR> '\a'
+<CHAR> '\b'
+<CHAR> '\f'
+<CHAR> '\n'
+<CHAR> '\r'
+<CHAR> '\t'
+<CHAR> '\v'

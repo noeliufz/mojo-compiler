@@ -1,0 +1,108 @@
+	.data
+	.balign 8
+SubrangeFields.r:
+	.zero 8
+	.text
+SubrangeFields.println:
+BLT(
+ TEMP SubrangeFields.println.i,
+ CONST 0,
+ L.1, L.2),
+LABEL L.1,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 45)),
+MOVE(
+ TEMP SubrangeFields.println.i,
+ SUB(
+  CONST 0,
+  TEMP SubrangeFields.println.i)),
+LABEL L.2,
+BEQ(
+ TEMP SubrangeFields.println.i,
+ CONST 0,
+ L.5, L.6),
+LABEL L.5,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 48)),
+JUMP(
+ NAME L.7),
+LABEL L.6,
+EXP(
+ CALL(
+  NAME SubrangeFields.println.1.f,
+  TEMP %rbp,
+  TEMP SubrangeFields.println.i)),
+LABEL L.7,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+LABEL L.0
+
+
+	.text
+SubrangeFields.println.1.f:
+BGT(
+ TEMP SubrangeFields.println.1.f.i,
+ CONST 0,
+ L.9, L.10),
+LABEL L.9,
+EXP(
+ CALL(
+  NAME SubrangeFields.println.1.f,
+  TEMP _link,
+  DIV(
+   TEMP SubrangeFields.println.1.f.i,
+   CONST 10))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   SUB(
+    TEMP SubrangeFields.println.1.f.i,
+    MUL(
+     DIV(
+      TEMP SubrangeFields.println.1.f.i,
+      CONST 10),
+     CONST 10)),
+   CONST 48))),
+LABEL L.10,
+LABEL L.8
+
+
+	.text
+SubrangeFields:
+MOVE(
+ MEM(
+  NAME SubrangeFields.r, 
+  CONST 0, 1, false),
+ CONST 255),
+MOVE(
+ MEM(
+  NAME SubrangeFields.r, 
+  CONST 1, 1, true),
+ CONST -1),
+EXP(
+ CALL(
+  NAME SubrangeFields.println,
+  CONST 0,
+  MEM(
+   NAME SubrangeFields.r, 
+   CONST 0, 1, false))),
+EXP(
+ CALL(
+  NAME SubrangeFields.println,
+  CONST 0,
+  MEM(
+   NAME SubrangeFields.r, 
+   CONST 1, 1, true)))
+
+

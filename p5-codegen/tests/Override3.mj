@@ -1,0 +1,11 @@
+type 
+  A  = object { a: int; p() },
+  AB = A object { b: int };
+
+proc Pa(self: A);
+proc Pab(self: AB);
+
+type T1 = AB object { p = Pab }; (* ok *)
+type T2 = A object { p = Pa }; (* ok *)
+type T3 = AB object { p = Pa }; (* ok *)
+type T4 = A object { p = Pab }; (* error *)

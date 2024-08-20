@@ -1,0 +1,29 @@
+	.text
+AndBranch.And:
+BEQ(
+ TEMP AndBranch.And.x,
+ CONST 0,
+ L.2, L.3),
+LABEL L.3,
+BEQ(
+ TEMP AndBranch.And.y,
+ CONST 0,
+ L.2, L.1),
+LABEL L.1,
+MOVE(
+ TEMP %rax,
+ CONST 0),
+JUMP(
+ NAME L.0),
+LABEL L.2,
+MOVE(
+ TEMP %rax,
+ CONST 1),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+AndBranch:
+

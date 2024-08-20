@@ -1,0 +1,7 @@
+	.data
+	.balign 8
+GlobalArrayFixed.x:
+	.zero 80
+	.text
+GlobalArrayFixed:
+

@@ -1,0 +1,14 @@
+"proc" proc
+<ID> doit
+"(" (
+<ID> foo
+":" :
+<ID> int
+")" )
+":" :
+<ID> int
+"{" {
+"return" return
+<NUMBER> 0
+";" ;
+"}" }

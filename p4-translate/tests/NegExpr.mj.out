@@ -1,0 +1,15 @@
+	.text
+NegExpr.Neg:
+MOVE(
+ TEMP %rax,
+ SUB(
+  CONST 0,
+  TEMP NegExpr.Neg.x)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+NegExpr:
+

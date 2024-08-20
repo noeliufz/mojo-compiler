@@ -1,0 +1,6 @@
+const foo = Foo;
+proc Foo() {}
+{
+  const bar = Bar;
+  proc Bar() {}
+}

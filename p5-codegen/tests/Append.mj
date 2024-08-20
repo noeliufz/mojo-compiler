@@ -1,0 +1,27 @@
+proc puts(s: Address): int;
+
+proc println(t: Text) {
+  var a = Loophole(t, ref array of byte);
+  puts(&a[0]);
+}
+  
+proc append (t1, t2: Text): Text {
+  var a1 = Loophole(t1, ref array of byte);
+  var a2 = Loophole(t2, ref array of byte);
+  var n1 = Number(a1^)-1; (* drop '\0' terminator *)
+  var n2 = Number(a2^)-1; (* drop '\0' terminator *)
+  var result = New(ref array of byte, n1 + n2 + 1);
+  for i = 0 to n1-1 loop
+    result[i] = a1[i];
+  for i = 0 to n2-1 loop
+    result[n1+i] = a2[i];
+  result[n1+n2] = Ord('\000'); (* add '\0' terminator *)
+  return Loophole(result, Text);
+}
+
+{
+  var t = "Hello";
+  t = append(t, " ");
+  t = append(t, "World!");
+  println(t);
+}

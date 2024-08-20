@@ -1,0 +1,13 @@
+proc printf(format: Address; i: int);
+proc CString(t: Text): Address {
+    var a = Loophole(t, ref array of byte);
+    return &a[0];
+}
+
+{
+  proc identity(x: int): int {
+    return x;
+  }
+  var x = identity(1) + identity(2);
+  printf(CString("%d\n"), x);
+}

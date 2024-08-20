@@ -1,0 +1,3 @@
+{
+  var x: ref int = New(ref int);
+}

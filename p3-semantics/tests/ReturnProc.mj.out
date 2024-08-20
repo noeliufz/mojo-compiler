@@ -1,0 +1,37 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN ReturnProc
+ReturnProc.a:():char
+ReturnProc.aa:():():char
+BEGIN ReturnProc.a
+END ReturnProc.a
+BEGIN ReturnProc.aa
+END ReturnProc.aa
+BEGIN ReturnProc.6
+ReturnProc.6.b:():char
+ReturnProc.6.bb:():():char
+BEGIN ReturnProc.6.b
+END ReturnProc.6.b
+BEGIN ReturnProc.6.bb
+END ReturnProc.6.bb
+END ReturnProc.6
+END ReturnProc
+END _BUILTIN

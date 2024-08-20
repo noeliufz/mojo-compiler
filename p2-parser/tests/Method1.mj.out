@@ -1,0 +1,4 @@
+type o = Root object {
+    i: int;
+    foo() = f;
+};

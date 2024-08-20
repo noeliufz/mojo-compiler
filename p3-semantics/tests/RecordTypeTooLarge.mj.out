@@ -1,0 +1,31 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN RecordTypeTooLarge
+RecordTypeTooLarge.R=record {
+0: a:array 4095 of array 65535 of int
+1073463300: b:array 4095 of array 65535 of int
+2146926600: c:array 4095 of array 65535 of int
+-1074577392: d:array 4095 of array 65535 of int
+-1114088: e:array 4095 of array 65535 of int
+1072349212: f:array 4095 of array 65535 of int
+}
+END RecordTypeTooLarge
+END _BUILTIN

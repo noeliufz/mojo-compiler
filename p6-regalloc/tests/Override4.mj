@@ -1,0 +1,6 @@
+proc FooA(a:A; x:A);
+proc FooB(b:B; x:A);
+proc FooC(c:C; x:A);
+type A = object { foo(x:A) = FooA; };
+type B = A object { foo = FooB; };
+type C = B object { foo = FooC; };

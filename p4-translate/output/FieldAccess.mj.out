@@ -1,0 +1,23 @@
+	.data
+	.balign 8
+FieldAccess.r:
+	.zero 24
+	.text
+FieldAccess:
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 0, 8, true),
+ CONST 1),
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 8, 8, true),
+ CONST 2),
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 16, 8, true),
+ CONST 3)
+
+

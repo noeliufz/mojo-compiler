@@ -1,0 +1,2 @@
+proc foo(a: array of int) {
+}

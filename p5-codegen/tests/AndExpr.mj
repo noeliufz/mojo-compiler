@@ -1,0 +1,3 @@
+proc And(x, y: bool): bool {
+  return x && y;
+}

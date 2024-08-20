@@ -1,0 +1,146 @@
+132,136c132
+<    SUB(
+<     ADD(
+<      CONST 8,
+<      CONST 8),
+<     CONST 1)),
+---
+>    CONST 15),
+187,191c183
+<    SUB(
+<     ADD(
+<      CONST 8,
+<      CONST 8),
+<     CONST 1)),
+---
+>    CONST 15),
+922c914,951
+<         TEMP t.59, 
+---
+>         ESEQ(
+>          MOVE(
+>           TEMP t.58,
+>           CALL(
+>            NAME malloc,
+>            CONST 0,
+>            CONST 40)),
+>          MOVE(
+>           TEMP t.58,
+>           ADD(
+>            TEMP t.58,
+>            CONST 8)),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST -8, 8, false),
+>           NAME Queens.Queens),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 0, 8, false),
+>           CONST 0),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 8, 8, false),
+>           CONST 0),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 16, 8, false),
+>           CONST 0),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 24, 8, false),
+>           CONST 0),
+>          TEMP t.58), 
+929c958,1043
+<      TEMP t.60, 
+---
+>      CALL(
+>       ESEQ(
+>        MOVE(
+>         TEMP t.59,
+>         ESEQ(
+>          MOVE(
+>           TEMP t.58,
+>           CALL(
+>            NAME malloc,
+>            CONST 0,
+>            CONST 40)),
+>          MOVE(
+>           TEMP t.58,
+>           ADD(
+>            TEMP t.58,
+>            CONST 8)),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST -8, 8, false),
+>           NAME Queens.Queens),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 0, 8, false),
+>           CONST 0),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 8, 8, false),
+>           CONST 0),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 16, 8, false),
+>           CONST 0),
+>          MOVE(
+>           MEM(
+>            TEMP t.58, 
+>            CONST 24, 8, false),
+>           CONST 0),
+>          TEMP t.58)),
+>        MEM(
+>         MEM(
+>          ESEQ(
+>           MOVE(
+>            TEMP t.58,
+>            CALL(
+>             NAME malloc,
+>             CONST 0,
+>             CONST 40)),
+>           MOVE(
+>            TEMP t.58,
+>            ADD(
+>             TEMP t.58,
+>             CONST 8)),
+>           MOVE(
+>            MEM(
+>             TEMP t.58, 
+>             CONST -8, 8, false),
+>            NAME Queens.Queens),
+>           MOVE(
+>            MEM(
+>             TEMP t.58, 
+>             CONST 0, 8, false),
+>            CONST 0),
+>           MOVE(
+>            MEM(
+>             TEMP t.58, 
+>             CONST 8, 8, false),
+>            CONST 0),
+>           MOVE(
+>            MEM(
+>             TEMP t.58, 
+>             CONST 16, 8, false),
+>            CONST 0),
+>           MOVE(
+>            MEM(
+>             TEMP t.58, 
+>             CONST 24, 8, false),
+>            CONST 0),
+>           TEMP t.58), 
+>          CONST -8, 8, false), 
+>         CONST 0, 8, false)),
+>       CONST 0,
+>       TEMP t.59), 

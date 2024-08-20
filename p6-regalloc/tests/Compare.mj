@@ -1,0 +1,12 @@
+proc LT(x, y: int): bool {
+  return x < y;
+}
+proc LE(x, y: int): bool {
+  return x <= y;
+}
+proc GT(x, y: int): bool {
+  return x > y;
+}
+proc GE(x, y: int): bool {
+  return x >= y;
+}

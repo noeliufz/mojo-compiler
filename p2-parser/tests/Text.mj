@@ -1,0 +1,16 @@
+const bel = '\a';
+const bs  = '\b';
+const np  = '\f';
+const nl  = '\n';
+const cr  = '\r';
+const ht  = '\t';
+const vt  = '\v';
+const backslash = '\\';
+const quote = '\'';
+const dquote = '\"';
+const octal = '\177';
+const hex = '\xFF';
+const unicode1 = '\uFFFF';
+const unicode2 = '\UFFFFFF';
+
+const text = "\a\b\f\n\r\t\v\\\'\"\177\xFF\uFFFF\U10FFFF";

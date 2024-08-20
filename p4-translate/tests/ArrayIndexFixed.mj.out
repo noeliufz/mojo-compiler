@@ -1,0 +1,13 @@
+	.data
+	.balign 8
+ArrayIndexFixed.x:
+	.zero 80
+	.text
+ArrayIndexFixed:
+MOVE(
+ TEMP ArrayIndexFixed.1.v,
+ MEM(
+  NAME ArrayIndexFixed.x, 
+  CONST 40, 8, true))
+
+

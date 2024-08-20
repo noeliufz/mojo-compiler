@@ -1,0 +1,259 @@
+PROCEDURE Narrow.p
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   TEMP Narrow.p.i),
+  BLT(
+   TEMP t.0,
+   CONST -128,
+   Narrow.p.badSub, L.1),
+  LABEL L.1,
+  BGT(
+   TEMP t.0,
+   CONST 127,
+   Narrow.p.badSub, L.2),
+  LABEL L.2,
+  TEMP t.0)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ TEMP Narrow.p.i)
+BLT(
+ TEMP t.0,
+ CONST -128,
+ Narrow.p.badSub, L.1)
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 127,
+ Narrow.p.badSub, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP Narrow.p.i)
+BLT(
+ TEMP t.0,
+ CONST -128,
+ Narrow.p.badSub, L.1)
+# 1
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 127,
+ Narrow.p.badSub, L.2)
+# 2
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.0
+# Trace Scheduled:
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP Narrow.p.i)
+BLT(
+ TEMP t.0,
+ CONST -128,
+ Narrow.p.badSub, L.1)
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 127,
+ Narrow.p.badSub, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP Narrow.p.i,
+ TEMP %rdi)
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP Narrow.p.i)
+BLT(
+ TEMP t.0,
+ CONST -128,
+ Narrow.p.badSub, L.1)
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 127,
+ Narrow.p.badSub, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+LABEL L.0
+# Instructions:
+	movq %rdi,Narrow.p.i	# Narrow.p.i := %rdi 
+L.3:	# <- 
+	movq Narrow.p.i,t.0	# t.0 := Narrow.p.i 
+	movq $-128,t.1	# t.1 <- 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jl Narrow.p.badSub	# <- : goto Narrow.p.badSub L.1 
+L.1:	# <- 
+	movq $127,t.2	# t.2 <- 
+	cmpq t.2,t.0	# <- t.0 t.2 
+	jg Narrow.p.badSub	# <- : goto Narrow.p.badSub L.2 
+L.2:	# <- 
+	movq t.0,%rax	# %rax := t.0 
+L.0:	# <- 
+# Control Flow Graph:
+0: Narrow.p.i <- %rdi; goto 1
+1: t.0 t.1 <- Narrow.p.i; goto 2
+2: t.2 <- t.0; goto 3
+3: %rax <- t.0; goto 4
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Narrow.p.i: %rsp %rbp 
+t.0: t.1 %rsp %rbp t.2 
+t.1: t.0 %rsp %rbp 
+t.2: t.0 %rsp %rbp 
+%rax <= t.0
+t.0 <= Narrow.p.i
+Narrow.p.i <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Narrow.p.i->%rax
+t.0->%rax
+t.1->%rbx
+t.2->%rbx
+# Assembly code:
+	.text
+Narrow.p:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rax
+L.3:
+#	movq %rax,%rax
+	movq $-128,%rbx
+	cmpq %rbx,%rax
+	jl Narrow.p.badSub
+L.1:
+	movq $127,%rbx
+	cmpq %rbx,%rax
+	jg Narrow.p.badSub
+L.2:
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+Narrow.p.badSub:
+	call badSub
+END Narrow.p
+PROCEDURE Narrow
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.4
+# Trace Scheduled:
+LABEL L.4
+# With procedure entry/exit:
+LABEL L.4
+# Instructions:
+L.4:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+Narrow:
+	pushq %rbp
+	movq %rsp,%rbp
+L.4:
+#	returnSink
+	popq %rbp
+	ret
+END Narrow

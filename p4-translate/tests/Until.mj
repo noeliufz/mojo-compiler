@@ -1,0 +1,9 @@
+{
+    var x = 0;
+    var y = 1;
+    while x < 16 loop {
+        x = x + 1;
+        y = y + y;
+        if y == 42 then break;
+    } until y == 512;
+}

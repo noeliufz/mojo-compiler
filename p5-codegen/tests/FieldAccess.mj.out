@@ -1,0 +1,157 @@
+	.data
+	.balign 8
+FieldAccess.r:
+	.zero 24
+PROCEDURE FieldAccess
+# Trees:
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 0, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 8, 8, true, false),
+ CONST 2),
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 16, 8, true, false),
+ CONST 3)
+# Linearized (trees):
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 16, 8, true, false),
+ CONST 3)
+# Basic Blocks:
+# 0
+LABEL L.0
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 16, 8, true, false),
+ CONST 3)
+# Trace Scheduled:
+LABEL L.0
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 16, 8, true, false),
+ CONST 3)
+# With procedure entry/exit:
+LABEL L.0
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ MEM(
+  NAME FieldAccess.r, 
+  CONST 16, 8, true, false),
+ CONST 3)
+# Instructions:
+L.0:	# <- 
+	leaq FieldAccess.r(%rip),t.0	# t.0 <- 
+	movq $1,0(t.0)	# <- t.0 
+	leaq FieldAccess.r(%rip),t.1	# t.1 <- 
+	movq $2,8(t.1)	# <- t.1 
+	leaq FieldAccess.r(%rip),t.2	# t.2 <- 
+	movq $3,16(t.2)	# <- t.2 
+# Control Flow Graph:
+0: t.0 t.1 t.2 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: %rsp %rbp 
+t.1: %rsp %rbp 
+t.2: %rsp %rbp 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%rax
+t.1->%rax
+t.2->%rax
+# Assembly code:
+	.text
+FieldAccess:
+	pushq %rbp
+	movq %rsp,%rbp
+L.0:
+	leaq FieldAccess.r(%rip),%rax
+	movq $1,0(%rax)
+	leaq FieldAccess.r(%rip),%rax
+	movq $2,8(%rax)
+	leaq FieldAccess.r(%rip),%rax
+	movq $3,16(%rax)
+#	returnSink
+	popq %rbp
+	ret
+FieldAccess.badSub:
+	call badSub
+END FieldAccess

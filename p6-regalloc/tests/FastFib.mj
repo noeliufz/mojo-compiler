@@ -1,0 +1,38 @@
+proc getchar() : int;
+proc printf(s: Address; i: int);
+
+proc read_number(): int {
+      var n: int = 0;
+      loop {
+            var c: int = getchar();
+            if c == Ord('\n') || c == Ord('\r') then break;
+            else n = n * 10 + (c - Ord('0'));
+      }
+      return n;
+}
+
+proc fib(n: int): int {
+    var count = n, a = 0, b = 1, tmp = 0;
+    if (n < 1) then
+        return 0;
+    while count > 1 loop {
+        tmp = b;
+        b = a+b;
+        a = tmp;
+        count = count - 1;
+    }
+    return b;
+}
+
+proc CString(t: Text): Address {
+    var a = Loophole(t, ref array of byte);
+    return &a[0];
+}
+
+const prompt = "Input number: ";
+{
+    var N: int;
+    printf(CString(prompt), 0);
+    N = read_number();
+    printf(CString("%ld\n"), fib(N));
+}

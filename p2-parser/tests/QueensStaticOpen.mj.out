@@ -1,0 +1,57 @@
+proc putchar (
+    val i: int;
+  ): int;
+const N: int = 8;
+var row = New(ref array of int, N);
+var col = New(ref array of int, N);
+var diag1 = New(ref array of int, (N + N) - 1);
+var diag2 = New(ref array of int, (N + N) - 1);
+proc Solve (
+    val c: int;
+  )
+{
+  if c == Number(col) then
+    {
+      Print();
+    }
+  else
+    {
+      for r = 0 to Number(row) - 1 by 1 loop
+        {
+          if (row[r] == 0 && diag1[r + c] == 0) && diag2[(r + (N - 1)) - c] == 0 then
+            {
+              row[r] = 1;
+              diag1[r + c] = 1;
+              diag2[(r + (N - 1)) - c] = 1;
+              col[c] = r;
+              Solve(c + 1);
+              row[r] = 0;
+              diag1[r + c] = 0;
+              diag2[(r + (N - 1)) - c] = 0;
+            }
+        }
+    }
+}
+proc Print ()
+{
+  for i = 0 to Number(col) - 1 by 1 loop
+    {
+      for j = 0 to Number(row) - 1 by 1 loop
+        {
+          putchar(' ' (* 0x20 *));
+          if col[i] == j then
+            {
+              putchar('Q' (* 0x51 *));
+            }
+          else
+            {
+              putchar('.' (* 0x2e *));
+            }
+          putchar('\n' (* 0xa *));
+        }
+      putchar('\n' (* 0xa *));
+    }
+}
+{
+  Solve(0);
+}

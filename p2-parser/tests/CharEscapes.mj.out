@@ -1,0 +1,12 @@
+const ALERT = '\a' (* 0x7 *);
+const BS = '\b' (* 0x8 *);
+const FF = '\f' (* 0xc *);
+const NL = '\n' (* 0xa *);
+const CR = '\r' (* 0xd *);
+const HT = '\t' (* 0x9 *);
+const VT = '\v' (* 0xb *);
+const nul = '\000' (* 0x0 *);
+const soh = '\001' (* 0x1 *);
+const stx = '\002' (* 0x2 *);
+const del = '\177' (* 0x7f *);
+const pound = '£' (* 0xa3 *);

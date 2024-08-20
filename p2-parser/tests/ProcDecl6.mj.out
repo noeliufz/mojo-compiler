@@ -1,0 +1,6 @@
+proc p (
+    var i: int;
+    var j: int;
+  )
+{
+}

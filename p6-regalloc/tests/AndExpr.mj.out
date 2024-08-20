@@ -1,0 +1,294 @@
+PROCEDURE AndExpr.And
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CONST 0),
+  BEQ(
+   TEMP AndExpr.And.x,
+   CONST 0,
+   L.2, L.3),
+  LABEL L.3,
+  BEQ(
+   TEMP AndExpr.And.y,
+   CONST 0,
+   L.2, L.1),
+  LABEL L.1,
+  MOVE(
+   TEMP t.0,
+   CONST 1),
+  LABEL L.2,
+  TEMP t.0)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP AndExpr.And.x,
+ CONST 0,
+ L.2, L.3)
+LABEL L.3
+BEQ(
+ TEMP AndExpr.And.y,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP AndExpr.And.x,
+ CONST 0,
+ L.2, L.3)
+# 1
+LABEL L.3
+BEQ(
+ TEMP AndExpr.And.y,
+ CONST 0,
+ L.2, L.1)
+# 2
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+# 3
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP AndExpr.And.x,
+ CONST 0,
+ L.2, L.3)
+LABEL L.3
+BEQ(
+ TEMP AndExpr.And.y,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP AndExpr.And.y,
+ TEMP %rsi)
+MOVE(
+ TEMP AndExpr.And.x,
+ TEMP %rdi)
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP AndExpr.And.x,
+ CONST 0,
+ L.2, L.3)
+LABEL L.3
+BEQ(
+ TEMP AndExpr.And.y,
+ CONST 0,
+ L.2, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+LABEL L.0
+# Instructions:
+	movq %rsi,AndExpr.And.y	# AndExpr.And.y := %rsi 
+	movq %rdi,AndExpr.And.x	# AndExpr.And.x := %rdi 
+L.4:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.1,AndExpr.And.x	# <- AndExpr.And.x t.1 
+	je L.2	# <- : goto L.2 L.3 
+L.3:	# <- 
+	xorq t.2,t.2	# t.2 <- 
+	cmpq t.2,AndExpr.And.y	# <- AndExpr.And.y t.2 
+	je L.2	# <- : goto L.2 L.1 
+L.1:	# <- 
+	movq $1,t.0	# t.0 <- 
+L.2:	# <- 
+	movq t.0,%rax	# %rax := t.0 
+L.0:	# <- 
+# Control Flow Graph:
+0: AndExpr.And.y AndExpr.And.x <- %rsi %rdi; goto 1
+1: t.0 t.1 <- AndExpr.And.x; goto 4 2
+2: t.2 <- AndExpr.And.y; goto 4 3
+3: t.0 <-; goto 4
+4: %rax <- t.0; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+AndExpr.And.y: AndExpr.And.x %rsp %rbp %rdi t.1 t.0 t.2 
+AndExpr.And.x: %rsp %rbp AndExpr.And.y t.1 t.0 
+t.0: t.1 %rsp %rbp AndExpr.And.y AndExpr.And.x t.2 
+t.1: t.0 %rsp %rbp AndExpr.And.y AndExpr.And.x 
+t.2: t.0 %rsp %rbp AndExpr.And.y 
+%rax <= t.0
+AndExpr.And.y <= %rsi
+AndExpr.And.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+AndExpr.And.y->%rsi
+AndExpr.And.x->%rdi
+t.0->%rax
+t.1->%rbx
+t.2->%rbx
+# Assembly code:
+	.text
+AndExpr.And:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rsi,%rsi
+#	movq %rdi,%rdi
+L.4:
+	xorq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rdi
+	je L.2
+L.3:
+	xorq %rbx,%rbx
+	cmpq %rbx,%rsi
+	je L.2
+L.1:
+	movq $1,%rax
+L.2:
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+AndExpr.And.badSub:
+	call badSub
+END AndExpr.And
+PROCEDURE AndExpr
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.5
+# Trace Scheduled:
+LABEL L.5
+# With procedure entry/exit:
+LABEL L.5
+# Instructions:
+L.5:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+AndExpr:
+	pushq %rbp
+	movq %rsp,%rbp
+L.5:
+#	returnSink
+	popq %rbp
+	ret
+END AndExpr

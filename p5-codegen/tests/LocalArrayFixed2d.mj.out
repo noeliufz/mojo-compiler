@@ -1,0 +1,481 @@
+PROCEDURE LocalArrayFixed2d
+# Trees:
+MOVE(
+ TEMP LocalArrayFixed2d.1.x,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 400)),
+  MOVE(
+   TEMP t.2,
+   CONST 10),
+  MOVE(
+   TEMP t.1,
+   CONST 0),
+  BGE(
+   TEMP t.1,
+   TEMP t.2,
+   L.1, L.0),
+  LABEL L.0,
+  MOVE(
+   TEMP t.4,
+   CONST 5),
+  MOVE(
+   TEMP t.3,
+   CONST 0),
+  BGE(
+   TEMP t.3,
+   TEMP t.4,
+   L.3, L.2),
+  LABEL L.2,
+  MOVE(
+   MEM(
+    ADD(
+     ADD(
+      TEMP t.0,
+      MUL(
+       TEMP t.1,
+       CONST 40)),
+     MUL(
+      TEMP t.3,
+      CONST 8)), 
+    CONST 0, 8, true, false),
+   CONST 0),
+  MOVE(
+   TEMP t.3,
+   ADD(
+    TEMP t.3,
+    CONST 1)),
+  BLT(
+   TEMP t.3,
+   TEMP t.4,
+   L.2, L.3),
+  LABEL L.3,
+  MOVE(
+   TEMP t.1,
+   ADD(
+    TEMP t.1,
+    CONST 1)),
+  BLT(
+   TEMP t.1,
+   TEMP t.2,
+   L.0, L.1),
+  LABEL L.1,
+  TEMP t.0))
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 400))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.3, L.2)
+LABEL L.2
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.0,
+    MUL(
+     TEMP t.1,
+     CONST 40)),
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.2, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP LocalArrayFixed2d.1.x,
+ TEMP t.0)
+# Basic Blocks:
+# 0
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 400))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+# 1
+LABEL L.0
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.3, L.2)
+# 2
+LABEL L.2
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.0,
+    MUL(
+     TEMP t.1,
+     CONST 40)),
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.2, L.3)
+# 3
+LABEL L.3
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+# 4
+LABEL L.1
+MOVE(
+ TEMP LocalArrayFixed2d.1.x,
+ TEMP t.0)
+# Trace Scheduled:
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 400))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.3, L.2)
+LABEL L.2
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.0,
+    MUL(
+     TEMP t.1,
+     CONST 40)),
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.2, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP LocalArrayFixed2d.1.x,
+ TEMP t.0)
+# With procedure entry/exit:
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 400))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.3, L.2)
+LABEL L.2
+MOVE(
+ MEM(
+  ADD(
+   ADD(
+    TEMP t.0,
+    MUL(
+     TEMP t.1,
+     CONST 40)),
+   MUL(
+    TEMP t.3,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.2, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP LocalArrayFixed2d.1.x,
+ TEMP t.0)
+# Instructions:
+L.4:	# <- 
+	movq $400,%rdi	# %rdi <- 
+	call malloc	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.0	# t.0 := %rax 
+	movq $10,t.2	# t.2 <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.2,t.1	# <- t.1 t.2 
+	jge L.1	# <- : goto L.1 L.0 
+L.0:	# <- 
+	movq $5,t.4	# t.4 <- 
+	xorq t.3,t.3	# t.3 <- 
+	cmpq t.4,t.3	# <- t.3 t.4 
+	jge L.3	# <- : goto L.3 L.2 
+L.2:	# <- 
+	movq t.1,t.5	# t.5 := t.1 
+	imulq $40,t.5	# t.5 <- t.5 
+	movq t.0,t.6	# t.6 := t.0 
+	addq t.5,t.6	# t.6 <- t.5 t.6 
+	movq $0,0(t.6,t.3,8)	# <- t.6 t.3 
+	movq t.3,t.7	# t.7 := t.3 
+	addq $1,t.7	# t.7 <- t.7 
+	movq t.7,t.3	# t.3 := t.7 
+	cmpq t.4,t.3	# <- t.3 t.4 
+	jl L.2	# <- : goto L.2 L.3 
+L.3:	# <- 
+	movq t.1,t.8	# t.8 := t.1 
+	addq $1,t.8	# t.8 <- t.8 
+	movq t.8,t.1	# t.1 := t.8 
+	cmpq t.2,t.1	# <- t.1 t.2 
+	jl L.0	# <- : goto L.0 L.1 
+L.1:	# <- 
+	movq t.0,LocalArrayFixed2d.1.x	# LocalArrayFixed2d.1.x := t.0 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.0 t.2 t.1 <-; goto 4 1
+1: t.4 t.3 <-; goto 3 2
+2: t.5 t.6 t.7 t.3 <- t.1 t.0 t.3 t.4; goto 2 3
+3: t.8 t.1 <- t.1 t.2; goto 1 4
+4: LocalArrayFixed2d.1.x <- t.0 %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: t.1 t.2 %rsp %rbp t.3 t.4 t.7 t.6 t.5 t.8 
+t.2: t.1 t.0 %rsp %rbp t.3 t.4 t.7 t.6 t.5 t.8 
+t.1: t.0 %rsp %rbp t.2 t.3 t.4 t.7 t.6 t.5 
+t.4: t.3 t.1 t.2 t.0 %rsp %rbp t.7 t.6 t.5 
+t.3: t.1 t.2 t.0 %rsp %rbp t.4 t.6 t.5 
+t.5: t.6 t.1 t.0 t.4 t.2 %rsp %rbp t.3 
+t.6: t.1 t.0 t.4 t.2 %rsp %rbp t.3 t.5 
+t.7: t.1 t.0 t.4 t.2 %rsp %rbp 
+t.8: t.0 %rsp %rbp t.2 
+LocalArrayFixed2d.1.x: %rsp %rbp 
+LocalArrayFixed2d.1.x <= t.0
+t.8 <= t.1
+t.1 <= t.8
+t.5 <= t.1
+t.6 <= t.0
+t.7 <= t.3
+t.3 <= t.7
+t.0 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%r8
+t.2->%rdi
+t.1->%rsi
+t.4->%rdx
+t.3->%rcx
+t.5->%rbx
+t.6->%rax
+t.7->%rax
+t.8->%rax
+LocalArrayFixed2d.1.x->%rax
+# Assembly code:
+	.text
+LocalArrayFixed2d:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.4:
+	movq $400,%rdi
+	call malloc
+	movq %rax,%r8
+	movq $10,%rdi
+	xorq %rsi,%rsi
+	cmpq %rdi,%rsi
+	jge L.1
+L.0:
+	movq $5,%rdx
+	xorq %rcx,%rcx
+	cmpq %rdx,%rcx
+	jge L.3
+L.2:
+	movq %rsi,%rbx
+	imulq $40,%rbx
+	movq %r8,%rax
+	addq %rbx,%rax
+	movq $0,0(%rax,%rcx,8)
+	movq %rcx,%rax
+	addq $1,%rax
+	movq %rax,%rcx
+	cmpq %rdx,%rcx
+	jl L.2
+L.3:
+	movq %rsi,%rax
+	addq $1,%rax
+	movq %rax,%rsi
+	cmpq %rdi,%rsi
+	jl L.0
+L.1:
+	movq %r8,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END LocalArrayFixed2d

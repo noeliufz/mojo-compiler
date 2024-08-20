@@ -1,0 +1,7 @@
+{
+  type T = object {
+    bar() = Bar;
+  };
+  proc Bar(t: T) {}
+}
+

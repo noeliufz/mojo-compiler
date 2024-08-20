@@ -1,0 +1,29 @@
+type 
+  A  = object { p(): int },
+  AB = A object { p(): int };
+
+proc Pa (self: A): int;
+proc Pab(self: AB): int;
+
+type T1 = AB object { p = Pab }; (* ok *)
+type T2 = A object { p = Pa }; (* ok *)
+type T3 = AB object { p = Pa }; (* ok *)
+
+{
+  var a: A;
+  var ab: AB;
+  var t1: T1;
+  var t2: T2;
+  var t3: T3;
+
+  a.p();
+  A.p(a);
+  ab.p();
+  AB.p(ab);
+  t1.p();
+  T1.p(t1);
+  t2.p();
+  T2.p(t2);
+  t3.p();
+  T3.p(t3);
+}

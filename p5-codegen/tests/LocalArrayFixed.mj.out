@@ -1,0 +1,248 @@
+PROCEDURE LocalArrayFixed
+# Trees:
+MOVE(
+ TEMP t.1,
+ CONST 10),
+MOVE(
+ TEMP t.0,
+ CONST 0),
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0),
+LABEL L.0,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0),
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1)),
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1),
+LABEL L.1
+# Linearized (trees):
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+LABEL L.1
+# Basic Blocks:
+# 0
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+# 1
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+# 2
+LABEL L.1
+# Trace Scheduled:
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+LABEL L.1
+# With procedure entry/exit:
+LABEL L.2
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+LABEL L.1
+# Instructions:
+L.2:	# <- 
+	movq $10,t.1	# t.1 <- 
+	xorq t.0,t.0	# t.0 <- 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jge L.1	# <- : goto L.1 L.0 
+L.0:	# <- 
+	movq $0,-80(%rbp,t.0,8)	# <- %rbp t.0 
+	movq t.0,t.2	# t.2 := t.0 
+	addq $1,t.2	# t.2 <- t.2 
+	movq t.2,t.0	# t.0 := t.2 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jl L.0	# <- : goto L.0 L.1 
+L.1:	# <- 
+# Control Flow Graph:
+0: t.1 t.0 <-; goto 2 1
+1: t.2 t.0 <- %rbp t.0 t.1; goto 1 2
+2: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.1: t.0 %rsp %rbp t.2 
+t.0: %rsp %rbp t.1 
+t.2: %rbp t.1 %rsp 
+t.2 <= t.0
+t.0 <= t.2
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.1->%rbx
+t.0->%rax
+t.2->%rax
+# Assembly code:
+	.text
+LocalArrayFixed:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $96,%rsp
+	movq %rbx, -88(%rbp)
+L.2:
+	movq $10,%rbx
+	xorq %rax,%rax
+	cmpq %rbx,%rax
+	jge L.1
+L.0:
+	movq $0,-80(%rbp,%rax,8)
+#	movq %rax,%rax
+	addq $1,%rax
+#	movq %rax,%rax
+	cmpq %rbx,%rax
+	jl L.0
+L.1:
+#	returnSink
+	movq -88(%rbp),%rbx
+	addq $96,%rsp
+	popq %rbp
+	ret
+END LocalArrayFixed

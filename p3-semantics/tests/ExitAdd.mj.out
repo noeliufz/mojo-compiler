@@ -1,0 +1,38 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN ExitAdd
+ExitAdd.exit:(VALUE i:int)
+ExitAdd.Integer=ref int
+ExitAdd.add:(VALUE x:Integer; VALUE y:Integer):Integer
+BEGIN ExitAdd.add
+ExitAdd.add.x:Integer
+ExitAdd.add.y:Integer
+BEGIN ExitAdd.add.1
+ExitAdd.add.1.z:Integer
+END ExitAdd.add.1
+END ExitAdd.add
+BEGIN ExitAdd.4
+ExitAdd.4.x:Integer
+ExitAdd.4.y:Integer
+ExitAdd.4.z:Integer
+END ExitAdd.4
+END ExitAdd
+END _BUILTIN

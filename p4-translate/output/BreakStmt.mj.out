@@ -1,0 +1,23 @@
+	.text
+BreakStmt:
+MOVE(
+ TEMP BreakStmt.1.x,
+ CONST 0),
+MOVE(
+ TEMP BreakStmt.1.y,
+ CONST 0),
+LABEL L.0,
+BEQ(
+ TEMP BreakStmt.1.x,
+ CONST 0,
+ L.2, L.1),
+LABEL L.1,
+JUMP(
+ NAME L.2),
+BEQ(
+ TEMP BreakStmt.1.y,
+ CONST 0,
+ L.0, L.2),
+LABEL L.2
+
+

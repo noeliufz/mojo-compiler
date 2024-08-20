@@ -1,0 +1,3 @@
+proc main (args: array [] of Text]) {
+    println("Hello World!");
+}

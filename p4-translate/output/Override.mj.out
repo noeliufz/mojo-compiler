@@ -1,0 +1,14 @@
+	.data
+	.balign 8
+Override.U:
+	.quad Override.FooU
+	.quad badPtr
+	.data
+	.balign 8
+Override.T:
+	.quad Override.FooT
+	.quad badPtr
+	.quad badPtr
+	.text
+Override:
+

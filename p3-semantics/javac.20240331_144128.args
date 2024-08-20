@@ -1,0 +1,9 @@
+-cp
+bin
+-d
+bin
+src/mojo/Absyn.java
+src/mojo/Error.java
+src/mojo/ProcBody.java
+src/mojo/Scope.java
+src/mojo/Semant.java

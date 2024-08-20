@@ -1,0 +1,9 @@
+type Cell = record {
+  x: int;
+  next: ref Cell;
+};
+var head: Cell;
+proc append(cell: Cell) {
+  cell.next = head;
+  head = cell;
+}

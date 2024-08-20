@@ -1,0 +1,1 @@
+type r = record { f: array of int };

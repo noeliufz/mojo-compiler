@@ -1,0 +1,259 @@
+PROCEDURE NotExpr.Not
+# Trees:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CONST 0),
+  BEQ(
+   TEMP NotExpr.Not.x,
+   CONST 0,
+   L.1, L.2),
+  LABEL L.1,
+  MOVE(
+   TEMP t.0,
+   CONST 1),
+  LABEL L.2,
+  TEMP t.0)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP NotExpr.Not.x,
+ CONST 0,
+ L.1, L.2)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP NotExpr.Not.x,
+ CONST 0,
+ L.1, L.2)
+# 1
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+# 2
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.0
+# Trace Scheduled:
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP NotExpr.Not.x,
+ CONST 0,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP NotExpr.Not.x,
+ TEMP %rdi)
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BEQ(
+ TEMP NotExpr.Not.x,
+ CONST 0,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ TEMP t.0)
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ CONST 1)
+JUMP(
+ NAME L.2)
+LABEL L.0
+# Instructions:
+	movq %rdi,NotExpr.Not.x	# NotExpr.Not.x := %rdi 
+L.3:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.1,NotExpr.Not.x	# <- NotExpr.Not.x t.1 
+	je L.1	# <- : goto L.1 L.2 
+L.2:	# <- 
+	movq t.0,%rax	# %rax := t.0 
+	jmp L.0	# <- : goto L.0 
+L.1:	# <- 
+	movq $1,t.0	# t.0 <- 
+	jmp L.2	# <- : goto L.2 
+L.0:	# <- 
+# Control Flow Graph:
+0: NotExpr.Not.x <- %rdi; goto 1
+1: t.0 t.1 <- NotExpr.Not.x; goto 3 2
+2: %rax <- t.0; goto 4
+3: t.0 <-; goto 2
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+NotExpr.Not.x: %rsp %rbp t.1 t.0 
+t.0: t.1 %rsp %rbp NotExpr.Not.x 
+t.1: %rsp %rbp t.0 NotExpr.Not.x 
+%rax <= t.0
+NotExpr.Not.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+NotExpr.Not.x->%rcx
+t.0->%rbx
+t.1->%rax
+# Assembly code:
+	.text
+NotExpr.Not:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rcx
+L.3:
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	je L.1
+L.2:
+	movq %rbx,%rax
+	jmp L.0
+L.1:
+	movq $1,%rbx
+	jmp L.2
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END NotExpr.Not
+PROCEDURE NotExpr
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.4
+# Trace Scheduled:
+LABEL L.4
+# With procedure entry/exit:
+LABEL L.4
+# Instructions:
+L.4:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+NotExpr:
+	pushq %rbp
+	movq %rsp,%rbp
+L.4:
+#	returnSink
+	popq %rbp
+	ret
+END NotExpr

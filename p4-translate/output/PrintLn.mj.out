@@ -1,0 +1,53 @@
+	.text
+PrintLn.println:
+EXP(
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.0,
+     TEMP PrintLn.println.t),
+    BEQ(
+     TEMP t.0,
+     CONST 0,
+     PrintLn.println.badPtr, L.1),
+    LABEL L.1,
+    TEMP t.0), 
+   CONST 0, 8, false))),
+LABEL L.0
+
+
+	.data
+	.balign 8
+L.2:
+	.byte 72
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 32
+	.byte 87
+	.byte 111
+	.byte 114
+	.byte 108
+	.byte 100
+	.byte -30
+	.byte -100
+	.byte -123
+	.byte 0
+	.data
+	.balign 8
+L.3:
+	.quad L.2
+	.quad 15
+	.text
+PrintLn:
+EXP(
+ CALL(
+  NAME PrintLn.println,
+  CONST 0,
+  NAME L.3))
+
+

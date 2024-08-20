@@ -1,0 +1,2 @@
+type T = object { foo(); };
+const foo = T.foo;

@@ -1,0 +1,14 @@
+type rec = record { a, b, c, d, e, f: int };
+
+proc callee(r: rec): int {
+  return r.a + r.b + r.c + r.d + r.e + r.f;
+}
+
+var r: rec;
+
+proc caller(): int {
+  return callee(r);
+}
+
+{
+}

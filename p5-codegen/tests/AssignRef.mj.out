@@ -1,0 +1,100 @@
+	.data
+	.balign 8
+AssignRef.g:
+	.zero 8
+PROCEDURE AssignRef
+# Trees:
+MOVE(
+ TEMP AssignRef.1.x,
+ MEM(
+  NAME AssignRef.g, 
+  CONST 0, 8, false, false))
+# Linearized (trees):
+MOVE(
+ TEMP AssignRef.1.x,
+ MEM(
+  NAME AssignRef.g, 
+  CONST 0, 8, false, false))
+# Basic Blocks:
+# 0
+LABEL L.0
+MOVE(
+ TEMP AssignRef.1.x,
+ MEM(
+  NAME AssignRef.g, 
+  CONST 0, 8, false, false))
+# Trace Scheduled:
+LABEL L.0
+MOVE(
+ TEMP AssignRef.1.x,
+ MEM(
+  NAME AssignRef.g, 
+  CONST 0, 8, false, false))
+# With procedure entry/exit:
+LABEL L.0
+MOVE(
+ TEMP AssignRef.1.x,
+ MEM(
+  NAME AssignRef.g, 
+  CONST 0, 8, false, false))
+# Instructions:
+L.0:	# <- 
+	leaq AssignRef.g(%rip),t.0	# t.0 <- 
+	movq 0(t.0),t.1	# t.1 <- t.0 
+	movq t.1,AssignRef.1.x	# AssignRef.1.x := t.1 
+# Control Flow Graph:
+0: t.0 t.1 AssignRef.1.x <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: %rsp %rbp 
+t.1: %rsp %rbp 
+AssignRef.1.x: %rsp %rbp 
+AssignRef.1.x <= t.1
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%rax
+t.1->%rax
+AssignRef.1.x->%rax
+# Assembly code:
+	.text
+AssignRef:
+	pushq %rbp
+	movq %rsp,%rbp
+L.0:
+	leaq AssignRef.g(%rip),%rax
+	movq 0(%rax),%rax
+#	movq %rax,%rax
+#	returnSink
+	popq %rbp
+	ret
+END AssignRef

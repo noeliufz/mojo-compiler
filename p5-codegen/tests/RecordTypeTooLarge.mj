@@ -1,0 +1,1 @@
+type R = record { a,b,c,d,e,f: array 16_FFF of array 16_FFFF of int; };

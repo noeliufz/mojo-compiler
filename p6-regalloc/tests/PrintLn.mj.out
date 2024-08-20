@@ -1,0 +1,335 @@
+PROCEDURE PrintLn.println
+# Trees:
+EXP(
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.0,
+     TEMP PrintLn.println.t),
+    BEQ(
+     TEMP t.0,
+     CONST 0,
+     PrintLn.println.badPtr, L.1),
+    LABEL L.1,
+    TEMP t.0), 
+   CONST 0, 8, false, false))),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ TEMP PrintLn.println.t)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ PrintLn.println.badPtr, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ TEMP PrintLn.println.t)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ PrintLn.println.badPtr, L.1)
+# 1
+LABEL L.1
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+JUMP(
+ NAME L.0)
+# 2
+LABEL L.0
+# Trace Scheduled:
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ TEMP PrintLn.println.t)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ PrintLn.println.badPtr, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP PrintLn.println.t,
+ TEMP %rdi)
+LABEL L.4
+MOVE(
+ TEMP t.0,
+ TEMP PrintLn.println.t)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ PrintLn.println.badPtr, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+LABEL L.0
+# Instructions:
+	movq %rdi,PrintLn.println.t	# PrintLn.println.t := %rdi 
+L.4:	# <- 
+	movq PrintLn.println.t,t.0	# t.0 := PrintLn.println.t 
+	xorq t.2,t.2	# t.2 <- 
+	cmpq t.2,t.0	# <- t.0 t.2 
+	je PrintLn.println.badPtr	# <- : goto PrintLn.println.badPtr L.1 
+L.1:	# <- 
+	movq 0(t.0),t.3	# t.3 <- t.0 
+	movq t.3,%rdi	# %rdi := t.3 
+	call puts	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.1	# t.1 := %rax 
+L.0:	# <- 
+# Control Flow Graph:
+0: PrintLn.println.t <- %rdi; goto 1
+1: t.0 t.2 <- PrintLn.println.t; goto 2
+2: t.3 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.1 <- t.0; goto 3
+3: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+PrintLn.println.t: %rsp %rbp 
+t.0: t.2 %rsp %rbp 
+t.2: t.0 %rsp %rbp 
+t.3: %rsp %rbp 
+t.1: %rsp %rbp 
+%rdi <= t.3
+t.1 <= %rax
+t.0 <= PrintLn.println.t
+PrintLn.println.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+PrintLn.println.t->%rdi
+t.0->%rdi
+t.2->%rax
+t.3->%rdi
+t.1->%rax
+# Assembly code:
+	.text
+PrintLn.println:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+#	movq %rdi,%rdi
+L.4:
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je PrintLn.println.badPtr
+L.1:
+	movq 0(%rdi),%rdi
+#	movq %rdi,%rdi
+	call puts
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+PrintLn.println.badPtr:
+	call badPtr
+END PrintLn.println
+	.data
+	.balign 8
+L.2:
+	.byte 72
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 32
+	.byte 87
+	.byte 111
+	.byte 114
+	.byte 108
+	.byte 100
+	.byte -30
+	.byte -100
+	.byte -123
+	.byte 0
+	.data
+	.balign 8
+L.3:
+	.quad L.2
+	.quad 15
+PROCEDURE PrintLn
+# Trees:
+EXP(
+ CALL(
+  NAME PrintLn.println,
+  CONST 0,
+  NAME L.3))
+# Linearized (trees):
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME PrintLn.println,
+  CONST 0,
+  NAME L.3))
+EXP(
+ TEMP t.4)
+# Basic Blocks:
+# 0
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME PrintLn.println,
+  CONST 0,
+  NAME L.3))
+EXP(
+ TEMP t.4)
+# Trace Scheduled:
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME PrintLn.println,
+  CONST 0,
+  NAME L.3))
+EXP(
+ TEMP t.4)
+# With procedure entry/exit:
+LABEL L.5
+MOVE(
+ TEMP t.4,
+ CALL(
+  NAME PrintLn.println,
+  CONST 0,
+  NAME L.3))
+EXP(
+ TEMP t.4)
+# Instructions:
+L.5:	# <- 
+	leaq L.3(%rip),t.5	# t.5 <- 
+	movq t.5,%rdi	# %rdi := t.5 
+	call PrintLn.println	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.4	# t.4 := %rax 
+# Control Flow Graph:
+0: t.5 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.4 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.5: %rsp %rbp 
+t.4: %rsp %rbp 
+%rdi <= t.5
+t.4 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.5->%rdi
+t.4->%rax
+# Assembly code:
+	.text
+PrintLn:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+L.5:
+	leaq L.3(%rip),%rdi
+#	movq %rdi,%rdi
+	call PrintLn.println
+#	movq %rax,%rax
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+END PrintLn

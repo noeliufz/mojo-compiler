@@ -1,0 +1,3 @@
+{
+  for x = y to z by 0 loop {}
+}

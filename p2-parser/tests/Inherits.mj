@@ -1,0 +1,1 @@
+type o = object {x:int} object {y:int} object {z:int};

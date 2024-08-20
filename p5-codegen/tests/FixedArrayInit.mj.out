@@ -1,0 +1,522 @@
+PROCEDURE FixedArrayInit
+# Trees:
+MOVE(
+ TEMP t.1,
+ CONST 10),
+MOVE(
+ TEMP t.0,
+ CONST 0),
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0),
+LABEL L.0,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0),
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1)),
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1),
+LABEL L.1,
+MOVE(
+ TEMP t.3,
+ CONST 10),
+MOVE(
+ TEMP t.2,
+ CONST 0),
+BGE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.2),
+LABEL L.2,
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP %rbp,
+  MUL(
+   TEMP t.2,
+   CONST 24))),
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -320, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -312, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -304, 8, true, false),
+ CONST 0),
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  CONST 1)),
+BLT(
+ TEMP t.2,
+ TEMP t.3,
+ L.2, L.3),
+LABEL L.3
+# Linearized (trees):
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.3,
+ CONST 10)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP %rbp,
+  MUL(
+   TEMP t.2,
+   CONST 24)))
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -320, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -312, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -304, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  CONST 1))
+BLT(
+ TEMP t.2,
+ TEMP t.3,
+ L.2, L.3)
+LABEL L.3
+# Basic Blocks:
+# 0
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+# 1
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+# 2
+LABEL L.1
+MOVE(
+ TEMP t.3,
+ CONST 10)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.2)
+# 3
+LABEL L.2
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP %rbp,
+  MUL(
+   TEMP t.2,
+   CONST 24)))
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -320, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -312, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -304, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  CONST 1))
+BLT(
+ TEMP t.2,
+ TEMP t.3,
+ L.2, L.3)
+# 4
+LABEL L.3
+# Trace Scheduled:
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.3,
+ CONST 10)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP %rbp,
+  MUL(
+   TEMP t.2,
+   CONST 24)))
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -320, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -312, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -304, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  CONST 1))
+BLT(
+ TEMP t.2,
+ TEMP t.3,
+ L.2, L.3)
+LABEL L.3
+# With procedure entry/exit:
+LABEL L.4
+MOVE(
+ TEMP t.1,
+ CONST 10)
+MOVE(
+ TEMP t.0,
+ CONST 0)
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -80, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1))
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP t.3,
+ CONST 10)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BGE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.2)
+LABEL L.2
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP %rbp,
+  MUL(
+   TEMP t.2,
+   CONST 24)))
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -320, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -312, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST -304, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  CONST 1))
+BLT(
+ TEMP t.2,
+ TEMP t.3,
+ L.2, L.3)
+LABEL L.3
+# Instructions:
+L.4:	# <- 
+	movq $10,t.1	# t.1 <- 
+	xorq t.0,t.0	# t.0 <- 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jge L.1	# <- : goto L.1 L.0 
+L.0:	# <- 
+	movq $0,-80(%rbp,t.0,8)	# <- %rbp t.0 
+	movq t.0,t.5	# t.5 := t.0 
+	addq $1,t.5	# t.5 <- t.5 
+	movq t.5,t.0	# t.0 := t.5 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jl L.0	# <- : goto L.0 L.1 
+L.1:	# <- 
+	movq $10,t.3	# t.3 <- 
+	xorq t.2,t.2	# t.2 <- 
+	cmpq t.3,t.2	# <- t.2 t.3 
+	jge L.3	# <- : goto L.3 L.2 
+L.2:	# <- 
+	movq t.2,t.6	# t.6 := t.2 
+	imulq $24,t.6	# t.6 <- t.6 
+	movq %rbp,t.7	# t.7 := %rbp 
+	addq t.6,t.7	# t.7 <- t.6 t.7 
+	movq t.7,t.4	# t.4 := t.7 
+	movq $0,-320(t.4)	# <- t.4 
+	movq $0,-312(t.4)	# <- t.4 
+	movq $0,-304(t.4)	# <- t.4 
+	movq t.2,t.8	# t.8 := t.2 
+	addq $1,t.8	# t.8 <- t.8 
+	movq t.8,t.2	# t.2 := t.8 
+	cmpq t.3,t.2	# <- t.2 t.3 
+	jl L.2	# <- : goto L.2 L.3 
+L.3:	# <- 
+# Control Flow Graph:
+0: t.1 t.0 <-; goto 2 1
+1: t.5 t.0 <- %rbp t.0 t.1; goto 1 2
+2: t.3 t.2 <-; goto 4 3
+3: t.6 t.7 t.4 t.8 t.2 <- t.2 %rbp t.3; goto 3 4
+4: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.1: t.0 %rsp %rbp t.5 
+t.0: %rsp %rbp t.1 
+t.5: %rbp t.1 %rsp 
+t.3: t.2 %rsp %rbp t.8 t.4 t.7 t.6 
+t.2: %rsp %rbp t.3 t.4 t.7 t.6 
+t.6: t.7 %rbp t.3 %rsp t.2 
+t.7: %rbp t.3 %rsp t.2 t.6 
+t.4: %rbp t.3 %rsp t.2 
+t.8: %rbp t.3 %rsp 
+t.6 <= t.2
+t.7 <= %rbp
+t.4 <= t.7
+t.8 <= t.2
+t.2 <= t.8
+t.5 <= t.0
+t.0 <= t.5
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.1->%rbx
+t.0->%rax
+t.5->%rax
+t.3->%rdx
+t.2->%rcx
+t.6->%rbx
+t.7->%rax
+t.4->%rax
+t.8->%rax
+# Assembly code:
+	.text
+FixedArrayInit:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $336,%rsp
+	movq %rbx, -328(%rbp)
+L.4:
+	movq $10,%rbx
+	xorq %rax,%rax
+	cmpq %rbx,%rax
+	jge L.1
+L.0:
+	movq $0,-80(%rbp,%rax,8)
+#	movq %rax,%rax
+	addq $1,%rax
+#	movq %rax,%rax
+	cmpq %rbx,%rax
+	jl L.0
+L.1:
+	movq $10,%rdx
+	xorq %rcx,%rcx
+	cmpq %rdx,%rcx
+	jge L.3
+L.2:
+	movq %rcx,%rbx
+	imulq $24,%rbx
+	movq %rbp,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+	movq $0,-320(%rax)
+	movq $0,-312(%rax)
+	movq $0,-304(%rax)
+	movq %rcx,%rax
+	addq $1,%rax
+	movq %rax,%rcx
+	cmpq %rdx,%rcx
+	jl L.2
+L.3:
+#	returnSink
+	movq -328(%rbp),%rbx
+	addq $336,%rsp
+	popq %rbp
+	ret
+END FixedArrayInit

@@ -1,0 +1,7 @@
+type Rec = record {
+    x: int;
+    y, z: byte;
+    i: char;
+    a: array 5 of byte;
+    b: int;
+};

@@ -1,0 +1,161 @@
+	.text
+ReturnArray.foo:
+MOVE(
+ TEMP t.1,
+ CONST 3),
+MOVE(
+ TEMP t.0,
+ CONST 0),
+BGE(
+ TEMP t.0,
+ TEMP t.1,
+ L.2, L.1),
+LABEL L.1,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST -32, 8, true),
+ CONST 0),
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  CONST 1)),
+BLT(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.2),
+LABEL L.2,
+MOVE(
+ TEMP t.2,
+ CONST 0),
+MOVE(
+ TEMP t.3,
+ CONST 2),
+MOVE(
+ TEMP t.4,
+ CONST 1),
+LABEL L.3,
+MOVE(
+ TEMP ReturnArray.foo.1.1.i,
+ TEMP t.2),
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.5,
+      TEMP ReturnArray.foo.1.1.i),
+     BLT(
+      TEMP t.5,
+      CONST 0,
+      ReturnArray.foo.badSub, L.6),
+     LABEL L.6,
+     BGT(
+      TEMP t.5,
+      CONST 2,
+      ReturnArray.foo.badSub, L.7),
+     LABEL L.7,
+     TEMP t.5),
+    CONST 8)), 
+  CONST -32, 8, true),
+ TEMP ReturnArray.foo.1.1.i),
+MOVE(
+ TEMP t.2,
+ ADD(
+  TEMP t.2,
+  TEMP t.4)),
+LABEL L.4,
+BLE(
+ TEMP t.2,
+ TEMP t.3,
+ L.3, L.5),
+LABEL L.5,
+MOVE(
+ TEMP t.6,
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, false)),
+EXP(
+ CALL(
+  NAME memmove,
+  CONST 0,
+  TEMP t.6,
+  ADD(
+   TEMP %rbp,
+   CONST -32),
+  CONST 24)),
+MOVE(
+ TEMP %rax,
+ TEMP t.6),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+ReturnArray:
+EXP(
+ CALL(
+  NAME memmove,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -24),
+  CALL(
+   NAME ReturnArray.foo,
+   CONST 0,
+   ADD(
+    TEMP %rbp,
+    CONST -48)),
+  CONST 24)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -24, 8, true)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  ADD(
+   CONST 48,
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true)))),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+
+

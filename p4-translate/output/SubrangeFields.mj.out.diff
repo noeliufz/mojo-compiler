@@ -1,0 +1,28 @@
+26,27c26,27
+<  L.5, L.6),
+< LABEL L.5,
+---
+>  L.3, L.4),
+> LABEL L.3,
+34,35c34,35
+<  NAME L.7),
+< LABEL L.6,
+---
+>  NAME L.5),
+> LABEL L.4,
+41c41
+< LABEL L.7,
+---
+> LABEL L.5,
+55,56c55,56
+<  L.9, L.10),
+< LABEL L.9,
+---
+>  L.7, L.8),
+> LABEL L.7,
+77,78c77,78
+< LABEL L.10,
+< LABEL L.8
+---
+> LABEL L.8,
+> LABEL L.6

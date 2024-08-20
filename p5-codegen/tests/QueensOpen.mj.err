@@ -1,0 +1,4 @@
+Exception in thread "main" java.lang.Error: Spilling unimplemented
+	at RegAlloc.RegAlloc.<init>(RegAlloc.java:42)
+	at mojo.Main.emitProc(Main.java:65)
+	at mojo.Main.main(Main.java:138)

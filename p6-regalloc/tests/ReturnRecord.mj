@@ -1,0 +1,21 @@
+proc putchar(x: int): int;
+
+type R = record { x, y, z: int };
+
+proc foo(): R {
+    var r: R;
+    r.x = 1;
+    r.y = 2;
+    r.z = 3;
+    return r;
+}
+
+{
+  var r = foo();
+  putchar(Ord('0') + r.x);
+  putchar(Ord('\n'));
+  putchar(Ord('0') + r.y);
+  putchar(Ord('\n'));
+  putchar(Ord('0') + r.z);
+  putchar(Ord('\n'));
+}

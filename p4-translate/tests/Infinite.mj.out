@@ -1,0 +1,54 @@
+	.data
+	.balign 8
+L.3:
+	.byte 39
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 44
+	.byte 32
+	.byte 39
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 44
+	.byte 32
+	.byte 39
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 33
+	.byte 0
+	.data
+	.balign 8
+L.4:
+	.quad L.3
+	.quad 21
+	.text
+Infinite:
+LABEL L.0,
+LABEL L.1,
+EXP(
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.0,
+     NAME L.4),
+    BEQ(
+     TEMP t.0,
+     CONST 0,
+     Infinite.badPtr, L.5),
+    LABEL L.5,
+    TEMP t.0), 
+   CONST 0, 8, false))),
+JUMP(
+ NAME L.0),
+LABEL L.2
+
+

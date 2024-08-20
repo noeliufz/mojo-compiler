@@ -1,0 +1,3 @@
+proc doit(foo: int): int {
+    return 0;
+}

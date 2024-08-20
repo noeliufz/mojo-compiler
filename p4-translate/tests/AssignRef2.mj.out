@@ -1,0 +1,19 @@
+	.text
+AssignRef2:
+MOVE(
+ TEMP AssignRef2.1.x,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 8)),
+  MOVE(
+   MEM(
+    TEMP t.0, 
+    CONST 0, 8, false),
+   CONST 0),
+  TEMP t.0))
+
+

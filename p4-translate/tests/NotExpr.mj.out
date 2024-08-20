@@ -1,0 +1,26 @@
+	.text
+NotExpr.Not:
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CONST 0),
+  BEQ(
+   TEMP NotExpr.Not.x,
+   CONST 0,
+   L.1, L.2),
+  LABEL L.1,
+  MOVE(
+   TEMP t.0,
+   CONST 1),
+  LABEL L.2,
+  TEMP t.0)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+NotExpr:
+

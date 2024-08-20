@@ -1,0 +1,369 @@
+PROCEDURE ArrayRecord
+# Trees:
+MOVE(
+ TEMP ArrayRecord.1.a,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 160)),
+  MOVE(
+   TEMP t.2,
+   CONST 10),
+  MOVE(
+   TEMP t.1,
+   CONST 0),
+  BGE(
+   TEMP t.1,
+   TEMP t.2,
+   L.1, L.0),
+  LABEL L.0,
+  MOVE(
+   TEMP t.3,
+   ADD(
+    TEMP t.0,
+    MUL(
+     TEMP t.1,
+     CONST 16))),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, true, false),
+   CONST 0),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 8, 8, true, false),
+   CONST 0),
+  MOVE(
+   TEMP t.1,
+   ADD(
+    TEMP t.1,
+    CONST 1)),
+  BLT(
+   TEMP t.1,
+   TEMP t.2,
+   L.0, L.1),
+  LABEL L.1,
+  TEMP t.0))
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 160))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.0,
+  MUL(
+   TEMP t.1,
+   CONST 16)))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP ArrayRecord.1.a,
+ TEMP t.0)
+# Basic Blocks:
+# 0
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 160))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+# 1
+LABEL L.0
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.0,
+  MUL(
+   TEMP t.1,
+   CONST 16)))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+# 2
+LABEL L.1
+MOVE(
+ TEMP ArrayRecord.1.a,
+ TEMP t.0)
+# Trace Scheduled:
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 160))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.0,
+  MUL(
+   TEMP t.1,
+   CONST 16)))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP ArrayRecord.1.a,
+ TEMP t.0)
+# With procedure entry/exit:
+LABEL L.2
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 160))
+MOVE(
+ TEMP t.2,
+ CONST 10)
+MOVE(
+ TEMP t.1,
+ CONST 0)
+BGE(
+ TEMP t.1,
+ TEMP t.2,
+ L.1, L.0)
+LABEL L.0
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.0,
+  MUL(
+   TEMP t.1,
+   CONST 16)))
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 0, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ ADD(
+  TEMP t.1,
+  CONST 1))
+BLT(
+ TEMP t.1,
+ TEMP t.2,
+ L.0, L.1)
+LABEL L.1
+MOVE(
+ TEMP ArrayRecord.1.a,
+ TEMP t.0)
+# Instructions:
+L.2:	# <- 
+	movq $160,%rdi	# %rdi <- 
+	call malloc	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.0	# t.0 := %rax 
+	movq $10,t.2	# t.2 <- 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.2,t.1	# <- t.1 t.2 
+	jge L.1	# <- : goto L.1 L.0 
+L.0:	# <- 
+	movq t.1,t.4	# t.4 := t.1 
+	shlq $4,t.4	# t.4 <- t.4 
+	movq t.0,t.5	# t.5 := t.0 
+	addq t.4,t.5	# t.5 <- t.4 t.5 
+	movq t.5,t.3	# t.3 := t.5 
+	movq $0,0(t.3)	# <- t.3 
+	movq $0,8(t.3)	# <- t.3 
+	movq t.1,t.6	# t.6 := t.1 
+	addq $1,t.6	# t.6 <- t.6 
+	movq t.6,t.1	# t.1 := t.6 
+	cmpq t.2,t.1	# <- t.1 t.2 
+	jl L.0	# <- : goto L.0 L.1 
+L.1:	# <- 
+	movq t.0,ArrayRecord.1.a	# ArrayRecord.1.a := t.0 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.0 t.2 t.1 <-; goto 2 1
+1: t.4 t.5 t.3 t.6 t.1 <- t.1 t.0 t.2; goto 1 2
+2: ArrayRecord.1.a <- t.0 %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: t.1 t.2 %rsp %rbp t.6 t.3 t.5 t.4 
+t.2: t.1 t.0 %rsp %rbp t.6 t.3 t.5 t.4 
+t.1: t.0 %rsp %rbp t.2 t.3 t.5 t.4 
+t.4: t.5 t.0 t.2 %rsp %rbp t.1 
+t.5: t.0 t.2 %rsp %rbp t.1 t.4 
+t.3: t.0 t.2 %rsp %rbp t.1 
+t.6: t.0 t.2 %rsp %rbp 
+ArrayRecord.1.a: %rsp %rbp 
+ArrayRecord.1.a <= t.0
+t.4 <= t.1
+t.5 <= t.0
+t.3 <= t.5
+t.6 <= t.1
+t.1 <= t.6
+t.0 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%rsi
+t.2->%rdx
+t.1->%rcx
+t.4->%rbx
+t.5->%rax
+t.3->%rax
+t.6->%rax
+ArrayRecord.1.a->%rax
+# Assembly code:
+	.text
+ArrayRecord:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.2:
+	movq $160,%rdi
+	call malloc
+	movq %rax,%rsi
+	movq $10,%rdx
+	xorq %rcx,%rcx
+	cmpq %rdx,%rcx
+	jge L.1
+L.0:
+	movq %rcx,%rbx
+	shlq $4,%rbx
+	movq %rsi,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+	movq $0,0(%rax)
+	movq $0,8(%rax)
+	movq %rcx,%rax
+	addq $1,%rax
+	movq %rax,%rcx
+	cmpq %rdx,%rcx
+	jl L.0
+L.1:
+	movq %rsi,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END ArrayRecord

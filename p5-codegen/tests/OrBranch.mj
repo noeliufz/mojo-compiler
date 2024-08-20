@@ -1,0 +1,4 @@
+proc Or(x, y: bool): bool {
+  if x || y then return false;
+  return true;
+}

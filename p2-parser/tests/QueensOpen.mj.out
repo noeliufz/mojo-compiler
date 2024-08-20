@@ -1,0 +1,76 @@
+proc putchar (
+    val i: int;
+  ): int;
+const N: int = 8;
+type Queens = Root object {
+    row: ref array of int;
+    col: ref array of int;
+    diag1: ref array of int;
+    diag2: ref array of int;
+    init(): Queens = Init;
+    solve(
+      val c: int;
+    ) = Solve;
+};
+proc Init (
+    val self: Queens;
+  ): Queens
+{
+  self.row = New(ref array of int, N);
+  self.col = New(ref array of int, N);
+  self.diag1 = New(ref array of int, (N + N) - 1);
+  self.diag2 = New(ref array of int, (N + N) - 1);
+  return self;
+}
+proc Solve (
+    val self: Queens;
+    val c: int;
+  )
+{
+  if c == Number(self.col) then
+    {
+      Print(self);
+    }
+  else
+    {
+      for r = 0 to Number(self.row) - 1 by 1 loop
+        {
+          if ((self.row)[r] == 0 && (self.diag1)[r + c] == 0) && (self.diag2)[(r + (N - 1)) - c] == 0 then
+            {
+              (self.row)[r] = 1;
+              (self.diag1)[r + c] = 1;
+              (self.diag2)[(r + (N - 1)) - c] = 1;
+              (self.col)[c] = r;
+              (self.solve)(c + 1);
+              (self.row)[r] = 0;
+              (self.diag1)[r + c] = 0;
+              (self.diag2)[(r + (N - 1)) - c] = 0;
+            }
+        }
+    }
+}
+proc Print (
+    val self: Queens;
+  )
+{
+  for i = 0 to Number(self.col) - 1 by 1 loop
+    {
+      for j = 0 to Number(self.row) - 1 by 1 loop
+        {
+          putchar(' ' (* 0x20 *));
+          if (self.col)[i] == j then
+            {
+              putchar('Q' (* 0x51 *));
+            }
+          else
+            {
+              putchar('.' (* 0x2e *));
+            }
+          putchar('\n' (* 0xa *));
+        }
+      putchar('\n' (* 0xa *));
+    }
+}
+{
+  ((((New(Queens)).init)()).solve)(0);
+}

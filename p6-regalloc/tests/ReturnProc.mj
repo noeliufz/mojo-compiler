@@ -1,0 +1,9 @@
+
+type P = proc(x:int): int;
+
+proc retProc(p: P): P {
+  return p;
+}
+
+{
+}

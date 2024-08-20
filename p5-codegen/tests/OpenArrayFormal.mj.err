@@ -1,0 +1,2 @@
+ line 1, column 9: warning: open array passed by value (a)
+ line 1, column 9: error: open array passed by value unimplemented (a)

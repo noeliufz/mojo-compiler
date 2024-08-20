@@ -1,0 +1,484 @@
+	.text
+xc_Append.println:
+MOVE(
+ TEMP xc_Append.println.1.a,
+ TEMP xc_Append.println.t),
+EXP(
+ CALL(
+  NAME puts,
+  CONST 0,
+  ESEQ(
+   MOVE(
+    TEMP t.3,
+    ESEQ(
+     MOVE(
+      TEMP t.1,
+      TEMP xc_Append.println.1.a),
+     BEQ(
+      TEMP t.1,
+      CONST 0,
+      xc_Append.println.badPtr, L.3),
+     LABEL L.3,
+     TEMP t.1)),
+   ADD(
+    MEM(
+     TEMP t.3, 
+     CONST 0, 8, false),
+    ESEQ(
+     MOVE(
+      TEMP t.2,
+      CONST 0),
+     BLT(
+      TEMP t.2,
+      CONST 0,
+      xc_Append.println.badSub, L.4),
+     LABEL L.4,
+     BGE(
+      TEMP t.2,
+      MEM(
+       TEMP t.3, 
+       CONST 8, 8, false),
+      xc_Append.println.badSub, L.5),
+     LABEL L.5,
+     TEMP t.2))))),
+LABEL L.0
+
+
+	.text
+xc_Append.append:
+MOVE(
+ TEMP xc_Append.append.1.a1,
+ TEMP xc_Append.append.t1),
+MOVE(
+ TEMP xc_Append.append.1.a2,
+ TEMP xc_Append.append.t2),
+MOVE(
+ TEMP xc_Append.append.1.n1,
+ SUB(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.4,
+     TEMP xc_Append.append.1.a1),
+    BEQ(
+     TEMP t.4,
+     CONST 0,
+     xc_Append.append.badPtr, L.7),
+    LABEL L.7,
+    TEMP t.4), 
+   CONST 8, 8, false),
+  CONST 1)),
+MOVE(
+ TEMP xc_Append.append.1.n2,
+ SUB(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.5,
+     TEMP xc_Append.append.1.a2),
+    BEQ(
+     TEMP t.5,
+     CONST 0,
+     xc_Append.append.badPtr, L.8),
+    LABEL L.8,
+    TEMP t.5), 
+   CONST 8, 8, false),
+  CONST 1)),
+MOVE(
+ TEMP xc_Append.append.1.result,
+ ESEQ(
+  MOVE(
+   TEMP t.6,
+   ADD(
+    ADD(
+     TEMP xc_Append.append.1.n1,
+     TEMP xc_Append.append.1.n2),
+    CONST 1)),
+  BLT(
+   TEMP t.6,
+   CONST 0,
+   xc_Append.append.badSub, L.9),
+  LABEL L.9,
+  MOVE(
+   TEMP t.7,
+   TEMP t.6),
+  MOVE(
+   TEMP t.8,
+   CONST 16),
+  MOVE(
+   TEMP t.8,
+   ADD(
+    TEMP t.8,
+    TEMP t.7)),
+  MOVE(
+   TEMP t.9,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    TEMP t.8)),
+  MOVE(
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, false),
+   ADD(
+    TEMP t.9,
+    CONST 16)),
+  MOVE(
+   MEM(
+    TEMP t.9, 
+    CONST 8, 8, false),
+   TEMP t.6),
+  MOVE(
+   TEMP t.11,
+   MEM(
+    TEMP t.9, 
+    CONST 8, 8, false)),
+  MOVE(
+   TEMP t.12,
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, false)),
+  MOVE(
+   TEMP t.10,
+   CONST 0),
+  BGE(
+   TEMP t.10,
+   TEMP t.11,
+   L.12, L.10),
+  LABEL L.10,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.12,
+     TEMP t.10), 
+    CONST 0, 1, true),
+   CONST 0),
+  MOVE(
+   TEMP t.10,
+   ADD(
+    TEMP t.10,
+    CONST 1)),
+  LABEL L.11,
+  BLT(
+   TEMP t.10,
+   TEMP t.11,
+   L.10, L.12),
+  LABEL L.12,
+  TEMP t.9)),
+MOVE(
+ TEMP t.13,
+ CONST 0),
+MOVE(
+ TEMP t.14,
+ SUB(
+  TEMP xc_Append.append.1.n1,
+  CONST 1)),
+MOVE(
+ TEMP t.15,
+ CONST 1),
+JUMP(
+ NAME L.14),
+LABEL L.13,
+MOVE(
+ TEMP xc_Append.append.1.1.i,
+ TEMP t.13),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.18,
+    ESEQ(
+     MOVE(
+      TEMP t.16,
+      TEMP xc_Append.append.1.result),
+     BEQ(
+      TEMP t.16,
+      CONST 0,
+      xc_Append.append.badPtr, L.16),
+     LABEL L.16,
+     TEMP t.16)),
+   ADD(
+    MEM(
+     TEMP t.18, 
+     CONST 0, 8, false),
+    ESEQ(
+     MOVE(
+      TEMP t.17,
+      TEMP xc_Append.append.1.1.i),
+     BLT(
+      TEMP t.17,
+      CONST 0,
+      xc_Append.append.badSub, L.17),
+     LABEL L.17,
+     BGE(
+      TEMP t.17,
+      MEM(
+       TEMP t.18, 
+       CONST 8, 8, false),
+      xc_Append.append.badSub, L.18),
+     LABEL L.18,
+     TEMP t.17))), 
+  CONST 0, 1, true),
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.21,
+    ESEQ(
+     MOVE(
+      TEMP t.19,
+      TEMP xc_Append.append.1.a1),
+     BEQ(
+      TEMP t.19,
+      CONST 0,
+      xc_Append.append.badPtr, L.19),
+     LABEL L.19,
+     TEMP t.19)),
+   ADD(
+    MEM(
+     TEMP t.21, 
+     CONST 0, 8, false),
+    ESEQ(
+     MOVE(
+      TEMP t.20,
+      TEMP xc_Append.append.1.1.i),
+     BLT(
+      TEMP t.20,
+      CONST 0,
+      xc_Append.append.badSub, L.20),
+     LABEL L.20,
+     BGE(
+      TEMP t.20,
+      MEM(
+       TEMP t.21, 
+       CONST 8, 8, false),
+      xc_Append.append.badSub, L.21),
+     LABEL L.21,
+     TEMP t.20))), 
+  CONST 0, 1, true)),
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15)),
+LABEL L.14,
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.13, L.15),
+LABEL L.15,
+MOVE(
+ TEMP t.22,
+ CONST 0),
+MOVE(
+ TEMP t.23,
+ SUB(
+  TEMP xc_Append.append.1.n2,
+  CONST 1)),
+MOVE(
+ TEMP t.24,
+ CONST 1),
+JUMP(
+ NAME L.23),
+LABEL L.22,
+MOVE(
+ TEMP xc_Append.append.1.2.i,
+ TEMP t.22),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.27,
+    ESEQ(
+     MOVE(
+      TEMP t.25,
+      TEMP xc_Append.append.1.result),
+     BEQ(
+      TEMP t.25,
+      CONST 0,
+      xc_Append.append.badPtr, L.25),
+     LABEL L.25,
+     TEMP t.25)),
+   ADD(
+    MEM(
+     TEMP t.27, 
+     CONST 0, 8, false),
+    ESEQ(
+     MOVE(
+      TEMP t.26,
+      ADD(
+       TEMP xc_Append.append.1.n1,
+       TEMP xc_Append.append.1.2.i)),
+     BLT(
+      TEMP t.26,
+      CONST 0,
+      xc_Append.append.badSub, L.26),
+     LABEL L.26,
+     BGE(
+      TEMP t.26,
+      MEM(
+       TEMP t.27, 
+       CONST 8, 8, false),
+      xc_Append.append.badSub, L.27),
+     LABEL L.27,
+     TEMP t.26))), 
+  CONST 0, 1, true),
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.30,
+    ESEQ(
+     MOVE(
+      TEMP t.28,
+      TEMP xc_Append.append.1.a2),
+     BEQ(
+      TEMP t.28,
+      CONST 0,
+      xc_Append.append.badPtr, L.28),
+     LABEL L.28,
+     TEMP t.28)),
+   ADD(
+    MEM(
+     TEMP t.30, 
+     CONST 0, 8, false),
+    ESEQ(
+     MOVE(
+      TEMP t.29,
+      TEMP xc_Append.append.1.2.i),
+     BLT(
+      TEMP t.29,
+      CONST 0,
+      xc_Append.append.badSub, L.29),
+     LABEL L.29,
+     BGE(
+      TEMP t.29,
+      MEM(
+       TEMP t.30, 
+       CONST 8, 8, false),
+      xc_Append.append.badSub, L.30),
+     LABEL L.30,
+     TEMP t.29))), 
+  CONST 0, 1, true)),
+MOVE(
+ TEMP t.22,
+ ADD(
+  TEMP t.22,
+  TEMP t.24)),
+LABEL L.23,
+BLE(
+ TEMP t.22,
+ TEMP t.23,
+ L.22, L.24),
+LABEL L.24,
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.33,
+    ESEQ(
+     MOVE(
+      TEMP t.31,
+      TEMP xc_Append.append.1.result),
+     BEQ(
+      TEMP t.31,
+      CONST 0,
+      xc_Append.append.badPtr, L.31),
+     LABEL L.31,
+     TEMP t.31)),
+   ADD(
+    MEM(
+     TEMP t.33, 
+     CONST 0, 8, false),
+    ESEQ(
+     MOVE(
+      TEMP t.32,
+      ADD(
+       TEMP xc_Append.append.1.n1,
+       TEMP xc_Append.append.1.n2)),
+     BLT(
+      TEMP t.32,
+      CONST 0,
+      xc_Append.append.badSub, L.32),
+     LABEL L.32,
+     BGE(
+      TEMP t.32,
+      MEM(
+       TEMP t.33, 
+       CONST 8, 8, false),
+      xc_Append.append.badSub, L.33),
+     LABEL L.33,
+     TEMP t.32))), 
+  CONST 0, 1, true),
+ CONST 0),
+MOVE(
+ TEMP %rax,
+ TEMP xc_Append.append.1.result),
+JUMP(
+ NAME L.6),
+LABEL L.6
+
+
+	.data
+	.balign 8
+L.34:
+	.byte 72
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 0
+	.data
+	.balign 8
+L.35:
+	.quad L.34
+	.quad 6
+	.data
+	.balign 8
+L.36:
+	.byte 32
+	.byte 0
+	.data
+	.balign 8
+L.37:
+	.quad L.36
+	.quad 2
+	.data
+	.balign 8
+L.38:
+	.byte 87
+	.byte 111
+	.byte 114
+	.byte 108
+	.byte 100
+	.byte 33
+	.byte 0
+	.data
+	.balign 8
+L.39:
+	.quad L.38
+	.quad 7
+	.text
+xc_Append:
+MOVE(
+ TEMP xc_Append.6.t,
+ NAME L.35),
+MOVE(
+ TEMP xc_Append.6.t,
+ CALL(
+  NAME xc_Append.append,
+  CONST 0,
+  TEMP xc_Append.6.t,
+  NAME L.37)),
+MOVE(
+ TEMP xc_Append.6.t,
+ CALL(
+  NAME xc_Append.append,
+  CONST 0,
+  TEMP xc_Append.6.t,
+  NAME L.39)),
+EXP(
+ CALL(
+  NAME xc_Append.println,
+  CONST 0,
+  TEMP xc_Append.6.t))
+
+

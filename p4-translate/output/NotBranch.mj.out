@@ -1,0 +1,24 @@
+	.text
+NotBranch.Not:
+BEQ(
+ TEMP NotBranch.Not.x,
+ CONST 0,
+ L.1, L.2),
+LABEL L.1,
+MOVE(
+ TEMP %rax,
+ CONST 1),
+JUMP(
+ NAME L.0),
+LABEL L.2,
+MOVE(
+ TEMP %rax,
+ CONST 0),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+NotBranch:
+

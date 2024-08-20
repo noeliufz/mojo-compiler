@@ -1,0 +1,4 @@
+proc FooU(u:U);
+proc FooT(t:T);
+type U = object { x: int; foo() = FooU; bar(); };
+type T = U object { y: int; foo = FooT; baz(); };

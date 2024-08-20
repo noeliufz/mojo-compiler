@@ -1,0 +1,12 @@
+	.data
+	.balign 8
+ObjectFields.A:
+	.data
+	.balign 8
+ObjectFields.B:
+	.data
+	.balign 8
+ObjectFields.C:
+	.text
+ObjectFields:
+

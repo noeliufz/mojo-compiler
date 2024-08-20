@@ -1,0 +1,359 @@
+	.data
+	.balign 8
+AssignRecord.a:
+	.zero 16
+PROCEDURE AssignRecord
+# Trees:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 0, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 8, 8, true, false),
+ CONST 2),
+EXP(
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16),
+  NAME AssignRecord.a,
+  CONST 16)),
+EXP(
+ CALL(
+  NAME exit,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false),
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+# Linearized (trees):
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16),
+  NAME AssignRecord.a,
+  CONST 16))
+EXP(
+ TEMP t.0)
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME exit,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false),
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.1)
+# Basic Blocks:
+# 0
+LABEL L.0
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16),
+  NAME AssignRecord.a,
+  CONST 16))
+EXP(
+ TEMP t.0)
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME exit,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false),
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.1)
+# Trace Scheduled:
+LABEL L.0
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16),
+  NAME AssignRecord.a,
+  CONST 16))
+EXP(
+ TEMP t.0)
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME exit,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false),
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.1)
+# With procedure entry/exit:
+LABEL L.0
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -16, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -8, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ MEM(
+  NAME AssignRecord.a, 
+  CONST 8, 8, true, false),
+ CONST 2)
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME memcpy,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -16),
+  NAME AssignRecord.a,
+  CONST 16))
+EXP(
+ TEMP t.0)
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME exit,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP %rbp, 
+    CONST -16, 8, true, false),
+   MEM(
+    TEMP %rbp, 
+    CONST -8, 8, true, false))))
+EXP(
+ TEMP t.1)
+# Instructions:
+L.0:	# <- 
+	movq $0,-16(%rbp)	# <- %rbp 
+	movq $0,-8(%rbp)	# <- %rbp 
+	leaq AssignRecord.a(%rip),t.2	# t.2 <- 
+	movq $1,0(t.2)	# <- t.2 
+	leaq AssignRecord.a(%rip),t.3	# t.3 <- 
+	movq $2,8(t.3)	# <- t.3 
+	movq %rbp,t.4	# t.4 := %rbp 
+	addq $-16,t.4	# t.4 <- t.4 
+	movq t.4,%rdi	# %rdi := t.4 
+	leaq AssignRecord.a(%rip),t.5	# t.5 <- 
+	movq t.5,%rsi	# %rsi := t.5 
+	movq $16,%rdx	# %rdx <- 
+	call memcpy	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi %rdx 
+	movq %rax,t.0	# t.0 := %rax 
+	movq -16(%rbp),t.6	# t.6 <- %rbp 
+	movq -8(%rbp),t.7	# t.7 <- %rbp 
+	movq t.6,t.8	# t.8 := t.6 
+	addq t.7,t.8	# t.8 <- t.7 t.8 
+	movq t.8,%rdi	# %rdi := t.8 
+	call exit	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.1	# t.1 := %rax 
+# Control Flow Graph:
+0: t.2 t.3 t.4 %rdi t.5 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.0 t.6 t.7 t.8 t.1 <- %rbp %rsp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.2: %rsp %rbp 
+t.3: %rsp %rbp 
+t.4: %rsp %rbp 
+t.5: %rsp %rbp %rdi 
+t.0: %rsp %rbp 
+t.6: t.7 %rsp %rbp 
+t.7: t.8 %rsp %rbp t.6 
+t.8: %rsp %rbp t.7 
+t.1: %rsp %rbp 
+t.4 <= %rbp
+%rdi <= t.4
+%rsi <= t.5
+t.0 <= %rax
+t.8 <= t.6
+%rdi <= t.8
+t.1 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.2->%rax
+t.3->%rax
+t.4->%rax
+t.5->%rax
+t.0->%rax
+t.6->%rax
+t.7->%rbx
+t.8->%rax
+t.1->%rax
+# Assembly code:
+	.text
+AssignRecord:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $48,%rsp
+	movq %rbx, -24(%rbp)
+L.0:
+	movq $0,-16(%rbp)
+	movq $0,-8(%rbp)
+	leaq AssignRecord.a(%rip),%rax
+	movq $1,0(%rax)
+	leaq AssignRecord.a(%rip),%rax
+	movq $2,8(%rax)
+	movq %rbp,%rax
+	addq $-16,%rax
+	movq %rax,%rdi
+	leaq AssignRecord.a(%rip),%rax
+	movq %rax,%rsi
+	movq $16,%rdx
+	call memcpy
+#	movq %rax,%rax
+	movq -16(%rbp),%rax
+	movq -8(%rbp),%rbx
+#	movq %rax,%rax
+	addq %rbx,%rax
+	movq %rax,%rdi
+	call exit
+#	movq %rax,%rax
+#	returnSink
+	movq -24(%rbp),%rbx
+	addq $48,%rsp
+	popq %rbp
+	ret
+AssignRecord.badSub:
+	call badSub
+END AssignRecord

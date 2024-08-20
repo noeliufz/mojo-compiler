@@ -1,0 +1,2 @@
+type t = object { f() = F; };
+proc F() {}

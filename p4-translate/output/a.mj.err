@@ -1,0 +1,17 @@
+ line 4, column 19: warning: Loophole: unsafe operation
+ line 5, column 8: warning: unsafe '&'
+ line 9, column 20: warning: Loophole: unsafe operation
+ line 10, column 20: warning: Loophole: unsafe operation
+ line 19, column 18: warning: Loophole: unsafe operation
+Exception in thread "main" java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:233)
+	at Translate.Tree$Print.print(Tree.java:309)
+	at Translate.Tree$Print.print(Tree.java:362)
+	at Translate.Tree$Print.print(Tree.java:302)
+	at Translate.Tree$Print.print(Tree.java:264)
+	at Translate.Tree$Print.print(Tree.java:262)
+	at Translate.Tree$Print.accept(Tree.java:254)
+	at Translate.Frag$Proc.toString(Frag.java:45)
+	at java.base/java.lang.String.valueOf(String.java:4465)
+	at java.base/java.io.PrintWriter.println(PrintWriter.java:1021)
+	at mojo.Translate.main(Translate.java:76)

@@ -1,0 +1,301 @@
+	.data
+	.balign 8
+ArrayIndexVariable.x:
+	.zero 80
+PROCEDURE ArrayIndexVariable.get
+# Trees:
+MOVE(
+ TEMP %rax,
+ MEM(
+  ADD(
+   NAME ArrayIndexVariable.x,
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.0,
+      TEMP ArrayIndexVariable.get.n),
+     BLT(
+      TEMP t.0,
+      CONST 0,
+      ArrayIndexVariable.get.badSub, L.1),
+     LABEL L.1,
+     BGT(
+      TEMP t.0,
+      CONST 9,
+      ArrayIndexVariable.get.badSub, L.2),
+     LABEL L.2,
+     TEMP t.0),
+    CONST 8)), 
+  CONST 0, 8, true, false)),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ TEMP ArrayIndexVariable.get.n)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ ArrayIndexVariable.get.badSub, L.1)
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 9,
+ ArrayIndexVariable.get.badSub, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ MEM(
+  ADD(
+   NAME ArrayIndexVariable.x,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST 0, 8, true, false))
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP ArrayIndexVariable.get.n)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ ArrayIndexVariable.get.badSub, L.1)
+# 1
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 9,
+ ArrayIndexVariable.get.badSub, L.2)
+# 2
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ MEM(
+  ADD(
+   NAME ArrayIndexVariable.x,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST 0, 8, true, false))
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.0
+# Trace Scheduled:
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP ArrayIndexVariable.get.n)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ ArrayIndexVariable.get.badSub, L.1)
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 9,
+ ArrayIndexVariable.get.badSub, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ MEM(
+  ADD(
+   NAME ArrayIndexVariable.x,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST 0, 8, true, false))
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP ArrayIndexVariable.get.n,
+ TEMP %rdi)
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP ArrayIndexVariable.get.n)
+BLT(
+ TEMP t.0,
+ CONST 0,
+ ArrayIndexVariable.get.badSub, L.1)
+LABEL L.1
+BGT(
+ TEMP t.0,
+ CONST 9,
+ ArrayIndexVariable.get.badSub, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ MEM(
+  ADD(
+   NAME ArrayIndexVariable.x,
+   MUL(
+    TEMP t.0,
+    CONST 8)), 
+  CONST 0, 8, true, false))
+LABEL L.0
+# Instructions:
+	movq %rdi,ArrayIndexVariable.get.n	# ArrayIndexVariable.get.n := %rdi 
+L.3:	# <- 
+	movq ArrayIndexVariable.get.n,t.0	# t.0 := ArrayIndexVariable.get.n 
+	xorq t.1,t.1	# t.1 <- 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jl ArrayIndexVariable.get.badSub	# <- : goto ArrayIndexVariable.get.badSub L.1 
+L.1:	# <- 
+	movq $9,t.2	# t.2 <- 
+	cmpq t.2,t.0	# <- t.0 t.2 
+	jg ArrayIndexVariable.get.badSub	# <- : goto ArrayIndexVariable.get.badSub L.2 
+L.2:	# <- 
+	leaq ArrayIndexVariable.x(%rip),t.3	# t.3 <- 
+	movq 0(t.3,t.0,8),t.4	# t.4 <- t.3 t.0 
+	movq t.4,%rax	# %rax := t.4 
+L.0:	# <- 
+# Control Flow Graph:
+0: ArrayIndexVariable.get.n <- %rdi; goto 1
+1: t.0 t.1 <- ArrayIndexVariable.get.n; goto 2
+2: t.2 <- t.0; goto 3
+3: t.3 t.4 %rax <- t.0; goto 4
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+ArrayIndexVariable.get.n: %rsp %rbp 
+t.0: t.1 %rsp %rbp t.2 t.3 
+t.1: t.0 %rsp %rbp 
+t.2: t.0 %rsp %rbp 
+t.3: %rsp %rbp t.0 
+t.4: %rsp %rbp 
+%rax <= t.4
+t.0 <= ArrayIndexVariable.get.n
+ArrayIndexVariable.get.n <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+ArrayIndexVariable.get.n->%rax
+t.0->%rbx
+t.1->%rax
+t.2->%rax
+t.3->%rax
+t.4->%rax
+# Assembly code:
+	.text
+ArrayIndexVariable.get:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rax
+L.3:
+	movq %rax,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl ArrayIndexVariable.get.badSub
+L.1:
+	movq $9,%rax
+	cmpq %rax,%rbx
+	jg ArrayIndexVariable.get.badSub
+L.2:
+	leaq ArrayIndexVariable.x(%rip),%rax
+	movq 0(%rax,%rbx,8),%rax
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+ArrayIndexVariable.get.badSub:
+	call badSub
+END ArrayIndexVariable.get
+PROCEDURE ArrayIndexVariable
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.4
+# Trace Scheduled:
+LABEL L.4
+# With procedure entry/exit:
+LABEL L.4
+# Instructions:
+L.4:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+ArrayIndexVariable:
+	pushq %rbp
+	movq %rsp,%rbp
+L.4:
+#	returnSink
+	popq %rbp
+	ret
+END ArrayIndexVariable

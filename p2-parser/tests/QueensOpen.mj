@@ -1,0 +1,58 @@
+proc putchar(i: int): int;
+
+const N: int = 8;
+
+type
+  Queens = object {
+    row, col, diag1, diag2: ref array of int;
+    init(): Queens = Init;
+    solve(c: int) = Solve;
+  };
+
+proc Init(self: Queens): Queens {
+  self.row = New(ref array of int, N);
+  self.col = New(ref array of int, N);
+  self.diag1 = New(ref array of int, N+N-1);
+  self.diag2 = New(ref array of int, N+N-1);
+  return self;
+}
+
+proc Solve(self: Queens; c: int) {
+  if c == Number(self.col) then {
+    Print(self);
+  } else {
+    for r = 0 to Number(self.row)-1 loop {
+      if self.row[r] == 0
+         && self.diag1[r+c] == 0
+         && self.diag2[r+(N-1)-c] == 0 then {
+        self.row[r] = 1;
+        self.diag1[r+c] = 1;
+        self.diag2[r+(N-1)-c] = 1;
+        self.col[c] = r;
+        self.solve(c+1);
+        self.row[r] = 0;
+        self.diag1[r+c] = 0;
+        self.diag2[r+(N-1)-c] = 0;
+      }
+    }
+  }
+}
+
+proc Print(self: Queens) {
+  for i = 0 to Number(self.col)-1 loop {
+    for j = 0 to Number(self.row)-1 loop {
+      putchar(' ');
+      if self.col[i] == j then {
+        putchar('Q');
+      } else {
+        putchar('.');
+      }
+      putchar('\n');
+    }
+    putchar('\n');
+  }
+}
+
+{
+  New(Queens).init().solve(0);
+}

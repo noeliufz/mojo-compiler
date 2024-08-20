@@ -1,0 +1,124 @@
+/* Copyright (C) 1997-2024, Antony L Hosking.
+ * All rights reserved.  */
+
+options {
+  DEBUG_PARSER = false;
+  DEBUG_LOOKAHEAD = false;
+  DEBUG_TOKEN_MANAGER = false;
+  STATIC = false;
+  JDK_VERSION = "1.9";
+}
+PARSER_BEGIN(Parser)
+public class Parser {}
+PARSER_END(Parser)
+
+/**************************************************
+ * The lexical spec starts here                   *
+ **************************************************/
+
+TOKEN_MGR_DECLS :
+{
+  int comment;
+  public static void main(String[] args) {
+    try {
+      java.io.Reader reader = new java.io.InputStreamReader(System.in);
+      SimpleCharStream stream = new SimpleCharStream(reader);
+      ParserTokenManager scanner = new ParserTokenManager(stream);
+      while (true) {
+        Token token = scanner.getNextToken();
+        for (Token t = token.specialToken; t != null; t = t.specialToken)
+          System.out.println(tokenImage[t.kind] + " " + t);
+        if (token.kind == EOF) break;
+        System.out.println(tokenImage[token.kind] + " " + token);
+      }
+    } catch (TokenMgrError e) {
+      System.out.println("!ERROR");
+      System.err.println(e.getMessage());
+      System.exit(-1);
+    }
+  }
+}
+
+/* WHITE SPACE */
+SKIP : { " " | "\t" | "\n" | "\r" | "\13" | "\f" }
+
+/* KEYWORDS */
+TOKEN :
+{ "array"  | "break"  | "by"     | "const" | "else"   | "for"   | "if"
+| "loop"   | "object" | "of"    | "proc"  | "record" | "ref"    | "return"
+| "then"   | "to"     | "type"  | "until" | "val"    | "var"    | "while" }
+
+/* OPERATORS */
+TOKEN :
+{ "=" |  ">" |  "<" |  "!" |  ":" | ";" | "," | "."
+| "==" | ">=" | "<=" | "!=" | "&&" | "||"
+| "+" |  "-" |  "*" |  "/" | "%"
+| "^" | "(" |  ")" |  "{" |  "}" |  "[" |  "]" }
+
+/* Letter */
+TOKEN : { < #LETTER : ["a"-"z","A"-"Z"] > }
+
+/* Digit */
+TOKEN : { < #DIGIT : ["0"-"9"] > }
+
+/* Octal Digit */
+TOKEN : { < #OCTALDIGIT : ["0"-"7"] > }
+
+/* Hex Digit */
+TOKEN : { < #HEXDIGIT : (<DIGIT> | ["a"-"f","A"-"F"] ) > }
+
+/* Extended Char */
+TOKEN : { < #EXTENDEDCHAR : ["\u00A0"-"\u00FF"] > }
+
+/* Other Char */
+TOKEN : { < #OTHERCHAR : " " | "!" | "#" | "$" | "%" | "&" | "(" | ")"
+          | "*" | "+" | "," | "-" | "." | "/" | ":" | ";"
+          | "<" | "=" | ">" | "?" | "@" | "[" | "]" | "^"
+          | "_" | "`" | "{" | "|" | "}" | "~" | <EXTENDEDCHAR> > }
+
+/* Escape */
+TOKEN : { < #ESCAPE : "\\" "a"   | "\\" "b"   | "\\" "f"   | "\\" "n"   | "\\" "r"
+       | "\\" "t"   | "\\" "v"   | "\\" "\\"   | "\\" "'"   | "\\" "\""
+       | "\\" ( "0" | "1" | "2" | "3" ) <OCTALDIGIT> <OCTALDIGIT>
+       | "\\x" <HEXDIGIT> <HEXDIGIT> 
+       | "\\u" <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> 
+       | "\\U" <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> <HEXDIGIT> > }
+
+/* Numbers */
+TOKEN : { < NUMBER : (<DIGIT> (<DIGIT>)*) | <DIGIT> (<DIGIT>)* "_" <HEXDIGIT> (<HEXDIGIT>)* > }
+
+/* Printing char */
+TOKEN : { < #PRINTINGCHAR : <LETTER> | <DIGIT> | <OTHERCHAR> > }
+
+/* Char */
+TOKEN : { < CHAR : "'" ( <PRINTINGCHAR> | <ESCAPE> | "\"") "'" > }
+
+/* Text */
+TOKEN : { < TEXT : "\"" (<PRINTINGCHAR> | <ESCAPE> | "'")* "\"" > }
+
+/* TODO: comments */
+SKIP : {    
+  <"//" (~["\r","\n"])* ("\r" | "\n" | "\r\n") > }
+
+MORE : {
+  "(*" {comment = 1;} : INCOMMENT
+}
+
+
+<INCOMMENT> SKIP : {
+  "(*" {comment++;}
+}
+
+<INCOMMENT> SKIP : {
+  "*)" {
+    comment--;
+    SwitchTo (comment == 0 ? DEFAULT : INCOMMENT);
+  }
+}
+<INCOMMENT> MORE : {
+  <~[]>
+}
+
+
+/* TODO: identifiers */
+TOKEN : { <ID : <LETTER> ( <LETTER> | <DIGIT> | "_" )* > }

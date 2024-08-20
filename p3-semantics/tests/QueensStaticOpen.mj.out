@@ -1,0 +1,45 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN QueensStaticOpen
+QueensStaticOpen.putchar:(VALUE i:int):int
+QueensStaticOpen.N:int=8
+QueensStaticOpen.row:ref array null of int
+QueensStaticOpen.col:ref array null of int
+QueensStaticOpen.diag1:ref array null of int
+QueensStaticOpen.diag2:ref array null of int
+QueensStaticOpen.Solve:(VALUE c:int)
+QueensStaticOpen.Print:()
+BEGIN QueensStaticOpen.Solve
+QueensStaticOpen.Solve.c:int
+BEGIN QueensStaticOpen.Solve.1
+QueensStaticOpen.Solve.1.r:int
+END QueensStaticOpen.Solve.1
+END QueensStaticOpen.Solve
+BEGIN QueensStaticOpen.Print
+BEGIN QueensStaticOpen.Print.1
+QueensStaticOpen.Print.1.i:int
+BEGIN QueensStaticOpen.Print.1.1
+QueensStaticOpen.Print.1.1.j:int
+END QueensStaticOpen.Print.1.1
+END QueensStaticOpen.Print.1
+END QueensStaticOpen.Print
+END QueensStaticOpen
+END _BUILTIN

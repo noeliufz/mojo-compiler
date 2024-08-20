@@ -1,0 +1,14 @@
+proc putchar(c: int): int;
+
+proc fun(dims: array 5 of byte) {
+  for i = 0 to Last(dims) loop
+    putchar(dims[i]);
+  putchar(Ord('\n'));
+}
+
+{
+    var dims: array 5 of byte;
+    for i = 0 to Last(dims) loop
+      dims[i] = Ord('0') + i;
+    fun(dims);
+}

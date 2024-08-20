@@ -1,0 +1,917 @@
+PROCEDURE PassByteArrayValue.fun
+# Trees:
+MOVE(
+ TEMP t.0,
+ CONST 0),
+MOVE(
+ TEMP t.1,
+ CONST 4),
+MOVE(
+ TEMP t.2,
+ CONST 1),
+LABEL L.1,
+MOVE(
+ TEMP PassByteArrayValue.fun.1.i,
+ TEMP t.0),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    TEMP PassByteArrayValue.fun.1.i), 
+   CONST 16, 1, true, false))),
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2)),
+LABEL L.2,
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.3),
+LABEL L.3,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 4)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.1
+MOVE(
+ TEMP PassByteArrayValue.fun.1.i,
+ TEMP t.0)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    TEMP PassByteArrayValue.fun.1.i), 
+   CONST 16, 1, true, false)))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+LABEL L.2
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.9
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 4)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+JUMP(
+ NAME L.1)
+# 1
+LABEL L.1
+MOVE(
+ TEMP PassByteArrayValue.fun.1.i,
+ TEMP t.0)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    TEMP PassByteArrayValue.fun.1.i), 
+   CONST 16, 1, true, false)))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+JUMP(
+ NAME L.2)
+# 2
+LABEL L.2
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.3)
+# 3
+LABEL L.3
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.9
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 4)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.1
+MOVE(
+ TEMP PassByteArrayValue.fun.1.i,
+ TEMP t.0)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    TEMP PassByteArrayValue.fun.1.i), 
+   CONST 16, 1, true, false)))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+LABEL L.2
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false),
+ TEMP %rdi)
+LABEL L.9
+MOVE(
+ TEMP t.0,
+ CONST 0)
+MOVE(
+ TEMP t.1,
+ CONST 4)
+MOVE(
+ TEMP t.2,
+ CONST 1)
+LABEL L.1
+MOVE(
+ TEMP PassByteArrayValue.fun.1.i,
+ TEMP t.0)
+MOVE(
+ TEMP t.8,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    TEMP PassByteArrayValue.fun.1.i), 
+   CONST 16, 1, true, false)))
+EXP(
+ TEMP t.8)
+MOVE(
+ TEMP t.0,
+ ADD(
+  TEMP t.0,
+  TEMP t.2))
+LABEL L.2
+BLE(
+ TEMP t.0,
+ TEMP t.1,
+ L.1, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10))
+EXP(
+ TEMP t.9)
+LABEL L.0
+# Instructions:
+	movq %rdi,16(%rbp)	# <- %rbp %rdi 
+L.9:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	movq $4,t.1	# t.1 <- 
+	movq $1,t.2	# t.2 <- 
+L.1:	# <- 
+	movq t.0,PassByteArrayValue.fun.1.i	# PassByteArrayValue.fun.1.i := t.0 
+	movq %rbp,t.10	# t.10 := %rbp 
+	addq PassByteArrayValue.fun.1.i,t.10	# t.10 <- PassByteArrayValue.fun.1.i t.10 
+	movsbq 16(t.10),t.11	# t.11 <- t.10 
+	movq t.11,%rdi	# %rdi := t.11 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.8	# t.8 := %rax 
+	movq t.0,t.12	# t.12 := t.0 
+	addq t.2,t.12	# t.12 <- t.2 t.12 
+	movq t.12,t.0	# t.0 := t.12 
+L.2:	# <- 
+	cmpq t.1,t.0	# <- t.0 t.1 
+	jle L.1	# <- : goto L.1 L.3 
+L.3:	# <- 
+	movq $10,%rdi	# %rdi <- 
+	call putchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.9	# t.9 := %rax 
+L.0:	# <- 
+# Control Flow Graph:
+0: <- %rbp %rdi; goto 1
+1: t.0 t.1 t.2 <-; goto 2
+2: PassByteArrayValue.fun.1.i t.10 t.11 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.8 t.12 t.0 <- t.0 %rbp t.2; goto 3
+3: <- t.0 t.1; goto 2 4
+4: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.9 <-; goto 5
+5: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: t.2 t.1 %rbp %rsp t.8 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.11 t.10 
+t.1: t.2 t.0 %rbp %rsp t.12 t.8 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.11 t.10 PassByteArrayValue.fun.1.i 
+t.2: t.0 %rbp t.1 %rsp t.12 t.8 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.11 t.10 PassByteArrayValue.fun.1.i 
+PassByteArrayValue.fun.1.i: t.10 t.1 %rbp t.2 %rsp 
+t.10: t.1 %rbp t.2 %rsp t.0 PassByteArrayValue.fun.1.i 
+t.11: t.1 %rbp t.2 %rsp t.0 
+t.8: t.1 %rbp t.2 %rsp t.0 
+t.12: t.1 %rbp t.2 %rsp 
+t.9: %rsp %rbp 
+t.9 <= %rax
+PassByteArrayValue.fun.1.i <= t.0
+t.10 <= %rbp
+%rdi <= t.11
+t.8 <= %rax
+t.12 <= t.0
+t.0 <= t.12
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%rbx
+t.1->%r13
+t.2->%r12
+PassByteArrayValue.fun.1.i->%rbx
+t.10->%rax
+t.11->%rdi
+t.8->%rax
+t.12->%rbx
+t.9->%rax
+# Assembly code:
+	.text
+PassByteArrayValue.fun:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r13, -24(%rbp)
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rdi,16(%rbp)
+L.9:
+	xorq %rbx,%rbx
+	movq $4,%r13
+	movq $1,%r12
+L.1:
+#	movq %rbx,%rbx
+	movq %rbp,%rax
+	addq %rbx,%rax
+	movsbq 16(%rax),%rdi
+#	movq %rdi,%rdi
+	call putchar
+#	movq %rax,%rax
+#	movq %rbx,%rbx
+	addq %r12,%rbx
+#	movq %rbx,%rbx
+L.2:
+	cmpq %r13,%rbx
+	jle L.1
+L.3:
+	movq $10,%rdi
+	call putchar
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	movq -24(%rbp),%r13
+	addq $32,%rsp
+	popq %rbp
+	ret
+PassByteArrayValue.fun.badSub:
+	call badSub
+END PassByteArrayValue.fun
+PROCEDURE PassByteArrayValue
+# Trees:
+MOVE(
+ TEMP t.4,
+ CONST 5),
+MOVE(
+ TEMP t.3,
+ CONST 0),
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.5, L.4),
+LABEL L.4,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP t.3), 
+  CONST -8, 1, true, false),
+ CONST 0),
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1)),
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.4, L.5),
+LABEL L.5,
+MOVE(
+ TEMP t.5,
+ CONST 0),
+MOVE(
+ TEMP t.6,
+ CONST 4),
+MOVE(
+ TEMP t.7,
+ CONST 1),
+LABEL L.6,
+MOVE(
+ TEMP PassByteArrayValue.4.1.i,
+ TEMP t.5),
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP PassByteArrayValue.4.1.i), 
+  CONST -8, 1, true, false),
+ ADD(
+  CONST 48,
+  TEMP PassByteArrayValue.4.1.i)),
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP t.5,
+  TEMP t.7)),
+LABEL L.7,
+BLE(
+ TEMP t.5,
+ TEMP t.6,
+ L.6, L.8),
+LABEL L.8,
+EXP(
+ CALL(
+  NAME PassByteArrayValue.fun,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 5, false, true)))
+# Linearized (trees):
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.5, L.4)
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP t.3), 
+  CONST -8, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.5,
+ CONST 0)
+MOVE(
+ TEMP t.6,
+ CONST 4)
+MOVE(
+ TEMP t.7,
+ CONST 1)
+LABEL L.6
+MOVE(
+ TEMP PassByteArrayValue.4.1.i,
+ TEMP t.5)
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP PassByteArrayValue.4.1.i), 
+  CONST -8, 1, true, false),
+ ADD(
+  CONST 48,
+  TEMP PassByteArrayValue.4.1.i))
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP t.5,
+  TEMP t.7))
+LABEL L.7
+BLE(
+ TEMP t.5,
+ TEMP t.6,
+ L.6, L.8)
+LABEL L.8
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME PassByteArrayValue.fun,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 5, false, true)))
+EXP(
+ TEMP t.13)
+# Basic Blocks:
+# 0
+LABEL L.10
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.5, L.4)
+# 1
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP t.3), 
+  CONST -8, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.4, L.5)
+# 2
+LABEL L.5
+MOVE(
+ TEMP t.5,
+ CONST 0)
+MOVE(
+ TEMP t.6,
+ CONST 4)
+MOVE(
+ TEMP t.7,
+ CONST 1)
+JUMP(
+ NAME L.6)
+# 3
+LABEL L.6
+MOVE(
+ TEMP PassByteArrayValue.4.1.i,
+ TEMP t.5)
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP PassByteArrayValue.4.1.i), 
+  CONST -8, 1, true, false),
+ ADD(
+  CONST 48,
+  TEMP PassByteArrayValue.4.1.i))
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP t.5,
+  TEMP t.7))
+JUMP(
+ NAME L.7)
+# 4
+LABEL L.7
+BLE(
+ TEMP t.5,
+ TEMP t.6,
+ L.6, L.8)
+# 5
+LABEL L.8
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME PassByteArrayValue.fun,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 5, false, true)))
+EXP(
+ TEMP t.13)
+# Trace Scheduled:
+LABEL L.10
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.5, L.4)
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP t.3), 
+  CONST -8, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.5,
+ CONST 0)
+MOVE(
+ TEMP t.6,
+ CONST 4)
+MOVE(
+ TEMP t.7,
+ CONST 1)
+LABEL L.6
+MOVE(
+ TEMP PassByteArrayValue.4.1.i,
+ TEMP t.5)
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP PassByteArrayValue.4.1.i), 
+  CONST -8, 1, true, false),
+ ADD(
+  CONST 48,
+  TEMP PassByteArrayValue.4.1.i))
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP t.5,
+  TEMP t.7))
+LABEL L.7
+BLE(
+ TEMP t.5,
+ TEMP t.6,
+ L.6, L.8)
+LABEL L.8
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME PassByteArrayValue.fun,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 5, false, true)))
+EXP(
+ TEMP t.13)
+# With procedure entry/exit:
+LABEL L.10
+MOVE(
+ TEMP t.4,
+ CONST 5)
+MOVE(
+ TEMP t.3,
+ CONST 0)
+BGE(
+ TEMP t.3,
+ TEMP t.4,
+ L.5, L.4)
+LABEL L.4
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP t.3), 
+  CONST -8, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.3,
+ ADD(
+  TEMP t.3,
+  CONST 1))
+BLT(
+ TEMP t.3,
+ TEMP t.4,
+ L.4, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.5,
+ CONST 0)
+MOVE(
+ TEMP t.6,
+ CONST 4)
+MOVE(
+ TEMP t.7,
+ CONST 1)
+LABEL L.6
+MOVE(
+ TEMP PassByteArrayValue.4.1.i,
+ TEMP t.5)
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   TEMP PassByteArrayValue.4.1.i), 
+  CONST -8, 1, true, false),
+ ADD(
+  CONST 48,
+  TEMP PassByteArrayValue.4.1.i))
+MOVE(
+ TEMP t.5,
+ ADD(
+  TEMP t.5,
+  TEMP t.7))
+LABEL L.7
+BLE(
+ TEMP t.5,
+ TEMP t.6,
+ L.6, L.8)
+LABEL L.8
+MOVE(
+ TEMP t.13,
+ CALL(
+  NAME PassByteArrayValue.fun,
+  CONST 0,
+  MEM(
+   TEMP %rbp, 
+   CONST -8, 5, false, true)))
+EXP(
+ TEMP t.13)
+# Instructions:
+L.10:	# <- 
+	movq $5,t.4	# t.4 <- 
+	xorq t.3,t.3	# t.3 <- 
+	cmpq t.4,t.3	# <- t.3 t.4 
+	jge L.5	# <- : goto L.5 L.4 
+L.4:	# <- 
+	movq %rbp,t.14	# t.14 := %rbp 
+	addq t.3,t.14	# t.14 <- t.3 t.14 
+	movb $0,-8(t.14)	# <- t.14 
+	movq t.3,t.15	# t.15 := t.3 
+	addq $1,t.15	# t.15 <- t.15 
+	movq t.15,t.3	# t.3 := t.15 
+	cmpq t.4,t.3	# <- t.3 t.4 
+	jl L.4	# <- : goto L.4 L.5 
+L.5:	# <- 
+	xorq t.5,t.5	# t.5 <- 
+	movq $4,t.6	# t.6 <- 
+	movq $1,t.7	# t.7 <- 
+L.6:	# <- 
+	movq t.5,PassByteArrayValue.4.1.i	# PassByteArrayValue.4.1.i := t.5 
+	movq %rbp,t.16	# t.16 := %rbp 
+	addq PassByteArrayValue.4.1.i,t.16	# t.16 <- PassByteArrayValue.4.1.i t.16 
+	movq PassByteArrayValue.4.1.i,t.17	# t.17 := PassByteArrayValue.4.1.i 
+	addq $48,t.17	# t.17 <- t.17 
+	movq t.17,%rdi	# %rdi := t.17 
+	movb %dil,-8(t.16)	# <- t.16 %rdi 
+	movq t.5,t.18	# t.18 := t.5 
+	addq t.7,t.18	# t.18 <- t.7 t.18 
+	movq t.18,t.5	# t.5 := t.18 
+L.7:	# <- 
+	cmpq t.6,t.5	# <- t.5 t.6 
+	jle L.6	# <- : goto L.6 L.8 
+L.8:	# <- 
+	movq -8(%rbp),t.19	# t.19 <- %rbp 
+	movq t.19,%rdi	# %rdi := t.19 
+	call PassByteArrayValue.fun	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.13	# t.13 := %rax 
+# Control Flow Graph:
+0: t.4 t.3 <-; goto 2 1
+1: t.14 t.15 t.3 <- %rbp t.3 t.4; goto 1 2
+2: t.5 t.6 t.7 <-; goto 3
+3: PassByteArrayValue.4.1.i t.16 t.17 %rdi t.18 t.5 <- t.5 %rbp t.7; goto 4
+4: <- t.5 t.6; goto 3 5
+5: t.19 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.13 <- %rbp %rsp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.4: t.3 %rbp %rsp t.15 t.14 
+t.3: %rbp %rsp t.4 t.14 
+t.14: %rbp t.4 %rsp t.3 
+t.15: %rbp t.4 %rsp 
+t.5: t.7 t.6 %rbp %rsp %rdi t.17 t.16 
+t.6: t.7 t.5 %rbp %rsp t.18 %rdi t.17 t.16 PassByteArrayValue.4.1.i 
+t.7: t.5 %rbp t.6 %rsp t.18 %rdi t.17 t.16 PassByteArrayValue.4.1.i 
+PassByteArrayValue.4.1.i: t.16 t.6 %rbp t.7 %rsp 
+t.16: %rdi t.17 t.6 %rbp t.7 %rsp t.5 PassByteArrayValue.4.1.i 
+t.17: t.6 %rbp t.7 %rsp t.5 t.16 
+t.18: t.6 %rbp t.7 %rsp 
+t.19: %rsp %rbp 
+t.13: %rsp %rbp 
+%rdi <= t.19
+t.13 <= %rax
+PassByteArrayValue.4.1.i <= t.5
+t.16 <= %rbp
+t.17 <= PassByteArrayValue.4.1.i
+%rdi <= t.17
+t.18 <= t.5
+t.5 <= t.18
+t.14 <= %rbp
+t.15 <= t.3
+t.3 <= t.15
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.4->%rcx
+t.3->%rax
+t.14->%rbx
+t.15->%rax
+t.5->%rax
+t.6->%rdx
+t.7->%rcx
+PassByteArrayValue.4.1.i->%rax
+t.16->%rbx
+t.17->%rdi
+t.18->%rax
+t.19->%rdi
+t.13->%rax
+# Assembly code:
+	.text
+PassByteArrayValue:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -16(%rbp)
+L.10:
+	movq $5,%rcx
+	xorq %rax,%rax
+	cmpq %rcx,%rax
+	jge L.5
+L.4:
+	movq %rbp,%rbx
+	addq %rax,%rbx
+	movb $0,-8(%rbx)
+#	movq %rax,%rax
+	addq $1,%rax
+#	movq %rax,%rax
+	cmpq %rcx,%rax
+	jl L.4
+L.5:
+	xorq %rax,%rax
+	movq $4,%rdx
+	movq $1,%rcx
+L.6:
+#	movq %rax,%rax
+	movq %rbp,%rbx
+	addq %rax,%rbx
+	movq %rax,%rdi
+	addq $48,%rdi
+#	movq %rdi,%rdi
+	movb %dil,-8(%rbx)
+#	movq %rax,%rax
+	addq %rcx,%rax
+#	movq %rax,%rax
+L.7:
+	cmpq %rdx,%rax
+	jle L.6
+L.8:
+	movq -8(%rbp),%rdi
+#	movq %rdi,%rdi
+	call PassByteArrayValue.fun
+#	movq %rax,%rax
+#	returnSink
+	movq -16(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+PassByteArrayValue.badSub:
+	call badSub
+END PassByteArrayValue

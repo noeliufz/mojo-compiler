@@ -1,0 +1,13 @@
+	.data
+	.balign 8
+AssignRef.g:
+	.zero 8
+	.text
+AssignRef:
+MOVE(
+ TEMP AssignRef.1.x,
+ MEM(
+  NAME AssignRef.g, 
+  CONST 0, 8, false))
+
+

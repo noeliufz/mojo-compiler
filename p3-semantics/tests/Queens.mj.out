@@ -1,0 +1,55 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN Queens
+Queens.putchar:(VALUE i:int):int
+Queens.N:int=8
+Queens.Queens=Root object {
+0: row:ref array 8 of int
+4: col:ref array 8 of int
+8: diag1:ref array 15 of int
+12: diag2:ref array 15 of int
+0: init:():Queens=Queens.Init:(VALUE self:Queens):Queens
+4: solve:(VALUE c:int)=Queens.Solve:(VALUE self:Queens; VALUE c:int)
+}
+Queens.Init:(VALUE self:Queens):Queens
+Queens.Solve:(VALUE self:Queens; VALUE c:int)
+Queens.Print:(VALUE self:Queens)
+BEGIN Queens.Init
+Queens.Init.self:Queens
+END Queens.Init
+BEGIN Queens.Solve
+Queens.Solve.self:Queens
+Queens.Solve.c:int
+BEGIN Queens.Solve.1
+Queens.Solve.1.r:int
+END Queens.Solve.1
+END Queens.Solve
+BEGIN Queens.Print
+Queens.Print.self:Queens
+BEGIN Queens.Print.1
+Queens.Print.1.i:int
+BEGIN Queens.Print.1.1
+Queens.Print.1.1.j:int
+END Queens.Print.1.1
+END Queens.Print.1
+END Queens.Print
+END Queens
+END _BUILTIN

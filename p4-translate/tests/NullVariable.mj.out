@@ -1,0 +1,7 @@
+	.data
+	.balign 8
+NullVariable.v:
+	.zero 8
+	.text
+NullVariable:
+

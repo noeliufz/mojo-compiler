@@ -1,0 +1,12 @@
+{
+  if x then
+    {
+    }
+  else
+    if y then
+      {
+      }
+    else
+      {
+      }
+}

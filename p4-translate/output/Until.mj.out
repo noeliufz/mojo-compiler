@@ -1,0 +1,39 @@
+	.text
+Until:
+MOVE(
+ TEMP Until.1.x,
+ CONST 0),
+MOVE(
+ TEMP Until.1.y,
+ CONST 1),
+LABEL L.0,
+BLT(
+ TEMP Until.1.x,
+ CONST 16,
+ L.1, L.2),
+LABEL L.1,
+MOVE(
+ TEMP Until.1.x,
+ ADD(
+  TEMP Until.1.x,
+  CONST 1)),
+MOVE(
+ TEMP Until.1.y,
+ ADD(
+  TEMP Until.1.y,
+  TEMP Until.1.y)),
+BEQ(
+ TEMP Until.1.y,
+ CONST 42,
+ L.3, L.4),
+LABEL L.3,
+JUMP(
+ NAME L.2),
+LABEL L.4,
+BEQ(
+ TEMP Until.1.y,
+ CONST 512,
+ L.2, L.0),
+LABEL L.2
+
+

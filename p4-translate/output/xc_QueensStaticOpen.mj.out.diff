@@ -1,0 +1,1060 @@
+17,1075d16
+< 	.text
+< xc_QueensStaticOpen.Solve:
+< BEQ(
+<  TEMP xc_QueensStaticOpen.Solve.c,
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.0,
+<     MEM(
+<      NAME xc_QueensStaticOpen.col, 
+<      CONST 0, 8, false)),
+<    BEQ(
+<     TEMP t.0,
+<     CONST 0,
+<     xc_QueensStaticOpen.Solve.badPtr, L.4),
+<    LABEL L.4,
+<    TEMP t.0), 
+<   CONST 8, 8, false),
+<  L.1, L.2),
+< LABEL L.1,
+< EXP(
+<  CALL(
+<   NAME xc_QueensStaticOpen.Print,
+<   CONST 0)),
+< JUMP(
+<  NAME L.3),
+< LABEL L.2,
+< MOVE(
+<  TEMP t.1,
+<  CONST 0),
+< MOVE(
+<  TEMP t.2,
+<  SUB(
+<   MEM(
+<    ESEQ(
+<     MOVE(
+<      TEMP t.3,
+<      MEM(
+<       NAME xc_QueensStaticOpen.row, 
+<       CONST 0, 8, false)),
+<     BEQ(
+<      TEMP t.3,
+<      CONST 0,
+<      xc_QueensStaticOpen.Solve.badPtr, L.5),
+<     LABEL L.5,
+<     TEMP t.3), 
+<    CONST 8, 8, false),
+<   CONST 1)),
+< MOVE(
+<  TEMP t.4,
+<  CONST 1),
+< JUMP(
+<  NAME L.7),
+< LABEL L.6,
+< MOVE(
+<  TEMP xc_QueensStaticOpen.Solve.1.r,
+<  TEMP t.1),
+< BEQ(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.7,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.5,
+<       MEM(
+<        NAME xc_QueensStaticOpen.row, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.5,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.13),
+<      LABEL L.13,
+<      TEMP t.5)),
+<    ADD(
+<     MEM(
+<      TEMP t.7, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.6,
+<        TEMP xc_QueensStaticOpen.Solve.1.r),
+<       BLT(
+<        TEMP t.6,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.14),
+<       LABEL L.14,
+<       BGE(
+<        TEMP t.6,
+<        MEM(
+<         TEMP t.7, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.15),
+<       LABEL L.15,
+<       TEMP t.6),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 0,
+<  L.12, L.10),
+< LABEL L.12,
+< BEQ(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.10,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.8,
+<       MEM(
+<        NAME xc_QueensStaticOpen.diag1, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.8,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.16),
+<      LABEL L.16,
+<      TEMP t.8)),
+<    ADD(
+<     MEM(
+<      TEMP t.10, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.9,
+<        ADD(
+<         TEMP xc_QueensStaticOpen.Solve.1.r,
+<         TEMP xc_QueensStaticOpen.Solve.c)),
+<       BLT(
+<        TEMP t.9,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.17),
+<       LABEL L.17,
+<       BGE(
+<        TEMP t.9,
+<        MEM(
+<         TEMP t.10, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.18),
+<       LABEL L.18,
+<       TEMP t.9),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 0,
+<  L.11, L.10),
+< LABEL L.11,
+< BEQ(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.13,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.11,
+<       MEM(
+<        NAME xc_QueensStaticOpen.diag2, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.11,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.19),
+<      LABEL L.19,
+<      TEMP t.11)),
+<    ADD(
+<     MEM(
+<      TEMP t.13, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.12,
+<        SUB(
+<         ADD(
+<          TEMP xc_QueensStaticOpen.Solve.1.r,
+<          SUB(
+<           CONST 8,
+<           CONST 1)),
+<         TEMP xc_QueensStaticOpen.Solve.c)),
+<       BLT(
+<        TEMP t.12,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.20),
+<       LABEL L.20,
+<       BGE(
+<        TEMP t.12,
+<        MEM(
+<         TEMP t.13, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.21),
+<       LABEL L.21,
+<       TEMP t.12),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 0,
+<  L.9, L.10),
+< LABEL L.9,
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.16,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.14,
+<       MEM(
+<        NAME xc_QueensStaticOpen.row, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.14,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.22),
+<      LABEL L.22,
+<      TEMP t.14)),
+<    ADD(
+<     MEM(
+<      TEMP t.16, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.15,
+<        TEMP xc_QueensStaticOpen.Solve.1.r),
+<       BLT(
+<        TEMP t.15,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.23),
+<       LABEL L.23,
+<       BGE(
+<        TEMP t.15,
+<        MEM(
+<         TEMP t.16, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.24),
+<       LABEL L.24,
+<       TEMP t.15),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 1),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.19,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.17,
+<       MEM(
+<        NAME xc_QueensStaticOpen.diag1, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.17,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.25),
+<      LABEL L.25,
+<      TEMP t.17)),
+<    ADD(
+<     MEM(
+<      TEMP t.19, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.18,
+<        ADD(
+<         TEMP xc_QueensStaticOpen.Solve.1.r,
+<         TEMP xc_QueensStaticOpen.Solve.c)),
+<       BLT(
+<        TEMP t.18,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.26),
+<       LABEL L.26,
+<       BGE(
+<        TEMP t.18,
+<        MEM(
+<         TEMP t.19, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.27),
+<       LABEL L.27,
+<       TEMP t.18),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 1),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.22,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.20,
+<       MEM(
+<        NAME xc_QueensStaticOpen.diag2, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.20,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.28),
+<      LABEL L.28,
+<      TEMP t.20)),
+<    ADD(
+<     MEM(
+<      TEMP t.22, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.21,
+<        SUB(
+<         ADD(
+<          TEMP xc_QueensStaticOpen.Solve.1.r,
+<          SUB(
+<           CONST 8,
+<           CONST 1)),
+<         TEMP xc_QueensStaticOpen.Solve.c)),
+<       BLT(
+<        TEMP t.21,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.29),
+<       LABEL L.29,
+<       BGE(
+<        TEMP t.21,
+<        MEM(
+<         TEMP t.22, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.30),
+<       LABEL L.30,
+<       TEMP t.21),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 1),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.25,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.23,
+<       MEM(
+<        NAME xc_QueensStaticOpen.col, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.23,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.31),
+<      LABEL L.31,
+<      TEMP t.23)),
+<    ADD(
+<     MEM(
+<      TEMP t.25, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.24,
+<        TEMP xc_QueensStaticOpen.Solve.c),
+<       BLT(
+<        TEMP t.24,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.32),
+<       LABEL L.32,
+<       BGE(
+<        TEMP t.24,
+<        MEM(
+<         TEMP t.25, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.33),
+<       LABEL L.33,
+<       TEMP t.24),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  TEMP xc_QueensStaticOpen.Solve.1.r),
+< EXP(
+<  CALL(
+<   NAME xc_QueensStaticOpen.Solve,
+<   CONST 0,
+<   ADD(
+<    TEMP xc_QueensStaticOpen.Solve.c,
+<    CONST 1))),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.28,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.26,
+<       MEM(
+<        NAME xc_QueensStaticOpen.row, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.26,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.34),
+<      LABEL L.34,
+<      TEMP t.26)),
+<    ADD(
+<     MEM(
+<      TEMP t.28, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.27,
+<        TEMP xc_QueensStaticOpen.Solve.1.r),
+<       BLT(
+<        TEMP t.27,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.35),
+<       LABEL L.35,
+<       BGE(
+<        TEMP t.27,
+<        MEM(
+<         TEMP t.28, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.36),
+<       LABEL L.36,
+<       TEMP t.27),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 0),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.31,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.29,
+<       MEM(
+<        NAME xc_QueensStaticOpen.diag1, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.29,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.37),
+<      LABEL L.37,
+<      TEMP t.29)),
+<    ADD(
+<     MEM(
+<      TEMP t.31, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.30,
+<        ADD(
+<         TEMP xc_QueensStaticOpen.Solve.1.r,
+<         TEMP xc_QueensStaticOpen.Solve.c)),
+<       BLT(
+<        TEMP t.30,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.38),
+<       LABEL L.38,
+<       BGE(
+<        TEMP t.30,
+<        MEM(
+<         TEMP t.31, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.39),
+<       LABEL L.39,
+<       TEMP t.30),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 0),
+< MOVE(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.34,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.32,
+<       MEM(
+<        NAME xc_QueensStaticOpen.diag2, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.32,
+<       CONST 0,
+<       xc_QueensStaticOpen.Solve.badPtr, L.40),
+<      LABEL L.40,
+<      TEMP t.32)),
+<    ADD(
+<     MEM(
+<      TEMP t.34, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.33,
+<        SUB(
+<         ADD(
+<          TEMP xc_QueensStaticOpen.Solve.1.r,
+<          SUB(
+<           CONST 8,
+<           CONST 1)),
+<         TEMP xc_QueensStaticOpen.Solve.c)),
+<       BLT(
+<        TEMP t.33,
+<        CONST 0,
+<        xc_QueensStaticOpen.Solve.badSub, L.41),
+<       LABEL L.41,
+<       BGE(
+<        TEMP t.33,
+<        MEM(
+<         TEMP t.34, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Solve.badSub, L.42),
+<       LABEL L.42,
+<       TEMP t.33),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  CONST 0),
+< LABEL L.10,
+< MOVE(
+<  TEMP t.1,
+<  ADD(
+<   TEMP t.1,
+<   TEMP t.4)),
+< LABEL L.7,
+< BLE(
+<  TEMP t.1,
+<  TEMP t.2,
+<  L.6, L.8),
+< LABEL L.8,
+< LABEL L.3,
+< LABEL L.0
+< 
+< 
+< 	.text
+< xc_QueensStaticOpen.Print:
+< MOVE(
+<  TEMP t.35,
+<  CONST 0),
+< MOVE(
+<  TEMP t.36,
+<  SUB(
+<   MEM(
+<    ESEQ(
+<     MOVE(
+<      TEMP t.37,
+<      MEM(
+<       NAME xc_QueensStaticOpen.col, 
+<       CONST 0, 8, false)),
+<     BEQ(
+<      TEMP t.37,
+<      CONST 0,
+<      xc_QueensStaticOpen.Print.badPtr, L.44),
+<     LABEL L.44,
+<     TEMP t.37), 
+<    CONST 8, 8, false),
+<   CONST 1)),
+< MOVE(
+<  TEMP t.38,
+<  CONST 1),
+< JUMP(
+<  NAME L.46),
+< LABEL L.45,
+< MOVE(
+<  TEMP xc_QueensStaticOpen.Print.1.i,
+<  TEMP t.35),
+< MOVE(
+<  TEMP t.39,
+<  CONST 0),
+< MOVE(
+<  TEMP t.40,
+<  SUB(
+<   MEM(
+<    ESEQ(
+<     MOVE(
+<      TEMP t.41,
+<      MEM(
+<       NAME xc_QueensStaticOpen.row, 
+<       CONST 0, 8, false)),
+<     BEQ(
+<      TEMP t.41,
+<      CONST 0,
+<      xc_QueensStaticOpen.Print.badPtr, L.48),
+<     LABEL L.48,
+<     TEMP t.41), 
+<    CONST 8, 8, false),
+<   CONST 1)),
+< MOVE(
+<  TEMP t.42,
+<  CONST 1),
+< JUMP(
+<  NAME L.50),
+< LABEL L.49,
+< MOVE(
+<  TEMP xc_QueensStaticOpen.Print.1.1.j,
+<  TEMP t.39),
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 32)),
+< BEQ(
+<  MEM(
+<   ESEQ(
+<    MOVE(
+<     TEMP t.45,
+<     ESEQ(
+<      MOVE(
+<       TEMP t.43,
+<       MEM(
+<        NAME xc_QueensStaticOpen.col, 
+<        CONST 0, 8, false)),
+<      BEQ(
+<       TEMP t.43,
+<       CONST 0,
+<       xc_QueensStaticOpen.Print.badPtr, L.55),
+<      LABEL L.55,
+<      TEMP t.43)),
+<    ADD(
+<     MEM(
+<      TEMP t.45, 
+<      CONST 0, 8, false),
+<     MUL(
+<      ESEQ(
+<       MOVE(
+<        TEMP t.44,
+<        TEMP xc_QueensStaticOpen.Print.1.i),
+<       BLT(
+<        TEMP t.44,
+<        CONST 0,
+<        xc_QueensStaticOpen.Print.badSub, L.56),
+<       LABEL L.56,
+<       BGE(
+<        TEMP t.44,
+<        MEM(
+<         TEMP t.45, 
+<         CONST 8, 8, false),
+<        xc_QueensStaticOpen.Print.badSub, L.57),
+<       LABEL L.57,
+<       TEMP t.44),
+<      CONST 8))), 
+<   CONST 0, 8, true),
+<  TEMP xc_QueensStaticOpen.Print.1.1.j,
+<  L.52, L.53),
+< LABEL L.52,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 81)),
+< JUMP(
+<  NAME L.54),
+< LABEL L.53,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 46)),
+< LABEL L.54,
+< MOVE(
+<  TEMP t.39,
+<  ADD(
+<   TEMP t.39,
+<   TEMP t.42)),
+< LABEL L.50,
+< BLE(
+<  TEMP t.39,
+<  TEMP t.40,
+<  L.49, L.51),
+< LABEL L.51,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 10)),
+< MOVE(
+<  TEMP t.35,
+<  ADD(
+<   TEMP t.35,
+<   TEMP t.38)),
+< LABEL L.46,
+< BLE(
+<  TEMP t.35,
+<  TEMP t.36,
+<  L.45, L.47),
+< LABEL L.47,
+< EXP(
+<  CALL(
+<   NAME putchar,
+<   CONST 0,
+<   CONST 10)),
+< LABEL L.43
+< 
+< 
+< 	.text
+< xc_QueensStaticOpen:
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.row, 
+<   CONST 0, 8, false),
+<  CONST 0),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.col, 
+<   CONST 0, 8, false),
+<  CONST 0),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.diag1, 
+<   CONST 0, 8, false),
+<  CONST 0),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.diag2, 
+<   CONST 0, 8, false),
+<  CONST 0),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.row, 
+<   CONST 0, 8, false),
+<  ESEQ(
+<   MOVE(
+<    TEMP t.46,
+<    CONST 8),
+<   BLT(
+<    TEMP t.46,
+<    CONST 0,
+<    xc_QueensStaticOpen.badSub, L.58),
+<   LABEL L.58,
+<   MOVE(
+<    TEMP t.47,
+<    TEMP t.46),
+<   MOVE(
+<    TEMP t.48,
+<    CONST 16),
+<   MOVE(
+<    TEMP t.48,
+<    ADD(
+<     TEMP t.48,
+<     MUL(
+<      TEMP t.47,
+<      CONST 8))),
+<   MOVE(
+<    TEMP t.49,
+<    CALL(
+<     NAME malloc,
+<     CONST 0,
+<     TEMP t.48)),
+<   MOVE(
+<    MEM(
+<     TEMP t.49, 
+<     CONST 0, 8, false),
+<    ADD(
+<     TEMP t.49,
+<     CONST 16)),
+<   MOVE(
+<    MEM(
+<     TEMP t.49, 
+<     CONST 8, 8, false),
+<    TEMP t.46),
+<   MOVE(
+<    TEMP t.51,
+<    MEM(
+<     TEMP t.49, 
+<     CONST 8, 8, false)),
+<   MOVE(
+<    TEMP t.52,
+<    MEM(
+<     TEMP t.49, 
+<     CONST 0, 8, false)),
+<   MOVE(
+<    TEMP t.50,
+<    CONST 0),
+<   BGE(
+<    TEMP t.50,
+<    TEMP t.51,
+<    L.61, L.59),
+<   LABEL L.59,
+<   MOVE(
+<    MEM(
+<     ADD(
+<      TEMP t.52,
+<      MUL(
+<       TEMP t.50,
+<       CONST 8)), 
+<     CONST 0, 8, true),
+<    CONST 0),
+<   MOVE(
+<    TEMP t.50,
+<    ADD(
+<     TEMP t.50,
+<     CONST 1)),
+<   LABEL L.60,
+<   BLT(
+<    TEMP t.50,
+<    TEMP t.51,
+<    L.59, L.61),
+<   LABEL L.61,
+<   TEMP t.49)),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.col, 
+<   CONST 0, 8, false),
+<  ESEQ(
+<   MOVE(
+<    TEMP t.53,
+<    CONST 8),
+<   BLT(
+<    TEMP t.53,
+<    CONST 0,
+<    xc_QueensStaticOpen.badSub, L.62),
+<   LABEL L.62,
+<   MOVE(
+<    TEMP t.54,
+<    TEMP t.53),
+<   MOVE(
+<    TEMP t.55,
+<    CONST 16),
+<   MOVE(
+<    TEMP t.55,
+<    ADD(
+<     TEMP t.55,
+<     MUL(
+<      TEMP t.54,
+<      CONST 8))),
+<   MOVE(
+<    TEMP t.56,
+<    CALL(
+<     NAME malloc,
+<     CONST 0,
+<     TEMP t.55)),
+<   MOVE(
+<    MEM(
+<     TEMP t.56, 
+<     CONST 0, 8, false),
+<    ADD(
+<     TEMP t.56,
+<     CONST 16)),
+<   MOVE(
+<    MEM(
+<     TEMP t.56, 
+<     CONST 8, 8, false),
+<    TEMP t.53),
+<   MOVE(
+<    TEMP t.58,
+<    MEM(
+<     TEMP t.56, 
+<     CONST 8, 8, false)),
+<   MOVE(
+<    TEMP t.59,
+<    MEM(
+<     TEMP t.56, 
+<     CONST 0, 8, false)),
+<   MOVE(
+<    TEMP t.57,
+<    CONST 0),
+<   BGE(
+<    TEMP t.57,
+<    TEMP t.58,
+<    L.65, L.63),
+<   LABEL L.63,
+<   MOVE(
+<    MEM(
+<     ADD(
+<      TEMP t.59,
+<      MUL(
+<       TEMP t.57,
+<       CONST 8)), 
+<     CONST 0, 8, true),
+<    CONST 0),
+<   MOVE(
+<    TEMP t.57,
+<    ADD(
+<     TEMP t.57,
+<     CONST 1)),
+<   LABEL L.64,
+<   BLT(
+<    TEMP t.57,
+<    TEMP t.58,
+<    L.63, L.65),
+<   LABEL L.65,
+<   TEMP t.56)),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.diag1, 
+<   CONST 0, 8, false),
+<  ESEQ(
+<   MOVE(
+<    TEMP t.60,
+<    SUB(
+<     ADD(
+<      CONST 8,
+<      CONST 8),
+<     CONST 1)),
+<   BLT(
+<    TEMP t.60,
+<    CONST 0,
+<    xc_QueensStaticOpen.badSub, L.66),
+<   LABEL L.66,
+<   MOVE(
+<    TEMP t.61,
+<    TEMP t.60),
+<   MOVE(
+<    TEMP t.62,
+<    CONST 16),
+<   MOVE(
+<    TEMP t.62,
+<    ADD(
+<     TEMP t.62,
+<     MUL(
+<      TEMP t.61,
+<      CONST 8))),
+<   MOVE(
+<    TEMP t.63,
+<    CALL(
+<     NAME malloc,
+<     CONST 0,
+<     TEMP t.62)),
+<   MOVE(
+<    MEM(
+<     TEMP t.63, 
+<     CONST 0, 8, false),
+<    ADD(
+<     TEMP t.63,
+<     CONST 16)),
+<   MOVE(
+<    MEM(
+<     TEMP t.63, 
+<     CONST 8, 8, false),
+<    TEMP t.60),
+<   MOVE(
+<    TEMP t.65,
+<    MEM(
+<     TEMP t.63, 
+<     CONST 8, 8, false)),
+<   MOVE(
+<    TEMP t.66,
+<    MEM(
+<     TEMP t.63, 
+<     CONST 0, 8, false)),
+<   MOVE(
+<    TEMP t.64,
+<    CONST 0),
+<   BGE(
+<    TEMP t.64,
+<    TEMP t.65,
+<    L.69, L.67),
+<   LABEL L.67,
+<   MOVE(
+<    MEM(
+<     ADD(
+<      TEMP t.66,
+<      MUL(
+<       TEMP t.64,
+<       CONST 8)), 
+<     CONST 0, 8, true),
+<    CONST 0),
+<   MOVE(
+<    TEMP t.64,
+<    ADD(
+<     TEMP t.64,
+<     CONST 1)),
+<   LABEL L.68,
+<   BLT(
+<    TEMP t.64,
+<    TEMP t.65,
+<    L.67, L.69),
+<   LABEL L.69,
+<   TEMP t.63)),
+< MOVE(
+<  MEM(
+<   NAME xc_QueensStaticOpen.diag2, 
+<   CONST 0, 8, false),
+<  ESEQ(
+<   MOVE(
+<    TEMP t.67,
+<    SUB(
+<     ADD(
+<      CONST 8,
+<      CONST 8),
+<     CONST 1)),
+<   BLT(
+<    TEMP t.67,
+<    CONST 0,
+<    xc_QueensStaticOpen.badSub, L.70),
+<   LABEL L.70,
+<   MOVE(
+<    TEMP t.68,
+<    TEMP t.67),
+<   MOVE(
+<    TEMP t.69,
+<    CONST 16),
+<   MOVE(
+<    TEMP t.69,
+<    ADD(
+<     TEMP t.69,
+<     MUL(
+<      TEMP t.68,
+<      CONST 8))),
+<   MOVE(
+<    TEMP t.70,
+<    CALL(
+<     NAME malloc,
+<     CONST 0,
+<     TEMP t.69)),
+<   MOVE(
+<    MEM(
+<     TEMP t.70, 
+<     CONST 0, 8, false),
+<    ADD(
+<     TEMP t.70,
+<     CONST 16)),
+<   MOVE(
+<    MEM(
+<     TEMP t.70, 
+<     CONST 8, 8, false),
+<    TEMP t.67),
+<   MOVE(
+<    TEMP t.72,
+<    MEM(
+<     TEMP t.70, 
+<     CONST 8, 8, false)),
+<   MOVE(
+<    TEMP t.73,
+<    MEM(
+<     TEMP t.70, 
+<     CONST 0, 8, false)),
+<   MOVE(
+<    TEMP t.71,
+<    CONST 0),
+<   BGE(
+<    TEMP t.71,
+<    TEMP t.72,
+<    L.73, L.71),
+<   LABEL L.71,
+<   MOVE(
+<    MEM(
+<     ADD(
+<      TEMP t.73,
+<      MUL(
+<       TEMP t.71,
+<       CONST 8)), 
+<     CONST 0, 8, true),
+<    CONST 0),
+<   MOVE(
+<    TEMP t.71,
+<    ADD(
+<     TEMP t.71,
+<     CONST 1)),
+<   LABEL L.72,
+<   BLT(
+<    TEMP t.71,
+<    TEMP t.72,
+<    L.71, L.73),
+<   LABEL L.73,
+<   TEMP t.70)),
+< EXP(
+<  CALL(
+<   NAME xc_QueensStaticOpen.Solve,
+<   CONST 0,
+<   CONST 0))
+< 
+< 

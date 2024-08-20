@@ -1,0 +1,10 @@
+type S = record {
+    x: int;
+    y: int;
+    z: int;
+};
+
+{
+    var x: array 10 of int;
+    var positions: array 10 of S;
+}

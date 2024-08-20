@@ -1,0 +1,4 @@
+var g: Null;
+{
+  var x: ref int = g;
+}

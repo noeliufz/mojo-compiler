@@ -1,0 +1,20 @@
+proc putchar(x: int): int;
+
+type A = array 3 of int;
+
+proc foo(): A {
+    var a: A;
+    for i = 0 to Last(a) loop
+      a[i] = i;
+    return a;
+}
+
+{
+  var a = foo();
+  putchar(Ord('0') + a[0]);
+  putchar(Ord('\n'));
+  putchar(Ord('0') + a[1]);
+  putchar(Ord('\n'));
+  putchar(Ord('0') + a[2]);
+  putchar(Ord('\n'));
+}

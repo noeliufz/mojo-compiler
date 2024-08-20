@@ -1,0 +1,122 @@
+	.data
+	.balign 8
+MethodCalls.A:
+	.quad badPtr
+	.data
+	.balign 8
+MethodCalls.AB:
+	.quad badPtr
+	.quad badPtr
+	.data
+	.balign 8
+MethodCalls.T1:
+	.quad badPtr
+	.quad MethodCalls.Pab
+	.data
+	.balign 8
+MethodCalls.T2:
+	.quad MethodCalls.Pa
+	.data
+	.balign 8
+MethodCalls.T3:
+	.quad badPtr
+	.quad MethodCalls.Pa
+	.text
+MethodCalls:
+MOVE(
+ TEMP MethodCalls.15.a,
+ CONST 0),
+MOVE(
+ TEMP MethodCalls.15.ab,
+ CONST 0),
+MOVE(
+ TEMP MethodCalls.15.t1,
+ CONST 0),
+MOVE(
+ TEMP MethodCalls.15.t2,
+ CONST 0),
+MOVE(
+ TEMP MethodCalls.15.t3,
+ CONST 0),
+EXP(
+ CALL(
+  MEM(
+   MEM(
+    TEMP MethodCalls.15.a, 
+    CONST -8, 8, false), 
+   CONST 0, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.a)),
+EXP(
+ CALL(
+  MEM(
+   NAME MethodCalls.A, 
+   CONST 0, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.a)),
+EXP(
+ CALL(
+  MEM(
+   MEM(
+    TEMP MethodCalls.15.ab, 
+    CONST -8, 8, false), 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.ab)),
+EXP(
+ CALL(
+  MEM(
+   NAME MethodCalls.AB, 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.ab)),
+EXP(
+ CALL(
+  MEM(
+   MEM(
+    TEMP MethodCalls.15.t1, 
+    CONST -8, 8, false), 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.t1)),
+EXP(
+ CALL(
+  MEM(
+   NAME MethodCalls.T1, 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.t1)),
+EXP(
+ CALL(
+  MEM(
+   MEM(
+    TEMP MethodCalls.15.t2, 
+    CONST -8, 8, false), 
+   CONST 0, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.t2)),
+EXP(
+ CALL(
+  MEM(
+   NAME MethodCalls.T2, 
+   CONST 0, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.t2)),
+EXP(
+ CALL(
+  MEM(
+   MEM(
+    TEMP MethodCalls.15.t3, 
+    CONST -8, 8, false), 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.t3)),
+EXP(
+ CALL(
+  MEM(
+   NAME MethodCalls.T3, 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP MethodCalls.15.t3))
+
+

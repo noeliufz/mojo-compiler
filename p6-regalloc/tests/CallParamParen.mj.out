@@ -1,0 +1,108 @@
+PROCEDURE CallParamParen
+# Trees:
+EXP(
+ CALL(
+  NAME foo,
+  CONST 0,
+  CONST 1))
+# Linearized (trees):
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME foo,
+  CONST 0,
+  CONST 1))
+EXP(
+ TEMP t.0)
+# Basic Blocks:
+# 0
+LABEL L.0
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME foo,
+  CONST 0,
+  CONST 1))
+EXP(
+ TEMP t.0)
+# Trace Scheduled:
+LABEL L.0
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME foo,
+  CONST 0,
+  CONST 1))
+EXP(
+ TEMP t.0)
+# With procedure entry/exit:
+LABEL L.0
+MOVE(
+ TEMP t.0,
+ CALL(
+  NAME foo,
+  CONST 0,
+  CONST 1))
+EXP(
+ TEMP t.0)
+# Instructions:
+L.0:	# <- 
+	movq $1,%rdi	# %rdi <- 
+	call foo	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.0	# t.0 := %rax 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.0 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.0: %rsp %rbp 
+t.0 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.0->%rax
+# Assembly code:
+	.text
+CallParamParen:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+L.0:
+	movq $1,%rdi
+	call foo
+#	movq %rax,%rax
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+CallParamParen.badSub:
+	call badSub
+END CallParamParen

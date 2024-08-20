@@ -1,0 +1,249 @@
+	.data
+	.balign 8
+L.3:
+	.byte 39
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 44
+	.byte 32
+	.byte 39
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 44
+	.byte 32
+	.byte 39
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 33
+	.byte 0
+	.data
+	.balign 8
+L.4:
+	.quad L.3
+	.quad 21
+PROCEDURE Infinite
+# Trees:
+LABEL L.0,
+LABEL L.1,
+EXP(
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.0,
+     NAME L.4),
+    BEQ(
+     TEMP t.0,
+     CONST 0,
+     Infinite.badPtr, L.5),
+    LABEL L.5,
+    TEMP t.0), 
+   CONST 0, 8, false, false))),
+JUMP(
+ NAME L.0),
+LABEL L.2
+# Linearized (trees):
+LABEL L.0
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ NAME L.4)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ Infinite.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+JUMP(
+ NAME L.0)
+LABEL L.2
+# Basic Blocks:
+# 0
+LABEL L.0
+JUMP(
+ NAME L.1)
+# 1
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ NAME L.4)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ Infinite.badPtr, L.5)
+# 2
+LABEL L.5
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.2
+# Trace Scheduled:
+LABEL L.0
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ NAME L.4)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ Infinite.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+JUMP(
+ NAME L.0)
+LABEL L.2
+# With procedure entry/exit:
+LABEL L.0
+LABEL L.1
+MOVE(
+ TEMP t.0,
+ NAME L.4)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ Infinite.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.1,
+ CALL(
+  NAME puts,
+  CONST 0,
+  MEM(
+   TEMP t.0, 
+   CONST 0, 8, false, false)))
+EXP(
+ TEMP t.1)
+JUMP(
+ NAME L.0)
+LABEL L.2
+# Instructions:
+L.0:	# <- 
+L.1:	# <- 
+	leaq L.4(%rip),t.2	# t.2 <- 
+	movq t.2,t.0	# t.0 := t.2 
+	xorq t.3,t.3	# t.3 <- 
+	cmpq t.3,t.0	# <- t.0 t.3 
+	je Infinite.badPtr	# <- : goto Infinite.badPtr L.5 
+L.5:	# <- 
+	movq 0(t.0),t.4	# t.4 <- t.0 
+	movq t.4,%rdi	# %rdi := t.4 
+	call puts	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.1	# t.1 := %rax 
+	jmp L.0	# <- : goto L.0 
+L.2:	# <- 
+# Control Flow Graph:
+0: t.2 t.0 t.3 <-; goto 1
+1: t.4 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.1 <- t.0; goto 0
+2: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.2: 
+t.0: t.3 
+t.3: t.0 
+t.4: 
+t.1: 
+%rdi <= t.4
+t.1 <= %rax
+t.0 <= t.2
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.2->%rax
+t.0->%rax
+t.3->%rbx
+t.4->%rdi
+t.1->%rax
+# Assembly code:
+	.text
+Infinite:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+L.0:
+L.1:
+	leaq L.4(%rip),%rax
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je Infinite.badPtr
+L.5:
+	movq 0(%rax),%rdi
+#	movq %rdi,%rdi
+	call puts
+#	movq %rax,%rax
+	jmp L.0
+L.2:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+Infinite.badPtr:
+	call badPtr
+END Infinite

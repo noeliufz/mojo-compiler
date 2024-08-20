@@ -1,0 +1,9 @@
+{
+  var p: proc (
+      val x: int;
+    ): int;
+  proc P (
+      val x: int;
+    ): int;
+  p = P;
+}

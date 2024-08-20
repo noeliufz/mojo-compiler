@@ -1,0 +1,9 @@
+	.text
+CallParamParen:
+EXP(
+ CALL(
+  NAME foo,
+  CONST 0,
+  CONST 1))
+
+

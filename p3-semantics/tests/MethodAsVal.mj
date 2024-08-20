@@ -1,0 +1,6 @@
+type T = object { p() };
+var v: T;
+{
+  var q = v.p;
+}
+

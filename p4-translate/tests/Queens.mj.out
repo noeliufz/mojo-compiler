@@ -1,0 +1,936 @@
+	.data
+	.balign 8
+Queens.Queens:
+	.quad Queens.Init
+	.quad Queens.Solve
+	.text
+Queens.Init:
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.0,
+    TEMP Queens.Init.self),
+   BEQ(
+    TEMP t.0,
+    CONST 0,
+    Queens.Init.badPtr, L.1),
+   LABEL L.1,
+   TEMP t.0), 
+  CONST 0, 8, false),
+ ESEQ(
+  MOVE(
+   TEMP t.1,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 64)),
+  MOVE(
+   TEMP t.3,
+   CONST 8),
+  MOVE(
+   TEMP t.2,
+   CONST 0),
+  BGE(
+   TEMP t.2,
+   TEMP t.3,
+   L.3, L.2),
+  LABEL L.2,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.1,
+     MUL(
+      TEMP t.2,
+      CONST 8)), 
+    CONST 0, 8, true),
+   CONST 0),
+  MOVE(
+   TEMP t.2,
+   ADD(
+    TEMP t.2,
+    CONST 1)),
+  BLT(
+   TEMP t.2,
+   TEMP t.3,
+   L.2, L.3),
+  LABEL L.3,
+  TEMP t.1)),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.4,
+    TEMP Queens.Init.self),
+   BEQ(
+    TEMP t.4,
+    CONST 0,
+    Queens.Init.badPtr, L.4),
+   LABEL L.4,
+   TEMP t.4), 
+  CONST 8, 8, false),
+ ESEQ(
+  MOVE(
+   TEMP t.5,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 64)),
+  MOVE(
+   TEMP t.7,
+   CONST 8),
+  MOVE(
+   TEMP t.6,
+   CONST 0),
+  BGE(
+   TEMP t.6,
+   TEMP t.7,
+   L.6, L.5),
+  LABEL L.5,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.5,
+     MUL(
+      TEMP t.6,
+      CONST 8)), 
+    CONST 0, 8, true),
+   CONST 0),
+  MOVE(
+   TEMP t.6,
+   ADD(
+    TEMP t.6,
+    CONST 1)),
+  BLT(
+   TEMP t.6,
+   TEMP t.7,
+   L.5, L.6),
+  LABEL L.6,
+  TEMP t.5)),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.8,
+    TEMP Queens.Init.self),
+   BEQ(
+    TEMP t.8,
+    CONST 0,
+    Queens.Init.badPtr, L.7),
+   LABEL L.7,
+   TEMP t.8), 
+  CONST 16, 8, false),
+ ESEQ(
+  MOVE(
+   TEMP t.9,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 120)),
+  MOVE(
+   TEMP t.11,
+   SUB(
+    ADD(
+     CONST 8,
+     CONST 8),
+    CONST 1)),
+  MOVE(
+   TEMP t.10,
+   CONST 0),
+  BGE(
+   TEMP t.10,
+   TEMP t.11,
+   L.9, L.8),
+  LABEL L.8,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.9,
+     MUL(
+      TEMP t.10,
+      CONST 8)), 
+    CONST 0, 8, true),
+   CONST 0),
+  MOVE(
+   TEMP t.10,
+   ADD(
+    TEMP t.10,
+    CONST 1)),
+  BLT(
+   TEMP t.10,
+   TEMP t.11,
+   L.8, L.9),
+  LABEL L.9,
+  TEMP t.9)),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.12,
+    TEMP Queens.Init.self),
+   BEQ(
+    TEMP t.12,
+    CONST 0,
+    Queens.Init.badPtr, L.10),
+   LABEL L.10,
+   TEMP t.12), 
+  CONST 24, 8, false),
+ ESEQ(
+  MOVE(
+   TEMP t.13,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 120)),
+  MOVE(
+   TEMP t.15,
+   SUB(
+    ADD(
+     CONST 8,
+     CONST 8),
+    CONST 1)),
+  MOVE(
+   TEMP t.14,
+   CONST 0),
+  BGE(
+   TEMP t.14,
+   TEMP t.15,
+   L.12, L.11),
+  LABEL L.11,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.13,
+     MUL(
+      TEMP t.14,
+      CONST 8)), 
+    CONST 0, 8, true),
+   CONST 0),
+  MOVE(
+   TEMP t.14,
+   ADD(
+    TEMP t.14,
+    CONST 1)),
+  BLT(
+   TEMP t.14,
+   TEMP t.15,
+   L.11, L.12),
+  LABEL L.12,
+  TEMP t.13)),
+MOVE(
+ TEMP %rax,
+ TEMP Queens.Init.self),
+JUMP(
+ NAME L.0),
+LABEL L.0
+
+
+	.text
+Queens.Solve:
+BEQ(
+ TEMP Queens.Solve.c,
+ CONST 8,
+ L.14, L.15),
+LABEL L.14,
+EXP(
+ CALL(
+  NAME Queens.Print,
+  CONST 0,
+  TEMP Queens.Solve.self)),
+JUMP(
+ NAME L.16),
+LABEL L.15,
+MOVE(
+ TEMP t.16,
+ CONST 0),
+MOVE(
+ TEMP t.17,
+ CONST 7),
+MOVE(
+ TEMP t.18,
+ CONST 1),
+LABEL L.17,
+MOVE(
+ TEMP Queens.Solve.1.r,
+ TEMP t.16),
+BEQ(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.20,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.19,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.19,
+        CONST 0,
+        Queens.Solve.badPtr, L.24),
+       LABEL L.24,
+       TEMP t.19), 
+      CONST 0, 8, false)),
+    BEQ(
+     TEMP t.20,
+     CONST 0,
+     Queens.Solve.badPtr, L.25),
+    LABEL L.25,
+    TEMP t.20),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.21,
+      TEMP Queens.Solve.1.r),
+     BLT(
+      TEMP t.21,
+      CONST 0,
+      Queens.Solve.badSub, L.26),
+     LABEL L.26,
+     BGT(
+      TEMP t.21,
+      CONST 7,
+      Queens.Solve.badSub, L.27),
+     LABEL L.27,
+     TEMP t.21),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 0,
+ L.23, L.21),
+LABEL L.23,
+BEQ(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.23,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.22,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.22,
+        CONST 0,
+        Queens.Solve.badPtr, L.28),
+       LABEL L.28,
+       TEMP t.22), 
+      CONST 16, 8, false)),
+    BEQ(
+     TEMP t.23,
+     CONST 0,
+     Queens.Solve.badPtr, L.29),
+    LABEL L.29,
+    TEMP t.23),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.24,
+      ADD(
+       TEMP Queens.Solve.1.r,
+       TEMP Queens.Solve.c)),
+     BLT(
+      TEMP t.24,
+      CONST 0,
+      Queens.Solve.badSub, L.30),
+     LABEL L.30,
+     BGT(
+      TEMP t.24,
+      CONST 14,
+      Queens.Solve.badSub, L.31),
+     LABEL L.31,
+     TEMP t.24),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 0,
+ L.22, L.21),
+LABEL L.22,
+BEQ(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.26,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.25,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.25,
+        CONST 0,
+        Queens.Solve.badPtr, L.32),
+       LABEL L.32,
+       TEMP t.25), 
+      CONST 24, 8, false)),
+    BEQ(
+     TEMP t.26,
+     CONST 0,
+     Queens.Solve.badPtr, L.33),
+    LABEL L.33,
+    TEMP t.26),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.27,
+      SUB(
+       ADD(
+        TEMP Queens.Solve.1.r,
+        SUB(
+         CONST 8,
+         CONST 1)),
+       TEMP Queens.Solve.c)),
+     BLT(
+      TEMP t.27,
+      CONST 0,
+      Queens.Solve.badSub, L.34),
+     LABEL L.34,
+     BGT(
+      TEMP t.27,
+      CONST 14,
+      Queens.Solve.badSub, L.35),
+     LABEL L.35,
+     TEMP t.27),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 0,
+ L.20, L.21),
+LABEL L.20,
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.29,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.28,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.28,
+        CONST 0,
+        Queens.Solve.badPtr, L.36),
+       LABEL L.36,
+       TEMP t.28), 
+      CONST 0, 8, false)),
+    BEQ(
+     TEMP t.29,
+     CONST 0,
+     Queens.Solve.badPtr, L.37),
+    LABEL L.37,
+    TEMP t.29),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.30,
+      TEMP Queens.Solve.1.r),
+     BLT(
+      TEMP t.30,
+      CONST 0,
+      Queens.Solve.badSub, L.38),
+     LABEL L.38,
+     BGT(
+      TEMP t.30,
+      CONST 7,
+      Queens.Solve.badSub, L.39),
+     LABEL L.39,
+     TEMP t.30),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 1),
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.32,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.31,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.31,
+        CONST 0,
+        Queens.Solve.badPtr, L.40),
+       LABEL L.40,
+       TEMP t.31), 
+      CONST 16, 8, false)),
+    BEQ(
+     TEMP t.32,
+     CONST 0,
+     Queens.Solve.badPtr, L.41),
+    LABEL L.41,
+    TEMP t.32),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.33,
+      ADD(
+       TEMP Queens.Solve.1.r,
+       TEMP Queens.Solve.c)),
+     BLT(
+      TEMP t.33,
+      CONST 0,
+      Queens.Solve.badSub, L.42),
+     LABEL L.42,
+     BGT(
+      TEMP t.33,
+      CONST 14,
+      Queens.Solve.badSub, L.43),
+     LABEL L.43,
+     TEMP t.33),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 1),
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.35,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.34,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.34,
+        CONST 0,
+        Queens.Solve.badPtr, L.44),
+       LABEL L.44,
+       TEMP t.34), 
+      CONST 24, 8, false)),
+    BEQ(
+     TEMP t.35,
+     CONST 0,
+     Queens.Solve.badPtr, L.45),
+    LABEL L.45,
+    TEMP t.35),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.36,
+      SUB(
+       ADD(
+        TEMP Queens.Solve.1.r,
+        SUB(
+         CONST 8,
+         CONST 1)),
+       TEMP Queens.Solve.c)),
+     BLT(
+      TEMP t.36,
+      CONST 0,
+      Queens.Solve.badSub, L.46),
+     LABEL L.46,
+     BGT(
+      TEMP t.36,
+      CONST 14,
+      Queens.Solve.badSub, L.47),
+     LABEL L.47,
+     TEMP t.36),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 1),
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.38,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.37,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.37,
+        CONST 0,
+        Queens.Solve.badPtr, L.48),
+       LABEL L.48,
+       TEMP t.37), 
+      CONST 8, 8, false)),
+    BEQ(
+     TEMP t.38,
+     CONST 0,
+     Queens.Solve.badPtr, L.49),
+    LABEL L.49,
+    TEMP t.38),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.39,
+      TEMP Queens.Solve.c),
+     BLT(
+      TEMP t.39,
+      CONST 0,
+      Queens.Solve.badSub, L.50),
+     LABEL L.50,
+     BGT(
+      TEMP t.39,
+      CONST 7,
+      Queens.Solve.badSub, L.51),
+     LABEL L.51,
+     TEMP t.39),
+    CONST 8)), 
+  CONST 0, 8, true),
+ TEMP Queens.Solve.1.r),
+EXP(
+ CALL(
+  MEM(
+   MEM(
+    TEMP Queens.Solve.self, 
+    CONST -8, 8, false), 
+   CONST 8, 8, false),
+  CONST 0,
+  TEMP Queens.Solve.self,
+  ADD(
+   TEMP Queens.Solve.c,
+   CONST 1))),
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.41,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.40,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.40,
+        CONST 0,
+        Queens.Solve.badPtr, L.52),
+       LABEL L.52,
+       TEMP t.40), 
+      CONST 0, 8, false)),
+    BEQ(
+     TEMP t.41,
+     CONST 0,
+     Queens.Solve.badPtr, L.53),
+    LABEL L.53,
+    TEMP t.41),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.42,
+      TEMP Queens.Solve.1.r),
+     BLT(
+      TEMP t.42,
+      CONST 0,
+      Queens.Solve.badSub, L.54),
+     LABEL L.54,
+     BGT(
+      TEMP t.42,
+      CONST 7,
+      Queens.Solve.badSub, L.55),
+     LABEL L.55,
+     TEMP t.42),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.44,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.43,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.43,
+        CONST 0,
+        Queens.Solve.badPtr, L.56),
+       LABEL L.56,
+       TEMP t.43), 
+      CONST 16, 8, false)),
+    BEQ(
+     TEMP t.44,
+     CONST 0,
+     Queens.Solve.badPtr, L.57),
+    LABEL L.57,
+    TEMP t.44),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.45,
+      ADD(
+       TEMP Queens.Solve.1.r,
+       TEMP Queens.Solve.c)),
+     BLT(
+      TEMP t.45,
+      CONST 0,
+      Queens.Solve.badSub, L.58),
+     LABEL L.58,
+     BGT(
+      TEMP t.45,
+      CONST 14,
+      Queens.Solve.badSub, L.59),
+     LABEL L.59,
+     TEMP t.45),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 0),
+MOVE(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.47,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.46,
+        TEMP Queens.Solve.self),
+       BEQ(
+        TEMP t.46,
+        CONST 0,
+        Queens.Solve.badPtr, L.60),
+       LABEL L.60,
+       TEMP t.46), 
+      CONST 24, 8, false)),
+    BEQ(
+     TEMP t.47,
+     CONST 0,
+     Queens.Solve.badPtr, L.61),
+    LABEL L.61,
+    TEMP t.47),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.48,
+      SUB(
+       ADD(
+        TEMP Queens.Solve.1.r,
+        SUB(
+         CONST 8,
+         CONST 1)),
+       TEMP Queens.Solve.c)),
+     BLT(
+      TEMP t.48,
+      CONST 0,
+      Queens.Solve.badSub, L.62),
+     LABEL L.62,
+     BGT(
+      TEMP t.48,
+      CONST 14,
+      Queens.Solve.badSub, L.63),
+     LABEL L.63,
+     TEMP t.48),
+    CONST 8)), 
+  CONST 0, 8, true),
+ CONST 0),
+LABEL L.21,
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  TEMP t.18)),
+LABEL L.18,
+BLE(
+ TEMP t.16,
+ TEMP t.17,
+ L.17, L.19),
+LABEL L.19,
+LABEL L.16,
+LABEL L.13
+
+
+	.text
+Queens.Print:
+MOVE(
+ TEMP t.49,
+ CONST 0),
+MOVE(
+ TEMP t.50,
+ CONST 7),
+MOVE(
+ TEMP t.51,
+ CONST 1),
+LABEL L.65,
+MOVE(
+ TEMP Queens.Print.1.i,
+ TEMP t.49),
+MOVE(
+ TEMP t.52,
+ CONST 0),
+MOVE(
+ TEMP t.53,
+ CONST 7),
+MOVE(
+ TEMP t.54,
+ CONST 1),
+LABEL L.68,
+MOVE(
+ TEMP Queens.Print.1.1.j,
+ TEMP t.52),
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 32)),
+BEQ(
+ MEM(
+  ADD(
+   ESEQ(
+    MOVE(
+     TEMP t.56,
+     MEM(
+      ESEQ(
+       MOVE(
+        TEMP t.55,
+        TEMP Queens.Print.self),
+       BEQ(
+        TEMP t.55,
+        CONST 0,
+        Queens.Print.badPtr, L.74),
+       LABEL L.74,
+       TEMP t.55), 
+      CONST 8, 8, false)),
+    BEQ(
+     TEMP t.56,
+     CONST 0,
+     Queens.Print.badPtr, L.75),
+    LABEL L.75,
+    TEMP t.56),
+   MUL(
+    ESEQ(
+     MOVE(
+      TEMP t.57,
+      TEMP Queens.Print.1.i),
+     BLT(
+      TEMP t.57,
+      CONST 0,
+      Queens.Print.badSub, L.76),
+     LABEL L.76,
+     BGT(
+      TEMP t.57,
+      CONST 7,
+      Queens.Print.badSub, L.77),
+     LABEL L.77,
+     TEMP t.57),
+    CONST 8)), 
+  CONST 0, 8, true),
+ TEMP Queens.Print.1.1.j,
+ L.71, L.72),
+LABEL L.71,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 81)),
+JUMP(
+ NAME L.73),
+LABEL L.72,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 46)),
+LABEL L.73,
+MOVE(
+ TEMP t.52,
+ ADD(
+  TEMP t.52,
+  TEMP t.54)),
+LABEL L.69,
+BLE(
+ TEMP t.52,
+ TEMP t.53,
+ L.68, L.70),
+LABEL L.70,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+MOVE(
+ TEMP t.49,
+ ADD(
+  TEMP t.49,
+  TEMP t.51)),
+LABEL L.66,
+BLE(
+ TEMP t.49,
+ TEMP t.50,
+ L.65, L.67),
+LABEL L.67,
+EXP(
+ CALL(
+  NAME putchar,
+  CONST 0,
+  CONST 10)),
+LABEL L.64
+
+
+	.text
+Queens:
+EXP(
+ CALL(
+  ESEQ(
+   MOVE(
+    TEMP t.60,
+    CALL(
+     ESEQ(
+      MOVE(
+       TEMP t.59,
+       ESEQ(
+        MOVE(
+         TEMP t.58,
+         CALL(
+          NAME malloc,
+          CONST 0,
+          CONST 40)),
+        MOVE(
+         TEMP t.58,
+         ADD(
+          TEMP t.58,
+          CONST 8)),
+        MOVE(
+         MEM(
+          TEMP t.58, 
+          CONST -8, 8, false),
+         NAME Queens.Queens),
+        MOVE(
+         MEM(
+          TEMP t.58, 
+          CONST 0, 8, false),
+         CONST 0),
+        MOVE(
+         MEM(
+          TEMP t.58, 
+          CONST 8, 8, false),
+         CONST 0),
+        MOVE(
+         MEM(
+          TEMP t.58, 
+          CONST 16, 8, false),
+         CONST 0),
+        MOVE(
+         MEM(
+          TEMP t.58, 
+          CONST 24, 8, false),
+         CONST 0),
+        TEMP t.58)),
+      MEM(
+       MEM(
+        TEMP t.59, 
+        CONST -8, 8, false), 
+       CONST 0, 8, false)),
+     CONST 0,
+     TEMP t.59)),
+   MEM(
+    MEM(
+     TEMP t.60, 
+     CONST -8, 8, false), 
+    CONST 8, 8, false)),
+  CONST 0,
+  TEMP t.60,
+  CONST 0))
+
+

@@ -1,0 +1,16 @@
+	.data
+	.balign 8
+xc_QueensStaticOpen.row:
+	.zero 8
+	.data
+	.balign 8
+xc_QueensStaticOpen.col:
+	.zero 8
+	.data
+	.balign 8
+xc_QueensStaticOpen.diag1:
+	.zero 8
+	.data
+	.balign 8
+xc_QueensStaticOpen.diag2:
+	.zero 8

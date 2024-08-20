@@ -1,0 +1,236 @@
+PROCEDURE NotBranch.Not
+# Trees:
+BEQ(
+ TEMP NotBranch.Not.x,
+ CONST 0,
+ L.1, L.2),
+LABEL L.1,
+MOVE(
+ TEMP %rax,
+ CONST 1),
+JUMP(
+ NAME L.0),
+LABEL L.2,
+MOVE(
+ TEMP %rax,
+ CONST 0),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+BEQ(
+ TEMP NotBranch.Not.x,
+ CONST 0,
+ L.1, L.2)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.0)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.3
+BEQ(
+ TEMP NotBranch.Not.x,
+ CONST 0,
+ L.1, L.2)
+# 1
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 1)
+JUMP(
+ NAME L.0)
+# 2
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+# 3
+LABEL L.0
+# Trace Scheduled:
+LABEL L.3
+BEQ(
+ TEMP NotBranch.Not.x,
+ CONST 0,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 1)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP NotBranch.Not.x,
+ TEMP %rdi)
+LABEL L.3
+BEQ(
+ TEMP NotBranch.Not.x,
+ CONST 0,
+ L.1, L.2)
+LABEL L.2
+MOVE(
+ TEMP %rax,
+ CONST 0)
+JUMP(
+ NAME L.0)
+LABEL L.1
+MOVE(
+ TEMP %rax,
+ CONST 1)
+LABEL L.0
+# Instructions:
+	movq %rdi,NotBranch.Not.x	# NotBranch.Not.x := %rdi 
+L.3:	# <- 
+	xorq t.0,t.0	# t.0 <- 
+	cmpq t.0,NotBranch.Not.x	# <- NotBranch.Not.x t.0 
+	je L.1	# <- : goto L.1 L.2 
+L.2:	# <- 
+	xorq %rax,%rax	# %rax <- 
+	jmp L.0	# <- : goto L.0 
+L.1:	# <- 
+	movq $1,%rax	# %rax <- 
+L.0:	# <- 
+# Control Flow Graph:
+0: NotBranch.Not.x <- %rdi; goto 1
+1: t.0 <- NotBranch.Not.x; goto 3 2
+2: %rax <-; goto 4
+3: %rax <-; goto 4
+4: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+NotBranch.Not.x: %rsp %rbp t.0 
+t.0: %rsp %rbp NotBranch.Not.x 
+NotBranch.Not.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+NotBranch.Not.x->%rbx
+t.0->%rax
+# Assembly code:
+	.text
+NotBranch.Not:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rbx
+L.3:
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	je L.1
+L.2:
+	xorq %rax,%rax
+	jmp L.0
+L.1:
+	movq $1,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+END NotBranch.Not
+PROCEDURE NotBranch
+# Trees:
+# Linearized (trees):
+# Basic Blocks:
+# 0
+LABEL L.4
+# Trace Scheduled:
+LABEL L.4
+# With procedure entry/exit:
+LABEL L.4
+# Instructions:
+L.4:	# <- 
+# Control Flow Graph:
+0: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+# Assembly code:
+	.text
+NotBranch:
+	pushq %rbp
+	movq %rsp,%rbp
+L.4:
+#	returnSink
+	popq %rbp
+	ret
+END NotBranch

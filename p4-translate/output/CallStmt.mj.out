@@ -1,0 +1,8 @@
+	.text
+CallStmt:
+EXP(
+ CALL(
+  NAME f,
+  CONST 0))
+
+

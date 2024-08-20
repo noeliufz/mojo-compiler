@@ -1,0 +1,6 @@
+proc a(): char { return 'a'; }
+proc aa(): proc ():char { return a; }
+{
+  proc b(): char { return 'b'; }
+  proc bb(): proc(): char { return b; }
+}

@@ -1,0 +1,2476 @@
+	.data
+	.balign 8
+L.1:
+	.byte 37
+	.byte 108
+	.byte 100
+	.byte 10
+	.byte 0
+	.data
+	.balign 8
+L.2:
+	.quad L.1
+	.quad 5
+PROCEDURE Map.println
+# Trees:
+MOVE(
+ TEMP Map.println.1.a,
+ NAME L.2),
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  ESEQ(
+   MOVE(
+    TEMP t.3,
+    ESEQ(
+     MOVE(
+      TEMP t.1,
+      TEMP Map.println.1.a),
+     BEQ(
+      TEMP t.1,
+      CONST 0,
+      Map.println.badPtr, L.5),
+     LABEL L.5,
+     TEMP t.1)),
+   ADD(
+    MEM(
+     TEMP t.3, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.2,
+      CONST 0),
+     BLT(
+      TEMP t.2,
+      CONST 0,
+      Map.println.badSub, L.6),
+     LABEL L.6,
+     BGE(
+      TEMP t.2,
+      MEM(
+       TEMP t.3, 
+       CONST 8, 8, false, false),
+      Map.println.badSub, L.7),
+     LABEL L.7,
+     TEMP t.2))),
+  TEMP Map.println.i)),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP Map.println.1.a,
+ NAME L.2)
+MOVE(
+ TEMP t.1,
+ TEMP Map.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Map.println.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Map.println.badSub, L.6)
+LABEL L.6
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Map.println.badSub, L.7)
+LABEL L.7
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME printf,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2),
+  TEMP Map.println.i))
+EXP(
+ TEMP t.19)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.24
+MOVE(
+ TEMP Map.println.1.a,
+ NAME L.2)
+MOVE(
+ TEMP t.1,
+ TEMP Map.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Map.println.badPtr, L.5)
+# 1
+LABEL L.5
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Map.println.badSub, L.6)
+# 2
+LABEL L.6
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Map.println.badSub, L.7)
+# 3
+LABEL L.7
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME printf,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2),
+  TEMP Map.println.i))
+EXP(
+ TEMP t.19)
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.24
+MOVE(
+ TEMP Map.println.1.a,
+ NAME L.2)
+MOVE(
+ TEMP t.1,
+ TEMP Map.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Map.println.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Map.println.badSub, L.6)
+LABEL L.6
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Map.println.badSub, L.7)
+LABEL L.7
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME printf,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2),
+  TEMP Map.println.i))
+EXP(
+ TEMP t.19)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP Map.println.i,
+ TEMP %rdi)
+LABEL L.24
+MOVE(
+ TEMP Map.println.1.a,
+ NAME L.2)
+MOVE(
+ TEMP t.1,
+ TEMP Map.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Map.println.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Map.println.badSub, L.6)
+LABEL L.6
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Map.println.badSub, L.7)
+LABEL L.7
+MOVE(
+ TEMP t.19,
+ CALL(
+  NAME printf,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2),
+  TEMP Map.println.i))
+EXP(
+ TEMP t.19)
+LABEL L.0
+# Instructions:
+	movq %rdi,Map.println.i	# Map.println.i := %rdi 
+L.24:	# <- 
+	leaq L.2(%rip),t.20	# t.20 <- 
+	movq t.20,Map.println.1.a	# Map.println.1.a := t.20 
+	movq Map.println.1.a,t.1	# t.1 := Map.println.1.a 
+	xorq t.21,t.21	# t.21 <- 
+	cmpq t.21,t.1	# <- t.1 t.21 
+	je Map.println.badPtr	# <- : goto Map.println.badPtr L.5 
+L.5:	# <- 
+	movq t.1,t.3	# t.3 := t.1 
+	xorq t.2,t.2	# t.2 <- 
+	xorq t.22,t.22	# t.22 <- 
+	cmpq t.22,t.2	# <- t.2 t.22 
+	jl Map.println.badSub	# <- : goto Map.println.badSub L.6 
+L.6:	# <- 
+	movq 8(t.3),t.23	# t.23 <- t.3 
+	cmpq t.23,t.2	# <- t.2 t.23 
+	jge Map.println.badSub	# <- : goto Map.println.badSub L.7 
+L.7:	# <- 
+	movq 0(t.3),t.24	# t.24 <- t.3 
+	movq t.24,t.25	# t.25 := t.24 
+	addq t.2,t.25	# t.25 <- t.2 t.25 
+	movq t.25,%rdi	# %rdi := t.25 
+	movq Map.println.i,%rsi	# %rsi := Map.println.i 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.19	# t.19 := %rax 
+L.0:	# <- 
+# Control Flow Graph:
+0: Map.println.i <- %rdi; goto 1
+1: t.20 Map.println.1.a t.1 t.21 <-; goto 2
+2: t.3 t.2 t.22 <- t.1; goto 3
+3: t.23 <- t.3 t.2; goto 4
+4: t.24 t.25 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.19 <- t.3 t.2 Map.println.i; goto 5
+5: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Map.println.i: %rsp %rbp t.21 t.1 Map.println.1.a t.20 t.22 t.2 t.3 t.23 %rdi t.25 t.24 
+t.20: Map.println.i %rsp %rbp 
+Map.println.1.a: Map.println.i %rsp %rbp 
+t.1: t.21 Map.println.i %rsp %rbp 
+t.21: t.1 Map.println.i %rsp %rbp 
+t.3: t.22 t.2 Map.println.i %rsp %rbp t.23 
+t.2: t.22 t.3 Map.println.i %rsp %rbp t.23 t.25 t.24 
+t.22: t.3 t.2 Map.println.i %rsp %rbp 
+t.23: t.3 t.2 Map.println.i %rsp %rbp 
+t.24: %rsp %rbp Map.println.i t.2 
+t.25: %rsp %rbp Map.println.i t.2 
+t.19: %rsp %rbp 
+t.25 <= t.24
+%rdi <= t.25
+%rsi <= Map.println.i
+t.19 <= %rax
+t.3 <= t.1
+Map.println.1.a <= t.20
+t.1 <= Map.println.1.a
+Map.println.i <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Map.println.i->%rsi
+t.20->%rax
+Map.println.1.a->%rax
+t.1->%rax
+t.21->%rbx
+t.3->%rax
+t.2->%rcx
+t.22->%rbx
+t.23->%rbx
+t.24->%rdi
+t.25->%rdi
+t.19->%rax
+# Assembly code:
+	.text
+Map.println:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rsi
+L.24:
+	leaq L.2(%rip),%rax
+#	movq %rax,%rax
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je Map.println.badPtr
+L.5:
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	xorq %rbx,%rbx
+	cmpq %rbx,%rcx
+	jl Map.println.badSub
+L.6:
+	movq 8(%rax),%rbx
+	cmpq %rbx,%rcx
+	jge Map.println.badSub
+L.7:
+	movq 0(%rax),%rdi
+#	movq %rdi,%rdi
+	addq %rcx,%rdi
+#	movq %rdi,%rdi
+#	movq %rsi,%rsi
+	call printf
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+Map.println.badPtr:
+	call badPtr
+Map.println.badSub:
+	call badSub
+END Map.println
+PROCEDURE Map.map
+# Trees:
+MOVE(
+ TEMP t.4,
+ CONST 0),
+MOVE(
+ TEMP t.5,
+ SUB(
+  MEM(
+   MEM(
+    TEMP %rbp, 
+    CONST 16, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 1)),
+MOVE(
+ TEMP t.6,
+ CONST 1),
+JUMP(
+ NAME L.10),
+LABEL L.9,
+MOVE(
+ TEMP Map.map.1.i,
+ TEMP t.4),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.8,
+    MEM(
+     TEMP %rbp, 
+     CONST 16, 8, false, false)),
+   ADD(
+    MEM(
+     TEMP t.8, 
+     CONST 0, 8, false, false),
+    MUL(
+     ESEQ(
+      MOVE(
+       TEMP t.7,
+       TEMP Map.map.1.i),
+      BLT(
+       TEMP t.7,
+       CONST 0,
+       Map.map.badSub, L.12),
+      LABEL L.12,
+      BGE(
+       TEMP t.7,
+       MEM(
+        TEMP t.8, 
+        CONST 8, 8, false, false),
+       Map.map.badSub, L.13),
+      LABEL L.13,
+      TEMP t.7),
+     CONST 8))), 
+  CONST 0, 8, true, false),
+ CALL(
+  ESEQ(
+   MOVE(
+    TEMP t.9,
+    TEMP Map.map.f),
+   MOVE(
+    TEMP t.11,
+    CONST 0),
+   BEQ(
+    MEM(
+     TEMP t.9, 
+     CONST 0, 8, false, false),
+    CONST -1,
+    L.15, L.14),
+   LABEL L.15,
+   MOVE(
+    TEMP t.11,
+    MEM(
+     TEMP t.9, 
+     CONST 16, 8, false, false)),
+   MOVE(
+    TEMP t.10,
+    MEM(
+     TEMP t.9, 
+     CONST 8, 8, false, false)),
+   LABEL L.14,
+   TEMP t.10),
+  TEMP t.11,
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.13,
+     MEM(
+      TEMP %rbp, 
+      CONST 16, 8, false, false)),
+    ADD(
+     MEM(
+      TEMP t.13, 
+      CONST 0, 8, false, false),
+     MUL(
+      ESEQ(
+       MOVE(
+        TEMP t.12,
+        TEMP Map.map.1.i),
+       BLT(
+        TEMP t.12,
+        CONST 0,
+        Map.map.badSub, L.16),
+       LABEL L.16,
+       BGE(
+        TEMP t.12,
+        MEM(
+         TEMP t.13, 
+         CONST 8, 8, false, false),
+        Map.map.badSub, L.17),
+       LABEL L.17,
+       TEMP t.12),
+      CONST 8))), 
+   CONST 0, 8, true, false))),
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  TEMP t.6)),
+LABEL L.10,
+BLE(
+ TEMP t.4,
+ TEMP t.5,
+ L.9, L.11),
+LABEL L.11,
+LABEL L.8
+# Linearized (trees):
+MOVE(
+ TEMP t.4,
+ CONST 0)
+MOVE(
+ TEMP t.5,
+ SUB(
+  MEM(
+   MEM(
+    TEMP %rbp, 
+    CONST 16, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ CONST 1)
+JUMP(
+ NAME L.10)
+LABEL L.9
+MOVE(
+ TEMP Map.map.1.i,
+ TEMP t.4)
+MOVE(
+ TEMP t.8,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.7,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ Map.map.badSub, L.12)
+LABEL L.12
+BGE(
+ TEMP t.7,
+ MEM(
+  TEMP t.8, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.13)
+LABEL L.13
+MOVE(
+ TEMP t.9,
+ TEMP Map.map.f)
+MOVE(
+ TEMP t.11,
+ CONST 0)
+BEQ(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ CONST -1,
+ L.15, L.14)
+LABEL L.15
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.10,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+LABEL L.14
+MOVE(
+ TEMP t.13,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.12,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.12,
+ CONST 0,
+ Map.map.badSub, L.16)
+LABEL L.16
+BGE(
+ TEMP t.12,
+ MEM(
+  TEMP t.13, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.17)
+LABEL L.17
+MOVE(
+ TEMP t.26,
+ CALL(
+  TEMP t.10,
+  TEMP t.11,
+  MEM(
+   ADD(
+    MEM(
+     TEMP t.13, 
+     CONST 0, 8, false, false),
+    MUL(
+     TEMP t.12,
+     CONST 8)), 
+   CONST 0, 8, true, false)))
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.8, 
+    CONST 0, 8, false, false),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP t.26)
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  TEMP t.6))
+LABEL L.10
+BLE(
+ TEMP t.4,
+ TEMP t.5,
+ L.9, L.11)
+LABEL L.11
+LABEL L.8
+# Basic Blocks:
+# 0
+LABEL L.25
+MOVE(
+ TEMP t.4,
+ CONST 0)
+MOVE(
+ TEMP t.5,
+ SUB(
+  MEM(
+   MEM(
+    TEMP %rbp, 
+    CONST 16, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ CONST 1)
+JUMP(
+ NAME L.10)
+# 1
+LABEL L.9
+MOVE(
+ TEMP Map.map.1.i,
+ TEMP t.4)
+MOVE(
+ TEMP t.8,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.7,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ Map.map.badSub, L.12)
+# 2
+LABEL L.12
+BGE(
+ TEMP t.7,
+ MEM(
+  TEMP t.8, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.13)
+# 3
+LABEL L.13
+MOVE(
+ TEMP t.9,
+ TEMP Map.map.f)
+MOVE(
+ TEMP t.11,
+ CONST 0)
+BEQ(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ CONST -1,
+ L.15, L.14)
+# 4
+LABEL L.15
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.10,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+JUMP(
+ NAME L.14)
+# 5
+LABEL L.14
+MOVE(
+ TEMP t.13,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.12,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.12,
+ CONST 0,
+ Map.map.badSub, L.16)
+# 6
+LABEL L.16
+BGE(
+ TEMP t.12,
+ MEM(
+  TEMP t.13, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.17)
+# 7
+LABEL L.17
+MOVE(
+ TEMP t.26,
+ CALL(
+  TEMP t.10,
+  TEMP t.11,
+  MEM(
+   ADD(
+    MEM(
+     TEMP t.13, 
+     CONST 0, 8, false, false),
+    MUL(
+     TEMP t.12,
+     CONST 8)), 
+   CONST 0, 8, true, false)))
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.8, 
+    CONST 0, 8, false, false),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP t.26)
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  TEMP t.6))
+JUMP(
+ NAME L.10)
+# 8
+LABEL L.10
+BLE(
+ TEMP t.4,
+ TEMP t.5,
+ L.9, L.11)
+# 9
+LABEL L.11
+JUMP(
+ NAME L.8)
+# 10
+LABEL L.8
+# Trace Scheduled:
+LABEL L.25
+MOVE(
+ TEMP t.4,
+ CONST 0)
+MOVE(
+ TEMP t.5,
+ SUB(
+  MEM(
+   MEM(
+    TEMP %rbp, 
+    CONST 16, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ CONST 1)
+LABEL L.10
+BLE(
+ TEMP t.4,
+ TEMP t.5,
+ L.9, L.11)
+LABEL L.11
+JUMP(
+ NAME L.8)
+LABEL L.9
+MOVE(
+ TEMP Map.map.1.i,
+ TEMP t.4)
+MOVE(
+ TEMP t.8,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.7,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ Map.map.badSub, L.12)
+LABEL L.12
+BGE(
+ TEMP t.7,
+ MEM(
+  TEMP t.8, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.13)
+LABEL L.13
+MOVE(
+ TEMP t.9,
+ TEMP Map.map.f)
+MOVE(
+ TEMP t.11,
+ CONST 0)
+BEQ(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ CONST -1,
+ L.15, L.14)
+LABEL L.14
+MOVE(
+ TEMP t.13,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.12,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.12,
+ CONST 0,
+ Map.map.badSub, L.16)
+LABEL L.16
+BGE(
+ TEMP t.12,
+ MEM(
+  TEMP t.13, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.17)
+LABEL L.17
+MOVE(
+ TEMP t.26,
+ CALL(
+  TEMP t.10,
+  TEMP t.11,
+  MEM(
+   ADD(
+    MEM(
+     TEMP t.13, 
+     CONST 0, 8, false, false),
+    MUL(
+     TEMP t.12,
+     CONST 8)), 
+   CONST 0, 8, true, false)))
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.8, 
+    CONST 0, 8, false, false),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP t.26)
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  TEMP t.6))
+JUMP(
+ NAME L.10)
+LABEL L.15
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.10,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+JUMP(
+ NAME L.14)
+LABEL L.8
+# With procedure entry/exit:
+MOVE(
+ TEMP Map.map.f,
+ TEMP %rsi)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false),
+ TEMP %rdi)
+LABEL L.25
+MOVE(
+ TEMP t.4,
+ CONST 0)
+MOVE(
+ TEMP t.5,
+ SUB(
+  MEM(
+   MEM(
+    TEMP %rbp, 
+    CONST 16, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ CONST 1)
+LABEL L.10
+BLE(
+ TEMP t.4,
+ TEMP t.5,
+ L.9, L.11)
+LABEL L.11
+JUMP(
+ NAME L.8)
+LABEL L.9
+MOVE(
+ TEMP Map.map.1.i,
+ TEMP t.4)
+MOVE(
+ TEMP t.8,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.7,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.7,
+ CONST 0,
+ Map.map.badSub, L.12)
+LABEL L.12
+BGE(
+ TEMP t.7,
+ MEM(
+  TEMP t.8, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.13)
+LABEL L.13
+MOVE(
+ TEMP t.9,
+ TEMP Map.map.f)
+MOVE(
+ TEMP t.11,
+ CONST 0)
+BEQ(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ CONST -1,
+ L.15, L.14)
+LABEL L.14
+MOVE(
+ TEMP t.13,
+ MEM(
+  TEMP %rbp, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.12,
+ TEMP Map.map.1.i)
+BLT(
+ TEMP t.12,
+ CONST 0,
+ Map.map.badSub, L.16)
+LABEL L.16
+BGE(
+ TEMP t.12,
+ MEM(
+  TEMP t.13, 
+  CONST 8, 8, false, false),
+ Map.map.badSub, L.17)
+LABEL L.17
+MOVE(
+ TEMP t.26,
+ CALL(
+  TEMP t.10,
+  TEMP t.11,
+  MEM(
+   ADD(
+    MEM(
+     TEMP t.13, 
+     CONST 0, 8, false, false),
+    MUL(
+     TEMP t.12,
+     CONST 8)), 
+   CONST 0, 8, true, false)))
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.8, 
+    CONST 0, 8, false, false),
+   MUL(
+    TEMP t.7,
+    CONST 8)), 
+  CONST 0, 8, true, false),
+ TEMP t.26)
+MOVE(
+ TEMP t.4,
+ ADD(
+  TEMP t.4,
+  TEMP t.6))
+JUMP(
+ NAME L.10)
+LABEL L.15
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 16, 8, false, false))
+MOVE(
+ TEMP t.10,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+JUMP(
+ NAME L.14)
+LABEL L.8
+# Instructions:
+	movq %rsi,Map.map.f	# Map.map.f := %rsi 
+	movq %rdi,16(%rbp)	# <- %rbp %rdi 
+L.25:	# <- 
+	xorq t.4,t.4	# t.4 <- 
+	movq 16(%rbp),t.27	# t.27 <- %rbp 
+	movq 8(t.27),t.28	# t.28 <- t.27 
+	movq t.28,t.29	# t.29 := t.28 
+	subq $1,t.29	# t.29 <- t.29 
+	movq t.29,t.5	# t.5 := t.29 
+	movq $1,t.6	# t.6 <- 
+L.10:	# <- 
+	cmpq t.5,t.4	# <- t.4 t.5 
+	jle L.9	# <- : goto L.9 L.11 
+L.11:	# <- 
+	jmp L.8	# <- : goto L.8 
+L.9:	# <- 
+	movq t.4,Map.map.1.i	# Map.map.1.i := t.4 
+	movq 16(%rbp),t.30	# t.30 <- %rbp 
+	movq t.30,t.8	# t.8 := t.30 
+	movq Map.map.1.i,t.7	# t.7 := Map.map.1.i 
+	xorq t.31,t.31	# t.31 <- 
+	cmpq t.31,t.7	# <- t.7 t.31 
+	jl Map.map.badSub	# <- : goto Map.map.badSub L.12 
+L.12:	# <- 
+	movq 8(t.8),t.32	# t.32 <- t.8 
+	cmpq t.32,t.7	# <- t.7 t.32 
+	jge Map.map.badSub	# <- : goto Map.map.badSub L.13 
+L.13:	# <- 
+	movq Map.map.f,t.9	# t.9 := Map.map.f 
+	xorq t.11,t.11	# t.11 <- 
+	movq 0(t.9),t.33	# t.33 <- t.9 
+	movq $-1,t.34	# t.34 <- 
+	cmpq t.34,t.33	# <- t.33 t.34 
+	je L.15	# <- : goto L.15 L.14 
+L.14:	# <- 
+	movq 16(%rbp),t.35	# t.35 <- %rbp 
+	movq t.35,t.13	# t.13 := t.35 
+	movq Map.map.1.i,t.12	# t.12 := Map.map.1.i 
+	xorq t.36,t.36	# t.36 <- 
+	cmpq t.36,t.12	# <- t.12 t.36 
+	jl Map.map.badSub	# <- : goto Map.map.badSub L.16 
+L.16:	# <- 
+	movq 8(t.13),t.37	# t.37 <- t.13 
+	cmpq t.37,t.12	# <- t.12 t.37 
+	jge Map.map.badSub	# <- : goto Map.map.badSub L.17 
+L.17:	# <- 
+	movq t.11,%r10	# %r10 := t.11 
+	movq 0(t.13),t.38	# t.38 <- t.13 
+	movq 0(t.38,t.12,8),t.39	# t.39 <- t.38 t.12 
+	movq t.39,%rdi	# %rdi := t.39 
+	call *t.10	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.10 %r10 %rdi 
+	movq %rax,t.26	# t.26 := %rax 
+	movq 0(t.8),t.40	# t.40 <- t.8 
+	movq t.26,0(t.40,t.7,8)	# <- t.40 t.7 t.26 
+	movq t.4,t.41	# t.41 := t.4 
+	addq t.6,t.41	# t.41 <- t.6 t.41 
+	movq t.41,t.4	# t.4 := t.41 
+	jmp L.10	# <- : goto L.10 
+L.15:	# <- 
+	movq 16(t.9),t.42	# t.42 <- t.9 
+	movq t.42,t.11	# t.11 := t.42 
+	movq 8(t.9),t.43	# t.43 <- t.9 
+	movq t.43,t.10	# t.10 := t.43 
+	jmp L.14	# <- : goto L.14 
+L.8:	# <- 
+# Control Flow Graph:
+0: Map.map.f <- %rsi %rbp %rdi; goto 1
+1: t.4 t.27 t.28 t.29 t.5 t.6 <- %rbp; goto 2
+2: <- t.4 t.5; goto 4 3
+3: <-; goto 11
+4: Map.map.1.i t.30 t.8 t.7 t.31 <- t.4 %rbp; goto 5
+5: t.32 <- t.8 t.7; goto 6
+6: t.9 t.11 t.33 t.34 <- Map.map.f; goto 10 7
+7: t.35 t.13 t.12 t.36 <- %rbp Map.map.1.i; goto 8
+8: t.37 <- t.13 t.12; goto 9
+9: %r10 t.38 t.39 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r11 t.26 t.40 t.41 t.4 <- t.11 t.13 t.12 t.10 t.8 t.7 t.4 t.6; goto 2
+10: t.42 t.11 t.43 t.10 <- t.9; goto 7
+11: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Map.map.f: %rbp t.10 %rsp %rdi t.6 t.5 t.29 t.28 t.27 t.4 t.31 t.7 t.8 t.30 Map.map.1.i t.32 t.34 t.33 t.11 t.36 t.12 t.13 t.35 t.37 t.41 t.40 t.26 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.4: t.6 t.5 t.29 t.28 t.27 %rbp Map.map.f t.10 %rsp t.31 t.7 t.8 t.30 t.32 t.34 t.33 t.11 t.9 t.36 t.12 t.13 t.35 t.37 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.27: t.4 %rbp Map.map.f t.10 %rsp 
+t.28: t.4 %rbp Map.map.f t.10 %rsp 
+t.29: t.4 %rbp Map.map.f t.10 %rsp 
+t.5: t.6 t.4 %rbp Map.map.f t.10 %rsp t.31 t.7 t.8 t.30 Map.map.1.i t.32 t.34 t.33 t.11 t.9 t.36 t.12 t.13 t.35 t.37 t.41 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.6: t.4 t.5 %rbp Map.map.f t.10 %rsp t.31 t.7 t.8 t.30 Map.map.1.i t.32 t.34 t.33 t.11 t.9 t.36 t.12 t.13 t.35 t.37 t.41 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+Map.map.1.i: t.31 t.8 t.30 Map.map.f %rbp t.6 t.5 t.10 %rsp t.32 t.34 t.33 t.11 t.9 t.13 t.35 t.43 t.42 
+t.30: Map.map.f %rbp Map.map.1.i t.4 t.6 t.5 t.10 %rsp 
+t.8: t.31 t.7 Map.map.f %rbp Map.map.1.i t.4 t.6 t.5 t.10 %rsp t.32 t.34 t.33 t.11 t.9 t.36 t.12 t.13 t.35 t.37 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.7: t.31 t.8 Map.map.f %rbp t.4 t.6 t.5 t.10 %rsp t.32 t.34 t.33 t.11 t.9 t.36 t.12 t.13 t.35 t.37 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.31: t.8 t.7 Map.map.f %rbp Map.map.1.i t.4 t.6 t.5 t.10 %rsp 
+t.32: Map.map.f %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.5 t.10 %rsp 
+t.9: t.34 t.33 t.11 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.5 t.10 %rsp t.42 
+t.11: t.34 t.33 t.9 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.5 Map.map.f t.10 %rsp t.36 t.12 t.13 t.35 t.37 t.43 
+t.33: t.34 t.9 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.5 Map.map.f t.11 t.10 %rsp 
+t.34: t.9 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.5 Map.map.f t.11 t.10 %rsp t.33 
+t.35: t.11 t.10 t.8 t.7 t.4 t.6 t.5 %rbp Map.map.f %rsp Map.map.1.i 
+t.13: t.36 t.12 t.11 t.10 t.8 t.7 t.4 t.6 t.5 %rbp Map.map.f %rsp Map.map.1.i t.37 %r10 
+t.12: t.36 t.13 t.11 t.10 t.8 t.7 t.4 t.6 t.5 %rbp Map.map.f %rsp t.37 t.38 %r10 
+t.36: t.13 t.12 t.11 t.10 t.8 t.7 t.4 t.6 t.5 %rbp Map.map.f %rsp 
+t.37: t.11 t.13 t.12 t.10 t.8 t.7 t.4 t.6 t.5 %rbp Map.map.f %rsp 
+t.38: t.5 %rbp Map.map.f t.6 t.10 %rsp t.4 t.7 t.8 %r10 t.12 
+t.39: t.5 %rbp Map.map.f t.6 t.10 %rsp t.4 t.7 t.8 %r10 
+t.26: t.40 t.5 %rbp Map.map.f t.6 t.10 %rsp t.4 t.7 t.8 
+t.40: t.5 %rbp Map.map.f t.6 t.10 %rsp t.4 t.7 t.26 
+t.41: t.5 %rbp Map.map.f t.6 t.10 %rsp 
+t.10: Map.map.f t.6 t.5 t.29 t.28 t.27 t.4 t.31 t.7 t.8 t.30 Map.map.1.i t.32 t.34 t.33 t.11 t.9 t.36 t.12 t.13 t.35 t.37 t.41 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 %rbp %rsp 
+t.42: %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.5 Map.map.f %rsp t.9 
+t.43: %rbp Map.map.1.i t.11 t.8 t.7 t.4 t.6 t.5 Map.map.f %rsp 
+t.11 <= t.42
+t.10 <= t.43
+%r10 <= t.11
+%rdi <= t.39
+t.26 <= %rax
+t.41 <= t.4
+t.4 <= t.41
+t.13 <= t.35
+t.12 <= Map.map.1.i
+t.9 <= Map.map.f
+Map.map.1.i <= t.4
+t.8 <= t.30
+t.7 <= Map.map.1.i
+t.29 <= t.28
+t.5 <= t.29
+Map.map.f <= %rsi
+# Spills:
+t.5
+Map.map.f
+# Instructions (after spilling):
+	movq %rsi,t.47
+	movq t.47,-16(%rbp)
+	movq %rdi,16(%rbp)
+L.25:
+	xorq t.4,t.4
+	movq 16(%rbp),t.27
+	movq 8(t.27),t.28
+	movq t.28,t.29
+	subq $1,t.29
+	movq t.29,t.44
+	movq t.44,-8(%rbp)
+	movq $1,t.6
+L.10:
+	movq -8(%rbp),t.46
+	movq t.46,t.45
+	cmpq t.45,t.4
+	jle L.9
+L.11:
+	jmp L.8
+L.9:
+	movq t.4,Map.map.1.i
+	movq 16(%rbp),t.30
+	movq t.30,t.8
+	movq Map.map.1.i,t.7
+	xorq t.31,t.31
+	cmpq t.31,t.7
+	jl Map.map.badSub
+L.12:
+	movq 8(t.8),t.32
+	cmpq t.32,t.7
+	jge Map.map.badSub
+L.13:
+	movq -16(%rbp),t.49
+	movq t.49,t.48
+	movq t.48,t.9
+	xorq t.11,t.11
+	movq 0(t.9),t.33
+	movq $-1,t.34
+	cmpq t.34,t.33
+	je L.15
+L.14:
+	movq 16(%rbp),t.35
+	movq t.35,t.13
+	movq Map.map.1.i,t.12
+	xorq t.36,t.36
+	cmpq t.36,t.12
+	jl Map.map.badSub
+L.16:
+	movq 8(t.13),t.37
+	cmpq t.37,t.12
+	jge Map.map.badSub
+L.17:
+	movq t.11,%r10
+	movq 0(t.13),t.38
+	movq 0(t.38,t.12,8),t.39
+	movq t.39,%rdi
+	call *t.10
+	movq %rax,t.26
+	movq 0(t.8),t.40
+	movq t.26,0(t.40,t.7,8)
+	movq t.4,t.41
+	addq t.6,t.41
+	movq t.41,t.4
+	jmp L.10
+L.15:
+	movq 16(t.9),t.42
+	movq t.42,t.11
+	movq 8(t.9),t.43
+	movq t.43,t.10
+	jmp L.14
+L.8:
+#	returnSink
+# Control Flow Graph:
+0: t.47 <- %rsi %rbp %rdi; goto 1
+1: t.4 t.27 t.28 t.29 t.44 t.6 <- %rbp; goto 2
+2: t.46 t.45 <- %rbp t.4; goto 4 3
+3: <-; goto 11
+4: Map.map.1.i t.30 t.8 t.7 t.31 <- t.4 %rbp; goto 5
+5: t.32 <- t.8 t.7; goto 6
+6: t.49 t.48 t.9 t.11 t.33 t.34 <- %rbp; goto 10 7
+7: t.35 t.13 t.12 t.36 <- %rbp Map.map.1.i; goto 8
+8: t.37 <- t.13 t.12; goto 9
+9: %r10 t.38 t.39 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r11 t.26 t.40 t.41 t.4 <- t.11 t.13 t.12 t.10 t.8 t.7 t.4 t.6; goto 2
+10: t.42 t.11 t.43 t.10 <- t.9; goto 7
+11: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.47: %rbp t.10 %rsp %rdi 
+t.4: t.6 t.44 t.29 t.28 t.27 %rbp t.10 %rsp t.45 t.46 t.31 t.7 t.8 t.30 t.32 t.34 t.33 t.11 t.9 t.48 t.49 t.36 t.12 t.13 t.35 t.37 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.27: %rbp t.4 t.10 %rsp 
+t.28: %rbp t.4 t.10 %rsp 
+t.29: %rbp t.4 t.10 %rsp 
+t.44: %rbp t.4 t.10 %rsp 
+t.6: %rbp t.4 t.10 %rsp t.45 t.46 t.31 t.7 t.8 t.30 Map.map.1.i t.32 t.34 t.33 t.11 t.9 t.48 t.49 t.36 t.12 t.13 t.35 t.37 t.41 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.46: t.4 %rbp t.6 t.10 %rsp 
+t.45: t.4 %rbp t.6 t.10 %rsp 
+Map.map.1.i: t.31 t.8 t.30 %rbp t.6 t.10 %rsp t.32 t.34 t.33 t.11 t.9 t.48 t.49 t.13 t.35 t.43 t.42 
+t.30: %rbp Map.map.1.i t.4 t.6 t.10 %rsp 
+t.8: t.31 t.7 %rbp Map.map.1.i t.4 t.6 t.10 %rsp t.32 t.34 t.33 t.11 t.9 t.48 t.49 t.36 t.12 t.13 t.35 t.37 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.7: t.31 t.8 %rbp t.4 t.6 t.10 %rsp t.32 t.34 t.33 t.11 t.9 t.48 t.49 t.36 t.12 t.13 t.35 t.37 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 t.43 t.42 
+t.31: t.8 t.7 %rbp Map.map.1.i t.4 t.6 t.10 %rsp 
+t.32: %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.10 %rsp 
+t.49: %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.10 %rsp 
+t.48: %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.10 %rsp 
+t.9: t.34 t.33 t.11 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.10 %rsp t.42 
+t.11: t.34 t.33 t.9 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.10 %rsp t.36 t.12 t.13 t.35 t.37 t.43 
+t.33: t.34 t.9 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.11 t.10 %rsp 
+t.34: t.9 %rbp Map.map.1.i t.8 t.7 t.4 t.6 t.11 t.10 %rsp t.33 
+t.35: t.11 t.10 t.8 t.7 t.4 t.6 %rbp %rsp Map.map.1.i 
+t.13: t.36 t.12 t.11 t.10 t.8 t.7 t.4 t.6 %rbp %rsp Map.map.1.i t.37 %r10 
+t.12: t.36 t.13 t.11 t.10 t.8 t.7 t.4 t.6 %rbp %rsp t.37 t.38 %r10 
+t.36: t.13 t.12 t.11 t.10 t.8 t.7 t.4 t.6 %rbp %rsp 
+t.37: t.11 t.13 t.12 t.10 t.8 t.7 t.4 t.6 %rbp %rsp 
+t.38: %rbp t.6 t.10 %rsp t.4 t.7 t.8 %r10 t.12 
+t.39: %rbp t.6 t.10 %rsp t.4 t.7 t.8 %r10 
+t.26: t.40 %rbp t.6 t.10 %rsp t.4 t.7 t.8 
+t.40: %rbp t.6 t.10 %rsp t.4 t.7 t.26 
+t.41: %rbp t.6 t.10 %rsp 
+t.10: t.47 t.6 t.44 t.29 t.28 t.27 t.4 t.45 t.46 t.31 t.7 t.8 t.30 Map.map.1.i t.32 t.34 t.33 t.11 t.9 t.48 t.49 t.36 t.12 t.13 t.35 t.37 t.41 t.40 t.26 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.39 t.38 %rbp %rsp 
+t.42: %rbp Map.map.1.i t.8 t.7 t.4 t.6 %rsp t.9 
+t.43: %rbp Map.map.1.i t.11 t.8 t.7 t.4 t.6 %rsp 
+t.11 <= t.42
+t.10 <= t.43
+%r10 <= t.11
+%rdi <= t.39
+t.26 <= %rax
+t.41 <= t.4
+t.4 <= t.41
+t.13 <= t.35
+t.12 <= Map.map.1.i
+t.48 <= t.49
+t.9 <= t.48
+Map.map.1.i <= t.4
+t.8 <= t.30
+t.7 <= Map.map.1.i
+t.45 <= t.46
+t.29 <= t.28
+t.44 <= t.29
+t.47 <= %rsi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.47->%rsi
+t.4->%r12
+t.27->%rax
+t.28->%rax
+t.29->%rax
+t.44->%rax
+t.6->%r13
+t.46->%rax
+t.45->%rax
+Map.map.1.i->%rax
+t.30->%r15
+t.8->%r15
+t.7->%r14
+t.31->%rcx
+t.32->%rcx
+t.49->%rcx
+t.48->%rcx
+t.9->%rcx
+t.11->%r10
+t.33->%rsi
+t.34->%rdx
+t.35->%rcx
+t.13->%rcx
+t.12->%rax
+t.36->%rdx
+t.37->%rdx
+t.38->%rcx
+t.39->%rdi
+t.26->%rax
+t.40->%rcx
+t.41->%r12
+t.10->%rbx
+t.42->%r10
+t.43->%rbx
+# Assembly code:
+	.text
+Map.map:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $64,%rsp
+	movq %r15, -56(%rbp)
+	movq %r14, -48(%rbp)
+	movq %r13, -40(%rbp)
+	movq %r12, -32(%rbp)
+	movq %rbx, -24(%rbp)
+#	movq %rsi,%rsi
+	movq %rsi,-16(%rbp)
+	movq %rdi,16(%rbp)
+L.25:
+	xorq %r12,%r12
+	movq 16(%rbp),%rax
+	movq 8(%rax),%rax
+#	movq %rax,%rax
+	subq $1,%rax
+#	movq %rax,%rax
+	movq %rax,-8(%rbp)
+	movq $1,%r13
+L.10:
+	movq -8(%rbp),%rax
+#	movq %rax,%rax
+	cmpq %rax,%r12
+	jle L.9
+L.11:
+	jmp L.8
+L.9:
+	movq %r12,%rax
+	movq 16(%rbp),%r15
+#	movq %r15,%r15
+	movq %rax,%r14
+	xorq %rcx,%rcx
+	cmpq %rcx,%r14
+	jl Map.map.badSub
+L.12:
+	movq 8(%r15),%rcx
+	cmpq %rcx,%r14
+	jge Map.map.badSub
+L.13:
+	movq -16(%rbp),%rcx
+#	movq %rcx,%rcx
+#	movq %rcx,%rcx
+	xorq %r10,%r10
+	movq 0(%rcx),%rsi
+	movq $-1,%rdx
+	cmpq %rdx,%rsi
+	je L.15
+L.14:
+	movq 16(%rbp),%rcx
+#	movq %rcx,%rcx
+#	movq %rax,%rax
+	xorq %rdx,%rdx
+	cmpq %rdx,%rax
+	jl Map.map.badSub
+L.16:
+	movq 8(%rcx),%rdx
+	cmpq %rdx,%rax
+	jge Map.map.badSub
+L.17:
+#	movq %r10,%r10
+	movq 0(%rcx),%rcx
+	movq 0(%rcx,%rax,8),%rdi
+#	movq %rdi,%rdi
+	call *%rbx
+#	movq %rax,%rax
+	movq 0(%r15),%rcx
+	movq %rax,0(%rcx,%r14,8)
+#	movq %r12,%r12
+	addq %r13,%r12
+#	movq %r12,%r12
+	jmp L.10
+L.15:
+	movq 16(%rcx),%r10
+#	movq %r10,%r10
+	movq 8(%rcx),%rbx
+#	movq %rbx,%rbx
+	jmp L.14
+L.8:
+#	returnSink
+	movq -24(%rbp),%rbx
+	movq -32(%rbp),%r12
+	movq -40(%rbp),%r13
+	movq -48(%rbp),%r14
+	movq -56(%rbp),%r15
+	addq $64,%rsp
+	popq %rbp
+	ret
+Map.map.badSub:
+	call badSub
+END Map.map
+PROCEDURE Map
+# Trees:
+MOVE(
+ TEMP t.15,
+ CONST 5),
+MOVE(
+ TEMP t.14,
+ CONST 0),
+BGE(
+ TEMP t.14,
+ TEMP t.15,
+ L.19, L.18),
+LABEL L.18,
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.14,
+    CONST 8)), 
+  CONST -40, 8, true, false),
+ CONST 0),
+MOVE(
+ TEMP t.14,
+ ADD(
+  TEMP t.14,
+  CONST 1)),
+BLT(
+ TEMP t.14,
+ TEMP t.15,
+ L.18, L.19),
+LABEL L.19,
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0),
+EXP(
+ CALL(
+  NAME Map.map,
+  CONST 0,
+  ADD(
+   ESEQ(
+    MOVE(
+     MEM(
+      TEMP %rbp, 
+      CONST -64, 8, false, false),
+     ADD(
+      TEMP %rbp,
+      CONST -40)),
+    MOVE(
+     MEM(
+      TEMP %rbp, 
+      CONST -56, 8, false, false),
+     CONST 5),
+    TEMP %rbp),
+   CONST -64),
+  ESEQ(
+   MOVE(
+    MEM(
+     TEMP %rbp, 
+     CONST -88, 8, false, false),
+    CONST -1),
+   MOVE(
+    MEM(
+     TEMP %rbp, 
+     CONST -80, 8, false, false),
+    NAME Map.7.counter),
+   MOVE(
+    MEM(
+     TEMP %rbp, 
+     CONST -72, 8, false, false),
+    TEMP %rbp),
+   ADD(
+    TEMP %rbp,
+    CONST -88)))),
+MOVE(
+ TEMP t.16,
+ CONST 0),
+MOVE(
+ TEMP t.17,
+ CONST 4),
+MOVE(
+ TEMP t.18,
+ CONST 1),
+LABEL L.20,
+MOVE(
+ TEMP Map.7.3.i,
+ TEMP t.16),
+EXP(
+ CALL(
+  NAME Map.println,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    MUL(
+     TEMP Map.7.3.i,
+     CONST 8)), 
+   CONST -40, 8, true, false))),
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  TEMP t.18)),
+LABEL L.21,
+BLE(
+ TEMP t.16,
+ TEMP t.17,
+ L.20, L.22),
+LABEL L.22
+# Linearized (trees):
+MOVE(
+ TEMP t.15,
+ CONST 5)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BGE(
+ TEMP t.14,
+ TEMP t.15,
+ L.19, L.18)
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.14,
+    CONST 8)), 
+  CONST -40, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ ADD(
+  TEMP t.14,
+  CONST 1))
+BLT(
+ TEMP t.14,
+ TEMP t.15,
+ L.18, L.19)
+LABEL L.19
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -64, 8, false, false),
+ ADD(
+  TEMP %rbp,
+  CONST -40))
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -56, 8, false, false),
+ CONST 5)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -88, 8, false, false),
+ CONST -1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -80, 8, false, false),
+ NAME Map.7.counter)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -72, 8, false, false),
+ TEMP %rbp)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME Map.map,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -64),
+  ADD(
+   TEMP %rbp,
+   CONST -88)))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.16,
+ CONST 0)
+MOVE(
+ TEMP t.17,
+ CONST 4)
+MOVE(
+ TEMP t.18,
+ CONST 1)
+LABEL L.20
+MOVE(
+ TEMP Map.7.3.i,
+ TEMP t.16)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME Map.println,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    MUL(
+     TEMP Map.7.3.i,
+     CONST 8)), 
+   CONST -40, 8, true, false)))
+EXP(
+ TEMP t.51)
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  TEMP t.18))
+LABEL L.21
+BLE(
+ TEMP t.16,
+ TEMP t.17,
+ L.20, L.22)
+LABEL L.22
+# Basic Blocks:
+# 0
+LABEL L.26
+MOVE(
+ TEMP t.15,
+ CONST 5)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BGE(
+ TEMP t.14,
+ TEMP t.15,
+ L.19, L.18)
+# 1
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.14,
+    CONST 8)), 
+  CONST -40, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ ADD(
+  TEMP t.14,
+  CONST 1))
+BLT(
+ TEMP t.14,
+ TEMP t.15,
+ L.18, L.19)
+# 2
+LABEL L.19
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -64, 8, false, false),
+ ADD(
+  TEMP %rbp,
+  CONST -40))
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -56, 8, false, false),
+ CONST 5)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -88, 8, false, false),
+ CONST -1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -80, 8, false, false),
+ NAME Map.7.counter)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -72, 8, false, false),
+ TEMP %rbp)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME Map.map,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -64),
+  ADD(
+   TEMP %rbp,
+   CONST -88)))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.16,
+ CONST 0)
+MOVE(
+ TEMP t.17,
+ CONST 4)
+MOVE(
+ TEMP t.18,
+ CONST 1)
+JUMP(
+ NAME L.20)
+# 3
+LABEL L.20
+MOVE(
+ TEMP Map.7.3.i,
+ TEMP t.16)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME Map.println,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    MUL(
+     TEMP Map.7.3.i,
+     CONST 8)), 
+   CONST -40, 8, true, false)))
+EXP(
+ TEMP t.51)
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  TEMP t.18))
+JUMP(
+ NAME L.21)
+# 4
+LABEL L.21
+BLE(
+ TEMP t.16,
+ TEMP t.17,
+ L.20, L.22)
+# 5
+LABEL L.22
+# Trace Scheduled:
+LABEL L.26
+MOVE(
+ TEMP t.15,
+ CONST 5)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BGE(
+ TEMP t.14,
+ TEMP t.15,
+ L.19, L.18)
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.14,
+    CONST 8)), 
+  CONST -40, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ ADD(
+  TEMP t.14,
+  CONST 1))
+BLT(
+ TEMP t.14,
+ TEMP t.15,
+ L.18, L.19)
+LABEL L.19
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -64, 8, false, false),
+ ADD(
+  TEMP %rbp,
+  CONST -40))
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -56, 8, false, false),
+ CONST 5)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -88, 8, false, false),
+ CONST -1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -80, 8, false, false),
+ NAME Map.7.counter)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -72, 8, false, false),
+ TEMP %rbp)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME Map.map,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -64),
+  ADD(
+   TEMP %rbp,
+   CONST -88)))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.16,
+ CONST 0)
+MOVE(
+ TEMP t.17,
+ CONST 4)
+MOVE(
+ TEMP t.18,
+ CONST 1)
+LABEL L.20
+MOVE(
+ TEMP Map.7.3.i,
+ TEMP t.16)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME Map.println,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    MUL(
+     TEMP Map.7.3.i,
+     CONST 8)), 
+   CONST -40, 8, true, false)))
+EXP(
+ TEMP t.51)
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  TEMP t.18))
+LABEL L.21
+BLE(
+ TEMP t.16,
+ TEMP t.17,
+ L.20, L.22)
+LABEL L.22
+# With procedure entry/exit:
+LABEL L.26
+MOVE(
+ TEMP t.15,
+ CONST 5)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BGE(
+ TEMP t.14,
+ TEMP t.15,
+ L.19, L.18)
+LABEL L.18
+MOVE(
+ MEM(
+  ADD(
+   TEMP %rbp,
+   MUL(
+    TEMP t.14,
+    CONST 8)), 
+  CONST -40, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ ADD(
+  TEMP t.14,
+  CONST 1))
+BLT(
+ TEMP t.14,
+ TEMP t.15,
+ L.18, L.19)
+LABEL L.19
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -48, 8, true, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -64, 8, false, false),
+ ADD(
+  TEMP %rbp,
+  CONST -40))
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -56, 8, false, false),
+ CONST 5)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -88, 8, false, false),
+ CONST -1)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -80, 8, false, false),
+ NAME Map.7.counter)
+MOVE(
+ MEM(
+  TEMP %rbp, 
+  CONST -72, 8, false, false),
+ TEMP %rbp)
+MOVE(
+ TEMP t.50,
+ CALL(
+  NAME Map.map,
+  CONST 0,
+  ADD(
+   TEMP %rbp,
+   CONST -64),
+  ADD(
+   TEMP %rbp,
+   CONST -88)))
+EXP(
+ TEMP t.50)
+MOVE(
+ TEMP t.16,
+ CONST 0)
+MOVE(
+ TEMP t.17,
+ CONST 4)
+MOVE(
+ TEMP t.18,
+ CONST 1)
+LABEL L.20
+MOVE(
+ TEMP Map.7.3.i,
+ TEMP t.16)
+MOVE(
+ TEMP t.51,
+ CALL(
+  NAME Map.println,
+  CONST 0,
+  MEM(
+   ADD(
+    TEMP %rbp,
+    MUL(
+     TEMP Map.7.3.i,
+     CONST 8)), 
+   CONST -40, 8, true, false)))
+EXP(
+ TEMP t.51)
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  TEMP t.18))
+LABEL L.21
+BLE(
+ TEMP t.16,
+ TEMP t.17,
+ L.20, L.22)
+LABEL L.22
+# Instructions:
+L.26:	# <- 
+	movq $5,t.15	# t.15 <- 
+	xorq t.14,t.14	# t.14 <- 
+	cmpq t.15,t.14	# <- t.14 t.15 
+	jge L.19	# <- : goto L.19 L.18 
+L.18:	# <- 
+	movq $0,-40(%rbp,t.14,8)	# <- %rbp t.14 
+	movq t.14,t.52	# t.52 := t.14 
+	addq $1,t.52	# t.52 <- t.52 
+	movq t.52,t.14	# t.14 := t.52 
+	cmpq t.15,t.14	# <- t.14 t.15 
+	jl L.18	# <- : goto L.18 L.19 
+L.19:	# <- 
+	movq $0,-48(%rbp)	# <- %rbp 
+	movq $0,-48(%rbp)	# <- %rbp 
+	movq %rbp,t.53	# t.53 := %rbp 
+	addq $-40,t.53	# t.53 <- t.53 
+	movq t.53,-64(%rbp)	# <- %rbp t.53 
+	movq $5,-56(%rbp)	# <- %rbp 
+	movq $-1,-88(%rbp)	# <- %rbp 
+	leaq Map.7.counter(%rip),t.54	# t.54 <- 
+	movq t.54,-80(%rbp)	# <- %rbp t.54 
+	movq %rbp,-72(%rbp)	# <- %rbp %rbp 
+	movq %rbp,t.55	# t.55 := %rbp 
+	addq $-64,t.55	# t.55 <- t.55 
+	movq t.55,%rdi	# %rdi := t.55 
+	movq %rbp,t.56	# t.56 := %rbp 
+	addq $-88,t.56	# t.56 <- t.56 
+	movq t.56,%rsi	# %rsi := t.56 
+	call Map.map	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.50	# t.50 := %rax 
+	xorq t.16,t.16	# t.16 <- 
+	movq $4,t.17	# t.17 <- 
+	movq $1,t.18	# t.18 <- 
+L.20:	# <- 
+	movq t.16,Map.7.3.i	# Map.7.3.i := t.16 
+	movq -40(%rbp,Map.7.3.i,8),t.57	# t.57 <- %rbp Map.7.3.i 
+	movq t.57,%rdi	# %rdi := t.57 
+	call Map.println	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.51	# t.51 := %rax 
+	movq t.16,t.58	# t.58 := t.16 
+	addq t.18,t.58	# t.58 <- t.18 t.58 
+	movq t.58,t.16	# t.16 := t.58 
+L.21:	# <- 
+	cmpq t.17,t.16	# <- t.16 t.17 
+	jle L.20	# <- : goto L.20 L.22 
+L.22:	# <- 
+# Control Flow Graph:
+0: t.15 t.14 <-; goto 2 1
+1: t.52 t.14 <- %rbp t.14 t.15; goto 1 2
+2: t.53 t.54 t.55 %rdi t.56 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.50 t.16 t.17 t.18 <- %rbp; goto 3
+3: Map.7.3.i t.57 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.51 t.58 t.16 <- t.16 %rbp t.18; goto 4
+4: <- t.16 t.17; goto 3 5
+5: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.15: t.14 %rbp %rsp t.52 
+t.14: %rbp %rsp t.15 
+t.52: %rbp t.15 %rsp 
+t.53: %rbp %rsp 
+t.54: %rbp %rsp 
+t.55: %rbp %rsp 
+t.56: %rbp %rsp %rdi 
+t.50: %rbp %rsp 
+t.16: t.18 t.17 %rbp %rsp t.51 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.57 
+t.17: t.18 t.16 %rbp %rsp t.58 t.51 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.57 Map.7.3.i 
+t.18: t.16 %rbp t.17 %rsp t.58 t.51 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.57 Map.7.3.i 
+Map.7.3.i: t.17 %rbp t.18 %rsp 
+t.57: t.17 %rbp t.18 %rsp t.16 
+t.51: t.17 %rbp t.18 %rsp t.16 
+t.58: t.17 %rbp t.18 %rsp 
+Map.7.3.i <= t.16
+%rdi <= t.57
+t.51 <= %rax
+t.58 <= t.16
+t.16 <= t.58
+t.53 <= %rbp
+t.55 <= %rbp
+%rdi <= t.55
+t.56 <= %rbp
+%rsi <= t.56
+t.50 <= %rax
+t.52 <= t.14
+t.14 <= t.52
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.15->%rbx
+t.14->%rax
+t.52->%rax
+t.53->%rax
+t.54->%rax
+t.55->%rdi
+t.56->%rsi
+t.50->%rax
+t.16->%rbx
+t.17->%r13
+t.18->%r12
+Map.7.3.i->%rbx
+t.57->%rdi
+t.51->%rax
+t.58->%rbx
+# Assembly code:
+	.text
+Map:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $128,%rsp
+	movq %r13, -112(%rbp)
+	movq %r12, -104(%rbp)
+	movq %rbx, -96(%rbp)
+L.26:
+	movq $5,%rbx
+	xorq %rax,%rax
+	cmpq %rbx,%rax
+	jge L.19
+L.18:
+	movq $0,-40(%rbp,%rax,8)
+#	movq %rax,%rax
+	addq $1,%rax
+#	movq %rax,%rax
+	cmpq %rbx,%rax
+	jl L.18
+L.19:
+	movq $0,-48(%rbp)
+	movq $0,-48(%rbp)
+	movq %rbp,%rax
+	addq $-40,%rax
+	movq %rax,-64(%rbp)
+	movq $5,-56(%rbp)
+	movq $-1,-88(%rbp)
+	leaq Map.7.counter(%rip),%rax
+	movq %rax,-80(%rbp)
+	movq %rbp,-72(%rbp)
+	movq %rbp,%rdi
+	addq $-64,%rdi
+#	movq %rdi,%rdi
+	movq %rbp,%rsi
+	addq $-88,%rsi
+#	movq %rsi,%rsi
+	call Map.map
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	movq $4,%r13
+	movq $1,%r12
+L.20:
+#	movq %rbx,%rbx
+	movq -40(%rbp,%rbx,8),%rdi
+#	movq %rdi,%rdi
+	call Map.println
+#	movq %rax,%rax
+#	movq %rbx,%rbx
+	addq %r12,%rbx
+#	movq %rbx,%rbx
+L.21:
+	cmpq %r13,%rbx
+	jle L.20
+L.22:
+#	returnSink
+	movq -96(%rbp),%rbx
+	movq -104(%rbp),%r12
+	movq -112(%rbp),%r13
+	addq $128,%rsp
+	popq %rbp
+	ret
+Map.badSub:
+	call badSub
+END Map
+PROCEDURE Map.7.counter
+# Trees:
+MOVE(
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false),
+ ADD(
+  MEM(
+   TEMP _link, 
+   CONST -48, 8, true, false),
+  CONST 1)),
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false)),
+JUMP(
+ NAME L.23),
+LABEL L.23
+# Linearized (trees):
+MOVE(
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false),
+ ADD(
+  MEM(
+   TEMP _link, 
+   CONST -48, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false))
+JUMP(
+ NAME L.23)
+LABEL L.23
+# Basic Blocks:
+# 0
+LABEL L.27
+MOVE(
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false),
+ ADD(
+  MEM(
+   TEMP _link, 
+   CONST -48, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false))
+JUMP(
+ NAME L.23)
+# 1
+LABEL L.23
+# Trace Scheduled:
+LABEL L.27
+MOVE(
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false),
+ ADD(
+  MEM(
+   TEMP _link, 
+   CONST -48, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false))
+LABEL L.23
+# With procedure entry/exit:
+MOVE(
+ TEMP _link,
+ TEMP %r10)
+MOVE(
+ TEMP Map.7.counter.x,
+ TEMP %rdi)
+LABEL L.27
+MOVE(
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false),
+ ADD(
+  MEM(
+   TEMP _link, 
+   CONST -48, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP _link, 
+  CONST -48, 8, true, false))
+LABEL L.23
+# Instructions:
+	movq %r10,_link	# _link := %r10 
+	movq %rdi,Map.7.counter.x	# Map.7.counter.x := %rdi 
+L.27:	# <- 
+	movq -48(_link),t.59	# t.59 <- _link 
+	movq t.59,t.60	# t.60 := t.59 
+	addq $1,t.60	# t.60 <- t.60 
+	movq t.60,-48(_link)	# <- _link t.60 
+	movq -48(_link),t.61	# t.61 <- _link 
+	movq t.61,%rax	# %rax := t.61 
+L.23:	# <- 
+# Control Flow Graph:
+0: _link Map.7.counter.x <- %r10 %rdi; goto 1
+1: t.59 t.60 t.61 %rax <- _link; goto 2
+2: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+_link: Map.7.counter.x %rsp %rbp %rdi t.60 t.59 
+Map.7.counter.x: _link %rsp %rbp 
+t.59: %rsp %rbp _link 
+t.60: %rsp %rbp _link 
+t.61: %rsp %rbp 
+t.60 <= t.59
+%rax <= t.61
+_link <= %r10
+Map.7.counter.x <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+_link->%r10
+Map.7.counter.x->%rdi
+t.59->%rax
+t.60->%rax
+t.61->%rax
+# Assembly code:
+	.text
+Map.7.counter:
+	pushq %rbp
+	movq %rsp,%rbp
+#	movq %r10,%r10
+#	movq %rdi,%rdi
+L.27:
+	movq -48(%r10),%rax
+#	movq %rax,%rax
+	addq $1,%rax
+	movq %rax,-48(%r10)
+	movq -48(%r10),%rax
+#	movq %rax,%rax
+L.23:
+#	returnSink
+	popq %rbp
+	ret
+Map.7.counter.badSub:
+	call badSub
+END Map.7.counter

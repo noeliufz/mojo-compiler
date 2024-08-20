@@ -1,0 +1,3179 @@
+PROCEDURE Append.println
+# Trees:
+MOVE(
+ TEMP Append.println.1.a,
+ TEMP Append.println.t),
+EXP(
+ CALL(
+  NAME puts,
+  CONST 0,
+  ESEQ(
+   MOVE(
+    TEMP t.3,
+    ESEQ(
+     MOVE(
+      TEMP t.1,
+      TEMP Append.println.1.a),
+     BEQ(
+      TEMP t.1,
+      CONST 0,
+      Append.println.badPtr, L.3),
+     LABEL L.3,
+     TEMP t.1)),
+   ADD(
+    MEM(
+     TEMP t.3, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.2,
+      CONST 0),
+     BLT(
+      TEMP t.2,
+      CONST 0,
+      Append.println.badSub, L.4),
+     LABEL L.4,
+     BGE(
+      TEMP t.2,
+      MEM(
+       TEMP t.3, 
+       CONST 8, 8, false, false),
+      Append.println.badSub, L.5),
+     LABEL L.5,
+     TEMP t.2))))),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP Append.println.1.a,
+ TEMP Append.println.t)
+MOVE(
+ TEMP t.1,
+ TEMP Append.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Append.println.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Append.println.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Append.println.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.34,
+ CALL(
+  NAME puts,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2)))
+EXP(
+ TEMP t.34)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.40
+MOVE(
+ TEMP Append.println.1.a,
+ TEMP Append.println.t)
+MOVE(
+ TEMP t.1,
+ TEMP Append.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Append.println.badPtr, L.3)
+# 1
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Append.println.badSub, L.4)
+# 2
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Append.println.badSub, L.5)
+# 3
+LABEL L.5
+MOVE(
+ TEMP t.34,
+ CALL(
+  NAME puts,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2)))
+EXP(
+ TEMP t.34)
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.40
+MOVE(
+ TEMP Append.println.1.a,
+ TEMP Append.println.t)
+MOVE(
+ TEMP t.1,
+ TEMP Append.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Append.println.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Append.println.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Append.println.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.34,
+ CALL(
+  NAME puts,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2)))
+EXP(
+ TEMP t.34)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP Append.println.t,
+ TEMP %rdi)
+LABEL L.40
+MOVE(
+ TEMP Append.println.1.a,
+ TEMP Append.println.t)
+MOVE(
+ TEMP t.1,
+ TEMP Append.println.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Append.println.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Append.println.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Append.println.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.34,
+ CALL(
+  NAME puts,
+  CONST 0,
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   TEMP t.2)))
+EXP(
+ TEMP t.34)
+LABEL L.0
+# Instructions:
+	movq %rdi,Append.println.t	# Append.println.t := %rdi 
+L.40:	# <- 
+	movq Append.println.t,Append.println.1.a	# Append.println.1.a := Append.println.t 
+	movq Append.println.1.a,t.1	# t.1 := Append.println.1.a 
+	xorq t.35,t.35	# t.35 <- 
+	cmpq t.35,t.1	# <- t.1 t.35 
+	je Append.println.badPtr	# <- : goto Append.println.badPtr L.3 
+L.3:	# <- 
+	movq t.1,t.3	# t.3 := t.1 
+	xorq t.2,t.2	# t.2 <- 
+	xorq t.36,t.36	# t.36 <- 
+	cmpq t.36,t.2	# <- t.2 t.36 
+	jl Append.println.badSub	# <- : goto Append.println.badSub L.4 
+L.4:	# <- 
+	movq 8(t.3),t.37	# t.37 <- t.3 
+	cmpq t.37,t.2	# <- t.2 t.37 
+	jge Append.println.badSub	# <- : goto Append.println.badSub L.5 
+L.5:	# <- 
+	movq 0(t.3),t.38	# t.38 <- t.3 
+	movq t.38,t.39	# t.39 := t.38 
+	addq t.2,t.39	# t.39 <- t.2 t.39 
+	movq t.39,%rdi	# %rdi := t.39 
+	call puts	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.34	# t.34 := %rax 
+L.0:	# <- 
+# Control Flow Graph:
+0: Append.println.t <- %rdi; goto 1
+1: Append.println.1.a t.1 t.35 <- Append.println.t; goto 2
+2: t.3 t.2 t.36 <- t.1; goto 3
+3: t.37 <- t.3 t.2; goto 4
+4: t.38 t.39 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.34 <- t.3 t.2; goto 5
+5: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Append.println.t: %rsp %rbp 
+Append.println.1.a: %rsp %rbp 
+t.1: t.35 %rsp %rbp 
+t.35: t.1 %rsp %rbp 
+t.3: t.36 t.2 %rsp %rbp t.37 
+t.2: t.36 t.3 %rsp %rbp t.37 t.39 t.38 
+t.36: t.3 t.2 %rsp %rbp 
+t.37: t.3 t.2 %rsp %rbp 
+t.38: %rsp %rbp t.2 
+t.39: %rsp %rbp t.2 
+t.34: %rsp %rbp 
+t.39 <= t.38
+%rdi <= t.39
+t.34 <= %rax
+t.3 <= t.1
+Append.println.1.a <= Append.println.t
+t.1 <= Append.println.1.a
+Append.println.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Append.println.t->%rax
+Append.println.1.a->%rax
+t.1->%rbx
+t.35->%rax
+t.3->%rcx
+t.2->%rbx
+t.36->%rax
+t.37->%rax
+t.38->%rax
+t.39->%rax
+t.34->%rax
+# Assembly code:
+	.text
+Append.println:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rax
+L.40:
+#	movq %rax,%rax
+	movq %rax,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	je Append.println.badPtr
+L.3:
+	movq %rbx,%rcx
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl Append.println.badSub
+L.4:
+	movq 8(%rcx),%rax
+	cmpq %rax,%rbx
+	jge Append.println.badSub
+L.5:
+	movq 0(%rcx),%rax
+#	movq %rax,%rax
+	addq %rbx,%rax
+	movq %rax,%rdi
+	call puts
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+Append.println.badPtr:
+	call badPtr
+Append.println.badSub:
+	call badSub
+END Append.println
+PROCEDURE Append.append
+# Trees:
+MOVE(
+ TEMP Append.append.1.a1,
+ TEMP Append.append.t1),
+MOVE(
+ TEMP Append.append.1.a2,
+ TEMP Append.append.t2),
+MOVE(
+ TEMP Append.append.1.n1,
+ SUB(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.4,
+     TEMP Append.append.1.a1),
+    BEQ(
+     TEMP t.4,
+     CONST 0,
+     Append.append.badPtr, L.7),
+    LABEL L.7,
+    TEMP t.4), 
+   CONST 8, 8, false, false),
+  CONST 1)),
+MOVE(
+ TEMP Append.append.1.n2,
+ SUB(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.5,
+     TEMP Append.append.1.a2),
+    BEQ(
+     TEMP t.5,
+     CONST 0,
+     Append.append.badPtr, L.8),
+    LABEL L.8,
+    TEMP t.5), 
+   CONST 8, 8, false, false),
+  CONST 1)),
+MOVE(
+ TEMP Append.append.1.result,
+ ESEQ(
+  MOVE(
+   TEMP t.6,
+   ADD(
+    ADD(
+     TEMP Append.append.1.n1,
+     TEMP Append.append.1.n2),
+    CONST 1)),
+  BLT(
+   TEMP t.6,
+   CONST 0,
+   Append.append.badSub, L.9),
+  LABEL L.9,
+  MOVE(
+   TEMP t.7,
+   TEMP t.6),
+  MOVE(
+   TEMP t.8,
+   CONST 16),
+  MOVE(
+   TEMP t.8,
+   ADD(
+    TEMP t.8,
+    TEMP t.7)),
+  MOVE(
+   TEMP t.9,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    TEMP t.8)),
+  MOVE(
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, false, false),
+   ADD(
+    TEMP t.9,
+    CONST 16)),
+  MOVE(
+   MEM(
+    TEMP t.9, 
+    CONST 8, 8, false, false),
+   TEMP t.6),
+  MOVE(
+   TEMP t.11,
+   MEM(
+    TEMP t.9, 
+    CONST 8, 8, false, false)),
+  MOVE(
+   TEMP t.12,
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, false, false)),
+  MOVE(
+   TEMP t.10,
+   CONST 0),
+  BGE(
+   TEMP t.10,
+   TEMP t.11,
+   L.12, L.10),
+  LABEL L.10,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.12,
+     TEMP t.10), 
+    CONST 0, 1, true, false),
+   CONST 0),
+  MOVE(
+   TEMP t.10,
+   ADD(
+    TEMP t.10,
+    CONST 1)),
+  LABEL L.11,
+  BLT(
+   TEMP t.10,
+   TEMP t.11,
+   L.10, L.12),
+  LABEL L.12,
+  TEMP t.9)),
+MOVE(
+ TEMP t.13,
+ CONST 0),
+MOVE(
+ TEMP t.14,
+ SUB(
+  TEMP Append.append.1.n1,
+  CONST 1)),
+MOVE(
+ TEMP t.15,
+ CONST 1),
+JUMP(
+ NAME L.14),
+LABEL L.13,
+MOVE(
+ TEMP Append.append.1.1.i,
+ TEMP t.13),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.18,
+    ESEQ(
+     MOVE(
+      TEMP t.16,
+      TEMP Append.append.1.result),
+     BEQ(
+      TEMP t.16,
+      CONST 0,
+      Append.append.badPtr, L.16),
+     LABEL L.16,
+     TEMP t.16)),
+   ADD(
+    MEM(
+     TEMP t.18, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.17,
+      TEMP Append.append.1.1.i),
+     BLT(
+      TEMP t.17,
+      CONST 0,
+      Append.append.badSub, L.17),
+     LABEL L.17,
+     BGE(
+      TEMP t.17,
+      MEM(
+       TEMP t.18, 
+       CONST 8, 8, false, false),
+      Append.append.badSub, L.18),
+     LABEL L.18,
+     TEMP t.17))), 
+  CONST 0, 1, true, false),
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.21,
+    ESEQ(
+     MOVE(
+      TEMP t.19,
+      TEMP Append.append.1.a1),
+     BEQ(
+      TEMP t.19,
+      CONST 0,
+      Append.append.badPtr, L.19),
+     LABEL L.19,
+     TEMP t.19)),
+   ADD(
+    MEM(
+     TEMP t.21, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.20,
+      TEMP Append.append.1.1.i),
+     BLT(
+      TEMP t.20,
+      CONST 0,
+      Append.append.badSub, L.20),
+     LABEL L.20,
+     BGE(
+      TEMP t.20,
+      MEM(
+       TEMP t.21, 
+       CONST 8, 8, false, false),
+      Append.append.badSub, L.21),
+     LABEL L.21,
+     TEMP t.20))), 
+  CONST 0, 1, true, false)),
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15)),
+LABEL L.14,
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.13, L.15),
+LABEL L.15,
+MOVE(
+ TEMP t.22,
+ CONST 0),
+MOVE(
+ TEMP t.23,
+ SUB(
+  TEMP Append.append.1.n2,
+  CONST 1)),
+MOVE(
+ TEMP t.24,
+ CONST 1),
+JUMP(
+ NAME L.23),
+LABEL L.22,
+MOVE(
+ TEMP Append.append.1.2.i,
+ TEMP t.22),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.27,
+    ESEQ(
+     MOVE(
+      TEMP t.25,
+      TEMP Append.append.1.result),
+     BEQ(
+      TEMP t.25,
+      CONST 0,
+      Append.append.badPtr, L.25),
+     LABEL L.25,
+     TEMP t.25)),
+   ADD(
+    MEM(
+     TEMP t.27, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.26,
+      ADD(
+       TEMP Append.append.1.n1,
+       TEMP Append.append.1.2.i)),
+     BLT(
+      TEMP t.26,
+      CONST 0,
+      Append.append.badSub, L.26),
+     LABEL L.26,
+     BGE(
+      TEMP t.26,
+      MEM(
+       TEMP t.27, 
+       CONST 8, 8, false, false),
+      Append.append.badSub, L.27),
+     LABEL L.27,
+     TEMP t.26))), 
+  CONST 0, 1, true, false),
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.30,
+    ESEQ(
+     MOVE(
+      TEMP t.28,
+      TEMP Append.append.1.a2),
+     BEQ(
+      TEMP t.28,
+      CONST 0,
+      Append.append.badPtr, L.28),
+     LABEL L.28,
+     TEMP t.28)),
+   ADD(
+    MEM(
+     TEMP t.30, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.29,
+      TEMP Append.append.1.2.i),
+     BLT(
+      TEMP t.29,
+      CONST 0,
+      Append.append.badSub, L.29),
+     LABEL L.29,
+     BGE(
+      TEMP t.29,
+      MEM(
+       TEMP t.30, 
+       CONST 8, 8, false, false),
+      Append.append.badSub, L.30),
+     LABEL L.30,
+     TEMP t.29))), 
+  CONST 0, 1, true, false)),
+MOVE(
+ TEMP t.22,
+ ADD(
+  TEMP t.22,
+  TEMP t.24)),
+LABEL L.23,
+BLE(
+ TEMP t.22,
+ TEMP t.23,
+ L.22, L.24),
+LABEL L.24,
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.33,
+    ESEQ(
+     MOVE(
+      TEMP t.31,
+      TEMP Append.append.1.result),
+     BEQ(
+      TEMP t.31,
+      CONST 0,
+      Append.append.badPtr, L.31),
+     LABEL L.31,
+     TEMP t.31)),
+   ADD(
+    MEM(
+     TEMP t.33, 
+     CONST 0, 8, false, false),
+    ESEQ(
+     MOVE(
+      TEMP t.32,
+      ADD(
+       TEMP Append.append.1.n1,
+       TEMP Append.append.1.n2)),
+     BLT(
+      TEMP t.32,
+      CONST 0,
+      Append.append.badSub, L.32),
+     LABEL L.32,
+     BGE(
+      TEMP t.32,
+      MEM(
+       TEMP t.33, 
+       CONST 8, 8, false, false),
+      Append.append.badSub, L.33),
+     LABEL L.33,
+     TEMP t.32))), 
+  CONST 0, 1, true, false),
+ CONST 0),
+MOVE(
+ TEMP %rax,
+ TEMP Append.append.1.result),
+JUMP(
+ NAME L.6),
+LABEL L.6
+# Linearized (trees):
+MOVE(
+ TEMP Append.append.1.a1,
+ TEMP Append.append.t1)
+MOVE(
+ TEMP Append.append.1.a2,
+ TEMP Append.append.t2)
+MOVE(
+ TEMP t.4,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Append.append.badPtr, L.7)
+LABEL L.7
+MOVE(
+ TEMP Append.append.1.n1,
+ SUB(
+  MEM(
+   TEMP t.4, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.5,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Append.append.badPtr, L.8)
+LABEL L.8
+MOVE(
+ TEMP Append.append.1.n2,
+ SUB(
+  MEM(
+   TEMP t.5, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ ADD(
+  ADD(
+   TEMP Append.append.1.n1,
+   TEMP Append.append.1.n2),
+  CONST 1))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ Append.append.badSub, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.7,
+ TEMP t.6)
+MOVE(
+ TEMP t.8,
+ CONST 16)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP t.8,
+  TEMP t.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.8))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.9,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false),
+ TEMP t.6)
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.12,
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.10,
+ CONST 0)
+BGE(
+ TEMP t.10,
+ TEMP t.11,
+ L.12, L.10)
+LABEL L.10
+MOVE(
+ MEM(
+  ADD(
+   TEMP t.12,
+   TEMP t.10), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  CONST 1))
+LABEL L.11
+BLT(
+ TEMP t.10,
+ TEMP t.11,
+ L.10, L.12)
+LABEL L.12
+MOVE(
+ TEMP Append.append.1.result,
+ TEMP t.9)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ SUB(
+  TEMP Append.append.1.n1,
+  CONST 1))
+MOVE(
+ TEMP t.15,
+ CONST 1)
+JUMP(
+ NAME L.14)
+LABEL L.13
+MOVE(
+ TEMP Append.append.1.1.i,
+ TEMP t.13)
+MOVE(
+ TEMP t.16,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.16,
+ CONST 0,
+ Append.append.badPtr, L.16)
+LABEL L.16
+MOVE(
+ TEMP t.18,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.17,
+ CONST 0,
+ Append.append.badSub, L.17)
+LABEL L.17
+BGE(
+ TEMP t.17,
+ MEM(
+  TEMP t.18, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.18)
+LABEL L.18
+MOVE(
+ TEMP t.19,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.19,
+ CONST 0,
+ Append.append.badPtr, L.19)
+LABEL L.19
+MOVE(
+ TEMP t.21,
+ TEMP t.19)
+MOVE(
+ TEMP t.20,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.20,
+ CONST 0,
+ Append.append.badSub, L.20)
+LABEL L.20
+BGE(
+ TEMP t.20,
+ MEM(
+  TEMP t.21, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.21)
+LABEL L.21
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.18, 
+    CONST 0, 8, false, false),
+   TEMP t.17), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.21, 
+    CONST 0, 8, false, false),
+   TEMP t.20), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+LABEL L.14
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.13, L.15)
+LABEL L.15
+MOVE(
+ TEMP t.22,
+ CONST 0)
+MOVE(
+ TEMP t.23,
+ SUB(
+  TEMP Append.append.1.n2,
+  CONST 1))
+MOVE(
+ TEMP t.24,
+ CONST 1)
+JUMP(
+ NAME L.23)
+LABEL L.22
+MOVE(
+ TEMP Append.append.1.2.i,
+ TEMP t.22)
+MOVE(
+ TEMP t.25,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.25,
+ CONST 0,
+ Append.append.badPtr, L.25)
+LABEL L.25
+MOVE(
+ TEMP t.27,
+ TEMP t.25)
+MOVE(
+ TEMP t.26,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.2.i))
+BLT(
+ TEMP t.26,
+ CONST 0,
+ Append.append.badSub, L.26)
+LABEL L.26
+BGE(
+ TEMP t.26,
+ MEM(
+  TEMP t.27, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.27)
+LABEL L.27
+MOVE(
+ TEMP t.28,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.28,
+ CONST 0,
+ Append.append.badPtr, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.30,
+ TEMP t.28)
+MOVE(
+ TEMP t.29,
+ TEMP Append.append.1.2.i)
+BLT(
+ TEMP t.29,
+ CONST 0,
+ Append.append.badSub, L.29)
+LABEL L.29
+BGE(
+ TEMP t.29,
+ MEM(
+  TEMP t.30, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.30)
+LABEL L.30
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.27, 
+    CONST 0, 8, false, false),
+   TEMP t.26), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.30, 
+    CONST 0, 8, false, false),
+   TEMP t.29), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.22,
+ ADD(
+  TEMP t.22,
+  TEMP t.24))
+LABEL L.23
+BLE(
+ TEMP t.22,
+ TEMP t.23,
+ L.22, L.24)
+LABEL L.24
+MOVE(
+ TEMP t.31,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.31,
+ CONST 0,
+ Append.append.badPtr, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.33,
+ TEMP t.31)
+MOVE(
+ TEMP t.32,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.n2))
+BLT(
+ TEMP t.32,
+ CONST 0,
+ Append.append.badSub, L.32)
+LABEL L.32
+BGE(
+ TEMP t.32,
+ MEM(
+  TEMP t.33, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.33)
+LABEL L.33
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.33, 
+    CONST 0, 8, false, false),
+   TEMP t.32), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP %rax,
+ TEMP Append.append.1.result)
+JUMP(
+ NAME L.6)
+LABEL L.6
+# Basic Blocks:
+# 0
+LABEL L.41
+MOVE(
+ TEMP Append.append.1.a1,
+ TEMP Append.append.t1)
+MOVE(
+ TEMP Append.append.1.a2,
+ TEMP Append.append.t2)
+MOVE(
+ TEMP t.4,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Append.append.badPtr, L.7)
+# 1
+LABEL L.7
+MOVE(
+ TEMP Append.append.1.n1,
+ SUB(
+  MEM(
+   TEMP t.4, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.5,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Append.append.badPtr, L.8)
+# 2
+LABEL L.8
+MOVE(
+ TEMP Append.append.1.n2,
+ SUB(
+  MEM(
+   TEMP t.5, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ ADD(
+  ADD(
+   TEMP Append.append.1.n1,
+   TEMP Append.append.1.n2),
+  CONST 1))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ Append.append.badSub, L.9)
+# 3
+LABEL L.9
+MOVE(
+ TEMP t.7,
+ TEMP t.6)
+MOVE(
+ TEMP t.8,
+ CONST 16)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP t.8,
+  TEMP t.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.8))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.9,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false),
+ TEMP t.6)
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.12,
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.10,
+ CONST 0)
+BGE(
+ TEMP t.10,
+ TEMP t.11,
+ L.12, L.10)
+# 4
+LABEL L.10
+MOVE(
+ MEM(
+  ADD(
+   TEMP t.12,
+   TEMP t.10), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  CONST 1))
+JUMP(
+ NAME L.11)
+# 5
+LABEL L.11
+BLT(
+ TEMP t.10,
+ TEMP t.11,
+ L.10, L.12)
+# 6
+LABEL L.12
+MOVE(
+ TEMP Append.append.1.result,
+ TEMP t.9)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ SUB(
+  TEMP Append.append.1.n1,
+  CONST 1))
+MOVE(
+ TEMP t.15,
+ CONST 1)
+JUMP(
+ NAME L.14)
+# 7
+LABEL L.13
+MOVE(
+ TEMP Append.append.1.1.i,
+ TEMP t.13)
+MOVE(
+ TEMP t.16,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.16,
+ CONST 0,
+ Append.append.badPtr, L.16)
+# 8
+LABEL L.16
+MOVE(
+ TEMP t.18,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.17,
+ CONST 0,
+ Append.append.badSub, L.17)
+# 9
+LABEL L.17
+BGE(
+ TEMP t.17,
+ MEM(
+  TEMP t.18, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.18)
+# 10
+LABEL L.18
+MOVE(
+ TEMP t.19,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.19,
+ CONST 0,
+ Append.append.badPtr, L.19)
+# 11
+LABEL L.19
+MOVE(
+ TEMP t.21,
+ TEMP t.19)
+MOVE(
+ TEMP t.20,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.20,
+ CONST 0,
+ Append.append.badSub, L.20)
+# 12
+LABEL L.20
+BGE(
+ TEMP t.20,
+ MEM(
+  TEMP t.21, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.21)
+# 13
+LABEL L.21
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.18, 
+    CONST 0, 8, false, false),
+   TEMP t.17), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.21, 
+    CONST 0, 8, false, false),
+   TEMP t.20), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+JUMP(
+ NAME L.14)
+# 14
+LABEL L.14
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.13, L.15)
+# 15
+LABEL L.15
+MOVE(
+ TEMP t.22,
+ CONST 0)
+MOVE(
+ TEMP t.23,
+ SUB(
+  TEMP Append.append.1.n2,
+  CONST 1))
+MOVE(
+ TEMP t.24,
+ CONST 1)
+JUMP(
+ NAME L.23)
+# 16
+LABEL L.22
+MOVE(
+ TEMP Append.append.1.2.i,
+ TEMP t.22)
+MOVE(
+ TEMP t.25,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.25,
+ CONST 0,
+ Append.append.badPtr, L.25)
+# 17
+LABEL L.25
+MOVE(
+ TEMP t.27,
+ TEMP t.25)
+MOVE(
+ TEMP t.26,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.2.i))
+BLT(
+ TEMP t.26,
+ CONST 0,
+ Append.append.badSub, L.26)
+# 18
+LABEL L.26
+BGE(
+ TEMP t.26,
+ MEM(
+  TEMP t.27, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.27)
+# 19
+LABEL L.27
+MOVE(
+ TEMP t.28,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.28,
+ CONST 0,
+ Append.append.badPtr, L.28)
+# 20
+LABEL L.28
+MOVE(
+ TEMP t.30,
+ TEMP t.28)
+MOVE(
+ TEMP t.29,
+ TEMP Append.append.1.2.i)
+BLT(
+ TEMP t.29,
+ CONST 0,
+ Append.append.badSub, L.29)
+# 21
+LABEL L.29
+BGE(
+ TEMP t.29,
+ MEM(
+  TEMP t.30, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.30)
+# 22
+LABEL L.30
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.27, 
+    CONST 0, 8, false, false),
+   TEMP t.26), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.30, 
+    CONST 0, 8, false, false),
+   TEMP t.29), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.22,
+ ADD(
+  TEMP t.22,
+  TEMP t.24))
+JUMP(
+ NAME L.23)
+# 23
+LABEL L.23
+BLE(
+ TEMP t.22,
+ TEMP t.23,
+ L.22, L.24)
+# 24
+LABEL L.24
+MOVE(
+ TEMP t.31,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.31,
+ CONST 0,
+ Append.append.badPtr, L.31)
+# 25
+LABEL L.31
+MOVE(
+ TEMP t.33,
+ TEMP t.31)
+MOVE(
+ TEMP t.32,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.n2))
+BLT(
+ TEMP t.32,
+ CONST 0,
+ Append.append.badSub, L.32)
+# 26
+LABEL L.32
+BGE(
+ TEMP t.32,
+ MEM(
+  TEMP t.33, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.33)
+# 27
+LABEL L.33
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.33, 
+    CONST 0, 8, false, false),
+   TEMP t.32), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP %rax,
+ TEMP Append.append.1.result)
+JUMP(
+ NAME L.6)
+# 28
+LABEL L.6
+# Trace Scheduled:
+LABEL L.41
+MOVE(
+ TEMP Append.append.1.a1,
+ TEMP Append.append.t1)
+MOVE(
+ TEMP Append.append.1.a2,
+ TEMP Append.append.t2)
+MOVE(
+ TEMP t.4,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Append.append.badPtr, L.7)
+LABEL L.7
+MOVE(
+ TEMP Append.append.1.n1,
+ SUB(
+  MEM(
+   TEMP t.4, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.5,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Append.append.badPtr, L.8)
+LABEL L.8
+MOVE(
+ TEMP Append.append.1.n2,
+ SUB(
+  MEM(
+   TEMP t.5, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ ADD(
+  ADD(
+   TEMP Append.append.1.n1,
+   TEMP Append.append.1.n2),
+  CONST 1))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ Append.append.badSub, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.7,
+ TEMP t.6)
+MOVE(
+ TEMP t.8,
+ CONST 16)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP t.8,
+  TEMP t.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.8))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.9,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false),
+ TEMP t.6)
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.12,
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.10,
+ CONST 0)
+BGE(
+ TEMP t.10,
+ TEMP t.11,
+ L.12, L.10)
+LABEL L.10
+MOVE(
+ MEM(
+  ADD(
+   TEMP t.12,
+   TEMP t.10), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  CONST 1))
+LABEL L.11
+BLT(
+ TEMP t.10,
+ TEMP t.11,
+ L.10, L.12)
+LABEL L.12
+MOVE(
+ TEMP Append.append.1.result,
+ TEMP t.9)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ SUB(
+  TEMP Append.append.1.n1,
+  CONST 1))
+MOVE(
+ TEMP t.15,
+ CONST 1)
+LABEL L.14
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.13, L.15)
+LABEL L.15
+MOVE(
+ TEMP t.22,
+ CONST 0)
+MOVE(
+ TEMP t.23,
+ SUB(
+  TEMP Append.append.1.n2,
+  CONST 1))
+MOVE(
+ TEMP t.24,
+ CONST 1)
+LABEL L.23
+BLE(
+ TEMP t.22,
+ TEMP t.23,
+ L.22, L.24)
+LABEL L.24
+MOVE(
+ TEMP t.31,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.31,
+ CONST 0,
+ Append.append.badPtr, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.33,
+ TEMP t.31)
+MOVE(
+ TEMP t.32,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.n2))
+BLT(
+ TEMP t.32,
+ CONST 0,
+ Append.append.badSub, L.32)
+LABEL L.32
+BGE(
+ TEMP t.32,
+ MEM(
+  TEMP t.33, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.33)
+LABEL L.33
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.33, 
+    CONST 0, 8, false, false),
+   TEMP t.32), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP %rax,
+ TEMP Append.append.1.result)
+JUMP(
+ NAME L.6)
+LABEL L.13
+MOVE(
+ TEMP Append.append.1.1.i,
+ TEMP t.13)
+MOVE(
+ TEMP t.16,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.16,
+ CONST 0,
+ Append.append.badPtr, L.16)
+LABEL L.16
+MOVE(
+ TEMP t.18,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.17,
+ CONST 0,
+ Append.append.badSub, L.17)
+LABEL L.17
+BGE(
+ TEMP t.17,
+ MEM(
+  TEMP t.18, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.18)
+LABEL L.18
+MOVE(
+ TEMP t.19,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.19,
+ CONST 0,
+ Append.append.badPtr, L.19)
+LABEL L.19
+MOVE(
+ TEMP t.21,
+ TEMP t.19)
+MOVE(
+ TEMP t.20,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.20,
+ CONST 0,
+ Append.append.badSub, L.20)
+LABEL L.20
+BGE(
+ TEMP t.20,
+ MEM(
+  TEMP t.21, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.21)
+LABEL L.21
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.18, 
+    CONST 0, 8, false, false),
+   TEMP t.17), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.21, 
+    CONST 0, 8, false, false),
+   TEMP t.20), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+JUMP(
+ NAME L.14)
+LABEL L.22
+MOVE(
+ TEMP Append.append.1.2.i,
+ TEMP t.22)
+MOVE(
+ TEMP t.25,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.25,
+ CONST 0,
+ Append.append.badPtr, L.25)
+LABEL L.25
+MOVE(
+ TEMP t.27,
+ TEMP t.25)
+MOVE(
+ TEMP t.26,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.2.i))
+BLT(
+ TEMP t.26,
+ CONST 0,
+ Append.append.badSub, L.26)
+LABEL L.26
+BGE(
+ TEMP t.26,
+ MEM(
+  TEMP t.27, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.27)
+LABEL L.27
+MOVE(
+ TEMP t.28,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.28,
+ CONST 0,
+ Append.append.badPtr, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.30,
+ TEMP t.28)
+MOVE(
+ TEMP t.29,
+ TEMP Append.append.1.2.i)
+BLT(
+ TEMP t.29,
+ CONST 0,
+ Append.append.badSub, L.29)
+LABEL L.29
+BGE(
+ TEMP t.29,
+ MEM(
+  TEMP t.30, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.30)
+LABEL L.30
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.27, 
+    CONST 0, 8, false, false),
+   TEMP t.26), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.30, 
+    CONST 0, 8, false, false),
+   TEMP t.29), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.22,
+ ADD(
+  TEMP t.22,
+  TEMP t.24))
+JUMP(
+ NAME L.23)
+LABEL L.6
+# With procedure entry/exit:
+MOVE(
+ TEMP Append.append.t2,
+ TEMP %rsi)
+MOVE(
+ TEMP Append.append.t1,
+ TEMP %rdi)
+LABEL L.41
+MOVE(
+ TEMP Append.append.1.a1,
+ TEMP Append.append.t1)
+MOVE(
+ TEMP Append.append.1.a2,
+ TEMP Append.append.t2)
+MOVE(
+ TEMP t.4,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Append.append.badPtr, L.7)
+LABEL L.7
+MOVE(
+ TEMP Append.append.1.n1,
+ SUB(
+  MEM(
+   TEMP t.4, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.5,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Append.append.badPtr, L.8)
+LABEL L.8
+MOVE(
+ TEMP Append.append.1.n2,
+ SUB(
+  MEM(
+   TEMP t.5, 
+   CONST 8, 8, false, false),
+  CONST 1))
+MOVE(
+ TEMP t.6,
+ ADD(
+  ADD(
+   TEMP Append.append.1.n1,
+   TEMP Append.append.1.n2),
+  CONST 1))
+BLT(
+ TEMP t.6,
+ CONST 0,
+ Append.append.badSub, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.7,
+ TEMP t.6)
+MOVE(
+ TEMP t.8,
+ CONST 16)
+MOVE(
+ TEMP t.8,
+ ADD(
+  TEMP t.8,
+  TEMP t.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  TEMP t.8))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false),
+ ADD(
+  TEMP t.9,
+  CONST 16))
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false),
+ TEMP t.6)
+MOVE(
+ TEMP t.11,
+ MEM(
+  TEMP t.9, 
+  CONST 8, 8, false, false))
+MOVE(
+ TEMP t.12,
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, false, false))
+MOVE(
+ TEMP t.10,
+ CONST 0)
+BGE(
+ TEMP t.10,
+ TEMP t.11,
+ L.12, L.10)
+LABEL L.10
+MOVE(
+ MEM(
+  ADD(
+   TEMP t.12,
+   TEMP t.10), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.10,
+ ADD(
+  TEMP t.10,
+  CONST 1))
+LABEL L.11
+BLT(
+ TEMP t.10,
+ TEMP t.11,
+ L.10, L.12)
+LABEL L.12
+MOVE(
+ TEMP Append.append.1.result,
+ TEMP t.9)
+MOVE(
+ TEMP t.13,
+ CONST 0)
+MOVE(
+ TEMP t.14,
+ SUB(
+  TEMP Append.append.1.n1,
+  CONST 1))
+MOVE(
+ TEMP t.15,
+ CONST 1)
+LABEL L.14
+BLE(
+ TEMP t.13,
+ TEMP t.14,
+ L.13, L.15)
+LABEL L.15
+MOVE(
+ TEMP t.22,
+ CONST 0)
+MOVE(
+ TEMP t.23,
+ SUB(
+  TEMP Append.append.1.n2,
+  CONST 1))
+MOVE(
+ TEMP t.24,
+ CONST 1)
+LABEL L.23
+BLE(
+ TEMP t.22,
+ TEMP t.23,
+ L.22, L.24)
+LABEL L.24
+MOVE(
+ TEMP t.31,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.31,
+ CONST 0,
+ Append.append.badPtr, L.31)
+LABEL L.31
+MOVE(
+ TEMP t.33,
+ TEMP t.31)
+MOVE(
+ TEMP t.32,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.n2))
+BLT(
+ TEMP t.32,
+ CONST 0,
+ Append.append.badSub, L.32)
+LABEL L.32
+BGE(
+ TEMP t.32,
+ MEM(
+  TEMP t.33, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.33)
+LABEL L.33
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.33, 
+    CONST 0, 8, false, false),
+   TEMP t.32), 
+  CONST 0, 1, true, false),
+ CONST 0)
+MOVE(
+ TEMP %rax,
+ TEMP Append.append.1.result)
+JUMP(
+ NAME L.6)
+LABEL L.13
+MOVE(
+ TEMP Append.append.1.1.i,
+ TEMP t.13)
+MOVE(
+ TEMP t.16,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.16,
+ CONST 0,
+ Append.append.badPtr, L.16)
+LABEL L.16
+MOVE(
+ TEMP t.18,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.17,
+ CONST 0,
+ Append.append.badSub, L.17)
+LABEL L.17
+BGE(
+ TEMP t.17,
+ MEM(
+  TEMP t.18, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.18)
+LABEL L.18
+MOVE(
+ TEMP t.19,
+ TEMP Append.append.1.a1)
+BEQ(
+ TEMP t.19,
+ CONST 0,
+ Append.append.badPtr, L.19)
+LABEL L.19
+MOVE(
+ TEMP t.21,
+ TEMP t.19)
+MOVE(
+ TEMP t.20,
+ TEMP Append.append.1.1.i)
+BLT(
+ TEMP t.20,
+ CONST 0,
+ Append.append.badSub, L.20)
+LABEL L.20
+BGE(
+ TEMP t.20,
+ MEM(
+  TEMP t.21, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.21)
+LABEL L.21
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.18, 
+    CONST 0, 8, false, false),
+   TEMP t.17), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.21, 
+    CONST 0, 8, false, false),
+   TEMP t.20), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.13,
+ ADD(
+  TEMP t.13,
+  TEMP t.15))
+JUMP(
+ NAME L.14)
+LABEL L.22
+MOVE(
+ TEMP Append.append.1.2.i,
+ TEMP t.22)
+MOVE(
+ TEMP t.25,
+ TEMP Append.append.1.result)
+BEQ(
+ TEMP t.25,
+ CONST 0,
+ Append.append.badPtr, L.25)
+LABEL L.25
+MOVE(
+ TEMP t.27,
+ TEMP t.25)
+MOVE(
+ TEMP t.26,
+ ADD(
+  TEMP Append.append.1.n1,
+  TEMP Append.append.1.2.i))
+BLT(
+ TEMP t.26,
+ CONST 0,
+ Append.append.badSub, L.26)
+LABEL L.26
+BGE(
+ TEMP t.26,
+ MEM(
+  TEMP t.27, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.27)
+LABEL L.27
+MOVE(
+ TEMP t.28,
+ TEMP Append.append.1.a2)
+BEQ(
+ TEMP t.28,
+ CONST 0,
+ Append.append.badPtr, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.30,
+ TEMP t.28)
+MOVE(
+ TEMP t.29,
+ TEMP Append.append.1.2.i)
+BLT(
+ TEMP t.29,
+ CONST 0,
+ Append.append.badSub, L.29)
+LABEL L.29
+BGE(
+ TEMP t.29,
+ MEM(
+  TEMP t.30, 
+  CONST 8, 8, false, false),
+ Append.append.badSub, L.30)
+LABEL L.30
+MOVE(
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.27, 
+    CONST 0, 8, false, false),
+   TEMP t.26), 
+  CONST 0, 1, true, false),
+ MEM(
+  ADD(
+   MEM(
+    TEMP t.30, 
+    CONST 0, 8, false, false),
+   TEMP t.29), 
+  CONST 0, 1, true, false))
+MOVE(
+ TEMP t.22,
+ ADD(
+  TEMP t.22,
+  TEMP t.24))
+JUMP(
+ NAME L.23)
+LABEL L.6
+# Instructions:
+	movq %rsi,Append.append.t2	# Append.append.t2 := %rsi 
+	movq %rdi,Append.append.t1	# Append.append.t1 := %rdi 
+L.41:	# <- 
+	movq Append.append.t1,Append.append.1.a1	# Append.append.1.a1 := Append.append.t1 
+	movq Append.append.t2,Append.append.1.a2	# Append.append.1.a2 := Append.append.t2 
+	movq Append.append.1.a1,t.4	# t.4 := Append.append.1.a1 
+	xorq t.40,t.40	# t.40 <- 
+	cmpq t.40,t.4	# <- t.4 t.40 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.7 
+L.7:	# <- 
+	movq 8(t.4),t.41	# t.41 <- t.4 
+	movq t.41,t.42	# t.42 := t.41 
+	subq $1,t.42	# t.42 <- t.42 
+	movq t.42,Append.append.1.n1	# Append.append.1.n1 := t.42 
+	movq Append.append.1.a2,t.5	# t.5 := Append.append.1.a2 
+	xorq t.43,t.43	# t.43 <- 
+	cmpq t.43,t.5	# <- t.5 t.43 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.8 
+L.8:	# <- 
+	movq 8(t.5),t.44	# t.44 <- t.5 
+	movq t.44,t.45	# t.45 := t.44 
+	subq $1,t.45	# t.45 <- t.45 
+	movq t.45,Append.append.1.n2	# Append.append.1.n2 := t.45 
+	movq Append.append.1.n1,t.46	# t.46 := Append.append.1.n1 
+	addq Append.append.1.n2,t.46	# t.46 <- Append.append.1.n2 t.46 
+	movq t.46,t.47	# t.47 := t.46 
+	addq $1,t.47	# t.47 <- t.47 
+	movq t.47,t.6	# t.6 := t.47 
+	xorq t.48,t.48	# t.48 <- 
+	cmpq t.48,t.6	# <- t.6 t.48 
+	jl Append.append.badSub	# <- : goto Append.append.badSub L.9 
+L.9:	# <- 
+	movq t.6,t.7	# t.7 := t.6 
+	movq $16,t.8	# t.8 <- 
+	movq t.8,t.49	# t.49 := t.8 
+	addq t.7,t.49	# t.49 <- t.7 t.49 
+	movq t.49,t.8	# t.8 := t.49 
+	movq t.8,%rdi	# %rdi := t.8 
+	call malloc	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.9	# t.9 := %rax 
+	movq t.9,t.50	# t.50 := t.9 
+	addq $16,t.50	# t.50 <- t.50 
+	movq t.50,0(t.9)	# <- t.9 t.50 
+	movq t.6,8(t.9)	# <- t.9 t.6 
+	movq 8(t.9),t.51	# t.51 <- t.9 
+	movq t.51,t.11	# t.11 := t.51 
+	movq 0(t.9),t.52	# t.52 <- t.9 
+	movq t.52,t.12	# t.12 := t.52 
+	xorq t.10,t.10	# t.10 <- 
+	cmpq t.11,t.10	# <- t.10 t.11 
+	jge L.12	# <- : goto L.12 L.10 
+L.10:	# <- 
+	movq t.12,t.53	# t.53 := t.12 
+	addq t.10,t.53	# t.53 <- t.10 t.53 
+	movb $0,0(t.53)	# <- t.53 
+	movq t.10,t.54	# t.54 := t.10 
+	addq $1,t.54	# t.54 <- t.54 
+	movq t.54,t.10	# t.10 := t.54 
+L.11:	# <- 
+	cmpq t.11,t.10	# <- t.10 t.11 
+	jl L.10	# <- : goto L.10 L.12 
+L.12:	# <- 
+	movq t.9,Append.append.1.result	# Append.append.1.result := t.9 
+	xorq t.13,t.13	# t.13 <- 
+	movq Append.append.1.n1,t.55	# t.55 := Append.append.1.n1 
+	subq $1,t.55	# t.55 <- t.55 
+	movq t.55,t.14	# t.14 := t.55 
+	movq $1,t.15	# t.15 <- 
+L.14:	# <- 
+	cmpq t.14,t.13	# <- t.13 t.14 
+	jle L.13	# <- : goto L.13 L.15 
+L.15:	# <- 
+	xorq t.22,t.22	# t.22 <- 
+	movq Append.append.1.n2,t.56	# t.56 := Append.append.1.n2 
+	subq $1,t.56	# t.56 <- t.56 
+	movq t.56,t.23	# t.23 := t.56 
+	movq $1,t.24	# t.24 <- 
+L.23:	# <- 
+	cmpq t.23,t.22	# <- t.22 t.23 
+	jle L.22	# <- : goto L.22 L.24 
+L.24:	# <- 
+	movq Append.append.1.result,t.31	# t.31 := Append.append.1.result 
+	xorq t.57,t.57	# t.57 <- 
+	cmpq t.57,t.31	# <- t.31 t.57 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.31 
+L.31:	# <- 
+	movq t.31,t.33	# t.33 := t.31 
+	movq Append.append.1.n1,t.58	# t.58 := Append.append.1.n1 
+	addq Append.append.1.n2,t.58	# t.58 <- Append.append.1.n2 t.58 
+	movq t.58,t.32	# t.32 := t.58 
+	xorq t.59,t.59	# t.59 <- 
+	cmpq t.59,t.32	# <- t.32 t.59 
+	jl Append.append.badSub	# <- : goto Append.append.badSub L.32 
+L.32:	# <- 
+	movq 8(t.33),t.60	# t.60 <- t.33 
+	cmpq t.60,t.32	# <- t.32 t.60 
+	jge Append.append.badSub	# <- : goto Append.append.badSub L.33 
+L.33:	# <- 
+	movq 0(t.33),t.61	# t.61 <- t.33 
+	movq t.61,t.62	# t.62 := t.61 
+	addq t.32,t.62	# t.62 <- t.32 t.62 
+	movb $0,0(t.62)	# <- t.62 
+	movq Append.append.1.result,%rax	# %rax := Append.append.1.result 
+	jmp L.6	# <- : goto L.6 
+L.13:	# <- 
+	movq t.13,Append.append.1.1.i	# Append.append.1.1.i := t.13 
+	movq Append.append.1.result,t.16	# t.16 := Append.append.1.result 
+	xorq t.63,t.63	# t.63 <- 
+	cmpq t.63,t.16	# <- t.16 t.63 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.16 
+L.16:	# <- 
+	movq t.16,t.18	# t.18 := t.16 
+	movq Append.append.1.1.i,t.17	# t.17 := Append.append.1.1.i 
+	xorq t.64,t.64	# t.64 <- 
+	cmpq t.64,t.17	# <- t.17 t.64 
+	jl Append.append.badSub	# <- : goto Append.append.badSub L.17 
+L.17:	# <- 
+	movq 8(t.18),t.65	# t.65 <- t.18 
+	cmpq t.65,t.17	# <- t.17 t.65 
+	jge Append.append.badSub	# <- : goto Append.append.badSub L.18 
+L.18:	# <- 
+	movq Append.append.1.a1,t.19	# t.19 := Append.append.1.a1 
+	xorq t.66,t.66	# t.66 <- 
+	cmpq t.66,t.19	# <- t.19 t.66 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.19 
+L.19:	# <- 
+	movq t.19,t.21	# t.21 := t.19 
+	movq Append.append.1.1.i,t.20	# t.20 := Append.append.1.1.i 
+	xorq t.67,t.67	# t.67 <- 
+	cmpq t.67,t.20	# <- t.20 t.67 
+	jl Append.append.badSub	# <- : goto Append.append.badSub L.20 
+L.20:	# <- 
+	movq 8(t.21),t.68	# t.68 <- t.21 
+	cmpq t.68,t.20	# <- t.20 t.68 
+	jge Append.append.badSub	# <- : goto Append.append.badSub L.21 
+L.21:	# <- 
+	movq 0(t.18),t.69	# t.69 <- t.18 
+	movq t.69,t.70	# t.70 := t.69 
+	addq t.17,t.70	# t.70 <- t.17 t.70 
+	movq 0(t.21),t.71	# t.71 <- t.21 
+	movq t.71,t.72	# t.72 := t.71 
+	addq t.20,t.72	# t.72 <- t.20 t.72 
+	movsbq 0(t.72),t.73	# t.73 <- t.72 
+	movq t.73,%rdi	# %rdi := t.73 
+	movb %dil,0(t.70)	# <- t.70 %rdi 
+	movq t.13,t.74	# t.74 := t.13 
+	addq t.15,t.74	# t.74 <- t.15 t.74 
+	movq t.74,t.13	# t.13 := t.74 
+	jmp L.14	# <- : goto L.14 
+L.22:	# <- 
+	movq t.22,Append.append.1.2.i	# Append.append.1.2.i := t.22 
+	movq Append.append.1.result,t.25	# t.25 := Append.append.1.result 
+	xorq t.75,t.75	# t.75 <- 
+	cmpq t.75,t.25	# <- t.25 t.75 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.25 
+L.25:	# <- 
+	movq t.25,t.27	# t.27 := t.25 
+	movq Append.append.1.n1,t.76	# t.76 := Append.append.1.n1 
+	addq Append.append.1.2.i,t.76	# t.76 <- Append.append.1.2.i t.76 
+	movq t.76,t.26	# t.26 := t.76 
+	xorq t.77,t.77	# t.77 <- 
+	cmpq t.77,t.26	# <- t.26 t.77 
+	jl Append.append.badSub	# <- : goto Append.append.badSub L.26 
+L.26:	# <- 
+	movq 8(t.27),t.78	# t.78 <- t.27 
+	cmpq t.78,t.26	# <- t.26 t.78 
+	jge Append.append.badSub	# <- : goto Append.append.badSub L.27 
+L.27:	# <- 
+	movq Append.append.1.a2,t.28	# t.28 := Append.append.1.a2 
+	xorq t.79,t.79	# t.79 <- 
+	cmpq t.79,t.28	# <- t.28 t.79 
+	je Append.append.badPtr	# <- : goto Append.append.badPtr L.28 
+L.28:	# <- 
+	movq t.28,t.30	# t.30 := t.28 
+	movq Append.append.1.2.i,t.29	# t.29 := Append.append.1.2.i 
+	xorq t.80,t.80	# t.80 <- 
+	cmpq t.80,t.29	# <- t.29 t.80 
+	jl Append.append.badSub	# <- : goto Append.append.badSub L.29 
+L.29:	# <- 
+	movq 8(t.30),t.81	# t.81 <- t.30 
+	cmpq t.81,t.29	# <- t.29 t.81 
+	jge Append.append.badSub	# <- : goto Append.append.badSub L.30 
+L.30:	# <- 
+	movq 0(t.27),t.82	# t.82 <- t.27 
+	movq t.82,t.83	# t.83 := t.82 
+	addq t.26,t.83	# t.83 <- t.26 t.83 
+	movq 0(t.30),t.84	# t.84 <- t.30 
+	movq t.84,t.85	# t.85 := t.84 
+	addq t.29,t.85	# t.85 <- t.29 t.85 
+	movsbq 0(t.85),t.86	# t.86 <- t.85 
+	movq t.86,%rdi	# %rdi := t.86 
+	movb %dil,0(t.83)	# <- t.83 %rdi 
+	movq t.22,t.87	# t.87 := t.22 
+	addq t.24,t.87	# t.87 <- t.24 t.87 
+	movq t.87,t.22	# t.22 := t.87 
+	jmp L.23	# <- : goto L.23 
+L.6:	# <- 
+# Control Flow Graph:
+0: Append.append.t2 Append.append.t1 <- %rsi %rdi; goto 1
+1: Append.append.1.a1 Append.append.1.a2 t.4 t.40 <- Append.append.t1 Append.append.t2; goto 2
+2: t.41 t.42 Append.append.1.n1 t.5 t.43 <- t.4 Append.append.1.a2; goto 3
+3: t.44 t.45 Append.append.1.n2 t.46 t.47 t.6 t.48 <- t.5 Append.append.1.n1; goto 4
+4: t.7 t.8 t.49 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.9 t.50 t.51 t.11 t.52 t.12 t.10 <- t.6; goto 7 5
+5: t.53 t.54 t.10 <- t.12 t.10; goto 6
+6: <- t.10 t.11; goto 5 7
+7: Append.append.1.result t.13 t.55 t.14 t.15 <- t.9 Append.append.1.n1; goto 8
+8: <- t.13 t.14; goto 15 9
+9: t.22 t.56 t.23 t.24 <- Append.append.1.n2; goto 10
+10: <- t.22 t.23; goto 22 11
+11: t.31 t.57 <- Append.append.1.result; goto 12
+12: t.33 t.58 t.32 t.59 <- t.31 Append.append.1.n1 Append.append.1.n2; goto 13
+13: t.60 <- t.33 t.32; goto 14
+14: t.61 t.62 %rax <- t.33 t.32 Append.append.1.result; goto 29
+15: Append.append.1.1.i t.16 t.63 <- t.13 Append.append.1.result; goto 16
+16: t.18 t.17 t.64 <- t.16 Append.append.1.1.i; goto 17
+17: t.65 <- t.18 t.17; goto 18
+18: t.19 t.66 <- Append.append.1.a1; goto 19
+19: t.21 t.20 t.67 <- t.19 Append.append.1.1.i; goto 20
+20: t.68 <- t.21 t.20; goto 21
+21: t.69 t.70 t.71 t.72 t.73 %rdi t.74 t.13 <- t.18 t.17 t.21 t.20 t.13 t.15; goto 8
+22: Append.append.1.2.i t.25 t.75 <- t.22 Append.append.1.result; goto 23
+23: t.27 t.76 t.26 t.77 <- t.25 Append.append.1.n1 Append.append.1.2.i; goto 24
+24: t.78 <- t.27 t.26; goto 25
+25: t.28 t.79 <- Append.append.1.a2; goto 26
+26: t.30 t.29 t.80 <- t.28 Append.append.1.2.i; goto 27
+27: t.81 <- t.30 t.29; goto 28
+28: t.82 t.83 t.84 t.85 t.86 %rdi t.87 t.22 <- t.27 t.26 t.30 t.29 t.22 t.24; goto 10
+29: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Append.append.t2: Append.append.t1 %rsp %rbp %rdi Append.append.1.a1 
+Append.append.t1: Append.append.t2 %rsp %rbp 
+Append.append.1.a1: t.40 Append.append.1.a2 %rsp %rbp Append.append.t2 t.43 t.5 Append.append.1.n1 t.42 t.41 t.48 t.6 t.47 t.46 Append.append.1.n2 t.45 t.44 t.10 t.12 t.52 t.11 t.51 t.50 t.9 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.8 t.49 t.7 t.54 t.53 t.15 t.14 t.55 t.13 Append.append.1.result t.63 t.16 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.67 t.20 t.21 t.68 t.74 t.73 t.72 t.71 t.70 t.69 
+Append.append.1.a2: t.40 t.4 Append.append.1.a1 %rsp %rbp t.43 Append.append.1.n1 t.42 t.41 t.48 t.6 t.47 t.46 Append.append.1.n2 t.45 t.44 t.10 t.12 t.52 t.11 t.51 t.50 t.9 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.8 t.49 t.7 t.54 t.53 t.15 t.14 t.55 t.13 Append.append.1.result t.24 t.23 t.56 t.22 t.63 t.16 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.74 t.73 t.72 t.71 t.70 t.69 t.75 t.25 Append.append.1.2.i t.77 t.26 t.76 t.27 t.78 t.79 t.80 t.29 t.30 t.81 t.87 t.86 t.85 t.84 t.83 t.82 
+t.4: t.40 Append.append.1.a2 %rsp %rbp 
+t.40: t.4 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.41: Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.42: Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+Append.append.1.n1: t.43 t.5 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.48 t.6 t.47 t.46 Append.append.1.n2 t.45 t.44 t.10 t.12 t.52 t.11 t.51 t.50 t.9 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.8 t.49 t.7 t.54 t.53 t.15 t.14 t.55 t.13 Append.append.1.result t.24 t.23 t.56 t.22 t.57 t.31 t.33 t.63 t.16 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.74 t.73 t.72 t.71 t.70 t.69 t.75 t.25 Append.append.1.2.i t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.80 t.29 t.30 t.81 t.87 t.86 t.85 t.84 t.83 t.82 
+t.5: t.43 Append.append.1.n1 Append.append.1.a1 %rsp %rbp 
+t.43: t.5 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.44: Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.45: Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+Append.append.1.n2: t.48 t.6 t.47 t.46 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.10 t.12 t.52 t.11 t.51 t.50 t.9 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.8 t.49 t.7 t.54 t.53 t.15 t.14 t.55 t.13 Append.append.1.result t.24 t.23 t.56 t.22 t.57 t.31 t.58 t.33 t.63 t.16 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.74 t.73 t.72 t.71 t.70 t.69 t.75 t.25 Append.append.1.2.i t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.80 t.29 t.30 t.81 t.87 t.86 t.85 t.84 t.83 t.82 
+t.46: Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.47: Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.6: t.48 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.50 t.9 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.8 t.49 
+t.48: t.6 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.7: t.49 t.8 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.8: Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.6 t.7 
+t.49: Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.6 t.7 
+t.9: t.10 t.12 t.52 t.11 t.51 t.50 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.6 t.54 t.53 
+t.50: t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.6 
+t.51: t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.11: t.10 t.12 t.52 t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.54 t.53 
+t.52: t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 t.11 %rsp %rbp 
+t.12: t.10 t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 t.11 %rsp %rbp t.54 t.53 
+t.10: t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 t.12 t.11 %rsp %rbp t.53 
+t.53: t.11 t.12 t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.10 
+t.54: t.11 t.12 t.9 Append.append.1.n1 Append.append.1.n2 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+Append.append.1.result: t.15 t.14 t.55 t.13 Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.24 t.23 t.56 t.22 t.57 t.59 t.32 t.58 t.33 t.60 t.62 t.61 t.63 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.74 %rdi t.73 t.72 t.71 t.70 t.69 t.75 Append.append.1.2.i t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.80 t.29 t.30 t.81 t.87 t.86 t.85 t.84 t.83 t.82 
+t.13: t.15 t.14 t.55 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.63 t.16 t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 %rdi t.73 t.72 t.71 t.70 t.69 
+t.55: t.13 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.14: t.15 t.13 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.63 t.16 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.74 %rdi t.73 t.72 t.71 t.70 t.69 
+t.15: t.13 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.63 t.16 Append.append.1.1.i t.64 t.17 t.18 t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.74 %rdi t.73 t.72 t.71 t.70 t.69 
+t.22: t.24 t.23 t.56 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp t.75 t.25 t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.80 t.29 t.30 t.81 %rdi t.86 t.85 t.84 t.83 t.82 
+t.56: t.22 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp 
+t.23: t.24 t.22 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp t.75 t.25 Append.append.1.2.i t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.80 t.29 t.30 t.81 t.87 %rdi t.86 t.85 t.84 t.83 t.82 
+t.24: t.22 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp t.75 t.25 Append.append.1.2.i t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.80 t.29 t.30 t.81 t.87 %rdi t.86 t.85 t.84 t.83 t.82 
+t.31: t.57 Append.append.1.n1 Append.append.1.n2 %rsp %rbp 
+t.57: t.31 Append.append.1.n1 Append.append.1.n2 Append.append.1.result %rsp %rbp 
+t.33: t.59 t.32 t.58 Append.append.1.result %rsp %rbp Append.append.1.n2 Append.append.1.n1 t.60 
+t.58: t.33 Append.append.1.result %rsp %rbp Append.append.1.n2 
+t.32: t.59 t.33 Append.append.1.result %rsp %rbp t.60 t.62 t.61 
+t.59: t.33 t.32 Append.append.1.result %rsp %rbp 
+t.60: t.33 t.32 Append.append.1.result %rsp %rbp 
+t.61: %rsp %rbp Append.append.1.result t.32 
+t.62: %rsp %rbp Append.append.1.result t.32 
+Append.append.1.1.i: t.63 t.16 Append.append.1.a1 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp t.64 t.18 t.65 t.66 t.19 t.21 
+t.16: t.63 Append.append.1.1.i Append.append.1.a1 t.13 t.15 t.14 Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp 
+t.63: t.16 Append.append.1.1.i Append.append.1.a1 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp 
+t.18: t.64 t.17 Append.append.1.a1 Append.append.1.1.i t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp t.65 t.66 t.19 t.67 t.20 t.21 t.68 
+t.17: t.64 t.18 Append.append.1.a1 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp t.65 t.66 t.19 t.67 t.20 t.21 t.68 t.70 t.69 
+t.64: t.18 t.17 Append.append.1.a1 Append.append.1.1.i t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp 
+t.65: Append.append.1.a1 Append.append.1.1.i t.18 t.17 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp 
+t.19: t.66 Append.append.1.1.i t.18 t.17 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 %rsp %rbp 
+t.66: t.19 Append.append.1.1.i t.18 t.17 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.21: t.67 t.20 t.18 t.17 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp Append.append.1.1.i t.68 t.70 t.69 
+t.20: t.67 t.21 t.18 t.17 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp t.68 t.72 t.71 t.70 t.69 
+t.67: t.21 t.20 t.18 t.17 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.68: t.18 t.17 t.21 t.20 t.13 t.15 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 %rsp %rbp 
+t.69: t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 t.15 %rsp %rbp t.13 t.20 t.21 t.17 
+t.70: %rdi t.73 t.72 t.71 t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 t.15 %rsp %rbp t.13 t.20 t.21 t.17 
+t.71: t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 t.15 %rsp %rbp t.13 t.70 t.20 
+t.72: t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 t.15 %rsp %rbp t.13 t.70 t.20 
+t.73: t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 t.15 %rsp %rbp t.13 t.70 
+t.74: t.14 Append.append.1.result Append.append.1.n2 Append.append.1.n1 Append.append.1.a2 Append.append.1.a1 t.15 %rsp %rbp 
+Append.append.1.2.i: t.75 t.25 Append.append.1.n1 Append.append.1.a2 t.24 t.23 Append.append.1.result Append.append.1.n2 %rsp %rbp t.77 t.26 t.76 t.27 t.78 t.79 t.28 t.30 
+t.25: t.75 Append.append.1.n1 Append.append.1.2.i Append.append.1.a2 t.22 t.24 t.23 Append.append.1.n2 %rsp %rbp 
+t.75: t.25 Append.append.1.n1 Append.append.1.2.i Append.append.1.a2 t.22 t.24 t.23 Append.append.1.result Append.append.1.n2 %rsp %rbp 
+t.27: t.77 t.26 t.76 Append.append.1.a2 Append.append.1.2.i t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.n2 %rsp %rbp t.78 t.79 t.28 t.80 t.29 t.30 t.81 
+t.76: t.27 Append.append.1.a2 Append.append.1.2.i t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.n2 %rsp %rbp 
+t.26: t.77 t.27 Append.append.1.a2 Append.append.1.2.i t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.n2 %rsp %rbp t.78 t.79 t.28 t.80 t.29 t.30 t.81 t.83 t.82 
+t.77: t.27 t.26 Append.append.1.a2 Append.append.1.2.i t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.n2 %rsp %rbp 
+t.78: Append.append.1.a2 Append.append.1.2.i t.27 t.26 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.n2 %rsp %rbp 
+t.28: t.79 Append.append.1.2.i t.27 t.26 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.n2 %rsp %rbp 
+t.79: t.28 Append.append.1.2.i t.27 t.26 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp 
+t.30: t.80 t.29 t.27 t.26 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp Append.append.1.2.i t.81 t.83 t.82 
+t.29: t.80 t.30 t.27 t.26 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp t.81 t.85 t.84 t.83 t.82 
+t.80: t.30 t.29 t.27 t.26 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp 
+t.81: t.27 t.26 t.30 t.29 t.22 t.24 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 Append.append.1.n2 %rsp %rbp 
+t.82: t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 t.24 Append.append.1.n2 %rsp %rbp t.22 t.29 t.30 t.26 
+t.83: %rdi t.86 t.85 t.84 t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 t.24 Append.append.1.n2 %rsp %rbp t.22 t.29 t.30 t.26 
+t.84: t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 t.24 Append.append.1.n2 %rsp %rbp t.22 t.83 t.29 
+t.85: t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 t.24 Append.append.1.n2 %rsp %rbp t.22 t.83 t.29 
+t.86: t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 t.24 Append.append.1.n2 %rsp %rbp t.22 t.83 
+t.87: t.23 Append.append.1.result Append.append.1.n1 Append.append.1.a2 t.24 Append.append.1.n2 %rsp %rbp 
+t.83 <= t.82
+t.85 <= t.84
+%rdi <= t.86
+t.87 <= t.22
+t.22 <= t.87
+t.30 <= t.28
+t.29 <= Append.append.1.2.i
+t.28 <= Append.append.1.a2
+t.27 <= t.25
+t.76 <= Append.append.1.n1
+t.26 <= t.76
+Append.append.1.2.i <= t.22
+t.25 <= Append.append.1.result
+t.70 <= t.69
+t.72 <= t.71
+%rdi <= t.73
+t.74 <= t.13
+t.13 <= t.74
+t.21 <= t.19
+t.20 <= Append.append.1.1.i
+t.19 <= Append.append.1.a1
+t.18 <= t.16
+t.17 <= Append.append.1.1.i
+Append.append.1.1.i <= t.13
+t.16 <= Append.append.1.result
+t.62 <= t.61
+%rax <= Append.append.1.result
+t.33 <= t.31
+t.58 <= Append.append.1.n1
+t.32 <= t.58
+t.31 <= Append.append.1.result
+t.56 <= Append.append.1.n2
+t.23 <= t.56
+Append.append.1.result <= t.9
+t.55 <= Append.append.1.n1
+t.14 <= t.55
+t.53 <= t.12
+t.54 <= t.10
+t.10 <= t.54
+t.7 <= t.6
+t.49 <= t.8
+t.8 <= t.49
+%rdi <= t.8
+t.9 <= %rax
+t.50 <= t.9
+t.11 <= t.51
+t.12 <= t.52
+t.45 <= t.44
+Append.append.1.n2 <= t.45
+t.46 <= Append.append.1.n1
+t.47 <= t.46
+t.6 <= t.47
+t.42 <= t.41
+Append.append.1.n1 <= t.42
+t.5 <= Append.append.1.a2
+Append.append.1.a1 <= Append.append.t1
+Append.append.1.a2 <= Append.append.t2
+t.4 <= Append.append.1.a1
+Append.append.t2 <= %rsi
+Append.append.t1 <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Append.append.t2->%rcx
+Append.append.t1->%rax
+Append.append.1.a1->%rbx
+Append.append.1.a2->%r12
+t.4->%rbx
+t.40->%rax
+t.41->%rax
+t.42->%rax
+Append.append.1.n1->%r13
+t.5->%rcx
+t.43->%rax
+t.44->%rax
+t.45->%rax
+Append.append.1.n2->%r14
+t.46->%rax
+t.47->%rax
+t.6->%r15
+t.48->%rax
+t.7->%rcx
+t.8->%rax
+t.49->%rax
+t.9->%rdi
+t.50->%rax
+t.51->%rax
+t.11->%rsi
+t.52->%rax
+t.12->%rdx
+t.10->%rcx
+t.53->%rax
+t.54->%rax
+Append.append.1.result->%rax
+t.13->%rsi
+t.55->%rcx
+t.14->%rcx
+t.15->%rdx
+t.22->%rdx
+t.56->%rbx
+t.23->%rcx
+t.24->%rbx
+t.31->%rax
+t.57->%rbx
+t.33->%rdx
+t.58->%rbx
+t.32->%rcx
+t.59->%rbx
+t.60->%rbx
+t.61->%rbx
+t.62->%rbx
+Append.append.1.1.i->%rsi
+t.16->%rax
+t.63->%rdi
+t.18->%r8
+t.17->%r10
+t.64->%rdi
+t.65->%rdi
+t.19->%rbx
+t.66->%rdi
+t.21->%r9
+t.20->%rdi
+t.67->%r11
+t.68->%r11
+t.69->%r8
+t.70->%r8
+t.71->%r9
+t.72->%r9
+t.73->%rdi
+t.74->%rsi
+Append.append.1.2.i->%rdx
+t.25->%rax
+t.75->%rsi
+t.27->%rsi
+t.76->%rdi
+t.26->%r9
+t.77->%rdi
+t.78->%rdi
+t.28->%r8
+t.79->%rdi
+t.30->%r8
+t.29->%rdi
+t.80->%r10
+t.81->%r10
+t.82->%rsi
+t.83->%rsi
+t.84->%r8
+t.85->%r8
+t.86->%rdi
+t.87->%rdx
+# Assembly code:
+	.text
+Append.append:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $48,%rsp
+	movq %r15, -40(%rbp)
+	movq %r14, -32(%rbp)
+	movq %r13, -24(%rbp)
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rsi,%rcx
+	movq %rdi,%rax
+L.41:
+	movq %rax,%rbx
+	movq %rcx,%r12
+#	movq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	je Append.append.badPtr
+L.7:
+	movq 8(%rbx),%rax
+#	movq %rax,%rax
+	subq $1,%rax
+	movq %rax,%r13
+	movq %r12,%rcx
+	xorq %rax,%rax
+	cmpq %rax,%rcx
+	je Append.append.badPtr
+L.8:
+	movq 8(%rcx),%rax
+#	movq %rax,%rax
+	subq $1,%rax
+	movq %rax,%r14
+	movq %r13,%rax
+	addq %r14,%rax
+#	movq %rax,%rax
+	addq $1,%rax
+	movq %rax,%r15
+	xorq %rax,%rax
+	cmpq %rax,%r15
+	jl Append.append.badSub
+L.9:
+	movq %r15,%rcx
+	movq $16,%rax
+#	movq %rax,%rax
+	addq %rcx,%rax
+#	movq %rax,%rax
+	movq %rax,%rdi
+	call malloc
+	movq %rax,%rdi
+	movq %rdi,%rax
+	addq $16,%rax
+	movq %rax,0(%rdi)
+	movq %r15,8(%rdi)
+	movq 8(%rdi),%rax
+	movq %rax,%rsi
+	movq 0(%rdi),%rax
+	movq %rax,%rdx
+	xorq %rcx,%rcx
+	cmpq %rsi,%rcx
+	jge L.12
+L.10:
+	movq %rdx,%rax
+	addq %rcx,%rax
+	movb $0,0(%rax)
+	movq %rcx,%rax
+	addq $1,%rax
+	movq %rax,%rcx
+L.11:
+	cmpq %rsi,%rcx
+	jl L.10
+L.12:
+	movq %rdi,%rax
+	xorq %rsi,%rsi
+	movq %r13,%rcx
+	subq $1,%rcx
+#	movq %rcx,%rcx
+	movq $1,%rdx
+L.14:
+	cmpq %rcx,%rsi
+	jle L.13
+L.15:
+	xorq %rdx,%rdx
+	movq %r14,%rbx
+	subq $1,%rbx
+	movq %rbx,%rcx
+	movq $1,%rbx
+L.23:
+	cmpq %rcx,%rdx
+	jle L.22
+L.24:
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je Append.append.badPtr
+L.31:
+	movq %rax,%rdx
+	movq %r13,%rbx
+	addq %r14,%rbx
+	movq %rbx,%rcx
+	xorq %rbx,%rbx
+	cmpq %rbx,%rcx
+	jl Append.append.badSub
+L.32:
+	movq 8(%rdx),%rbx
+	cmpq %rbx,%rcx
+	jge Append.append.badSub
+L.33:
+	movq 0(%rdx),%rbx
+#	movq %rbx,%rbx
+	addq %rcx,%rbx
+	movb $0,0(%rbx)
+#	movq %rax,%rax
+	jmp L.6
+L.13:
+#	movq %rsi,%rsi
+#	movq %rax,%rax
+	xorq %rdi,%rdi
+	cmpq %rdi,%rax
+	je Append.append.badPtr
+L.16:
+	movq %rax,%r8
+	movq %rsi,%r10
+	xorq %rdi,%rdi
+	cmpq %rdi,%r10
+	jl Append.append.badSub
+L.17:
+	movq 8(%r8),%rdi
+	cmpq %rdi,%r10
+	jge Append.append.badSub
+L.18:
+#	movq %rbx,%rbx
+	xorq %rdi,%rdi
+	cmpq %rdi,%rbx
+	je Append.append.badPtr
+L.19:
+	movq %rbx,%r9
+	movq %rsi,%rdi
+	xorq %r11,%r11
+	cmpq %r11,%rdi
+	jl Append.append.badSub
+L.20:
+	movq 8(%r9),%r11
+	cmpq %r11,%rdi
+	jge Append.append.badSub
+L.21:
+	movq 0(%r8),%r8
+#	movq %r8,%r8
+	addq %r10,%r8
+	movq 0(%r9),%r9
+#	movq %r9,%r9
+	addq %rdi,%r9
+	movsbq 0(%r9),%rdi
+#	movq %rdi,%rdi
+	movb %dil,0(%r8)
+#	movq %rsi,%rsi
+	addq %rdx,%rsi
+#	movq %rsi,%rsi
+	jmp L.14
+L.22:
+#	movq %rdx,%rdx
+#	movq %rax,%rax
+	xorq %rsi,%rsi
+	cmpq %rsi,%rax
+	je Append.append.badPtr
+L.25:
+	movq %rax,%rsi
+	movq %r13,%rdi
+	addq %rdx,%rdi
+	movq %rdi,%r9
+	xorq %rdi,%rdi
+	cmpq %rdi,%r9
+	jl Append.append.badSub
+L.26:
+	movq 8(%rsi),%rdi
+	cmpq %rdi,%r9
+	jge Append.append.badSub
+L.27:
+	movq %r12,%r8
+	xorq %rdi,%rdi
+	cmpq %rdi,%r8
+	je Append.append.badPtr
+L.28:
+#	movq %r8,%r8
+	movq %rdx,%rdi
+	xorq %r10,%r10
+	cmpq %r10,%rdi
+	jl Append.append.badSub
+L.29:
+	movq 8(%r8),%r10
+	cmpq %r10,%rdi
+	jge Append.append.badSub
+L.30:
+	movq 0(%rsi),%rsi
+#	movq %rsi,%rsi
+	addq %r9,%rsi
+	movq 0(%r8),%r8
+#	movq %r8,%r8
+	addq %rdi,%r8
+	movsbq 0(%r8),%rdi
+#	movq %rdi,%rdi
+	movb %dil,0(%rsi)
+#	movq %rdx,%rdx
+	addq %rbx,%rdx
+#	movq %rdx,%rdx
+	jmp L.23
+L.6:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	movq -24(%rbp),%r13
+	movq -32(%rbp),%r14
+	movq -40(%rbp),%r15
+	addq $48,%rsp
+	popq %rbp
+	ret
+Append.append.badPtr:
+	call badPtr
+Append.append.badSub:
+	call badSub
+END Append.append
+	.data
+	.balign 8
+L.34:
+	.byte 72
+	.byte 101
+	.byte 108
+	.byte 108
+	.byte 111
+	.byte 0
+	.data
+	.balign 8
+L.35:
+	.quad L.34
+	.quad 6
+	.data
+	.balign 8
+L.36:
+	.byte 32
+	.byte 0
+	.data
+	.balign 8
+L.37:
+	.quad L.36
+	.quad 2
+	.data
+	.balign 8
+L.38:
+	.byte 87
+	.byte 111
+	.byte 114
+	.byte 108
+	.byte 100
+	.byte 33
+	.byte 0
+	.data
+	.balign 8
+L.39:
+	.quad L.38
+	.quad 7
+PROCEDURE Append
+# Trees:
+MOVE(
+ TEMP Append.6.t,
+ NAME L.35),
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.37)),
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.39)),
+EXP(
+ CALL(
+  NAME Append.println,
+  CONST 0,
+  TEMP Append.6.t))
+# Linearized (trees):
+MOVE(
+ TEMP Append.6.t,
+ NAME L.35)
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.37))
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.39))
+MOVE(
+ TEMP t.88,
+ CALL(
+  NAME Append.println,
+  CONST 0,
+  TEMP Append.6.t))
+EXP(
+ TEMP t.88)
+# Basic Blocks:
+# 0
+LABEL L.42
+MOVE(
+ TEMP Append.6.t,
+ NAME L.35)
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.37))
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.39))
+MOVE(
+ TEMP t.88,
+ CALL(
+  NAME Append.println,
+  CONST 0,
+  TEMP Append.6.t))
+EXP(
+ TEMP t.88)
+# Trace Scheduled:
+LABEL L.42
+MOVE(
+ TEMP Append.6.t,
+ NAME L.35)
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.37))
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.39))
+MOVE(
+ TEMP t.88,
+ CALL(
+  NAME Append.println,
+  CONST 0,
+  TEMP Append.6.t))
+EXP(
+ TEMP t.88)
+# With procedure entry/exit:
+LABEL L.42
+MOVE(
+ TEMP Append.6.t,
+ NAME L.35)
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.37))
+MOVE(
+ TEMP Append.6.t,
+ CALL(
+  NAME Append.append,
+  CONST 0,
+  TEMP Append.6.t,
+  NAME L.39))
+MOVE(
+ TEMP t.88,
+ CALL(
+  NAME Append.println,
+  CONST 0,
+  TEMP Append.6.t))
+EXP(
+ TEMP t.88)
+# Instructions:
+L.42:	# <- 
+	leaq L.35(%rip),t.89	# t.89 <- 
+	movq t.89,Append.6.t	# Append.6.t := t.89 
+	movq Append.6.t,%rdi	# %rdi := Append.6.t 
+	leaq L.37(%rip),t.90	# t.90 <- 
+	movq t.90,%rsi	# %rsi := t.90 
+	call Append.append	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,Append.6.t	# Append.6.t := %rax 
+	movq Append.6.t,%rdi	# %rdi := Append.6.t 
+	leaq L.39(%rip),t.91	# t.91 <- 
+	movq t.91,%rsi	# %rsi := t.91 
+	call Append.append	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,Append.6.t	# Append.6.t := %rax 
+	movq Append.6.t,%rdi	# %rdi := Append.6.t 
+	call Append.println	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.88	# t.88 := %rax 
+# Control Flow Graph:
+0: t.89 Append.6.t %rdi t.90 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.91 t.88 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.89: %rsp %rbp 
+Append.6.t: %rsp %rbp 
+t.90: %rsp %rbp %rdi 
+t.91: %rsp %rbp %rdi 
+t.88: %rsp %rbp 
+Append.6.t <= t.89
+%rdi <= Append.6.t
+%rsi <= t.90
+Append.6.t <= %rax
+%rdi <= Append.6.t
+%rsi <= t.91
+Append.6.t <= %rax
+%rdi <= Append.6.t
+t.88 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.89->%rax
+Append.6.t->%rax
+t.90->%rax
+t.91->%rax
+t.88->%rax
+# Assembly code:
+	.text
+Append:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+L.42:
+	leaq L.35(%rip),%rax
+#	movq %rax,%rax
+	movq %rax,%rdi
+	leaq L.37(%rip),%rax
+	movq %rax,%rsi
+	call Append.append
+#	movq %rax,%rax
+	movq %rax,%rdi
+	leaq L.39(%rip),%rax
+	movq %rax,%rsi
+	call Append.append
+#	movq %rax,%rax
+	movq %rax,%rdi
+	call Append.println
+#	movq %rax,%rax
+#	returnSink
+	addq $16,%rsp
+	popq %rbp
+	ret
+END Append

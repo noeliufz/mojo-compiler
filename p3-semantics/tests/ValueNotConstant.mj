@@ -1,0 +1,2 @@
+const v = x;
+var x: int;

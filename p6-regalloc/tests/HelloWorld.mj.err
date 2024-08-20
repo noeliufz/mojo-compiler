@@ -1,0 +1,2 @@
+ line 4, column 19: warning: Loophole: unsafe operation
+ line 5, column 8: warning: unsafe '&'

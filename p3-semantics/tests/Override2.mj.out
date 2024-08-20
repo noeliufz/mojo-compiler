@@ -1,0 +1,34 @@
+BEGIN _BUILTIN
+_BUILTIN.int=int
+_BUILTIN.bool={false:bool=0, true:bool=1}
+_BUILTIN.false:bool=0
+_BUILTIN.true:bool=1
+_BUILTIN.byte=[-128..127]
+_BUILTIN.char={}
+_BUILTIN.Null=ref null
+_BUILTIN.null:Null=0
+_BUILTIN.Refany=ref null
+_BUILTIN.Address=ref null
+_BUILTIN.Root=null object {}
+_BUILTIN.Text=ref null
+_BUILTIN.First:(...)
+_BUILTIN.Last:(...)
+_BUILTIN.Ord:(...)
+_BUILTIN.Val:(...)
+_BUILTIN.New:(...)
+_BUILTIN.Number:(...)
+_BUILTIN.Loophole:(...)
+BEGIN Override2
+Override2.A=Root object {
+0: m:()=Override2.P:(VALUE a:A)
+}
+Override2.B=A object {
+0: m:()=Override2.Q:(VALUE a:A)
+}
+Override2.C=A object {
+4: m:()=Override2.Q:(VALUE a:A)
+}
+Override2.P:(VALUE a:A)
+Override2.Q:(VALUE a:A)
+END Override2
+END _BUILTIN

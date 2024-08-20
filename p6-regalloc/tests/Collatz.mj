@@ -1,0 +1,38 @@
+proc printf(s: Address; i: int);
+
+proc CString(t: Text): Address {
+    var a = Loophole(t, ref array of byte);
+    return &a[0];
+}
+
+type Collatz = object {
+  value: int;
+  init(i: int): Collatz = Init;
+  steps(n: int): int = Steps;
+  single_step(): int = SingleStep;
+};
+
+proc Init(this: Collatz; i: int): Collatz {
+  this.value = i;
+  return this;
+}
+
+proc Steps(this: Collatz; max: int): int {
+  var result = 0;
+  loop {
+    result = result + 1;
+    if this.single_step() == 1 then break;
+    if result >= max then break;
+  }
+  return result;
+}
+
+proc SingleStep(this: Collatz): int {
+  if this.value % 2 == 0 then this.value = this.value / 2;
+  else this.value = (3 * this.value) + 1;
+  return this.value;
+}
+
+{
+  printf(CString("%d\n"), New(Collatz).init(23).steps(4));
+}

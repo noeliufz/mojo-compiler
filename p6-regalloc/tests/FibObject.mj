@@ -1,0 +1,62 @@
+proc printf(s: Address; n1, n2: int);
+proc getchar(): int;
+
+proc Init(self: Fib) : Fib {
+    self.count = 1;
+    self.a = 0;
+    self.b = 1;
+    return self;
+}
+
+proc Next(self: Fib) : Fib {
+    var temp : int;
+    loop {break;}
+    temp = self.b;
+    self.b = self.a + self.b;
+    self.a = temp;
+    self.count = self.count + 1;
+    return self;
+}
+
+proc NextN(self: Fib; n: int) : Fib {
+    var res: Fib;
+    while (n > 0) loop {
+        n = n - 1;
+        res = self.next();
+    }
+    return res;
+}
+
+proc CString(t: Text): Address {
+    var a = Loophole(t, ref array of byte);
+    return &a[0];
+}
+
+proc Print(self: Fib) {
+    printf(CString("Fib %ld is %ld\n"), self.count, self.b);
+}
+
+proc GetNum(self : Fib): int {
+    var n: int = 0;
+    printf(CString("Number to calculate fib of: "), 0, 0);
+    loop {
+        var c: int = getchar();
+        if c == Ord('\n') || c == Ord('\r') then break;
+        n = n * 10 + (c - Ord('0'));
+    }
+    return n;
+}
+
+type Fib = object {
+    count, a, b: int;
+    init() : Fib = Init;
+    next() : Fib = Next;
+    nextN(n: int) : Fib = NextN;
+    getNum() : int = GetNum;
+    print() = Print;
+};
+
+{
+    var f = New(Fib);
+    f.init().nextN(f.getNum()-1).print();
+}

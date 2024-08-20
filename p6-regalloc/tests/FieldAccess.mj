@@ -1,0 +1,6 @@
+var r: record { x: int; r: record { y: int }; z: int };
+{
+  r.x = 1;
+  r.r.y = 2;
+  r.z = 3;
+}

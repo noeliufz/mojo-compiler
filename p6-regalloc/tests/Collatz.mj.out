@@ -1,0 +1,2131 @@
+	.data
+	.balign 8
+Collatz.Collatz:
+	.quad Collatz.Init
+	.quad Collatz.Steps
+	.quad Collatz.SingleStep
+PROCEDURE Collatz.CString
+# Trees:
+MOVE(
+ TEMP Collatz.CString.1.a,
+ TEMP Collatz.CString.t),
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.3,
+   ESEQ(
+    MOVE(
+     TEMP t.1,
+     TEMP Collatz.CString.1.a),
+    BEQ(
+     TEMP t.1,
+     CONST 0,
+     Collatz.CString.badPtr, L.3),
+    LABEL L.3,
+    TEMP t.1)),
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   ESEQ(
+    MOVE(
+     TEMP t.2,
+     CONST 0),
+    BLT(
+     TEMP t.2,
+     CONST 0,
+     Collatz.CString.badSub, L.4),
+    LABEL L.4,
+    BGE(
+     TEMP t.2,
+     MEM(
+      TEMP t.3, 
+      CONST 8, 8, false, false),
+     Collatz.CString.badSub, L.5),
+    LABEL L.5,
+    TEMP t.2)))),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP Collatz.CString.1.a,
+ TEMP Collatz.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP Collatz.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Collatz.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Collatz.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Collatz.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.28
+MOVE(
+ TEMP Collatz.CString.1.a,
+ TEMP Collatz.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP Collatz.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Collatz.CString.badPtr, L.3)
+# 1
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Collatz.CString.badSub, L.4)
+# 2
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Collatz.CString.badSub, L.5)
+# 3
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.28
+MOVE(
+ TEMP Collatz.CString.1.a,
+ TEMP Collatz.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP Collatz.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Collatz.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Collatz.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Collatz.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP Collatz.CString.t,
+ TEMP %rdi)
+LABEL L.28
+MOVE(
+ TEMP Collatz.CString.1.a,
+ TEMP Collatz.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP Collatz.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ Collatz.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ Collatz.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ Collatz.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.0
+# Instructions:
+	movq %rdi,Collatz.CString.t	# Collatz.CString.t := %rdi 
+L.28:	# <- 
+	movq Collatz.CString.t,Collatz.CString.1.a	# Collatz.CString.1.a := Collatz.CString.t 
+	movq Collatz.CString.1.a,t.1	# t.1 := Collatz.CString.1.a 
+	xorq t.14,t.14	# t.14 <- 
+	cmpq t.14,t.1	# <- t.1 t.14 
+	je Collatz.CString.badPtr	# <- : goto Collatz.CString.badPtr L.3 
+L.3:	# <- 
+	movq t.1,t.3	# t.3 := t.1 
+	xorq t.2,t.2	# t.2 <- 
+	xorq t.15,t.15	# t.15 <- 
+	cmpq t.15,t.2	# <- t.2 t.15 
+	jl Collatz.CString.badSub	# <- : goto Collatz.CString.badSub L.4 
+L.4:	# <- 
+	movq 8(t.3),t.16	# t.16 <- t.3 
+	cmpq t.16,t.2	# <- t.2 t.16 
+	jge Collatz.CString.badSub	# <- : goto Collatz.CString.badSub L.5 
+L.5:	# <- 
+	movq 0(t.3),t.17	# t.17 <- t.3 
+	movq t.17,t.18	# t.18 := t.17 
+	addq t.2,t.18	# t.18 <- t.2 t.18 
+	movq t.18,%rax	# %rax := t.18 
+L.0:	# <- 
+# Control Flow Graph:
+0: Collatz.CString.t <- %rdi; goto 1
+1: Collatz.CString.1.a t.1 t.14 <- Collatz.CString.t; goto 2
+2: t.3 t.2 t.15 <- t.1; goto 3
+3: t.16 <- t.3 t.2; goto 4
+4: t.17 t.18 %rax <- t.3 t.2; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Collatz.CString.t: %rsp %rbp 
+Collatz.CString.1.a: %rsp %rbp 
+t.1: t.14 %rsp %rbp 
+t.14: t.1 %rsp %rbp 
+t.3: t.15 t.2 %rsp %rbp t.16 
+t.2: t.15 t.3 %rsp %rbp t.16 t.18 t.17 
+t.15: t.3 t.2 %rsp %rbp 
+t.16: t.3 t.2 %rsp %rbp 
+t.17: %rsp %rbp t.2 
+t.18: %rsp %rbp t.2 
+t.18 <= t.17
+%rax <= t.18
+t.3 <= t.1
+Collatz.CString.1.a <= Collatz.CString.t
+t.1 <= Collatz.CString.1.a
+Collatz.CString.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Collatz.CString.t->%rdi
+Collatz.CString.1.a->%rdi
+t.1->%rdi
+t.14->%rax
+t.3->%rdi
+t.2->%rbx
+t.15->%rax
+t.16->%rax
+t.17->%rax
+t.18->%rax
+# Assembly code:
+	.text
+Collatz.CString:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.28:
+#	movq %rdi,%rdi
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je Collatz.CString.badPtr
+L.3:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl Collatz.CString.badSub
+L.4:
+	movq 8(%rdi),%rax
+	cmpq %rax,%rbx
+	jge Collatz.CString.badSub
+L.5:
+	movq 0(%rdi),%rax
+#	movq %rax,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+Collatz.CString.badPtr:
+	call badPtr
+Collatz.CString.badSub:
+	call badSub
+END Collatz.CString
+PROCEDURE Collatz.Init
+# Trees:
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.4,
+    TEMP Collatz.Init.this),
+   BEQ(
+    TEMP t.4,
+    CONST 0,
+    Collatz.Init.badPtr, L.7),
+   LABEL L.7,
+   TEMP t.4), 
+  CONST 0, 8, true, false),
+ TEMP Collatz.Init.i),
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Init.this),
+JUMP(
+ NAME L.6),
+LABEL L.6
+# Linearized (trees):
+MOVE(
+ TEMP t.4,
+ TEMP Collatz.Init.this)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Collatz.Init.badPtr, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 0, 8, true, false),
+ TEMP Collatz.Init.i)
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Init.this)
+JUMP(
+ NAME L.6)
+LABEL L.6
+# Basic Blocks:
+# 0
+LABEL L.29
+MOVE(
+ TEMP t.4,
+ TEMP Collatz.Init.this)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Collatz.Init.badPtr, L.7)
+# 1
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 0, 8, true, false),
+ TEMP Collatz.Init.i)
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Init.this)
+JUMP(
+ NAME L.6)
+# 2
+LABEL L.6
+# Trace Scheduled:
+LABEL L.29
+MOVE(
+ TEMP t.4,
+ TEMP Collatz.Init.this)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Collatz.Init.badPtr, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 0, 8, true, false),
+ TEMP Collatz.Init.i)
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Init.this)
+LABEL L.6
+# With procedure entry/exit:
+MOVE(
+ TEMP Collatz.Init.i,
+ TEMP %rsi)
+MOVE(
+ TEMP Collatz.Init.this,
+ TEMP %rdi)
+LABEL L.29
+MOVE(
+ TEMP t.4,
+ TEMP Collatz.Init.this)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ Collatz.Init.badPtr, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 0, 8, true, false),
+ TEMP Collatz.Init.i)
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Init.this)
+LABEL L.6
+# Instructions:
+	movq %rsi,Collatz.Init.i	# Collatz.Init.i := %rsi 
+	movq %rdi,Collatz.Init.this	# Collatz.Init.this := %rdi 
+L.29:	# <- 
+	movq Collatz.Init.this,t.4	# t.4 := Collatz.Init.this 
+	xorq t.19,t.19	# t.19 <- 
+	cmpq t.19,t.4	# <- t.4 t.19 
+	je Collatz.Init.badPtr	# <- : goto Collatz.Init.badPtr L.7 
+L.7:	# <- 
+	movq Collatz.Init.i,0(t.4)	# <- t.4 Collatz.Init.i 
+	movq Collatz.Init.this,%rax	# %rax := Collatz.Init.this 
+L.6:	# <- 
+# Control Flow Graph:
+0: Collatz.Init.i Collatz.Init.this <- %rsi %rdi; goto 1
+1: t.4 t.19 <- Collatz.Init.this; goto 2
+2: %rax <- t.4 Collatz.Init.i Collatz.Init.this; goto 3
+3: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Collatz.Init.i: Collatz.Init.this %rsp %rbp %rdi t.19 t.4 
+Collatz.Init.this: Collatz.Init.i %rsp %rbp t.19 
+t.4: t.19 Collatz.Init.i %rsp %rbp 
+t.19: t.4 Collatz.Init.i Collatz.Init.this %rsp %rbp 
+%rax <= Collatz.Init.this
+t.4 <= Collatz.Init.this
+Collatz.Init.i <= %rsi
+Collatz.Init.this <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Collatz.Init.i->%rsi
+Collatz.Init.this->%rax
+t.4->%rax
+t.19->%rbx
+# Assembly code:
+	.text
+Collatz.Init:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rsi,%rsi
+	movq %rdi,%rax
+L.29:
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je Collatz.Init.badPtr
+L.7:
+	movq %rsi,0(%rax)
+#	movq %rax,%rax
+L.6:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+Collatz.Init.badPtr:
+	call badPtr
+Collatz.Init.badSub:
+	call badSub
+END Collatz.Init
+PROCEDURE Collatz.Steps
+# Trees:
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ CONST 0),
+LABEL L.9,
+LABEL L.10,
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ ADD(
+  TEMP Collatz.Steps.1.result,
+  CONST 1)),
+BEQ(
+ CALL(
+  MEM(
+   MEM(
+    TEMP Collatz.Steps.this, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP Collatz.Steps.this),
+ CONST 1,
+ L.12, L.13),
+LABEL L.12,
+JUMP(
+ NAME L.11),
+LABEL L.13,
+BGE(
+ TEMP Collatz.Steps.1.result,
+ TEMP Collatz.Steps.max,
+ L.14, L.15),
+LABEL L.14,
+JUMP(
+ NAME L.11),
+LABEL L.15,
+JUMP(
+ NAME L.9),
+LABEL L.11,
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Steps.1.result),
+JUMP(
+ NAME L.8),
+LABEL L.8
+# Linearized (trees):
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ CONST 0)
+LABEL L.9
+LABEL L.10
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ ADD(
+  TEMP Collatz.Steps.1.result,
+  CONST 1))
+MOVE(
+ TEMP t.20,
+ CALL(
+  MEM(
+   MEM(
+    TEMP Collatz.Steps.this, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP Collatz.Steps.this))
+BEQ(
+ TEMP t.20,
+ CONST 1,
+ L.12, L.13)
+LABEL L.12
+JUMP(
+ NAME L.11)
+LABEL L.13
+BGE(
+ TEMP Collatz.Steps.1.result,
+ TEMP Collatz.Steps.max,
+ L.14, L.15)
+LABEL L.14
+JUMP(
+ NAME L.11)
+LABEL L.15
+JUMP(
+ NAME L.9)
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Steps.1.result)
+JUMP(
+ NAME L.8)
+LABEL L.8
+# Basic Blocks:
+# 0
+LABEL L.30
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ CONST 0)
+JUMP(
+ NAME L.9)
+# 1
+LABEL L.9
+JUMP(
+ NAME L.10)
+# 2
+LABEL L.10
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ ADD(
+  TEMP Collatz.Steps.1.result,
+  CONST 1))
+MOVE(
+ TEMP t.20,
+ CALL(
+  MEM(
+   MEM(
+    TEMP Collatz.Steps.this, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP Collatz.Steps.this))
+BEQ(
+ TEMP t.20,
+ CONST 1,
+ L.12, L.13)
+# 3
+LABEL L.12
+JUMP(
+ NAME L.11)
+# 4
+LABEL L.13
+BGE(
+ TEMP Collatz.Steps.1.result,
+ TEMP Collatz.Steps.max,
+ L.14, L.15)
+# 5
+LABEL L.14
+JUMP(
+ NAME L.11)
+# 6
+LABEL L.15
+JUMP(
+ NAME L.9)
+# 7
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Steps.1.result)
+JUMP(
+ NAME L.8)
+# 8
+LABEL L.8
+# Trace Scheduled:
+LABEL L.30
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ CONST 0)
+LABEL L.9
+LABEL L.10
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ ADD(
+  TEMP Collatz.Steps.1.result,
+  CONST 1))
+MOVE(
+ TEMP t.20,
+ CALL(
+  MEM(
+   MEM(
+    TEMP Collatz.Steps.this, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP Collatz.Steps.this))
+BEQ(
+ TEMP t.20,
+ CONST 1,
+ L.12, L.13)
+LABEL L.13
+BGE(
+ TEMP Collatz.Steps.1.result,
+ TEMP Collatz.Steps.max,
+ L.14, L.15)
+LABEL L.15
+JUMP(
+ NAME L.9)
+LABEL L.12
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Steps.1.result)
+JUMP(
+ NAME L.8)
+LABEL L.14
+JUMP(
+ NAME L.11)
+LABEL L.8
+# With procedure entry/exit:
+MOVE(
+ TEMP Collatz.Steps.max,
+ TEMP %rsi)
+MOVE(
+ TEMP Collatz.Steps.this,
+ TEMP %rdi)
+LABEL L.30
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ CONST 0)
+LABEL L.9
+LABEL L.10
+MOVE(
+ TEMP Collatz.Steps.1.result,
+ ADD(
+  TEMP Collatz.Steps.1.result,
+  CONST 1))
+MOVE(
+ TEMP t.20,
+ CALL(
+  MEM(
+   MEM(
+    TEMP Collatz.Steps.this, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP Collatz.Steps.this))
+BEQ(
+ TEMP t.20,
+ CONST 1,
+ L.12, L.13)
+LABEL L.13
+BGE(
+ TEMP Collatz.Steps.1.result,
+ TEMP Collatz.Steps.max,
+ L.14, L.15)
+LABEL L.15
+JUMP(
+ NAME L.9)
+LABEL L.12
+LABEL L.11
+MOVE(
+ TEMP %rax,
+ TEMP Collatz.Steps.1.result)
+JUMP(
+ NAME L.8)
+LABEL L.14
+JUMP(
+ NAME L.11)
+LABEL L.8
+# Instructions:
+	movq %rsi,Collatz.Steps.max	# Collatz.Steps.max := %rsi 
+	movq %rdi,Collatz.Steps.this	# Collatz.Steps.this := %rdi 
+L.30:	# <- 
+	xorq Collatz.Steps.1.result,Collatz.Steps.1.result	# Collatz.Steps.1.result <- 
+L.9:	# <- 
+L.10:	# <- 
+	movq Collatz.Steps.1.result,t.21	# t.21 := Collatz.Steps.1.result 
+	addq $1,t.21	# t.21 <- t.21 
+	movq t.21,Collatz.Steps.1.result	# Collatz.Steps.1.result := t.21 
+	movq -8(Collatz.Steps.this),t.22	# t.22 <- Collatz.Steps.this 
+	movq 16(t.22),t.23	# t.23 <- t.22 
+	movq Collatz.Steps.this,%rdi	# %rdi := Collatz.Steps.this 
+	call *t.23	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.23 %rdi 
+	movq %rax,t.20	# t.20 := %rax 
+	movq $1,t.24	# t.24 <- 
+	cmpq t.24,t.20	# <- t.20 t.24 
+	je L.12	# <- : goto L.12 L.13 
+L.13:	# <- 
+	cmpq Collatz.Steps.max,Collatz.Steps.1.result	# <- Collatz.Steps.1.result Collatz.Steps.max 
+	jge L.14	# <- : goto L.14 L.15 
+L.15:	# <- 
+	jmp L.9	# <- : goto L.9 
+L.12:	# <- 
+L.11:	# <- 
+	movq Collatz.Steps.1.result,%rax	# %rax := Collatz.Steps.1.result 
+	jmp L.8	# <- : goto L.8 
+L.14:	# <- 
+	jmp L.11	# <- : goto L.11 
+L.8:	# <- 
+# Control Flow Graph:
+0: Collatz.Steps.max Collatz.Steps.this <- %rsi %rdi; goto 1
+1: Collatz.Steps.1.result <-; goto 2
+2: t.21 Collatz.Steps.1.result t.22 t.23 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.20 t.24 <- Collatz.Steps.1.result Collatz.Steps.this; goto 5 3
+3: <- Collatz.Steps.1.result Collatz.Steps.max; goto 6 4
+4: <-; goto 2
+5: %rax <- Collatz.Steps.1.result; goto 7
+6: <-; goto 5
+7: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Collatz.Steps.max: Collatz.Steps.this %rsp %rbp %rdi Collatz.Steps.1.result t.24 t.20 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.23 t.22 t.21 
+Collatz.Steps.this: %rsp %rbp Collatz.Steps.max Collatz.Steps.1.result t.24 t.20 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.23 t.22 t.21 
+Collatz.Steps.1.result: Collatz.Steps.this %rsp %rbp Collatz.Steps.max t.24 t.20 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.23 t.22 
+t.21: %rsp %rbp Collatz.Steps.max Collatz.Steps.this 
+t.22: Collatz.Steps.1.result %rsp %rbp Collatz.Steps.max Collatz.Steps.this 
+t.23: %rdi Collatz.Steps.1.result %rsp %rbp Collatz.Steps.max Collatz.Steps.this 
+t.20: t.24 Collatz.Steps.1.result %rsp %rbp Collatz.Steps.max Collatz.Steps.this 
+t.24: Collatz.Steps.1.result %rsp %rbp Collatz.Steps.max Collatz.Steps.this t.20 
+%rax <= Collatz.Steps.1.result
+t.21 <= Collatz.Steps.1.result
+Collatz.Steps.1.result <= t.21
+%rdi <= Collatz.Steps.this
+t.20 <= %rax
+Collatz.Steps.max <= %rsi
+Collatz.Steps.this <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Collatz.Steps.max->%r12
+Collatz.Steps.this->%rbx
+Collatz.Steps.1.result->%r13
+t.21->%r13
+t.22->%rax
+t.23->%rax
+t.20->%rax
+t.24->%rcx
+# Assembly code:
+	.text
+Collatz.Steps:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r13, -24(%rbp)
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rsi,%r12
+	movq %rdi,%rbx
+L.30:
+	xorq %r13,%r13
+L.9:
+L.10:
+#	movq %r13,%r13
+	addq $1,%r13
+#	movq %r13,%r13
+	movq -8(%rbx),%rax
+	movq 16(%rax),%rax
+	movq %rbx,%rdi
+	call *%rax
+#	movq %rax,%rax
+	movq $1,%rcx
+	cmpq %rcx,%rax
+	je L.12
+L.13:
+	cmpq %r12,%r13
+	jge L.14
+L.15:
+	jmp L.9
+L.12:
+L.11:
+	movq %r13,%rax
+	jmp L.8
+L.14:
+	jmp L.11
+L.8:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	movq -24(%rbp),%r13
+	addq $32,%rsp
+	popq %rbp
+	ret
+Collatz.Steps.badSub:
+	call badSub
+END Collatz.Steps
+PROCEDURE Collatz.SingleStep
+# Trees:
+BEQ(
+ MOD(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.5,
+     TEMP Collatz.SingleStep.this),
+    BEQ(
+     TEMP t.5,
+     CONST 0,
+     Collatz.SingleStep.badPtr, L.20),
+    LABEL L.20,
+    TEMP t.5), 
+   CONST 0, 8, true, false),
+  CONST 2),
+ CONST 0,
+ L.17, L.18),
+LABEL L.17,
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.6,
+    TEMP Collatz.SingleStep.this),
+   BEQ(
+    TEMP t.6,
+    CONST 0,
+    Collatz.SingleStep.badPtr, L.21),
+   LABEL L.21,
+   TEMP t.6), 
+  CONST 0, 8, true, false),
+ DIV(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.7,
+     TEMP Collatz.SingleStep.this),
+    BEQ(
+     TEMP t.7,
+     CONST 0,
+     Collatz.SingleStep.badPtr, L.22),
+    LABEL L.22,
+    TEMP t.7), 
+   CONST 0, 8, true, false),
+  CONST 2)),
+JUMP(
+ NAME L.19),
+LABEL L.18,
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.8,
+    TEMP Collatz.SingleStep.this),
+   BEQ(
+    TEMP t.8,
+    CONST 0,
+    Collatz.SingleStep.badPtr, L.23),
+   LABEL L.23,
+   TEMP t.8), 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   CONST 3,
+   MEM(
+    ESEQ(
+     MOVE(
+      TEMP t.9,
+      TEMP Collatz.SingleStep.this),
+     BEQ(
+      TEMP t.9,
+      CONST 0,
+      Collatz.SingleStep.badPtr, L.24),
+     LABEL L.24,
+     TEMP t.9), 
+    CONST 0, 8, true, false)),
+  CONST 1)),
+LABEL L.19,
+MOVE(
+ TEMP %rax,
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.10,
+    TEMP Collatz.SingleStep.this),
+   BEQ(
+    TEMP t.10,
+    CONST 0,
+    Collatz.SingleStep.badPtr, L.25),
+   LABEL L.25,
+   TEMP t.10), 
+  CONST 0, 8, true, false)),
+JUMP(
+ NAME L.16),
+LABEL L.16
+# Linearized (trees):
+MOVE(
+ TEMP t.5,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.20)
+LABEL L.20
+BEQ(
+ MOD(
+  MEM(
+   TEMP t.5, 
+   CONST 0, 8, true, false),
+  CONST 2),
+ CONST 0,
+ L.17, L.18)
+LABEL L.17
+MOVE(
+ TEMP t.6,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.21)
+LABEL L.21
+MOVE(
+ TEMP t.7,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.22)
+LABEL L.22
+MOVE(
+ MEM(
+  TEMP t.6, 
+  CONST 0, 8, true, false),
+ DIV(
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  CONST 2))
+JUMP(
+ NAME L.19)
+LABEL L.18
+MOVE(
+ TEMP t.8,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.23)
+LABEL L.23
+MOVE(
+ TEMP t.9,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.24)
+LABEL L.24
+MOVE(
+ MEM(
+  TEMP t.8, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   CONST 3,
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, true, false)),
+  CONST 1))
+LABEL L.19
+MOVE(
+ TEMP t.10,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.25)
+LABEL L.25
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP t.10, 
+  CONST 0, 8, true, false))
+JUMP(
+ NAME L.16)
+LABEL L.16
+# Basic Blocks:
+# 0
+LABEL L.31
+MOVE(
+ TEMP t.5,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.20)
+# 1
+LABEL L.20
+BEQ(
+ MOD(
+  MEM(
+   TEMP t.5, 
+   CONST 0, 8, true, false),
+  CONST 2),
+ CONST 0,
+ L.17, L.18)
+# 2
+LABEL L.17
+MOVE(
+ TEMP t.6,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.21)
+# 3
+LABEL L.21
+MOVE(
+ TEMP t.7,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.22)
+# 4
+LABEL L.22
+MOVE(
+ MEM(
+  TEMP t.6, 
+  CONST 0, 8, true, false),
+ DIV(
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  CONST 2))
+JUMP(
+ NAME L.19)
+# 5
+LABEL L.18
+MOVE(
+ TEMP t.8,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.23)
+# 6
+LABEL L.23
+MOVE(
+ TEMP t.9,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.24)
+# 7
+LABEL L.24
+MOVE(
+ MEM(
+  TEMP t.8, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   CONST 3,
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, true, false)),
+  CONST 1))
+JUMP(
+ NAME L.19)
+# 8
+LABEL L.19
+MOVE(
+ TEMP t.10,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.25)
+# 9
+LABEL L.25
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP t.10, 
+  CONST 0, 8, true, false))
+JUMP(
+ NAME L.16)
+# 10
+LABEL L.16
+# Trace Scheduled:
+LABEL L.31
+MOVE(
+ TEMP t.5,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.20)
+LABEL L.20
+BEQ(
+ MOD(
+  MEM(
+   TEMP t.5, 
+   CONST 0, 8, true, false),
+  CONST 2),
+ CONST 0,
+ L.17, L.18)
+LABEL L.18
+MOVE(
+ TEMP t.8,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.23)
+LABEL L.23
+MOVE(
+ TEMP t.9,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.24)
+LABEL L.24
+MOVE(
+ MEM(
+  TEMP t.8, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   CONST 3,
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, true, false)),
+  CONST 1))
+LABEL L.19
+MOVE(
+ TEMP t.10,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.25)
+LABEL L.25
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP t.10, 
+  CONST 0, 8, true, false))
+JUMP(
+ NAME L.16)
+LABEL L.17
+MOVE(
+ TEMP t.6,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.21)
+LABEL L.21
+MOVE(
+ TEMP t.7,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.22)
+LABEL L.22
+MOVE(
+ MEM(
+  TEMP t.6, 
+  CONST 0, 8, true, false),
+ DIV(
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  CONST 2))
+JUMP(
+ NAME L.19)
+LABEL L.16
+# With procedure entry/exit:
+MOVE(
+ TEMP Collatz.SingleStep.this,
+ TEMP %rdi)
+LABEL L.31
+MOVE(
+ TEMP t.5,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.20)
+LABEL L.20
+BEQ(
+ MOD(
+  MEM(
+   TEMP t.5, 
+   CONST 0, 8, true, false),
+  CONST 2),
+ CONST 0,
+ L.17, L.18)
+LABEL L.18
+MOVE(
+ TEMP t.8,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.23)
+LABEL L.23
+MOVE(
+ TEMP t.9,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.24)
+LABEL L.24
+MOVE(
+ MEM(
+  TEMP t.8, 
+  CONST 0, 8, true, false),
+ ADD(
+  MUL(
+   CONST 3,
+   MEM(
+    TEMP t.9, 
+    CONST 0, 8, true, false)),
+  CONST 1))
+LABEL L.19
+MOVE(
+ TEMP t.10,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.25)
+LABEL L.25
+MOVE(
+ TEMP %rax,
+ MEM(
+  TEMP t.10, 
+  CONST 0, 8, true, false))
+JUMP(
+ NAME L.16)
+LABEL L.17
+MOVE(
+ TEMP t.6,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.21)
+LABEL L.21
+MOVE(
+ TEMP t.7,
+ TEMP Collatz.SingleStep.this)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ Collatz.SingleStep.badPtr, L.22)
+LABEL L.22
+MOVE(
+ MEM(
+  TEMP t.6, 
+  CONST 0, 8, true, false),
+ DIV(
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  CONST 2))
+JUMP(
+ NAME L.19)
+LABEL L.16
+# Instructions:
+	movq %rdi,Collatz.SingleStep.this	# Collatz.SingleStep.this := %rdi 
+L.31:	# <- 
+	movq Collatz.SingleStep.this,t.5	# t.5 := Collatz.SingleStep.this 
+	xorq t.25,t.25	# t.25 <- 
+	cmpq t.25,t.5	# <- t.5 t.25 
+	je Collatz.SingleStep.badPtr	# <- : goto Collatz.SingleStep.badPtr L.20 
+L.20:	# <- 
+	movq 0(t.5),t.26	# t.26 <- t.5 
+	movq $2,t.27	# t.27 <- 
+	movq t.26,%rax	# %rax := t.26 
+	cqto	# %rax %rdx <- %rax 
+	idivq t.27	# %rax %rdx <- t.27 %rax %rdx 
+	movq %rdx,t.28	# t.28 := %rdx 
+	xorq t.29,t.29	# t.29 <- 
+	cmpq t.29,t.28	# <- t.28 t.29 
+	je L.17	# <- : goto L.17 L.18 
+L.18:	# <- 
+	movq Collatz.SingleStep.this,t.8	# t.8 := Collatz.SingleStep.this 
+	xorq t.30,t.30	# t.30 <- 
+	cmpq t.30,t.8	# <- t.8 t.30 
+	je Collatz.SingleStep.badPtr	# <- : goto Collatz.SingleStep.badPtr L.23 
+L.23:	# <- 
+	movq Collatz.SingleStep.this,t.9	# t.9 := Collatz.SingleStep.this 
+	xorq t.31,t.31	# t.31 <- 
+	cmpq t.31,t.9	# <- t.9 t.31 
+	je Collatz.SingleStep.badPtr	# <- : goto Collatz.SingleStep.badPtr L.24 
+L.24:	# <- 
+	movq 0(t.9),t.32	# t.32 <- t.9 
+	movq t.32,t.33	# t.33 := t.32 
+	imulq $3,t.33	# t.33 <- t.33 
+	movq t.33,t.34	# t.34 := t.33 
+	addq $1,t.34	# t.34 <- t.34 
+	movq t.34,0(t.8)	# <- t.8 t.34 
+L.19:	# <- 
+	movq Collatz.SingleStep.this,t.10	# t.10 := Collatz.SingleStep.this 
+	xorq t.35,t.35	# t.35 <- 
+	cmpq t.35,t.10	# <- t.10 t.35 
+	je Collatz.SingleStep.badPtr	# <- : goto Collatz.SingleStep.badPtr L.25 
+L.25:	# <- 
+	movq 0(t.10),t.36	# t.36 <- t.10 
+	movq t.36,%rax	# %rax := t.36 
+	jmp L.16	# <- : goto L.16 
+L.17:	# <- 
+	movq Collatz.SingleStep.this,t.6	# t.6 := Collatz.SingleStep.this 
+	xorq t.37,t.37	# t.37 <- 
+	cmpq t.37,t.6	# <- t.6 t.37 
+	je Collatz.SingleStep.badPtr	# <- : goto Collatz.SingleStep.badPtr L.21 
+L.21:	# <- 
+	movq Collatz.SingleStep.this,t.7	# t.7 := Collatz.SingleStep.this 
+	xorq t.38,t.38	# t.38 <- 
+	cmpq t.38,t.7	# <- t.7 t.38 
+	je Collatz.SingleStep.badPtr	# <- : goto Collatz.SingleStep.badPtr L.22 
+L.22:	# <- 
+	movq 0(t.7),t.39	# t.39 <- t.7 
+	movq t.39,t.40	# t.40 := t.39 
+	sarq $1,t.40	# t.40 <- t.40 
+	movq t.40,0(t.6)	# <- t.6 t.40 
+	jmp L.19	# <- : goto L.19 
+L.16:	# <- 
+# Control Flow Graph:
+0: Collatz.SingleStep.this <- %rdi; goto 1
+1: t.5 t.25 <- Collatz.SingleStep.this; goto 2
+2: t.26 t.27 %rax %rdx t.28 t.29 <- t.5; goto 8 3
+3: t.8 t.30 <- Collatz.SingleStep.this; goto 4
+4: t.9 t.31 <- Collatz.SingleStep.this; goto 5
+5: t.32 t.33 t.34 <- t.9 t.8; goto 6
+6: t.10 t.35 <- Collatz.SingleStep.this; goto 7
+7: t.36 %rax <- t.10; goto 11
+8: t.6 t.37 <- Collatz.SingleStep.this; goto 9
+9: t.7 t.38 <- Collatz.SingleStep.this; goto 10
+10: t.39 t.40 <- t.7 t.6; goto 6
+11: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+Collatz.SingleStep.this: %rsp %rbp t.25 t.29 t.28 %rax %rdx t.27 t.26 t.30 t.31 t.34 t.33 t.32 t.37 t.38 t.40 t.39 
+t.5: t.25 %rsp %rbp 
+t.25: t.5 Collatz.SingleStep.this %rsp %rbp 
+t.26: t.27 Collatz.SingleStep.this %rsp %rbp 
+t.27: %rax %rdx Collatz.SingleStep.this %rsp %rbp t.26 
+t.28: t.29 Collatz.SingleStep.this %rsp %rbp 
+t.29: Collatz.SingleStep.this %rsp %rbp t.28 
+t.8: t.30 %rsp %rbp t.31 t.9 t.34 t.33 t.32 
+t.30: Collatz.SingleStep.this t.8 %rsp %rbp 
+t.9: t.31 t.8 %rsp %rbp 
+t.31: t.9 t.8 Collatz.SingleStep.this %rsp %rbp 
+t.32: Collatz.SingleStep.this %rsp %rbp t.8 
+t.33: Collatz.SingleStep.this %rsp %rbp t.8 
+t.34: Collatz.SingleStep.this %rsp %rbp t.8 
+t.10: t.35 %rsp %rbp 
+t.35: t.10 %rsp %rbp 
+t.36: %rsp %rbp 
+t.6: t.37 %rsp %rbp t.38 t.7 t.40 t.39 
+t.37: Collatz.SingleStep.this t.6 %rsp %rbp 
+t.7: t.38 t.6 %rsp %rbp 
+t.38: t.7 t.6 Collatz.SingleStep.this %rsp %rbp 
+t.39: Collatz.SingleStep.this %rsp %rbp t.6 
+t.40: Collatz.SingleStep.this %rsp %rbp t.6 
+t.40 <= t.39
+t.7 <= Collatz.SingleStep.this
+t.6 <= Collatz.SingleStep.this
+%rax <= t.36
+t.10 <= Collatz.SingleStep.this
+t.33 <= t.32
+t.34 <= t.33
+t.9 <= Collatz.SingleStep.this
+t.8 <= Collatz.SingleStep.this
+%rax <= t.26
+t.28 <= %rdx
+t.5 <= Collatz.SingleStep.this
+Collatz.SingleStep.this <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+Collatz.SingleStep.this->%rdi
+t.5->%rdi
+t.25->%rax
+t.26->%rax
+t.27->%rbx
+t.28->%rdx
+t.29->%rax
+t.8->%rax
+t.30->%rbx
+t.9->%rdi
+t.31->%rbx
+t.32->%rbx
+t.33->%rbx
+t.34->%rbx
+t.10->%rdi
+t.35->%rax
+t.36->%rax
+t.6->%rax
+t.37->%rbx
+t.7->%rdi
+t.38->%rbx
+t.39->%rbx
+t.40->%rbx
+# Assembly code:
+	.text
+Collatz.SingleStep:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.31:
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je Collatz.SingleStep.badPtr
+L.20:
+	movq 0(%rdi),%rax
+	movq $2,%rbx
+#	movq %rax,%rax
+	cqto
+	idivq %rbx
+#	movq %rdx,%rdx
+	xorq %rax,%rax
+	cmpq %rax,%rdx
+	je L.17
+L.18:
+	movq %rdi,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je Collatz.SingleStep.badPtr
+L.23:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	cmpq %rbx,%rdi
+	je Collatz.SingleStep.badPtr
+L.24:
+	movq 0(%rdi),%rbx
+#	movq %rbx,%rbx
+	imulq $3,%rbx
+#	movq %rbx,%rbx
+	addq $1,%rbx
+	movq %rbx,0(%rax)
+L.19:
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je Collatz.SingleStep.badPtr
+L.25:
+	movq 0(%rdi),%rax
+#	movq %rax,%rax
+	jmp L.16
+L.17:
+	movq %rdi,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je Collatz.SingleStep.badPtr
+L.21:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	cmpq %rbx,%rdi
+	je Collatz.SingleStep.badPtr
+L.22:
+	movq 0(%rdi),%rbx
+#	movq %rbx,%rbx
+	sarq $1,%rbx
+	movq %rbx,0(%rax)
+	jmp L.19
+L.16:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+Collatz.SingleStep.badPtr:
+	call badPtr
+Collatz.SingleStep.badSub:
+	call badSub
+END Collatz.SingleStep
+	.data
+	.balign 8
+L.26:
+	.byte 37
+	.byte 100
+	.byte 10
+	.byte 0
+	.data
+	.balign 8
+L.27:
+	.quad L.26
+	.quad 4
+PROCEDURE Collatz
+# Trees:
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME Collatz.CString,
+   CONST 0,
+   NAME L.27),
+  CALL(
+   ESEQ(
+    MOVE(
+     TEMP t.13,
+     CALL(
+      ESEQ(
+       MOVE(
+        TEMP t.12,
+        ESEQ(
+         MOVE(
+          TEMP t.11,
+          CALL(
+           NAME malloc,
+           CONST 0,
+           CONST 16)),
+         MOVE(
+          TEMP t.11,
+          ADD(
+           TEMP t.11,
+           CONST 8)),
+         MOVE(
+          MEM(
+           TEMP t.11, 
+           CONST -8, 8, false, false),
+          NAME Collatz.Collatz),
+         MOVE(
+          MEM(
+           TEMP t.11, 
+           CONST 0, 8, false, false),
+          CONST 0),
+         TEMP t.11)),
+       MEM(
+        MEM(
+         TEMP t.12, 
+         CONST -8, 8, false, false), 
+        CONST 0, 8, false, false)),
+      CONST 0,
+      TEMP t.12,
+      CONST 23)),
+    MEM(
+     MEM(
+      TEMP t.13, 
+      CONST -8, 8, false, false), 
+     CONST 8, 8, false, false)),
+   CONST 0,
+   TEMP t.13,
+   CONST 4)))
+# Linearized (trees):
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME Collatz.CString,
+  CONST 0,
+  NAME L.27))
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 16))
+MOVE(
+ TEMP t.11,
+ ADD(
+  TEMP t.11,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST -8, 8, false, false),
+ NAME Collatz.Collatz)
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP t.12,
+ TEMP t.11)
+MOVE(
+ TEMP t.13,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.12, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP t.12,
+  CONST 23))
+MOVE(
+ TEMP t.43,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.13, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP t.13,
+  CONST 4))
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.42,
+  TEMP t.43))
+EXP(
+ TEMP t.41)
+# Basic Blocks:
+# 0
+LABEL L.32
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME Collatz.CString,
+  CONST 0,
+  NAME L.27))
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 16))
+MOVE(
+ TEMP t.11,
+ ADD(
+  TEMP t.11,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST -8, 8, false, false),
+ NAME Collatz.Collatz)
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP t.12,
+ TEMP t.11)
+MOVE(
+ TEMP t.13,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.12, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP t.12,
+  CONST 23))
+MOVE(
+ TEMP t.43,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.13, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP t.13,
+  CONST 4))
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.42,
+  TEMP t.43))
+EXP(
+ TEMP t.41)
+# Trace Scheduled:
+LABEL L.32
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME Collatz.CString,
+  CONST 0,
+  NAME L.27))
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 16))
+MOVE(
+ TEMP t.11,
+ ADD(
+  TEMP t.11,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST -8, 8, false, false),
+ NAME Collatz.Collatz)
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP t.12,
+ TEMP t.11)
+MOVE(
+ TEMP t.13,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.12, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP t.12,
+  CONST 23))
+MOVE(
+ TEMP t.43,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.13, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP t.13,
+  CONST 4))
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.42,
+  TEMP t.43))
+EXP(
+ TEMP t.41)
+# With procedure entry/exit:
+LABEL L.32
+MOVE(
+ TEMP t.42,
+ CALL(
+  NAME Collatz.CString,
+  CONST 0,
+  NAME L.27))
+MOVE(
+ TEMP t.11,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 16))
+MOVE(
+ TEMP t.11,
+ ADD(
+  TEMP t.11,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST -8, 8, false, false),
+ NAME Collatz.Collatz)
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP t.12,
+ TEMP t.11)
+MOVE(
+ TEMP t.13,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.12, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP t.12,
+  CONST 23))
+MOVE(
+ TEMP t.43,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.13, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP t.13,
+  CONST 4))
+MOVE(
+ TEMP t.41,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.42,
+  TEMP t.43))
+EXP(
+ TEMP t.41)
+# Instructions:
+L.32:	# <- 
+	leaq L.27(%rip),t.44	# t.44 <- 
+	movq t.44,%rdi	# %rdi := t.44 
+	call Collatz.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.42	# t.42 := %rax 
+	movq $16,%rdi	# %rdi <- 
+	call malloc	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.11	# t.11 := %rax 
+	movq t.11,t.45	# t.45 := t.11 
+	addq $8,t.45	# t.45 <- t.45 
+	movq t.45,t.11	# t.11 := t.45 
+	leaq Collatz.Collatz(%rip),t.46	# t.46 <- 
+	movq t.46,-8(t.11)	# <- t.11 t.46 
+	movq $0,0(t.11)	# <- t.11 
+	movq t.11,t.12	# t.12 := t.11 
+	movq -8(t.12),t.47	# t.47 <- t.12 
+	movq 0(t.47),t.48	# t.48 <- t.47 
+	movq t.12,%rdi	# %rdi := t.12 
+	movq $23,%rsi	# %rsi <- 
+	call *t.48	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.48 %rdi %rsi 
+	movq %rax,t.13	# t.13 := %rax 
+	movq -8(t.13),t.49	# t.49 <- t.13 
+	movq 8(t.49),t.50	# t.50 <- t.49 
+	movq t.13,%rdi	# %rdi := t.13 
+	movq $4,%rsi	# %rsi <- 
+	call *t.50	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.50 %rdi %rsi 
+	movq %rax,t.43	# t.43 := %rax 
+	movq t.42,%rdi	# %rdi := t.42 
+	movq t.43,%rsi	# %rsi := t.43 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.41	# t.41 := %rax 
+# Control Flow Graph:
+0: t.44 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.42 t.11 t.45 t.46 t.12 t.47 t.48 t.13 t.49 t.50 t.43 t.41 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.44: %rsp %rbp 
+t.42: t.43 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.50 t.49 t.13 t.48 t.47 t.12 t.46 t.11 t.45 %rsp %rbp 
+t.11: t.46 %rsp %rbp t.42 
+t.45: %rsp %rbp t.42 
+t.46: %rsp %rbp t.42 t.11 
+t.12: t.48 t.47 %rsp %rbp t.42 
+t.47: %rsp %rbp t.42 t.12 
+t.48: %rsi %rdi %rsp %rbp t.42 t.12 
+t.13: t.50 t.49 %rsp %rbp t.42 
+t.49: %rsp %rbp t.42 t.13 
+t.50: %rsi %rdi %rsp %rbp t.42 t.13 
+t.43: %rdi %rsp %rbp t.42 
+t.41: %rsp %rbp 
+%rdi <= t.44
+t.42 <= %rax
+t.11 <= %rax
+t.45 <= t.11
+t.11 <= t.45
+t.12 <= t.11
+%rdi <= t.12
+t.13 <= %rax
+%rdi <= t.13
+t.43 <= %rax
+%rdi <= t.42
+%rsi <= t.43
+t.41 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.44->%rdi
+t.42->%rbx
+t.11->%rax
+t.45->%rax
+t.46->%rcx
+t.12->%rax
+t.47->%rcx
+t.48->%rcx
+t.13->%rax
+t.49->%rcx
+t.50->%rcx
+t.43->%rax
+t.41->%rax
+# Assembly code:
+	.text
+Collatz:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+L.32:
+	leaq L.27(%rip),%rdi
+#	movq %rdi,%rdi
+	call Collatz.CString
+	movq %rax,%rbx
+	movq $16,%rdi
+	call malloc
+#	movq %rax,%rax
+#	movq %rax,%rax
+	addq $8,%rax
+#	movq %rax,%rax
+	leaq Collatz.Collatz(%rip),%rcx
+	movq %rcx,-8(%rax)
+	movq $0,0(%rax)
+#	movq %rax,%rax
+	movq -8(%rax),%rcx
+	movq 0(%rcx),%rcx
+	movq %rax,%rdi
+	movq $23,%rsi
+	call *%rcx
+#	movq %rax,%rax
+	movq -8(%rax),%rcx
+	movq 8(%rcx),%rcx
+	movq %rax,%rdi
+	movq $4,%rsi
+	call *%rcx
+#	movq %rax,%rax
+	movq %rbx,%rdi
+	movq %rax,%rsi
+	call printf
+#	movq %rax,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+Collatz.badSub:
+	call badSub
+END Collatz

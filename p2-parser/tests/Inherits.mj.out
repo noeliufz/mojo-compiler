@@ -1,0 +1,7 @@
+type o = Root object {
+    x: int;
+} object {
+    y: int;
+} object {
+    z: int;
+};

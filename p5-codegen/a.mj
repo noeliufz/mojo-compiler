@@ -1,0 +1,14 @@
+proc gcm(a: int; b: int) : int {
+var x,y,t: int;
+if a > b then {x = a; y = b;}
+ else 
+{y = a; x = b;}
+loop {
+x = x % y;
+if x == 0 then { return y; }
+t = x;
+x = y;
+y = t;
+}
+}
+

@@ -1,0 +1,550 @@
+PROCEDURE LargeImmediate.CString
+# Trees:
+MOVE(
+ TEMP LargeImmediate.CString.1.a,
+ TEMP LargeImmediate.CString.t),
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.3,
+   ESEQ(
+    MOVE(
+     TEMP t.1,
+     TEMP LargeImmediate.CString.1.a),
+    BEQ(
+     TEMP t.1,
+     CONST 0,
+     LargeImmediate.CString.badPtr, L.3),
+    LABEL L.3,
+    TEMP t.1)),
+  ADD(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false, false),
+   ESEQ(
+    MOVE(
+     TEMP t.2,
+     CONST 0),
+    BLT(
+     TEMP t.2,
+     CONST 0,
+     LargeImmediate.CString.badSub, L.4),
+    LABEL L.4,
+    BGE(
+     TEMP t.2,
+     MEM(
+      TEMP t.3, 
+      CONST 8, 8, false, false),
+     LargeImmediate.CString.badSub, L.5),
+    LABEL L.5,
+    TEMP t.2)))),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP LargeImmediate.CString.1.a,
+ TEMP LargeImmediate.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP LargeImmediate.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ LargeImmediate.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ LargeImmediate.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ LargeImmediate.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.8
+MOVE(
+ TEMP LargeImmediate.CString.1.a,
+ TEMP LargeImmediate.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP LargeImmediate.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ LargeImmediate.CString.badPtr, L.3)
+# 1
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ LargeImmediate.CString.badSub, L.4)
+# 2
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ LargeImmediate.CString.badSub, L.5)
+# 3
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+JUMP(
+ NAME L.0)
+# 4
+LABEL L.0
+# Trace Scheduled:
+LABEL L.8
+MOVE(
+ TEMP LargeImmediate.CString.1.a,
+ TEMP LargeImmediate.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP LargeImmediate.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ LargeImmediate.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ LargeImmediate.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ LargeImmediate.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP LargeImmediate.CString.t,
+ TEMP %rdi)
+LABEL L.8
+MOVE(
+ TEMP LargeImmediate.CString.1.a,
+ TEMP LargeImmediate.CString.t)
+MOVE(
+ TEMP t.1,
+ TEMP LargeImmediate.CString.1.a)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ LargeImmediate.CString.badPtr, L.3)
+LABEL L.3
+MOVE(
+ TEMP t.3,
+ TEMP t.1)
+MOVE(
+ TEMP t.2,
+ CONST 0)
+BLT(
+ TEMP t.2,
+ CONST 0,
+ LargeImmediate.CString.badSub, L.4)
+LABEL L.4
+BGE(
+ TEMP t.2,
+ MEM(
+  TEMP t.3, 
+  CONST 8, 8, false, false),
+ LargeImmediate.CString.badSub, L.5)
+LABEL L.5
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.3, 
+   CONST 0, 8, false, false),
+  TEMP t.2))
+LABEL L.0
+# Instructions:
+	movq %rdi,LargeImmediate.CString.t	# LargeImmediate.CString.t := %rdi 
+L.8:	# <- 
+	movq LargeImmediate.CString.t,LargeImmediate.CString.1.a	# LargeImmediate.CString.1.a := LargeImmediate.CString.t 
+	movq LargeImmediate.CString.1.a,t.1	# t.1 := LargeImmediate.CString.1.a 
+	xorq t.4,t.4	# t.4 <- 
+	cmpq t.4,t.1	# <- t.1 t.4 
+	je LargeImmediate.CString.badPtr	# <- : goto LargeImmediate.CString.badPtr L.3 
+L.3:	# <- 
+	movq t.1,t.3	# t.3 := t.1 
+	xorq t.2,t.2	# t.2 <- 
+	xorq t.5,t.5	# t.5 <- 
+	cmpq t.5,t.2	# <- t.2 t.5 
+	jl LargeImmediate.CString.badSub	# <- : goto LargeImmediate.CString.badSub L.4 
+L.4:	# <- 
+	movq 8(t.3),t.6	# t.6 <- t.3 
+	cmpq t.6,t.2	# <- t.2 t.6 
+	jge LargeImmediate.CString.badSub	# <- : goto LargeImmediate.CString.badSub L.5 
+L.5:	# <- 
+	movq 0(t.3),t.7	# t.7 <- t.3 
+	movq t.7,t.8	# t.8 := t.7 
+	addq t.2,t.8	# t.8 <- t.2 t.8 
+	movq t.8,%rax	# %rax := t.8 
+L.0:	# <- 
+# Control Flow Graph:
+0: LargeImmediate.CString.t <- %rdi; goto 1
+1: LargeImmediate.CString.1.a t.1 t.4 <- LargeImmediate.CString.t; goto 2
+2: t.3 t.2 t.5 <- t.1; goto 3
+3: t.6 <- t.3 t.2; goto 4
+4: t.7 t.8 %rax <- t.3 t.2; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+LargeImmediate.CString.t: %rsp %rbp 
+LargeImmediate.CString.1.a: %rsp %rbp 
+t.1: t.4 %rsp %rbp 
+t.4: t.1 %rsp %rbp 
+t.3: t.5 t.2 %rsp %rbp t.6 
+t.2: t.5 t.3 %rsp %rbp t.6 t.8 t.7 
+t.5: t.3 t.2 %rsp %rbp 
+t.6: t.3 t.2 %rsp %rbp 
+t.7: %rsp %rbp t.2 
+t.8: %rsp %rbp t.2 
+t.8 <= t.7
+%rax <= t.8
+t.3 <= t.1
+LargeImmediate.CString.1.a <= LargeImmediate.CString.t
+t.1 <= LargeImmediate.CString.1.a
+LargeImmediate.CString.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+LargeImmediate.CString.t->%rdi
+LargeImmediate.CString.1.a->%rdi
+t.1->%rdi
+t.4->%rax
+t.3->%rdi
+t.2->%rbx
+t.5->%rax
+t.6->%rax
+t.7->%rax
+t.8->%rax
+# Assembly code:
+	.text
+LargeImmediate.CString:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.8:
+#	movq %rdi,%rdi
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je LargeImmediate.CString.badPtr
+L.3:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl LargeImmediate.CString.badSub
+L.4:
+	movq 8(%rdi),%rax
+	cmpq %rax,%rbx
+	jge LargeImmediate.CString.badSub
+L.5:
+	movq 0(%rdi),%rax
+#	movq %rax,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+LargeImmediate.CString.badPtr:
+	call badPtr
+LargeImmediate.CString.badSub:
+	call badSub
+END LargeImmediate.CString
+	.data
+	.balign 8
+L.6:
+	.byte 78
+	.byte 117
+	.byte 109
+	.byte 98
+	.byte 101
+	.byte 114
+	.byte 32
+	.byte 105
+	.byte 115
+	.byte 58
+	.byte 32
+	.byte 37
+	.byte 108
+	.byte 120
+	.byte 10
+	.byte 0
+	.data
+	.balign 8
+L.7:
+	.quad L.6
+	.quad 16
+PROCEDURE LargeImmediate
+# Trees:
+MOVE(
+ TEMP LargeImmediate.4.x,
+ CONST 5124095576030430),
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME LargeImmediate.CString,
+   CONST 0,
+   NAME L.7),
+  TEMP LargeImmediate.4.x))
+# Linearized (trees):
+MOVE(
+ TEMP LargeImmediate.4.x,
+ CONST 5124095576030430)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME LargeImmediate.CString,
+  CONST 0,
+  NAME L.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP LargeImmediate.4.x))
+EXP(
+ TEMP t.9)
+# Basic Blocks:
+# 0
+LABEL L.9
+MOVE(
+ TEMP LargeImmediate.4.x,
+ CONST 5124095576030430)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME LargeImmediate.CString,
+  CONST 0,
+  NAME L.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP LargeImmediate.4.x))
+EXP(
+ TEMP t.9)
+# Trace Scheduled:
+LABEL L.9
+MOVE(
+ TEMP LargeImmediate.4.x,
+ CONST 5124095576030430)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME LargeImmediate.CString,
+  CONST 0,
+  NAME L.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP LargeImmediate.4.x))
+EXP(
+ TEMP t.9)
+# With procedure entry/exit:
+LABEL L.9
+MOVE(
+ TEMP LargeImmediate.4.x,
+ CONST 5124095576030430)
+MOVE(
+ TEMP t.10,
+ CALL(
+  NAME LargeImmediate.CString,
+  CONST 0,
+  NAME L.7))
+MOVE(
+ TEMP t.9,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.10,
+  TEMP LargeImmediate.4.x))
+EXP(
+ TEMP t.9)
+# Instructions:
+L.9:	# <- 
+	movabsq $5124095576030430,t.11	# t.11 <- 
+	movq t.11,LargeImmediate.4.x	# LargeImmediate.4.x := t.11 
+	leaq L.7(%rip),t.12	# t.12 <- 
+	movq t.12,%rdi	# %rdi := t.12 
+	call LargeImmediate.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.10	# t.10 := %rax 
+	movq t.10,%rdi	# %rdi := t.10 
+	movq LargeImmediate.4.x,%rsi	# %rsi := LargeImmediate.4.x 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi 
+	movq %rax,t.9	# t.9 := %rax 
+# Control Flow Graph:
+0: t.11 LargeImmediate.4.x t.12 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.10 t.9 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.11: %rsp %rbp 
+LargeImmediate.4.x: %rdi t.10 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.12 %rsp %rbp 
+t.12: %rsp %rbp LargeImmediate.4.x 
+t.10: %rsp %rbp LargeImmediate.4.x 
+t.9: %rsp %rbp 
+LargeImmediate.4.x <= t.11
+%rdi <= t.12
+t.10 <= %rax
+%rdi <= t.10
+%rsi <= LargeImmediate.4.x
+t.9 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.11->%rbx
+LargeImmediate.4.x->%rbx
+t.12->%rdi
+t.10->%rax
+t.9->%rax
+# Assembly code:
+	.text
+LargeImmediate:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+L.9:
+	movabsq $5124095576030430,%rbx
+#	movq %rbx,%rbx
+	leaq L.7(%rip),%rdi
+#	movq %rdi,%rdi
+	call LargeImmediate.CString
+#	movq %rax,%rax
+	movq %rax,%rdi
+	movq %rbx,%rsi
+	call printf
+#	movq %rax,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+LargeImmediate.badSub:
+	call badSub
+END LargeImmediate

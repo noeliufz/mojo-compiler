@@ -1,0 +1,10 @@
+proc printf(format: Address; i: int);
+
+proc CString(t: Text): Address {
+    var a = Loophole(t, ref array of byte);
+    return &a[0];
+}
+
+{
+  printf(CString("Number is: %d\n"), 42);
+}

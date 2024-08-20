@@ -1,0 +1,52 @@
+	.text
+xc_LocalArrayOpen:
+MOVE(
+ TEMP xc_LocalArrayOpen.1.x,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CONST 10),
+  BLT(
+   TEMP t.0,
+   CONST 0,
+   xc_LocalArrayOpen.badSub, L.0),
+  LABEL L.0,
+  MOVE(
+   TEMP t.1,
+   TEMP t.0),
+  MOVE(
+   TEMP t.2,
+   CONST 16),
+  MOVE(
+   TEMP t.2,
+   ADD(
+    TEMP t.2,
+    MUL(
+     TEMP t.1,
+     CONST 8))),
+  MOVE(
+   TEMP t.3,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    TEMP t.2)),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 8, false),
+   ADD(
+    TEMP t.3,
+    CONST 16)),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 8, 8, false),
+   TEMP t.0),
+  MOVE(
+   MEM(
+    TEMP t.3, 
+    CONST 0, 16, false),
+   CONST 0),
+  TEMP t.3))
+
+

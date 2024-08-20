@@ -1,0 +1,59 @@
+47,49c47
+<    MEM(
+<     TEMP t.3, 
+<     CONST 8, 8, false)),
+---
+>    CONST 5),
+51,55d48
+<    TEMP t.6,
+<    MEM(
+<     TEMP t.3, 
+<     CONST 0, 8, false)),
+<   MOVE(
+61c54
+<    L.3, L.1),
+---
+>    L.2, L.1),
+64,74d56
+<    TEMP t.8,
+<    CONST 5),
+<   MOVE(
+<    TEMP t.7,
+<    CONST 0),
+<   BGE(
+<    TEMP t.7,
+<    TEMP t.8,
+<    L.5, L.4),
+<   LABEL L.4,
+<   MOVE(
+77,81c59
+<      ADD(
+<       TEMP t.6,
+<       MUL(
+<        TEMP t.4,
+<        CONST 40)),
+---
+>      TEMP t.3,
+83c61
+<       TEMP t.7,
+---
+>       TEMP t.4,
+88,97d65
+<    TEMP t.7,
+<    ADD(
+<     TEMP t.7,
+<     CONST 1)),
+<   BLT(
+<    TEMP t.7,
+<    TEMP t.8,
+<    L.4, L.5),
+<   LABEL L.5,
+<   MOVE(
+102d69
+<   LABEL L.2,
+106,107c73,74
+<    L.1, L.3),
+<   LABEL L.3,
+---
+>    L.1, L.2),
+>   LABEL L.2,

@@ -1,0 +1,72 @@
+	.text
+LocalArrayFixed2d:
+MOVE(
+ TEMP LocalArrayFixed2d.1.x,
+ ESEQ(
+  MOVE(
+   TEMP t.0,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 400)),
+  MOVE(
+   TEMP t.2,
+   CONST 10),
+  MOVE(
+   TEMP t.1,
+   CONST 0),
+  BGE(
+   TEMP t.1,
+   TEMP t.2,
+   L.1, L.0),
+  LABEL L.0,
+  MOVE(
+   TEMP t.3,
+   ADD(
+    TEMP t.0,
+    MUL(
+     TEMP t.1,
+     CONST 40))),
+  MOVE(
+   TEMP t.5,
+   CONST 5),
+  MOVE(
+   TEMP t.4,
+   CONST 0),
+  BGE(
+   TEMP t.4,
+   TEMP t.5,
+   L.3, L.2),
+  LABEL L.2,
+  MOVE(
+   MEM(
+    ADD(
+     TEMP t.3,
+     MUL(
+      TEMP t.4,
+      CONST 8)), 
+    CONST 0, 8, true),
+   CONST 0),
+  MOVE(
+   TEMP t.4,
+   ADD(
+    TEMP t.4,
+    CONST 1)),
+  BLT(
+   TEMP t.4,
+   TEMP t.5,
+   L.2, L.3),
+  LABEL L.3,
+  MOVE(
+   TEMP t.1,
+   ADD(
+    TEMP t.1,
+    CONST 1)),
+  BLT(
+   TEMP t.1,
+   TEMP t.2,
+   L.0, L.1),
+  LABEL L.1,
+  TEMP t.0))
+
+

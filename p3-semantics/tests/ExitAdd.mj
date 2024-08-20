@@ -1,0 +1,19 @@
+proc exit(i: int);
+
+type Integer = ref int;
+
+proc add(x, y: Integer): Integer {
+  var z = New(Integer);
+  z^ = x^ + y^;
+  return z;
+}
+
+{
+  var x = New(Integer);
+  var y = New(Integer);
+  var z: Integer;
+  x^ = 1;
+  y^ = 2;
+  z = add(x,y);
+  exit(z^);
+}

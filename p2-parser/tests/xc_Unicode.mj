@@ -1,0 +1,7 @@
+const xxx = '➿';
+const child = '🧒️';
+const test2 = '\U001F00';
+const tick = '✅';
+const hourglass = '⌛';
+
+const string = "➿🧒️\U001F00✅⌛";

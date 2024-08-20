@@ -1,0 +1,6 @@
+const xxx = '➿' (* 0x27bf *);
+const child = '🧒️' (* 0x1f9d2 *);
+const test2 = '\U001F00' (* 0x1f00 *);
+const tick = '✅' (* 0x2705 *);
+const hourglass = '⌛' (* 0x231b *);
+const string = "➿🧒️\U001F00✅⌛" (* E29EBFF09FA792EFB88FE1BC80E29C85E28C9B *);

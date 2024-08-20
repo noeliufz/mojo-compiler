@@ -1,0 +1,10 @@
+proc main(args: array[] of Text) {
+    var i = 0;
+    System.out.println(i);
+    i = i + 3;
+    System.out.println(i);
+    i = i * 2;
+    System.out.println(i);
+    i = i / 3;
+    System.out.println(i);
+}

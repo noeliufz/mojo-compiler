@@ -1,0 +1,3235 @@
+	.data
+	.balign 8
+FibObject.Fib:
+	.quad FibObject.Init
+	.quad FibObject.Next
+	.quad FibObject.NextN
+	.quad FibObject.GetNum
+	.quad FibObject.Print
+PROCEDURE FibObject.Next
+# Trees:
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ CONST 0),
+LABEL L.1,
+LABEL L.2,
+JUMP(
+ NAME L.3),
+JUMP(
+ NAME L.1),
+LABEL L.3,
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.0,
+    TEMP FibObject.Next.self),
+   BEQ(
+    TEMP t.0,
+    CONST 0,
+    FibObject.Next.badPtr, L.4),
+   LABEL L.4,
+   TEMP t.0), 
+  CONST 16, 8, true, false)),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.1,
+    TEMP FibObject.Next.self),
+   BEQ(
+    TEMP t.1,
+    CONST 0,
+    FibObject.Next.badPtr, L.5),
+   LABEL L.5,
+   TEMP t.1), 
+  CONST 16, 8, true, false),
+ ADD(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.2,
+     TEMP FibObject.Next.self),
+    BEQ(
+     TEMP t.2,
+     CONST 0,
+     FibObject.Next.badPtr, L.6),
+    LABEL L.6,
+    TEMP t.2), 
+   CONST 8, 8, true, false),
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.3,
+     TEMP FibObject.Next.self),
+    BEQ(
+     TEMP t.3,
+     CONST 0,
+     FibObject.Next.badPtr, L.7),
+    LABEL L.7,
+    TEMP t.3), 
+   CONST 16, 8, true, false))),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.4,
+    TEMP FibObject.Next.self),
+   BEQ(
+    TEMP t.4,
+    CONST 0,
+    FibObject.Next.badPtr, L.8),
+   LABEL L.8,
+   TEMP t.4), 
+  CONST 8, 8, true, false),
+ TEMP FibObject.Next.1.temp),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.5,
+    TEMP FibObject.Next.self),
+   BEQ(
+    TEMP t.5,
+    CONST 0,
+    FibObject.Next.badPtr, L.9),
+   LABEL L.9,
+   TEMP t.5), 
+  CONST 0, 8, true, false),
+ ADD(
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.6,
+     TEMP FibObject.Next.self),
+    BEQ(
+     TEMP t.6,
+     CONST 0,
+     FibObject.Next.badPtr, L.10),
+    LABEL L.10,
+    TEMP t.6), 
+   CONST 0, 8, true, false),
+  CONST 1)),
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Next.self),
+JUMP(
+ NAME L.0),
+LABEL L.0
+# Linearized (trees):
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ CONST 0)
+LABEL L.1
+LABEL L.2
+JUMP(
+ NAME L.3)
+JUMP(
+ NAME L.1)
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ FibObject.Next.badPtr, L.4)
+LABEL L.4
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ MEM(
+  TEMP t.0, 
+  CONST 16, 8, true, false))
+MOVE(
+ TEMP t.1,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FibObject.Next.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.2,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.2,
+ CONST 0,
+ FibObject.Next.badPtr, L.6)
+LABEL L.6
+MOVE(
+ TEMP t.3,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.3,
+ CONST 0,
+ FibObject.Next.badPtr, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.1, 
+  CONST 16, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.2, 
+   CONST 8, 8, true, false),
+  MEM(
+   TEMP t.3, 
+   CONST 16, 8, true, false)))
+MOVE(
+ TEMP t.4,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ FibObject.Next.badPtr, L.8)
+LABEL L.8
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 8, 8, true, false),
+ TEMP FibObject.Next.1.temp)
+MOVE(
+ TEMP t.5,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ FibObject.Next.badPtr, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.6,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ FibObject.Next.badPtr, L.10)
+LABEL L.10
+MOVE(
+ MEM(
+  TEMP t.5, 
+  CONST 0, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.6, 
+   CONST 0, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Next.self)
+JUMP(
+ NAME L.0)
+LABEL L.0
+# Basic Blocks:
+# 0
+LABEL L.39
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ CONST 0)
+JUMP(
+ NAME L.1)
+# 1
+LABEL L.1
+JUMP(
+ NAME L.2)
+# 2
+LABEL L.2
+JUMP(
+ NAME L.3)
+# 3
+LABEL L.40
+JUMP(
+ NAME L.1)
+# 4
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ FibObject.Next.badPtr, L.4)
+# 5
+LABEL L.4
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ MEM(
+  TEMP t.0, 
+  CONST 16, 8, true, false))
+MOVE(
+ TEMP t.1,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FibObject.Next.badPtr, L.5)
+# 6
+LABEL L.5
+MOVE(
+ TEMP t.2,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.2,
+ CONST 0,
+ FibObject.Next.badPtr, L.6)
+# 7
+LABEL L.6
+MOVE(
+ TEMP t.3,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.3,
+ CONST 0,
+ FibObject.Next.badPtr, L.7)
+# 8
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.1, 
+  CONST 16, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.2, 
+   CONST 8, 8, true, false),
+  MEM(
+   TEMP t.3, 
+   CONST 16, 8, true, false)))
+MOVE(
+ TEMP t.4,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ FibObject.Next.badPtr, L.8)
+# 9
+LABEL L.8
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 8, 8, true, false),
+ TEMP FibObject.Next.1.temp)
+MOVE(
+ TEMP t.5,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ FibObject.Next.badPtr, L.9)
+# 10
+LABEL L.9
+MOVE(
+ TEMP t.6,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ FibObject.Next.badPtr, L.10)
+# 11
+LABEL L.10
+MOVE(
+ MEM(
+  TEMP t.5, 
+  CONST 0, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.6, 
+   CONST 0, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Next.self)
+JUMP(
+ NAME L.0)
+# 12
+LABEL L.0
+# Trace Scheduled:
+LABEL L.39
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ CONST 0)
+LABEL L.1
+LABEL L.2
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ FibObject.Next.badPtr, L.4)
+LABEL L.4
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ MEM(
+  TEMP t.0, 
+  CONST 16, 8, true, false))
+MOVE(
+ TEMP t.1,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FibObject.Next.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.2,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.2,
+ CONST 0,
+ FibObject.Next.badPtr, L.6)
+LABEL L.6
+MOVE(
+ TEMP t.3,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.3,
+ CONST 0,
+ FibObject.Next.badPtr, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.1, 
+  CONST 16, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.2, 
+   CONST 8, 8, true, false),
+  MEM(
+   TEMP t.3, 
+   CONST 16, 8, true, false)))
+MOVE(
+ TEMP t.4,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ FibObject.Next.badPtr, L.8)
+LABEL L.8
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 8, 8, true, false),
+ TEMP FibObject.Next.1.temp)
+MOVE(
+ TEMP t.5,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ FibObject.Next.badPtr, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.6,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ FibObject.Next.badPtr, L.10)
+LABEL L.10
+MOVE(
+ MEM(
+  TEMP t.5, 
+  CONST 0, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.6, 
+   CONST 0, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Next.self)
+JUMP(
+ NAME L.0)
+LABEL L.40
+JUMP(
+ NAME L.1)
+LABEL L.0
+# With procedure entry/exit:
+MOVE(
+ TEMP FibObject.Next.self,
+ TEMP %rdi)
+LABEL L.39
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ CONST 0)
+LABEL L.1
+LABEL L.2
+LABEL L.3
+MOVE(
+ TEMP t.0,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.0,
+ CONST 0,
+ FibObject.Next.badPtr, L.4)
+LABEL L.4
+MOVE(
+ TEMP FibObject.Next.1.temp,
+ MEM(
+  TEMP t.0, 
+  CONST 16, 8, true, false))
+MOVE(
+ TEMP t.1,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.1,
+ CONST 0,
+ FibObject.Next.badPtr, L.5)
+LABEL L.5
+MOVE(
+ TEMP t.2,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.2,
+ CONST 0,
+ FibObject.Next.badPtr, L.6)
+LABEL L.6
+MOVE(
+ TEMP t.3,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.3,
+ CONST 0,
+ FibObject.Next.badPtr, L.7)
+LABEL L.7
+MOVE(
+ MEM(
+  TEMP t.1, 
+  CONST 16, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.2, 
+   CONST 8, 8, true, false),
+  MEM(
+   TEMP t.3, 
+   CONST 16, 8, true, false)))
+MOVE(
+ TEMP t.4,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.4,
+ CONST 0,
+ FibObject.Next.badPtr, L.8)
+LABEL L.8
+MOVE(
+ MEM(
+  TEMP t.4, 
+  CONST 8, 8, true, false),
+ TEMP FibObject.Next.1.temp)
+MOVE(
+ TEMP t.5,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.5,
+ CONST 0,
+ FibObject.Next.badPtr, L.9)
+LABEL L.9
+MOVE(
+ TEMP t.6,
+ TEMP FibObject.Next.self)
+BEQ(
+ TEMP t.6,
+ CONST 0,
+ FibObject.Next.badPtr, L.10)
+LABEL L.10
+MOVE(
+ MEM(
+  TEMP t.5, 
+  CONST 0, 8, true, false),
+ ADD(
+  MEM(
+   TEMP t.6, 
+   CONST 0, 8, true, false),
+  CONST 1))
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Next.self)
+JUMP(
+ NAME L.0)
+LABEL L.40
+JUMP(
+ NAME L.1)
+LABEL L.0
+# Instructions:
+	movq %rdi,FibObject.Next.self	# FibObject.Next.self := %rdi 
+L.39:	# <- 
+	xorq FibObject.Next.1.temp,FibObject.Next.1.temp	# FibObject.Next.1.temp <- 
+L.1:	# <- 
+L.2:	# <- 
+L.3:	# <- 
+	movq FibObject.Next.self,t.0	# t.0 := FibObject.Next.self 
+	xorq t.19,t.19	# t.19 <- 
+	cmpq t.19,t.0	# <- t.0 t.19 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.4 
+L.4:	# <- 
+	movq 16(t.0),t.20	# t.20 <- t.0 
+	movq t.20,FibObject.Next.1.temp	# FibObject.Next.1.temp := t.20 
+	movq FibObject.Next.self,t.1	# t.1 := FibObject.Next.self 
+	xorq t.21,t.21	# t.21 <- 
+	cmpq t.21,t.1	# <- t.1 t.21 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.5 
+L.5:	# <- 
+	movq FibObject.Next.self,t.2	# t.2 := FibObject.Next.self 
+	xorq t.22,t.22	# t.22 <- 
+	cmpq t.22,t.2	# <- t.2 t.22 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.6 
+L.6:	# <- 
+	movq FibObject.Next.self,t.3	# t.3 := FibObject.Next.self 
+	xorq t.23,t.23	# t.23 <- 
+	cmpq t.23,t.3	# <- t.3 t.23 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.7 
+L.7:	# <- 
+	movq 8(t.2),t.24	# t.24 <- t.2 
+	movq 16(t.3),t.25	# t.25 <- t.3 
+	movq t.24,t.26	# t.26 := t.24 
+	addq t.25,t.26	# t.26 <- t.25 t.26 
+	movq t.26,16(t.1)	# <- t.1 t.26 
+	movq FibObject.Next.self,t.4	# t.4 := FibObject.Next.self 
+	xorq t.27,t.27	# t.27 <- 
+	cmpq t.27,t.4	# <- t.4 t.27 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.8 
+L.8:	# <- 
+	movq FibObject.Next.1.temp,8(t.4)	# <- t.4 FibObject.Next.1.temp 
+	movq FibObject.Next.self,t.5	# t.5 := FibObject.Next.self 
+	xorq t.28,t.28	# t.28 <- 
+	cmpq t.28,t.5	# <- t.5 t.28 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.9 
+L.9:	# <- 
+	movq FibObject.Next.self,t.6	# t.6 := FibObject.Next.self 
+	xorq t.29,t.29	# t.29 <- 
+	cmpq t.29,t.6	# <- t.6 t.29 
+	je FibObject.Next.badPtr	# <- : goto FibObject.Next.badPtr L.10 
+L.10:	# <- 
+	movq 0(t.6),t.30	# t.30 <- t.6 
+	movq t.30,t.31	# t.31 := t.30 
+	addq $1,t.31	# t.31 <- t.31 
+	movq t.31,0(t.5)	# <- t.5 t.31 
+	movq FibObject.Next.self,%rax	# %rax := FibObject.Next.self 
+	jmp L.0	# <- : goto L.0 
+L.40:	# <- 
+	jmp L.1	# <- : goto L.1 
+L.0:	# <- 
+# Control Flow Graph:
+0: FibObject.Next.self <- %rdi; goto 1
+1: FibObject.Next.1.temp <-; goto 2
+2: t.0 t.19 <- FibObject.Next.self; goto 3
+3: t.20 FibObject.Next.1.temp t.1 t.21 <- t.0 FibObject.Next.self; goto 4
+4: t.2 t.22 <- FibObject.Next.self; goto 5
+5: t.3 t.23 <- FibObject.Next.self; goto 6
+6: t.24 t.25 t.26 t.4 t.27 <- t.2 t.3 t.1 FibObject.Next.self; goto 7
+7: t.5 t.28 <- t.4 FibObject.Next.1.temp FibObject.Next.self; goto 8
+8: t.6 t.29 <- FibObject.Next.self; goto 9
+9: t.30 t.31 %rax <- t.6 t.5 FibObject.Next.self; goto 11
+10: <-; goto 2
+11: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FibObject.Next.self: %rsp %rbp FibObject.Next.1.temp t.19 t.21 t.20 t.22 t.23 t.27 t.26 t.25 t.24 t.28 t.29 t.31 t.30 
+FibObject.Next.1.temp: FibObject.Next.self %rsp %rbp t.21 t.1 t.22 t.2 t.23 t.3 t.27 t.4 t.26 t.25 t.24 
+t.0: t.19 %rsp %rbp 
+t.19: t.0 FibObject.Next.self %rsp %rbp 
+t.20: FibObject.Next.self %rsp %rbp 
+t.1: t.21 FibObject.Next.1.temp %rsp %rbp t.22 t.2 t.23 t.3 t.26 t.25 t.24 
+t.21: FibObject.Next.self t.1 FibObject.Next.1.temp %rsp %rbp 
+t.2: t.22 t.1 FibObject.Next.1.temp %rsp %rbp t.23 t.3 
+t.22: FibObject.Next.self t.2 t.1 FibObject.Next.1.temp %rsp %rbp 
+t.3: t.23 t.2 t.1 FibObject.Next.1.temp %rsp %rbp t.24 
+t.23: t.2 t.3 t.1 FibObject.Next.self FibObject.Next.1.temp %rsp %rbp 
+t.24: t.25 FibObject.Next.1.temp FibObject.Next.self %rsp %rbp t.1 t.3 
+t.25: t.26 FibObject.Next.1.temp FibObject.Next.self %rsp %rbp t.1 t.24 
+t.26: FibObject.Next.1.temp FibObject.Next.self %rsp %rbp t.1 t.25 
+t.4: t.27 FibObject.Next.1.temp %rsp %rbp 
+t.27: t.4 FibObject.Next.1.temp FibObject.Next.self %rsp %rbp 
+t.5: t.28 %rsp %rbp t.29 t.6 t.31 t.30 
+t.28: FibObject.Next.self t.5 %rsp %rbp 
+t.6: t.29 t.5 %rsp %rbp 
+t.29: t.6 t.5 FibObject.Next.self %rsp %rbp 
+t.30: %rsp %rbp FibObject.Next.self t.5 
+t.31: %rsp %rbp FibObject.Next.self t.5 
+t.31 <= t.30
+%rax <= FibObject.Next.self
+t.6 <= FibObject.Next.self
+t.5 <= FibObject.Next.self
+t.26 <= t.24
+t.4 <= FibObject.Next.self
+t.3 <= FibObject.Next.self
+t.2 <= FibObject.Next.self
+FibObject.Next.1.temp <= t.20
+t.1 <= FibObject.Next.self
+t.0 <= FibObject.Next.self
+FibObject.Next.self <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FibObject.Next.self->%rax
+FibObject.Next.1.temp->%rcx
+t.0->%rax
+t.19->%rbx
+t.20->%rcx
+t.1->%rbx
+t.21->%rdx
+t.2->%rdx
+t.22->%rsi
+t.3->%rax
+t.23->%rsi
+t.24->%rdx
+t.25->%rsi
+t.26->%rdx
+t.4->%rax
+t.27->%rbx
+t.5->%rbx
+t.28->%rcx
+t.6->%rax
+t.29->%rcx
+t.30->%rcx
+t.31->%rcx
+# Assembly code:
+	.text
+FibObject.Next:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rax
+L.39:
+	xorq %rcx,%rcx
+L.1:
+L.2:
+L.3:
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je FibObject.Next.badPtr
+L.4:
+	movq 16(%rax),%rcx
+#	movq %rcx,%rcx
+	movq %rax,%rbx
+	xorq %rdx,%rdx
+	cmpq %rdx,%rbx
+	je FibObject.Next.badPtr
+L.5:
+	movq %rax,%rdx
+	xorq %rsi,%rsi
+	cmpq %rsi,%rdx
+	je FibObject.Next.badPtr
+L.6:
+#	movq %rax,%rax
+	xorq %rsi,%rsi
+	cmpq %rsi,%rax
+	je FibObject.Next.badPtr
+L.7:
+	movq 8(%rdx),%rdx
+	movq 16(%rax),%rsi
+#	movq %rdx,%rdx
+	addq %rsi,%rdx
+	movq %rdx,16(%rbx)
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je FibObject.Next.badPtr
+L.8:
+	movq %rcx,8(%rax)
+	movq %rax,%rbx
+	xorq %rcx,%rcx
+	cmpq %rcx,%rbx
+	je FibObject.Next.badPtr
+L.9:
+#	movq %rax,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	je FibObject.Next.badPtr
+L.10:
+	movq 0(%rax),%rcx
+#	movq %rcx,%rcx
+	addq $1,%rcx
+	movq %rcx,0(%rbx)
+#	movq %rax,%rax
+	jmp L.0
+L.40:
+	jmp L.1
+L.0:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+FibObject.Next.badPtr:
+	call badPtr
+FibObject.Next.badSub:
+	call badSub
+END FibObject.Next
+PROCEDURE FibObject.NextN
+# Trees:
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CONST 0),
+LABEL L.12,
+BGT(
+ TEMP FibObject.NextN.n,
+ CONST 0,
+ L.13, L.14),
+LABEL L.13,
+MOVE(
+ TEMP FibObject.NextN.n,
+ SUB(
+  TEMP FibObject.NextN.n,
+  CONST 1)),
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.NextN.self, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP FibObject.NextN.self)),
+JUMP(
+ NAME L.12),
+LABEL L.14,
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.NextN.1.res),
+JUMP(
+ NAME L.11),
+LABEL L.11
+# Linearized (trees):
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CONST 0)
+LABEL L.12
+BGT(
+ TEMP FibObject.NextN.n,
+ CONST 0,
+ L.13, L.14)
+LABEL L.13
+MOVE(
+ TEMP FibObject.NextN.n,
+ SUB(
+  TEMP FibObject.NextN.n,
+  CONST 1))
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.NextN.self, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP FibObject.NextN.self))
+JUMP(
+ NAME L.12)
+LABEL L.14
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.NextN.1.res)
+JUMP(
+ NAME L.11)
+LABEL L.11
+# Basic Blocks:
+# 0
+LABEL L.41
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CONST 0)
+JUMP(
+ NAME L.12)
+# 1
+LABEL L.12
+BGT(
+ TEMP FibObject.NextN.n,
+ CONST 0,
+ L.13, L.14)
+# 2
+LABEL L.13
+MOVE(
+ TEMP FibObject.NextN.n,
+ SUB(
+  TEMP FibObject.NextN.n,
+  CONST 1))
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.NextN.self, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP FibObject.NextN.self))
+JUMP(
+ NAME L.12)
+# 3
+LABEL L.14
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.NextN.1.res)
+JUMP(
+ NAME L.11)
+# 4
+LABEL L.11
+# Trace Scheduled:
+LABEL L.41
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CONST 0)
+LABEL L.12
+BGT(
+ TEMP FibObject.NextN.n,
+ CONST 0,
+ L.13, L.14)
+LABEL L.14
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.NextN.1.res)
+JUMP(
+ NAME L.11)
+LABEL L.13
+MOVE(
+ TEMP FibObject.NextN.n,
+ SUB(
+  TEMP FibObject.NextN.n,
+  CONST 1))
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.NextN.self, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP FibObject.NextN.self))
+JUMP(
+ NAME L.12)
+LABEL L.11
+# With procedure entry/exit:
+MOVE(
+ TEMP FibObject.NextN.n,
+ TEMP %rsi)
+MOVE(
+ TEMP FibObject.NextN.self,
+ TEMP %rdi)
+LABEL L.41
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CONST 0)
+LABEL L.12
+BGT(
+ TEMP FibObject.NextN.n,
+ CONST 0,
+ L.13, L.14)
+LABEL L.14
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.NextN.1.res)
+JUMP(
+ NAME L.11)
+LABEL L.13
+MOVE(
+ TEMP FibObject.NextN.n,
+ SUB(
+  TEMP FibObject.NextN.n,
+  CONST 1))
+MOVE(
+ TEMP FibObject.NextN.1.res,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.NextN.self, 
+    CONST -8, 8, false, false), 
+   CONST 8, 8, false, false),
+  CONST 0,
+  TEMP FibObject.NextN.self))
+JUMP(
+ NAME L.12)
+LABEL L.11
+# Instructions:
+	movq %rsi,FibObject.NextN.n	# FibObject.NextN.n := %rsi 
+	movq %rdi,FibObject.NextN.self	# FibObject.NextN.self := %rdi 
+L.41:	# <- 
+	xorq FibObject.NextN.1.res,FibObject.NextN.1.res	# FibObject.NextN.1.res <- 
+L.12:	# <- 
+	xorq t.32,t.32	# t.32 <- 
+	cmpq t.32,FibObject.NextN.n	# <- FibObject.NextN.n t.32 
+	jg L.13	# <- : goto L.13 L.14 
+L.14:	# <- 
+	movq FibObject.NextN.1.res,%rax	# %rax := FibObject.NextN.1.res 
+	jmp L.11	# <- : goto L.11 
+L.13:	# <- 
+	movq FibObject.NextN.n,t.33	# t.33 := FibObject.NextN.n 
+	subq $1,t.33	# t.33 <- t.33 
+	movq t.33,FibObject.NextN.n	# FibObject.NextN.n := t.33 
+	movq -8(FibObject.NextN.self),t.34	# t.34 <- FibObject.NextN.self 
+	movq 8(t.34),t.35	# t.35 <- t.34 
+	movq FibObject.NextN.self,%rdi	# %rdi := FibObject.NextN.self 
+	call *t.35	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.35 %rdi 
+	movq %rax,FibObject.NextN.1.res	# FibObject.NextN.1.res := %rax 
+	jmp L.12	# <- : goto L.12 
+L.11:	# <- 
+# Control Flow Graph:
+0: FibObject.NextN.n FibObject.NextN.self <- %rsi %rdi; goto 1
+1: FibObject.NextN.1.res <-; goto 2
+2: t.32 <- FibObject.NextN.n; goto 4 3
+3: %rax <- FibObject.NextN.1.res; goto 5
+4: t.33 FibObject.NextN.n t.34 t.35 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 FibObject.NextN.1.res <- FibObject.NextN.n FibObject.NextN.self; goto 2
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FibObject.NextN.n: FibObject.NextN.self %rsp %rbp %rdi FibObject.NextN.1.res t.32 %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.35 t.34 
+FibObject.NextN.self: FibObject.NextN.n %rsp %rbp FibObject.NextN.1.res t.32 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.35 t.34 t.33 
+FibObject.NextN.1.res: FibObject.NextN.n FibObject.NextN.self %rsp %rbp t.32 
+t.32: FibObject.NextN.n FibObject.NextN.self FibObject.NextN.1.res %rsp %rbp 
+t.33: FibObject.NextN.self %rsp %rbp 
+t.34: FibObject.NextN.n FibObject.NextN.self %rsp %rbp 
+t.35: %rdi FibObject.NextN.n FibObject.NextN.self %rsp %rbp 
+t.33 <= FibObject.NextN.n
+FibObject.NextN.n <= t.33
+%rdi <= FibObject.NextN.self
+FibObject.NextN.1.res <= %rax
+%rax <= FibObject.NextN.1.res
+FibObject.NextN.n <= %rsi
+FibObject.NextN.self <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FibObject.NextN.n->%r12
+FibObject.NextN.self->%rbx
+FibObject.NextN.1.res->%rax
+t.32->%rcx
+t.33->%r12
+t.34->%rax
+t.35->%rax
+# Assembly code:
+	.text
+FibObject.NextN:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+	movq %rsi,%r12
+	movq %rdi,%rbx
+L.41:
+	xorq %rax,%rax
+L.12:
+	xorq %rcx,%rcx
+	cmpq %rcx,%r12
+	jg L.13
+L.14:
+#	movq %rax,%rax
+	jmp L.11
+L.13:
+#	movq %r12,%r12
+	subq $1,%r12
+#	movq %r12,%r12
+	movq -8(%rbx),%rax
+	movq 8(%rax),%rax
+	movq %rbx,%rdi
+	call *%rax
+#	movq %rax,%rax
+	jmp L.12
+L.11:
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	addq $32,%rsp
+	popq %rbp
+	ret
+FibObject.NextN.badSub:
+	call badSub
+END FibObject.NextN
+	.data
+	.balign 8
+L.16:
+	.byte 78
+	.byte 117
+	.byte 109
+	.byte 98
+	.byte 101
+	.byte 114
+	.byte 32
+	.byte 116
+	.byte 111
+	.byte 32
+	.byte 99
+	.byte 97
+	.byte 108
+	.byte 99
+	.byte 117
+	.byte 108
+	.byte 97
+	.byte 116
+	.byte 101
+	.byte 32
+	.byte 102
+	.byte 105
+	.byte 98
+	.byte 32
+	.byte 111
+	.byte 102
+	.byte 58
+	.byte 32
+	.byte 0
+	.data
+	.balign 8
+L.17:
+	.quad L.16
+	.quad 29
+PROCEDURE FibObject.GetNum
+# Trees:
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ CONST 0),
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME FibObject.CString,
+   CONST 0,
+   NAME L.17),
+  CONST 0,
+  CONST 0)),
+LABEL L.18,
+LABEL L.19,
+MOVE(
+ TEMP FibObject.GetNum.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0)),
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 10,
+ L.21, L.23),
+LABEL L.23,
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 13,
+ L.21, L.22),
+LABEL L.21,
+JUMP(
+ NAME L.20),
+LABEL L.22,
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ ADD(
+  MUL(
+   TEMP FibObject.GetNum.1.n,
+   CONST 10),
+  SUB(
+   TEMP FibObject.GetNum.1.1.c,
+   CONST 48))),
+JUMP(
+ NAME L.18),
+LABEL L.20,
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.GetNum.1.n),
+JUMP(
+ NAME L.15),
+LABEL L.15
+# Linearized (trees):
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ CONST 0)
+MOVE(
+ TEMP t.37,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.17))
+MOVE(
+ TEMP t.36,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.37,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.36)
+LABEL L.18
+LABEL L.19
+MOVE(
+ TEMP FibObject.GetNum.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 10,
+ L.21, L.23)
+LABEL L.23
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 13,
+ L.21, L.22)
+LABEL L.21
+JUMP(
+ NAME L.20)
+LABEL L.22
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ ADD(
+  MUL(
+   TEMP FibObject.GetNum.1.n,
+   CONST 10),
+  SUB(
+   TEMP FibObject.GetNum.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.18)
+LABEL L.20
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.GetNum.1.n)
+JUMP(
+ NAME L.15)
+LABEL L.15
+# Basic Blocks:
+# 0
+LABEL L.42
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ CONST 0)
+MOVE(
+ TEMP t.37,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.17))
+MOVE(
+ TEMP t.36,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.37,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.36)
+JUMP(
+ NAME L.18)
+# 1
+LABEL L.18
+JUMP(
+ NAME L.19)
+# 2
+LABEL L.19
+MOVE(
+ TEMP FibObject.GetNum.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 10,
+ L.21, L.23)
+# 3
+LABEL L.23
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 13,
+ L.21, L.22)
+# 4
+LABEL L.21
+JUMP(
+ NAME L.20)
+# 5
+LABEL L.22
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ ADD(
+  MUL(
+   TEMP FibObject.GetNum.1.n,
+   CONST 10),
+  SUB(
+   TEMP FibObject.GetNum.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.18)
+# 6
+LABEL L.20
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.GetNum.1.n)
+JUMP(
+ NAME L.15)
+# 7
+LABEL L.15
+# Trace Scheduled:
+LABEL L.42
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ CONST 0)
+MOVE(
+ TEMP t.37,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.17))
+MOVE(
+ TEMP t.36,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.37,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.36)
+LABEL L.18
+LABEL L.19
+MOVE(
+ TEMP FibObject.GetNum.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 10,
+ L.21, L.23)
+LABEL L.23
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 13,
+ L.21, L.22)
+LABEL L.22
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ ADD(
+  MUL(
+   TEMP FibObject.GetNum.1.n,
+   CONST 10),
+  SUB(
+   TEMP FibObject.GetNum.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.18)
+LABEL L.21
+LABEL L.20
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.GetNum.1.n)
+LABEL L.15
+# With procedure entry/exit:
+MOVE(
+ TEMP FibObject.GetNum.self,
+ TEMP %rdi)
+LABEL L.42
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ CONST 0)
+MOVE(
+ TEMP t.37,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.17))
+MOVE(
+ TEMP t.36,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.37,
+  CONST 0,
+  CONST 0))
+EXP(
+ TEMP t.36)
+LABEL L.18
+LABEL L.19
+MOVE(
+ TEMP FibObject.GetNum.1.1.c,
+ CALL(
+  NAME getchar,
+  CONST 0))
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 10,
+ L.21, L.23)
+LABEL L.23
+BEQ(
+ TEMP FibObject.GetNum.1.1.c,
+ CONST 13,
+ L.21, L.22)
+LABEL L.22
+MOVE(
+ TEMP FibObject.GetNum.1.n,
+ ADD(
+  MUL(
+   TEMP FibObject.GetNum.1.n,
+   CONST 10),
+  SUB(
+   TEMP FibObject.GetNum.1.1.c,
+   CONST 48)))
+JUMP(
+ NAME L.18)
+LABEL L.21
+LABEL L.20
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.GetNum.1.n)
+LABEL L.15
+# Instructions:
+	movq %rdi,FibObject.GetNum.self	# FibObject.GetNum.self := %rdi 
+L.42:	# <- 
+	xorq FibObject.GetNum.1.n,FibObject.GetNum.1.n	# FibObject.GetNum.1.n <- 
+	leaq L.17(%rip),t.38	# t.38 <- 
+	movq t.38,%rdi	# %rdi := t.38 
+	call FibObject.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.37	# t.37 := %rax 
+	movq t.37,%rdi	# %rdi := t.37 
+	xorq %rsi,%rsi	# %rsi <- 
+	xorq %rdx,%rdx	# %rdx <- 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi %rdx 
+	movq %rax,t.36	# t.36 := %rax 
+L.18:	# <- 
+L.19:	# <- 
+	call getchar	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- 
+	movq %rax,FibObject.GetNum.1.1.c	# FibObject.GetNum.1.1.c := %rax 
+	movq $10,t.39	# t.39 <- 
+	cmpq t.39,FibObject.GetNum.1.1.c	# <- FibObject.GetNum.1.1.c t.39 
+	je L.21	# <- : goto L.21 L.23 
+L.23:	# <- 
+	movq $13,t.40	# t.40 <- 
+	cmpq t.40,FibObject.GetNum.1.1.c	# <- FibObject.GetNum.1.1.c t.40 
+	je L.21	# <- : goto L.21 L.22 
+L.22:	# <- 
+	movq FibObject.GetNum.1.n,t.41	# t.41 := FibObject.GetNum.1.n 
+	imulq $10,t.41	# t.41 <- t.41 
+	movq FibObject.GetNum.1.1.c,t.42	# t.42 := FibObject.GetNum.1.1.c 
+	subq $48,t.42	# t.42 <- t.42 
+	movq t.41,t.43	# t.43 := t.41 
+	addq t.42,t.43	# t.43 <- t.42 t.43 
+	movq t.43,FibObject.GetNum.1.n	# FibObject.GetNum.1.n := t.43 
+	jmp L.18	# <- : goto L.18 
+L.21:	# <- 
+L.20:	# <- 
+	movq FibObject.GetNum.1.n,%rax	# %rax := FibObject.GetNum.1.n 
+L.15:	# <- 
+# Control Flow Graph:
+0: FibObject.GetNum.self <- %rdi; goto 1
+1: FibObject.GetNum.1.n t.38 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.37 t.36 <-; goto 2
+2: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 FibObject.GetNum.1.1.c t.39 <-; goto 5 3
+3: t.40 <- FibObject.GetNum.1.1.c; goto 5 4
+4: t.41 t.42 t.43 FibObject.GetNum.1.n <- FibObject.GetNum.1.n FibObject.GetNum.1.1.c; goto 2
+5: %rax <- FibObject.GetNum.1.n; goto 6
+6: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FibObject.GetNum.self: %rsp %rbp 
+FibObject.GetNum.1.n: t.36 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.37 t.38 %rsp %rbp t.39 FibObject.GetNum.1.1.c t.40 
+t.38: FibObject.GetNum.1.n %rsp %rbp 
+t.37: FibObject.GetNum.1.n %rsp %rbp 
+t.36: FibObject.GetNum.1.n %rsp %rbp 
+FibObject.GetNum.1.1.c: t.39 FibObject.GetNum.1.n %rsp %rbp t.40 t.41 
+t.39: FibObject.GetNum.1.n %rsp %rbp FibObject.GetNum.1.1.c 
+t.40: FibObject.GetNum.1.n %rsp %rbp FibObject.GetNum.1.1.c 
+t.41: t.42 %rsp %rbp FibObject.GetNum.1.1.c 
+t.42: t.43 %rsp %rbp t.41 
+t.43: %rsp %rbp t.42 
+%rax <= FibObject.GetNum.1.n
+t.41 <= FibObject.GetNum.1.n
+t.42 <= FibObject.GetNum.1.1.c
+t.43 <= t.41
+FibObject.GetNum.1.n <= t.43
+FibObject.GetNum.1.1.c <= %rax
+%rdi <= t.38
+t.37 <= %rax
+%rdi <= t.37
+t.36 <= %rax
+FibObject.GetNum.self <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FibObject.GetNum.self->%rdi
+FibObject.GetNum.1.n->%rbx
+t.38->%rdi
+t.37->%rax
+t.36->%rax
+FibObject.GetNum.1.1.c->%rax
+t.39->%rcx
+t.40->%rcx
+t.41->%rbx
+t.42->%rax
+t.43->%rbx
+# Assembly code:
+	.text
+FibObject.GetNum:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.42:
+	xorq %rbx,%rbx
+	leaq L.17(%rip),%rdi
+#	movq %rdi,%rdi
+	call FibObject.CString
+#	movq %rax,%rax
+	movq %rax,%rdi
+	xorq %rsi,%rsi
+	xorq %rdx,%rdx
+	call printf
+#	movq %rax,%rax
+L.18:
+L.19:
+	call getchar
+#	movq %rax,%rax
+	movq $10,%rcx
+	cmpq %rcx,%rax
+	je L.21
+L.23:
+	movq $13,%rcx
+	cmpq %rcx,%rax
+	je L.21
+L.22:
+#	movq %rbx,%rbx
+	imulq $10,%rbx
+#	movq %rax,%rax
+	subq $48,%rax
+#	movq %rbx,%rbx
+	addq %rax,%rbx
+#	movq %rbx,%rbx
+	jmp L.18
+L.21:
+L.20:
+	movq %rbx,%rax
+L.15:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+FibObject.GetNum.badSub:
+	call badSub
+END FibObject.GetNum
+	.data
+	.balign 8
+L.25:
+	.byte 70
+	.byte 105
+	.byte 98
+	.byte 32
+	.byte 37
+	.byte 108
+	.byte 100
+	.byte 32
+	.byte 105
+	.byte 115
+	.byte 32
+	.byte 37
+	.byte 108
+	.byte 100
+	.byte 10
+	.byte 0
+	.data
+	.balign 8
+L.26:
+	.quad L.25
+	.quad 16
+PROCEDURE FibObject.Print
+# Trees:
+EXP(
+ CALL(
+  NAME printf,
+  CONST 0,
+  CALL(
+   NAME FibObject.CString,
+   CONST 0,
+   NAME L.26),
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.7,
+     TEMP FibObject.Print.self),
+    BEQ(
+     TEMP t.7,
+     CONST 0,
+     FibObject.Print.badPtr, L.27),
+    LABEL L.27,
+    TEMP t.7), 
+   CONST 0, 8, true, false),
+  MEM(
+   ESEQ(
+    MOVE(
+     TEMP t.8,
+     TEMP FibObject.Print.self),
+    BEQ(
+     TEMP t.8,
+     CONST 0,
+     FibObject.Print.badPtr, L.28),
+    LABEL L.28,
+    TEMP t.8), 
+   CONST 16, 8, true, false))),
+LABEL L.24
+# Linearized (trees):
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.26))
+MOVE(
+ TEMP t.7,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ FibObject.Print.badPtr, L.27)
+LABEL L.27
+MOVE(
+ TEMP t.8,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ FibObject.Print.badPtr, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.45,
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  MEM(
+   TEMP t.8, 
+   CONST 16, 8, true, false)))
+EXP(
+ TEMP t.44)
+LABEL L.24
+# Basic Blocks:
+# 0
+LABEL L.43
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.26))
+MOVE(
+ TEMP t.7,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ FibObject.Print.badPtr, L.27)
+# 1
+LABEL L.27
+MOVE(
+ TEMP t.8,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ FibObject.Print.badPtr, L.28)
+# 2
+LABEL L.28
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.45,
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  MEM(
+   TEMP t.8, 
+   CONST 16, 8, true, false)))
+EXP(
+ TEMP t.44)
+JUMP(
+ NAME L.24)
+# 3
+LABEL L.24
+# Trace Scheduled:
+LABEL L.43
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.26))
+MOVE(
+ TEMP t.7,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ FibObject.Print.badPtr, L.27)
+LABEL L.27
+MOVE(
+ TEMP t.8,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ FibObject.Print.badPtr, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.45,
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  MEM(
+   TEMP t.8, 
+   CONST 16, 8, true, false)))
+EXP(
+ TEMP t.44)
+LABEL L.24
+# With procedure entry/exit:
+MOVE(
+ TEMP FibObject.Print.self,
+ TEMP %rdi)
+LABEL L.43
+MOVE(
+ TEMP t.45,
+ CALL(
+  NAME FibObject.CString,
+  CONST 0,
+  NAME L.26))
+MOVE(
+ TEMP t.7,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.7,
+ CONST 0,
+ FibObject.Print.badPtr, L.27)
+LABEL L.27
+MOVE(
+ TEMP t.8,
+ TEMP FibObject.Print.self)
+BEQ(
+ TEMP t.8,
+ CONST 0,
+ FibObject.Print.badPtr, L.28)
+LABEL L.28
+MOVE(
+ TEMP t.44,
+ CALL(
+  NAME printf,
+  CONST 0,
+  TEMP t.45,
+  MEM(
+   TEMP t.7, 
+   CONST 0, 8, true, false),
+  MEM(
+   TEMP t.8, 
+   CONST 16, 8, true, false)))
+EXP(
+ TEMP t.44)
+LABEL L.24
+# Instructions:
+	movq %rdi,FibObject.Print.self	# FibObject.Print.self := %rdi 
+L.43:	# <- 
+	leaq L.26(%rip),t.46	# t.46 <- 
+	movq t.46,%rdi	# %rdi := t.46 
+	call FibObject.CString	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.45	# t.45 := %rax 
+	movq FibObject.Print.self,t.7	# t.7 := FibObject.Print.self 
+	xorq t.47,t.47	# t.47 <- 
+	cmpq t.47,t.7	# <- t.7 t.47 
+	je FibObject.Print.badPtr	# <- : goto FibObject.Print.badPtr L.27 
+L.27:	# <- 
+	movq FibObject.Print.self,t.8	# t.8 := FibObject.Print.self 
+	xorq t.48,t.48	# t.48 <- 
+	cmpq t.48,t.8	# <- t.8 t.48 
+	je FibObject.Print.badPtr	# <- : goto FibObject.Print.badPtr L.28 
+L.28:	# <- 
+	movq t.45,%rdi	# %rdi := t.45 
+	movq 0(t.7),t.49	# t.49 <- t.7 
+	movq t.49,%rsi	# %rsi := t.49 
+	movq 16(t.8),t.50	# t.50 <- t.8 
+	movq t.50,%rdx	# %rdx := t.50 
+	call printf	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi %rsi %rdx 
+	movq %rax,t.44	# t.44 := %rax 
+L.24:	# <- 
+# Control Flow Graph:
+0: FibObject.Print.self <- %rdi; goto 1
+1: t.46 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.45 t.7 t.47 <- FibObject.Print.self; goto 2
+2: t.8 t.48 <- FibObject.Print.self; goto 3
+3: %rdi t.49 %rsi t.50 %rdx %rcx %r8 %r9 %rax %r10 %r11 t.44 <- t.45 t.7 t.8; goto 4
+4: <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FibObject.Print.self: %rsp %rbp t.47 t.45 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.46 
+t.46: FibObject.Print.self %rsp %rbp 
+t.45: t.47 t.7 FibObject.Print.self %rsp %rbp t.48 t.8 
+t.7: t.47 t.45 %rsp %rbp t.48 t.8 %rdi 
+t.47: FibObject.Print.self t.45 t.7 %rsp %rbp 
+t.8: t.48 t.45 t.7 %rsp %rbp %rsi t.49 %rdi 
+t.48: t.45 t.7 t.8 %rsp %rbp 
+t.49: %rsp %rbp %rdi t.8 
+t.50: %rsp %rbp %rdi %rsi 
+t.44: %rsp %rbp 
+%rdi <= t.45
+%rsi <= t.49
+%rdx <= t.50
+t.44 <= %rax
+t.8 <= FibObject.Print.self
+%rdi <= t.46
+t.45 <= %rax
+t.7 <= FibObject.Print.self
+FibObject.Print.self <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FibObject.Print.self->%rbx
+t.46->%rdi
+t.45->%rdi
+t.7->%rax
+t.47->%rcx
+t.8->%rbx
+t.48->%rcx
+t.49->%rsi
+t.50->%rdx
+t.44->%rax
+# Assembly code:
+	.text
+FibObject.Print:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rbx
+L.43:
+	leaq L.26(%rip),%rdi
+#	movq %rdi,%rdi
+	call FibObject.CString
+	movq %rax,%rdi
+	movq %rbx,%rax
+	xorq %rcx,%rcx
+	cmpq %rcx,%rax
+	je FibObject.Print.badPtr
+L.27:
+#	movq %rbx,%rbx
+	xorq %rcx,%rcx
+	cmpq %rcx,%rbx
+	je FibObject.Print.badPtr
+L.28:
+#	movq %rdi,%rdi
+	movq 0(%rax),%rsi
+#	movq %rsi,%rsi
+	movq 16(%rbx),%rdx
+#	movq %rdx,%rdx
+	call printf
+#	movq %rax,%rax
+L.24:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $32,%rsp
+	popq %rbp
+	ret
+FibObject.Print.badPtr:
+	call badPtr
+FibObject.Print.badSub:
+	call badSub
+END FibObject.Print
+PROCEDURE FibObject.Init
+# Trees:
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.9,
+    TEMP FibObject.Init.self),
+   BEQ(
+    TEMP t.9,
+    CONST 0,
+    FibObject.Init.badPtr, L.30),
+   LABEL L.30,
+   TEMP t.9), 
+  CONST 0, 8, true, false),
+ CONST 1),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.10,
+    TEMP FibObject.Init.self),
+   BEQ(
+    TEMP t.10,
+    CONST 0,
+    FibObject.Init.badPtr, L.31),
+   LABEL L.31,
+   TEMP t.10), 
+  CONST 8, 8, true, false),
+ CONST 0),
+MOVE(
+ MEM(
+  ESEQ(
+   MOVE(
+    TEMP t.11,
+    TEMP FibObject.Init.self),
+   BEQ(
+    TEMP t.11,
+    CONST 0,
+    FibObject.Init.badPtr, L.32),
+   LABEL L.32,
+   TEMP t.11), 
+  CONST 16, 8, true, false),
+ CONST 1),
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Init.self),
+JUMP(
+ NAME L.29),
+LABEL L.29
+# Linearized (trees):
+MOVE(
+ TEMP t.9,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ FibObject.Init.badPtr, L.30)
+LABEL L.30
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.10,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ FibObject.Init.badPtr, L.31)
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP t.10, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.11,
+ CONST 0,
+ FibObject.Init.badPtr, L.32)
+LABEL L.32
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 16, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Init.self)
+JUMP(
+ NAME L.29)
+LABEL L.29
+# Basic Blocks:
+# 0
+LABEL L.44
+MOVE(
+ TEMP t.9,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ FibObject.Init.badPtr, L.30)
+# 1
+LABEL L.30
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.10,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ FibObject.Init.badPtr, L.31)
+# 2
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP t.10, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.11,
+ CONST 0,
+ FibObject.Init.badPtr, L.32)
+# 3
+LABEL L.32
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 16, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Init.self)
+JUMP(
+ NAME L.29)
+# 4
+LABEL L.29
+# Trace Scheduled:
+LABEL L.44
+MOVE(
+ TEMP t.9,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ FibObject.Init.badPtr, L.30)
+LABEL L.30
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.10,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ FibObject.Init.badPtr, L.31)
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP t.10, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.11,
+ CONST 0,
+ FibObject.Init.badPtr, L.32)
+LABEL L.32
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 16, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Init.self)
+LABEL L.29
+# With procedure entry/exit:
+MOVE(
+ TEMP FibObject.Init.self,
+ TEMP %rdi)
+LABEL L.44
+MOVE(
+ TEMP t.9,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.9,
+ CONST 0,
+ FibObject.Init.badPtr, L.30)
+LABEL L.30
+MOVE(
+ MEM(
+  TEMP t.9, 
+  CONST 0, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP t.10,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.10,
+ CONST 0,
+ FibObject.Init.badPtr, L.31)
+LABEL L.31
+MOVE(
+ MEM(
+  TEMP t.10, 
+  CONST 8, 8, true, false),
+ CONST 0)
+MOVE(
+ TEMP t.11,
+ TEMP FibObject.Init.self)
+BEQ(
+ TEMP t.11,
+ CONST 0,
+ FibObject.Init.badPtr, L.32)
+LABEL L.32
+MOVE(
+ MEM(
+  TEMP t.11, 
+  CONST 16, 8, true, false),
+ CONST 1)
+MOVE(
+ TEMP %rax,
+ TEMP FibObject.Init.self)
+LABEL L.29
+# Instructions:
+	movq %rdi,FibObject.Init.self	# FibObject.Init.self := %rdi 
+L.44:	# <- 
+	movq FibObject.Init.self,t.9	# t.9 := FibObject.Init.self 
+	xorq t.51,t.51	# t.51 <- 
+	cmpq t.51,t.9	# <- t.9 t.51 
+	je FibObject.Init.badPtr	# <- : goto FibObject.Init.badPtr L.30 
+L.30:	# <- 
+	movq $1,0(t.9)	# <- t.9 
+	movq FibObject.Init.self,t.10	# t.10 := FibObject.Init.self 
+	xorq t.52,t.52	# t.52 <- 
+	cmpq t.52,t.10	# <- t.10 t.52 
+	je FibObject.Init.badPtr	# <- : goto FibObject.Init.badPtr L.31 
+L.31:	# <- 
+	movq $0,8(t.10)	# <- t.10 
+	movq FibObject.Init.self,t.11	# t.11 := FibObject.Init.self 
+	xorq t.53,t.53	# t.53 <- 
+	cmpq t.53,t.11	# <- t.11 t.53 
+	je FibObject.Init.badPtr	# <- : goto FibObject.Init.badPtr L.32 
+L.32:	# <- 
+	movq $1,16(t.11)	# <- t.11 
+	movq FibObject.Init.self,%rax	# %rax := FibObject.Init.self 
+L.29:	# <- 
+# Control Flow Graph:
+0: FibObject.Init.self <- %rdi; goto 1
+1: t.9 t.51 <- FibObject.Init.self; goto 2
+2: t.10 t.52 <- t.9 FibObject.Init.self; goto 3
+3: t.11 t.53 <- t.10 FibObject.Init.self; goto 4
+4: %rax <- t.11 FibObject.Init.self; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FibObject.Init.self: %rsp %rbp t.51 t.52 t.53 
+t.9: t.51 %rsp %rbp 
+t.51: t.9 FibObject.Init.self %rsp %rbp 
+t.10: t.52 %rsp %rbp 
+t.52: t.10 FibObject.Init.self %rsp %rbp 
+t.11: t.53 %rsp %rbp 
+t.53: t.11 FibObject.Init.self %rsp %rbp 
+%rax <= FibObject.Init.self
+t.11 <= FibObject.Init.self
+t.10 <= FibObject.Init.self
+t.9 <= FibObject.Init.self
+FibObject.Init.self <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FibObject.Init.self->%rax
+t.9->%rax
+t.51->%rbx
+t.10->%rax
+t.52->%rbx
+t.11->%rax
+t.53->%rbx
+# Assembly code:
+	.text
+FibObject.Init:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+	movq %rdi,%rax
+L.44:
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je FibObject.Init.badPtr
+L.30:
+	movq $1,0(%rax)
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je FibObject.Init.badPtr
+L.31:
+	movq $0,8(%rax)
+#	movq %rax,%rax
+	xorq %rbx,%rbx
+	cmpq %rbx,%rax
+	je FibObject.Init.badPtr
+L.32:
+	movq $1,16(%rax)
+#	movq %rax,%rax
+L.29:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+FibObject.Init.badPtr:
+	call badPtr
+FibObject.Init.badSub:
+	call badSub
+END FibObject.Init
+PROCEDURE FibObject.CString
+# Trees:
+MOVE(
+ TEMP FibObject.CString.1.a,
+ TEMP FibObject.CString.t),
+MOVE(
+ TEMP %rax,
+ ESEQ(
+  MOVE(
+   TEMP t.15,
+   ESEQ(
+    MOVE(
+     TEMP t.13,
+     TEMP FibObject.CString.1.a),
+    BEQ(
+     TEMP t.13,
+     CONST 0,
+     FibObject.CString.badPtr, L.36),
+    LABEL L.36,
+    TEMP t.13)),
+  ADD(
+   MEM(
+    TEMP t.15, 
+    CONST 0, 8, false, false),
+   ESEQ(
+    MOVE(
+     TEMP t.14,
+     CONST 0),
+    BLT(
+     TEMP t.14,
+     CONST 0,
+     FibObject.CString.badSub, L.37),
+    LABEL L.37,
+    BGE(
+     TEMP t.14,
+     MEM(
+      TEMP t.15, 
+      CONST 8, 8, false, false),
+     FibObject.CString.badSub, L.38),
+    LABEL L.38,
+    TEMP t.14)))),
+JUMP(
+ NAME L.33),
+LABEL L.33
+# Linearized (trees):
+MOVE(
+ TEMP FibObject.CString.1.a,
+ TEMP FibObject.CString.t)
+MOVE(
+ TEMP t.13,
+ TEMP FibObject.CString.1.a)
+BEQ(
+ TEMP t.13,
+ CONST 0,
+ FibObject.CString.badPtr, L.36)
+LABEL L.36
+MOVE(
+ TEMP t.15,
+ TEMP t.13)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BLT(
+ TEMP t.14,
+ CONST 0,
+ FibObject.CString.badSub, L.37)
+LABEL L.37
+BGE(
+ TEMP t.14,
+ MEM(
+  TEMP t.15, 
+  CONST 8, 8, false, false),
+ FibObject.CString.badSub, L.38)
+LABEL L.38
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.15, 
+   CONST 0, 8, false, false),
+  TEMP t.14))
+JUMP(
+ NAME L.33)
+LABEL L.33
+# Basic Blocks:
+# 0
+LABEL L.45
+MOVE(
+ TEMP FibObject.CString.1.a,
+ TEMP FibObject.CString.t)
+MOVE(
+ TEMP t.13,
+ TEMP FibObject.CString.1.a)
+BEQ(
+ TEMP t.13,
+ CONST 0,
+ FibObject.CString.badPtr, L.36)
+# 1
+LABEL L.36
+MOVE(
+ TEMP t.15,
+ TEMP t.13)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BLT(
+ TEMP t.14,
+ CONST 0,
+ FibObject.CString.badSub, L.37)
+# 2
+LABEL L.37
+BGE(
+ TEMP t.14,
+ MEM(
+  TEMP t.15, 
+  CONST 8, 8, false, false),
+ FibObject.CString.badSub, L.38)
+# 3
+LABEL L.38
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.15, 
+   CONST 0, 8, false, false),
+  TEMP t.14))
+JUMP(
+ NAME L.33)
+# 4
+LABEL L.33
+# Trace Scheduled:
+LABEL L.45
+MOVE(
+ TEMP FibObject.CString.1.a,
+ TEMP FibObject.CString.t)
+MOVE(
+ TEMP t.13,
+ TEMP FibObject.CString.1.a)
+BEQ(
+ TEMP t.13,
+ CONST 0,
+ FibObject.CString.badPtr, L.36)
+LABEL L.36
+MOVE(
+ TEMP t.15,
+ TEMP t.13)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BLT(
+ TEMP t.14,
+ CONST 0,
+ FibObject.CString.badSub, L.37)
+LABEL L.37
+BGE(
+ TEMP t.14,
+ MEM(
+  TEMP t.15, 
+  CONST 8, 8, false, false),
+ FibObject.CString.badSub, L.38)
+LABEL L.38
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.15, 
+   CONST 0, 8, false, false),
+  TEMP t.14))
+LABEL L.33
+# With procedure entry/exit:
+MOVE(
+ TEMP FibObject.CString.t,
+ TEMP %rdi)
+LABEL L.45
+MOVE(
+ TEMP FibObject.CString.1.a,
+ TEMP FibObject.CString.t)
+MOVE(
+ TEMP t.13,
+ TEMP FibObject.CString.1.a)
+BEQ(
+ TEMP t.13,
+ CONST 0,
+ FibObject.CString.badPtr, L.36)
+LABEL L.36
+MOVE(
+ TEMP t.15,
+ TEMP t.13)
+MOVE(
+ TEMP t.14,
+ CONST 0)
+BLT(
+ TEMP t.14,
+ CONST 0,
+ FibObject.CString.badSub, L.37)
+LABEL L.37
+BGE(
+ TEMP t.14,
+ MEM(
+  TEMP t.15, 
+  CONST 8, 8, false, false),
+ FibObject.CString.badSub, L.38)
+LABEL L.38
+MOVE(
+ TEMP %rax,
+ ADD(
+  MEM(
+   TEMP t.15, 
+   CONST 0, 8, false, false),
+  TEMP t.14))
+LABEL L.33
+# Instructions:
+	movq %rdi,FibObject.CString.t	# FibObject.CString.t := %rdi 
+L.45:	# <- 
+	movq FibObject.CString.t,FibObject.CString.1.a	# FibObject.CString.1.a := FibObject.CString.t 
+	movq FibObject.CString.1.a,t.13	# t.13 := FibObject.CString.1.a 
+	xorq t.54,t.54	# t.54 <- 
+	cmpq t.54,t.13	# <- t.13 t.54 
+	je FibObject.CString.badPtr	# <- : goto FibObject.CString.badPtr L.36 
+L.36:	# <- 
+	movq t.13,t.15	# t.15 := t.13 
+	xorq t.14,t.14	# t.14 <- 
+	xorq t.55,t.55	# t.55 <- 
+	cmpq t.55,t.14	# <- t.14 t.55 
+	jl FibObject.CString.badSub	# <- : goto FibObject.CString.badSub L.37 
+L.37:	# <- 
+	movq 8(t.15),t.56	# t.56 <- t.15 
+	cmpq t.56,t.14	# <- t.14 t.56 
+	jge FibObject.CString.badSub	# <- : goto FibObject.CString.badSub L.38 
+L.38:	# <- 
+	movq 0(t.15),t.57	# t.57 <- t.15 
+	movq t.57,t.58	# t.58 := t.57 
+	addq t.14,t.58	# t.58 <- t.14 t.58 
+	movq t.58,%rax	# %rax := t.58 
+L.33:	# <- 
+# Control Flow Graph:
+0: FibObject.CString.t <- %rdi; goto 1
+1: FibObject.CString.1.a t.13 t.54 <- FibObject.CString.t; goto 2
+2: t.15 t.14 t.55 <- t.13; goto 3
+3: t.56 <- t.15 t.14; goto 4
+4: t.57 t.58 %rax <- t.15 t.14; goto 5
+5: <- %rsp %rbp %rax; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+FibObject.CString.t: %rsp %rbp 
+FibObject.CString.1.a: %rsp %rbp 
+t.13: t.54 %rsp %rbp 
+t.54: t.13 %rsp %rbp 
+t.15: t.55 t.14 %rsp %rbp t.56 
+t.14: t.55 t.15 %rsp %rbp t.56 t.58 t.57 
+t.55: t.15 t.14 %rsp %rbp 
+t.56: t.15 t.14 %rsp %rbp 
+t.57: %rsp %rbp t.14 
+t.58: %rsp %rbp t.14 
+t.58 <= t.57
+%rax <= t.58
+t.15 <= t.13
+FibObject.CString.1.a <= FibObject.CString.t
+t.13 <= FibObject.CString.1.a
+FibObject.CString.t <= %rdi
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+FibObject.CString.t->%rdi
+FibObject.CString.1.a->%rdi
+t.13->%rdi
+t.54->%rax
+t.15->%rdi
+t.14->%rbx
+t.55->%rax
+t.56->%rax
+t.57->%rax
+t.58->%rax
+# Assembly code:
+	.text
+FibObject.CString:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $16,%rsp
+	movq %rbx, -8(%rbp)
+#	movq %rdi,%rdi
+L.45:
+#	movq %rdi,%rdi
+#	movq %rdi,%rdi
+	xorq %rax,%rax
+	cmpq %rax,%rdi
+	je FibObject.CString.badPtr
+L.36:
+#	movq %rdi,%rdi
+	xorq %rbx,%rbx
+	xorq %rax,%rax
+	cmpq %rax,%rbx
+	jl FibObject.CString.badSub
+L.37:
+	movq 8(%rdi),%rax
+	cmpq %rax,%rbx
+	jge FibObject.CString.badSub
+L.38:
+	movq 0(%rdi),%rax
+#	movq %rax,%rax
+	addq %rbx,%rax
+#	movq %rax,%rax
+L.33:
+#	returnSink
+	movq -8(%rbp),%rbx
+	addq $16,%rsp
+	popq %rbp
+	ret
+FibObject.CString.badPtr:
+	call badPtr
+FibObject.CString.badSub:
+	call badSub
+END FibObject.CString
+PROCEDURE FibObject
+# Trees:
+MOVE(
+ TEMP FibObject.22.f,
+ ESEQ(
+  MOVE(
+   TEMP t.16,
+   CALL(
+    NAME malloc,
+    CONST 0,
+    CONST 32)),
+  MOVE(
+   TEMP t.16,
+   ADD(
+    TEMP t.16,
+    CONST 8)),
+  MOVE(
+   MEM(
+    TEMP t.16, 
+    CONST -8, 8, false, false),
+   NAME FibObject.Fib),
+  MOVE(
+   MEM(
+    TEMP t.16, 
+    CONST 0, 8, false, false),
+   CONST 0),
+  MOVE(
+   MEM(
+    TEMP t.16, 
+    CONST 8, 8, false, false),
+   CONST 0),
+  MOVE(
+   MEM(
+    TEMP t.16, 
+    CONST 16, 8, false, false),
+   CONST 0),
+  TEMP t.16)),
+EXP(
+ CALL(
+  ESEQ(
+   MOVE(
+    TEMP t.18,
+    CALL(
+     ESEQ(
+      MOVE(
+       TEMP t.17,
+       CALL(
+        MEM(
+         MEM(
+          TEMP FibObject.22.f, 
+          CONST -8, 8, false, false), 
+         CONST 0, 8, false, false),
+        CONST 0,
+        TEMP FibObject.22.f)),
+      MEM(
+       MEM(
+        TEMP t.17, 
+        CONST -8, 8, false, false), 
+       CONST 16, 8, false, false)),
+     CONST 0,
+     TEMP t.17,
+     SUB(
+      CALL(
+       MEM(
+        MEM(
+         TEMP FibObject.22.f, 
+         CONST -8, 8, false, false), 
+        CONST 24, 8, false, false),
+       CONST 0,
+       TEMP FibObject.22.f),
+      CONST 1))),
+   MEM(
+    MEM(
+     TEMP t.18, 
+     CONST -8, 8, false, false), 
+    CONST 32, 8, false, false)),
+  CONST 0,
+  TEMP t.18))
+# Linearized (trees):
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 32))
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST -8, 8, false, false),
+ NAME FibObject.Fib)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 8, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 16, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP FibObject.22.f,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.60,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 24, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.18,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.17, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP t.17,
+  SUB(
+   TEMP t.60,
+   CONST 1)))
+MOVE(
+ TEMP t.59,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.18, 
+    CONST -8, 8, false, false), 
+   CONST 32, 8, false, false),
+  CONST 0,
+  TEMP t.18))
+EXP(
+ TEMP t.59)
+# Basic Blocks:
+# 0
+LABEL L.46
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 32))
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST -8, 8, false, false),
+ NAME FibObject.Fib)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 8, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 16, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP FibObject.22.f,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.60,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 24, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.18,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.17, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP t.17,
+  SUB(
+   TEMP t.60,
+   CONST 1)))
+MOVE(
+ TEMP t.59,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.18, 
+    CONST -8, 8, false, false), 
+   CONST 32, 8, false, false),
+  CONST 0,
+  TEMP t.18))
+EXP(
+ TEMP t.59)
+# Trace Scheduled:
+LABEL L.46
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 32))
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST -8, 8, false, false),
+ NAME FibObject.Fib)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 8, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 16, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP FibObject.22.f,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.60,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 24, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.18,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.17, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP t.17,
+  SUB(
+   TEMP t.60,
+   CONST 1)))
+MOVE(
+ TEMP t.59,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.18, 
+    CONST -8, 8, false, false), 
+   CONST 32, 8, false, false),
+  CONST 0,
+  TEMP t.18))
+EXP(
+ TEMP t.59)
+# With procedure entry/exit:
+LABEL L.46
+MOVE(
+ TEMP t.16,
+ CALL(
+  NAME malloc,
+  CONST 0,
+  CONST 32))
+MOVE(
+ TEMP t.16,
+ ADD(
+  TEMP t.16,
+  CONST 8))
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST -8, 8, false, false),
+ NAME FibObject.Fib)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 0, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 8, 8, false, false),
+ CONST 0)
+MOVE(
+ MEM(
+  TEMP t.16, 
+  CONST 16, 8, false, false),
+ CONST 0)
+MOVE(
+ TEMP FibObject.22.f,
+ TEMP t.16)
+MOVE(
+ TEMP t.17,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 0, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.60,
+ CALL(
+  MEM(
+   MEM(
+    TEMP FibObject.22.f, 
+    CONST -8, 8, false, false), 
+   CONST 24, 8, false, false),
+  CONST 0,
+  TEMP FibObject.22.f))
+MOVE(
+ TEMP t.18,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.17, 
+    CONST -8, 8, false, false), 
+   CONST 16, 8, false, false),
+  CONST 0,
+  TEMP t.17,
+  SUB(
+   TEMP t.60,
+   CONST 1)))
+MOVE(
+ TEMP t.59,
+ CALL(
+  MEM(
+   MEM(
+    TEMP t.18, 
+    CONST -8, 8, false, false), 
+   CONST 32, 8, false, false),
+  CONST 0,
+  TEMP t.18))
+EXP(
+ TEMP t.59)
+# Instructions:
+L.46:	# <- 
+	movq $32,%rdi	# %rdi <- 
+	call malloc	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- %rdi 
+	movq %rax,t.16	# t.16 := %rax 
+	movq t.16,t.61	# t.61 := t.16 
+	addq $8,t.61	# t.61 <- t.61 
+	movq t.61,t.16	# t.16 := t.61 
+	leaq FibObject.Fib(%rip),t.62	# t.62 <- 
+	movq t.62,-8(t.16)	# <- t.16 t.62 
+	movq $0,0(t.16)	# <- t.16 
+	movq $0,8(t.16)	# <- t.16 
+	movq $0,16(t.16)	# <- t.16 
+	movq t.16,FibObject.22.f	# FibObject.22.f := t.16 
+	movq -8(FibObject.22.f),t.63	# t.63 <- FibObject.22.f 
+	movq 0(t.63),t.64	# t.64 <- t.63 
+	movq FibObject.22.f,%rdi	# %rdi := FibObject.22.f 
+	call *t.64	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.64 %rdi 
+	movq %rax,t.17	# t.17 := %rax 
+	movq -8(FibObject.22.f),t.65	# t.65 <- FibObject.22.f 
+	movq 24(t.65),t.66	# t.66 <- t.65 
+	movq FibObject.22.f,%rdi	# %rdi := FibObject.22.f 
+	call *t.66	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.66 %rdi 
+	movq %rax,t.60	# t.60 := %rax 
+	movq -8(t.17),t.67	# t.67 <- t.17 
+	movq 16(t.67),t.68	# t.68 <- t.67 
+	movq t.17,%rdi	# %rdi := t.17 
+	movq t.60,t.69	# t.69 := t.60 
+	subq $1,t.69	# t.69 <- t.69 
+	movq t.69,%rsi	# %rsi := t.69 
+	call *t.68	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.68 %rdi %rsi 
+	movq %rax,t.18	# t.18 := %rax 
+	movq -8(t.18),t.70	# t.70 <- t.18 
+	movq 32(t.70),t.71	# t.71 <- t.70 
+	movq t.18,%rdi	# %rdi := t.18 
+	call *t.71	# %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 <- t.71 %rdi 
+	movq %rax,t.59	# t.59 := %rax 
+# Control Flow Graph:
+0: %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.16 t.61 t.62 FibObject.22.f t.63 t.64 t.17 t.65 t.66 t.60 t.67 t.68 t.69 t.18 t.70 t.71 t.59 <- %rsp %rbp; goto
+# Interference Graph:
+%rax: 
+%rbx: 
+%rcx: 
+%rdx: 
+%rsp: 
+%rbp: 
+%rsi: 
+%rdi: 
+%r8: 
+%r9: 
+%r10: 
+%r11: 
+%r12: 
+%r13: 
+%r14: 
+%r15: 
+t.16: t.62 %rsp %rbp 
+t.61: %rsp %rbp 
+t.62: %rsp %rbp t.16 
+FibObject.22.f: t.66 t.65 t.17 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.64 t.63 %rsp %rbp 
+t.63: %rsp %rbp FibObject.22.f 
+t.64: %rdi %rsp %rbp FibObject.22.f 
+t.17: t.68 t.67 t.60 %rdi %rsi %rdx %rcx %r8 %r9 %rax %r10 %r11 t.66 t.65 %rsp %rbp FibObject.22.f 
+t.65: %rsp %rbp t.17 FibObject.22.f 
+t.66: %rdi %rsp %rbp t.17 FibObject.22.f 
+t.60: %rdi t.68 t.67 %rsp %rbp t.17 
+t.67: %rsp %rbp t.60 t.17 
+t.68: %rsi t.69 %rdi %rsp %rbp t.60 t.17 
+t.69: %rsp %rbp t.68 %rdi 
+t.18: t.71 t.70 %rsp %rbp 
+t.70: %rsp %rbp t.18 
+t.71: %rdi %rsp %rbp t.18 
+t.59: %rsp %rbp 
+t.16 <= %rax
+t.61 <= t.16
+t.16 <= t.61
+FibObject.22.f <= t.16
+%rdi <= FibObject.22.f
+t.17 <= %rax
+%rdi <= FibObject.22.f
+t.60 <= %rax
+%rdi <= t.17
+t.69 <= t.60
+%rsi <= t.69
+t.18 <= %rax
+%rdi <= t.18
+t.59 <= %rax
+# Register Allocation:
+%rax->%rax
+%rbx->%rbx
+%rcx->%rcx
+%rdx->%rdx
+%rsp->%rsp
+%rbp->%rbp
+%rsi->%rsi
+%rdi->%rdi
+%r8->%r8
+%r9->%r9
+%r10->%r10
+%r11->%r11
+%r12->%r12
+%r13->%r13
+%r14->%r14
+%r15->%r15
+t.16->%rax
+t.61->%rax
+t.62->%rbx
+FibObject.22.f->%r12
+t.63->%rax
+t.64->%rax
+t.17->%rbx
+t.65->%rax
+t.66->%rax
+t.60->%rax
+t.67->%rcx
+t.68->%rcx
+t.69->%rax
+t.18->%rax
+t.70->%rbx
+t.71->%rbx
+t.59->%rax
+# Assembly code:
+	.text
+FibObject:
+	pushq %rbp
+	movq %rsp,%rbp
+	subq $32,%rsp
+	movq %r12, -16(%rbp)
+	movq %rbx, -8(%rbp)
+L.46:
+	movq $32,%rdi
+	call malloc
+#	movq %rax,%rax
+#	movq %rax,%rax
+	addq $8,%rax
+#	movq %rax,%rax
+	leaq FibObject.Fib(%rip),%rbx
+	movq %rbx,-8(%rax)
+	movq $0,0(%rax)
+	movq $0,8(%rax)
+	movq $0,16(%rax)
+	movq %rax,%r12
+	movq -8(%r12),%rax
+	movq 0(%rax),%rax
+	movq %r12,%rdi
+	call *%rax
+	movq %rax,%rbx
+	movq -8(%r12),%rax
+	movq 24(%rax),%rax
+	movq %r12,%rdi
+	call *%rax
+#	movq %rax,%rax
+	movq -8(%rbx),%rcx
+	movq 16(%rcx),%rcx
+	movq %rbx,%rdi
+#	movq %rax,%rax
+	subq $1,%rax
+	movq %rax,%rsi
+	call *%rcx
+#	movq %rax,%rax
+	movq -8(%rax),%rbx
+	movq 32(%rbx),%rbx
+	movq %rax,%rdi
+	call *%rbx
+#	movq %rax,%rax
+#	returnSink
+	movq -8(%rbp),%rbx
+	movq -16(%rbp),%r12
+	addq $32,%rsp
+	popq %rbp
+	ret
+FibObject.badSub:
+	call badSub
+END FibObject
